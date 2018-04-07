@@ -1,14 +1,12 @@
 {
   "lang": "en",
   "dir": "ltr",
-  "name": "Blaupause",
-  "description": "A boilerplate",
-  "short_name": "Blaupause",
+  "name": "Free Republic of Liberland",
+  "description": "A odern developing country",
+  "short_name": "Liberland",
   "icons": [],
   "scope": "/",
   "start_url": "/",
   "display": "fullscreen",
-  "orientation": "portrait",
-  "theme_color": "#2271ff",
-  "background_color": "#fff"
+  "orientation": "portrait"
 }
