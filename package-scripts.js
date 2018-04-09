@@ -22,9 +22,9 @@ const rel = to => join(process.cwd(), to);
 
 const cssTasks = (src, dest) => {
   const getTask = (isProd) => {
-    const plugins = 'autoprefixer postcss-import';
-    const prodPlugins = `${plugins} cssnano`;
-    return `postcss -d ${dest} ${esc(join(src, '*.css'))} -u ${isProd ? prodPlugins : plugins} ${isProd ? '--no-map' : ''}`;
+
+    return `node-sass --include-path ./node_modules -o ${dest} ${join(src, '*.scss')}`;
+
   };
 
   return {
@@ -34,7 +34,7 @@ const cssTasks = (src, dest) => {
       `stylelint ${esc(join(src, '**/*.css'))}`,
       'Lints CSS with stylelint + stylelint-config-standard',
     ),
-    watch: priv(watch('nps css.compile', join(src, '**/*.css'))),
+    watch: priv(watch('nps css.compile', join(src, '**/*.(s)css'))),
   };
 };
 

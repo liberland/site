@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.42",
+    "jqvmap": "^1.5.1",
     "sanitize.css": "^5.0.0"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^2.9.0",
     "hugo-bin": "^0.22.0",
     "jest-cli": "^22.4.2",
+    "node-sass": "^4.8.3",
     "nps": "^5.8.2",
     "postcss-cli": "^5.0.0",
     "postcss-import": "^11.1.0",
