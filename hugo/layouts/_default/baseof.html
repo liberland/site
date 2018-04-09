@@ -13,29 +13,33 @@
 
   <link rel="manifest" href="{{ "/manifest.json" | relURL }}">
   <meta name="application-name" content="{{ $title }}">
-  <meta name="theme-color" content="#2271ff">
+  <meta name="theme-color" content="#ffcd05">
 
   {{ if .RSSLink }}
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ $title }}" />
     <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ $title }}" />
   {{ end }}
 
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
   <link rel="stylesheet" href="{{ "static/css/main.css" | relURL }}">
   <script defer src="{{ "static/js/main.bundle.js" | relURL }}"></script>
+
 </head>
-<body>
-  <div class="page">
-    {{ block "header" . }}
-    <header>
-        <h1>{{ .Title }}</h1>
-    </header>
-    {{ end }}
-    {{ block "main" . }}
-      <!-- The part of the page that begins to differ between templates -->
-    {{ end }}
-    {{ block "footer" . }}
-    <footer>Made with &heart; in Berlin &middot; {{ now.Year }}</footer>
-    {{ end }}
-  </div>
+<body class="lc {{ .Title | urlize }}">
+  {{ partial "menu.html" . }}
+
+  {{ block "main" . }}
+    <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+
+  {{ partial "footer.html" . }}
 </body>
 </html>
