@@ -95,14 +95,4 @@ var mapEmbassyTitle = {
       }
 
     });
-
-
-	$("#sort_contacts>div").sort(function (a, b) {
-	    return parseInt(a.id) > parseInt(b.id);
-	}).each(function () {
-	    var elem = $(this);
-	    elem.remove();
-	    $(elem).appendTo("#sort_contacts");
-	});
-
   });
