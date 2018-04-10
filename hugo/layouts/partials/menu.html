@@ -18,7 +18,7 @@
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
           {{ if .HasChildren }}
-            <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}">
+            <li class="{{ if $currentPage.HasMenuCurrent "main" . }}childActive{{ end }}">
               <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 {{ .Pre }}
                 <span>{{ .Name }}</span>
