@@ -9,6 +9,8 @@ import { info } from './utils/debug';
 import 'jqvmap';
 import 'jqvmap/dist/maps/jquery.vmap.world';
 
+import './about';
+
 function onReady(e) {
   registerServiceWorker();
   info(`Event: ${e.type}`, `Datestamp: ${this.date}`);
@@ -17,6 +19,8 @@ function onReady(e) {
 ready(onReady, {
   date: new Date(),
 });
+
+let wow;
 
 var mapEmbassyTitle = {
   'cz': 'office@liberland.org',
@@ -72,33 +76,31 @@ var mapEmbassyTitle = {
   '_2': 'somaliland@liberland.org'
 };
 
+$(document).ready(function(){
+  jQuery('#vmap').vectorMap(
+  {
+    map: 'world_en',
+    backgroundColor: 'transparent',
+    color: '#fff',
+    hoverOpacity: 0.8,
+    enableZoom: false,
+    selectedColor: '#FFCB05',
+    normalizeFunction: 'polynomial',
+		onLabelShow: function(e, el, code){
+			if(typeof mapEmbassyTitle[code] != 'undefined'){
+				let title = mapEmbassyTitle[code];
+	      		el.html(el.html()+' -&nbsp;'+title);
+			}
+    },
+    onRegionClick: function(element, code, region) {
+      window.location.href = "#" + code
+    }
 
-  $(document).ready(function(){
-
-    jQuery('#vmap').vectorMap(
-    {
-      map: 'world_en',
-      backgroundColor: 'transparent',
-      color: '#fff',
-      hoverOpacity: 0.8,
-      enableZoom: false,
-      selectedColor: '#FFCB05',
-      normalizeFunction: 'polynomial',
-  		onLabelShow: function(e, el, code){
-  			if(typeof mapEmbassyTitle[code] != 'undefined'){
-  				title = mapEmbassyTitle[code];
-  	      		el.html(el.html()+' -&nbsp;'+title);
-  			}
-      },
-      onRegionClick: function(element, code, region) {
-        window.location.href = "#" + code
-      }
-
-    });
   });
+});
 
 
-  var initmain = function(){
+  var initmain = function() {
 
   	// particles
   	particlesJS("particles-js", {
@@ -607,8 +609,6 @@ var mapEmbassyTitle = {
 
   	google.maps.event.addDomListener(window, 'load', showGoogleMaps);
 
-
-
   	// count up
   	var options = {
   		useEasing: true,
@@ -670,12 +670,14 @@ var mapEmbassyTitle = {
   }
 
   $(document).ready(function(){
-  	initmain();
-  	wow.init();
+    if($('body').hasClass('home')) {
+    	initmain();
+    	wow.init();
 
-  	$(window).on('resize', function(){
-  		if ( $(window).width() < 992 ) {
-  			var position = [45.7736431, 18.8869826];
-  		}
-  	});
+    	$(window).on('resize', function(){
+    		if ( $(window).width() < 992 ) {
+    			var position = [45.7736431, 18.8869826];
+    		}
+    	});
+    }
   });
