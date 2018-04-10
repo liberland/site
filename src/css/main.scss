@@ -180,7 +180,7 @@ button, a[class^="btn"] {
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
 	color: #000;
-	background-color: transparent;
+	background-color: $yellow;
 }
 
 nav.navbar {
