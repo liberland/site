@@ -1,0 +1,10 @@
+backend:
+  name: github # git-gateway if using Netlify Identity integration
+  repo:  kozy/liberland-hugo
+  branch: master
+  base_url: # See https://github.com/vencax/netlify-cms-github-oauth-provider or remove if using Netlify Identity
+publish_mode: editorial_workflow
+media_folder: "hugo/static/assets"
+public_folder: "/assets"
+collections: # See netlify-cms docs
+
