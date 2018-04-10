@@ -336,10 +336,10 @@ body {
 			}
 		}
 	}
-	&.landing{
+	&.home {
 		#intro {
 
- 			background: $gray-m url(../images/hero.svg) center center no-repeat;
+ 			background: $gray-m url(/images/hero.svg) center center no-repeat;
 			background-size: cover;
 			height: 100vh;
 			max-height: 200vw;
@@ -359,7 +359,7 @@ body {
 			}
 		}
 		#what-headline {
-			background: url(../images/wave.svg) center top;
+			background: url(/images/wave.svg) center top;
 			background-size: cover;
 			margin-top: -106px;
 			padding: 50px 0 30px;
@@ -374,23 +374,23 @@ body {
 			#gmap {
 				height: 100vh;
 			}
-			#overmap {
-				position: absolute;
-				bottom: 1vh;
-				right: 6vh;
 
+			#overmap {
+				height: 100vh;
+				margin-top: -100vh;
+				position: relative;
+				pointer-events: none;
 				.to-bottom {
 					position: absolute;
 					bottom: 0;
-					right: 10px;
-
 				    left: 10px;
 				    right: 10px;
 				}
 			}
+
 		}
 		#mission {
-			background: $yellow url(../images/mission.svg) center bottom  no-repeat;
+			background: $yellow url(/images/mission.svg) center bottom  no-repeat;
 			background-size: cover;
 			h3 {
 				color: $gray-d;
@@ -407,20 +407,20 @@ body {
 				}
 				h5,p { color: $gray-d}
 				&.e-res{
-					.img-holder{ background-image: url(../images/icon-e-res.svg) }
-					&:hover .img-holder{ background-image: url(../images/icon-car-animated.svg) }
+					.img-holder{ background-image: url(/images/icon-e-res.svg) }
+					&:hover .img-holder{ background-image: url(/images/icon-car-animated.svg) }
 				}
 				&.pass{
-					.img-holder{ background-image: url(../images/icon-pass.svg) }
-					&:hover .img-holder{ background-image: url(../images/icon-car-animated.svg) }
+					.img-holder{ background-image: url(/images/icon-pass.svg) }
+					&:hover .img-holder{ background-image: url(/images/icon-car-animated.svg) }
 				}
 				&.comp{
-					.img-holder{ background-image: url(../images/icon-comp.svg) }
-					&:hover .img-holder{ background-image: url(../images/icon-comp-animated.svg) }
+					.img-holder{ background-image: url(/images/icon-comp.svg) }
+					&:hover .img-holder{ background-image: url(/images/icon-comp-animated.svg) }
 				}
 				&.car{
-					.img-holder{ background-image: url(../images/icon-car.svg) }
-					&:hover .img-holder{ background-image: url(../images/icon-car-animated.svg) }
+					.img-holder{ background-image: url(/images/icon-car.svg) }
+					&:hover .img-holder{ background-image: url(/images/icon-car-animated.svg) }
 				}
 
 			}
@@ -481,7 +481,7 @@ body {
 			background-size: 90px;
 			padding: 0;
 			.container {
-				background: url(../images/romb.svg) center center;
+				background: url(/images/romb.svg) center center;
 				background-size: cover;
 				padding-top: 50px;
 				padding-bottom: 50px;
@@ -516,6 +516,9 @@ body {
 
 		}
 		#media {
+			.col-sm-3.col-xs-4 {
+				height: 120px
+			}
 			a{
 				box-shadow: none;
 				img {
@@ -534,8 +537,8 @@ body {
 	}
 
 	&.aboutll {
-		intro {
-			background: #646462 url(../images/about-hero.jpg);
+		header {
+			background: #646462 url(/images/about-hero.jpg);
 			background-position: 70% bottom;
 			background-size: cover;
 			height: 100vh;
@@ -631,19 +634,28 @@ body {
 						padding: 3px;
 						display: block;
 						width: 50%;
+						float: left;
+
+						&:nth-child(2) {
+							text-align: right;
+						}
+
 						&:last-child {
 							width: 100%;
 						}
 						@include breakpoint(md) {
 							display: table-cell;
 							width: 20%;
+							float: none;
+							&:nth-child(2) {
+								text-align: left;
+							}
 						}
 					}
 
 				}
 			}
 		}
-
 		.panel {
 			border: none;
 			margin-bottom: 30px;
@@ -661,6 +673,7 @@ body {
 
 // animatecss delays
 
+$time: .25s;
 .wait1{
 	animation-delay: 1*$time;
 }
