@@ -219,10 +219,10 @@ $(document).ready(function(){
   	var position = [45.7736431, 18.8869826]; // 45.7736431,18.8869826,15.92z
 
   	function showGoogleMaps() {
-      var latLng = { lat: 45.767156, lng: 18.866622 }
+      var latLng = { lat: 45.729156, lng: 18.866622 }
 
   		var mapOptions = {
-  			zoom: 13, // initialize zoom level - the max value is 21
+  			zoom: 12.3, // initialize zoom level - the max value is 21
   			streetViewControl: false, // hide the yellow Street View pegman
   			scaleControl: true, // allow users to zoom the Google Map
   			mapTypeId: google.maps.MapTypeId.ROADMAP,
