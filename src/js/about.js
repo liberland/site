@@ -1,4 +1,4 @@
-if($('body').hasClass('about')) {
+if($('body').hasClass('liberland')) {
   var initAboutLL = function(){
      var options = {
   		  useEasing: true,
