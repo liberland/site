@@ -219,11 +219,10 @@ $(document).ready(function(){
   	var position = [45.7736431, 18.8869826]; // 45.7736431,18.8869826,15.92z
 
   	function showGoogleMaps() {
-
-  		var latLng = new google.maps.LatLng(position[0], position[1]);
+      var latLng = { lat: 45.767156, lng: 18.866622 }
 
   		var mapOptions = {
-  			zoom: 12, // initialize zoom level - the max value is 21
+  			zoom: 13, // initialize zoom level - the max value is 21
   			streetViewControl: false, // hide the yellow Street View pegman
   			scaleControl: true, // allow users to zoom the Google Map
   			mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -572,7 +571,8 @@ $(document).ready(function(){
   			]
   		};
 
-  		map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
+  		let map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
+
   		var llSurface = [
   			{ lat: 45.78381, lng: 18.86962 },
   			{ lat: 45.77968, lng: 18.86105 },
@@ -604,7 +604,9 @@ $(document).ready(function(){
   			fillColor: '#FFCB05',
   			fillOpacity: 0.35
   		});
+
   		surface.setMap(map);
+
   	}
 
   	google.maps.event.addDomListener(window, 'load', showGoogleMaps);
