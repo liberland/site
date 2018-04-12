@@ -11,14 +11,16 @@
               {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
               {{ replace .address "\n" "<br />" | safeHTML }}
 
-              {{ if .contact }}{{ if .email }}<br / >{{ end }}{{ end }}
+              <br / >
 
               {{ if .email }}
               <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
-              <a href="mailto:{{ .email }}">{{ .email }}</a><br/>
+              <a href="mailto:{{ .email }}">{{ .email }}</a>
               {{ end }}
 
+
               {{ if .phone }}
+              <br/>
               <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
               <a href="tel:{{ .phone }}">{{ .phone }}</a>
               {{ end }}
@@ -27,6 +29,8 @@
               <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
               <a href="tel:{{ .phone2 }}">{{ .phone2 }}</a>
               {{ end }}
+
+              <br/>
 
               {{ if .facebook }}
               <img src="/images/icon-fb.svg" height="14px"/>&nbsp;
