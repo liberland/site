@@ -23,11 +23,5 @@ if($('body').hasClass('liberland')) {
 
   $(document).ready(function(){
       initAboutLL();
-      wow.init();
-      $(window).on('resize', function(){
-  		if ( $(window).width()<768 ) {
-  			$("aside").removeClass("active");
-  		}
-  	});
   });
 }
