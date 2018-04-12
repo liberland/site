@@ -300,7 +300,7 @@ body {
 			}
 		}
 	}
-	
+
 	section{
 		padding: 50px 0;
 		&.bg-yellow{
@@ -668,6 +668,17 @@ body {
 				height: 170px;
 			}
 		}
+	}
+}
+
+.simple-page {
+	h1,h2,h3 {
+		// @extend .text-center
+		text-align: center;
+		margin-top: 2em;
+	}
+	p {
+		margin-bottom: 1.5em;
 	}
 }
 
