@@ -14,7 +14,7 @@ metaDataFormat: "yaml"
 # for now use disableKinds
 
 #contentDir: "./application/"
-disableKinds: [ "home", "sitemap" ] 
+disableKinds: [ "home", "sitemap", "404" ] 
 
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE
