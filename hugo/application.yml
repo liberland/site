@@ -1,0 +1,24 @@
+---
+# Site
+baseurl: "https://liberland.org"
+title: "Liberland"
+enableRobotsTXT: true
+googleAnalytics: ""
+# Content
+languageCode: "en-us"
+defaultContentLanguage: "en"
+# Formats
+metaDataFormat: "yaml"
+
+# contentDir is broken https://github.com/gohugoio/hugo/pull/4590
+# for now use disableKinds
+
+#contentDir: "./application/"
+disableKinds: [ "home", "sitemap" ] 
+
+# -----------------------------
+# DO NOT CHANGE BELOW THIS LINE
+# -----------------------------
+disableLiveReload: true
+watch: false
+---

@@ -39,8 +39,11 @@ const cssTasks = (src, dest) => {
 };
 
 const hugoTasks = (src, dest) => {
-  const localAddr = 'http://localhost:3000';
-  const cfg = join(src, 'config.yml');
+  const domain =  process.env.DOMAIN;
+  const localAddr = domain ? `http://${domain}` : 'http://localhost:3000';
+  const application = process.env.APP || 'config';
+
+  const cfg = join(src, `${application}.yml`);
 
   return {
     compile: priv(`hugo --config=${cfg} -s ${esc(src)} -d ${esc(dest)} -b ${esc(localAddr)} -D`),
