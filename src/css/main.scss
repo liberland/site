@@ -669,6 +669,26 @@ body {
 			}
 		}
 	}
+	&.application {
+	#particles {
+		position: absolute;
+			width: 100%;
+			height: 100%;
+			margin-top: -50px;
+	}
+	#intro {
+		//background: #555658 url(../images/ICO.svg) center center no-repeat;
+		background-color: #555658;
+			background-size: cover;
+			height: 100vh;
+			max-height: 200vw;
+			-webkit-box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.35);
+			box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.35);
+			.container {
+				height: 100%;
+			}
+		}
+	}
 }
 
 .simple-page {

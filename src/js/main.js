@@ -10,6 +10,8 @@ import 'jqvmap';
 import 'jqvmap/dist/maps/jquery.vmap.world';
 
 import './about';
+import './application';
+
 
 function onReady(e) {
   registerServiceWorker();
