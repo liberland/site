@@ -1,0 +1,7 @@
+---
+title: "_Redirects"
+date: 2018-04-13T10:19:12+02:00
+draft: false
+---
+
+/privacy https://docsend.com/view/feiwyte
