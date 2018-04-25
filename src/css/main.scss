@@ -63,6 +63,8 @@ $time: .25s;
 }
 
 
+
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Alfa Slab One', serif;
 	//font-family: 'Andada', serif;
@@ -731,3 +733,7 @@ $time: .25s;
 		animation-delay: 0;
 	}
 }
+
+
+
+@import "subdomains/embassy";

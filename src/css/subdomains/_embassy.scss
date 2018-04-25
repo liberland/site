@@ -1,0 +1,19 @@
+body.embassy {
+	header {
+		background: white ;
+		color: red;
+		h1, h2 { text-shadow: none;}
+		h1 { margin: 30px 0 10px}
+		h2 { 
+			color: $gray-m;
+			margin: 0 0 30px;
+			
+		}
+		.flag {
+			width: 100%;
+			height: 30px;
+			background: $yellow url(/images/header-bg.png) repeat-x;
+			background-size: contain; 
+		}
+	}
+}
