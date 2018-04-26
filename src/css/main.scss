@@ -1,4 +1,7 @@
 @import "jqvmap/dist/jqvmap";
+//@import "flag-icon-css/css/flag-icon.min.css";
+//@import "flag-icon-css/css/flag-icon.min.css";
+@import "flag-icon-css/css/flag-icon";
 
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
 @import url('https://fonts.googleapis.com/css?family=Andada');
@@ -101,7 +104,7 @@ hr {
 	border-top: 1px solid $gray-l;
 }
 
-p a {
+a {
 	//background: $yellow;
 	box-shadow: inset 0 -2px 0 $yellow;
 	color: inherit;
@@ -118,7 +121,7 @@ p a {
 }
 
  a.btn, button {
-
+	box-shadow: none;
     text-transform: uppercase;
     //font-size: 24px;
     //padding: 25px 30px;
@@ -737,4 +740,3 @@ $time: .25s;
 
 
 @import "subdomains/embassy";
-@import "partials/flag-icon.min";
