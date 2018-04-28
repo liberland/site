@@ -8,7 +8,7 @@ publish_mode: editorial_workflow
 media_folder: "hugo/static/assets"
 public_folder: "/assets"
 
-# display_url: https://demo.liberland.org
+display_url: https://demo.liberland.org
 
 collections: # See netlify-cms docs
   - label: "News"
