@@ -1,8 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="{{ .Site.LanguageCode }}">
+
 <head>
-  {{ partial "head_content" . }}
-  {{ partial "head_content_custom" . }}
+  {{ partial "head/default" . }}
+  {{ block "header-extra" . }}  {{ end }}
+
+  {{ partial "head/local" . }}
 </head>
 
 <body class="{{ .Title | urlize }}">
