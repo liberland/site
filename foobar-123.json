@@ -1,0 +1,1 @@
+{"type":"PR","pr":{"number":2,"head":"f92a8a34a0838a4f22a5261e45a591d79c6f7ebe"},"user":"kozy","status":"draft","branch":"cms/foobar-123","collection":"news","title":"Foobar 123","description":"No Description!","objects":{"entry":{"path":"hugo/content/news/foobar-123.md","sha":"d9b732400aec2214b9b018056b6833bfd277711f"},"files":[]},"timeStamp":"2018-04-28T17:15:05.013Z"}
