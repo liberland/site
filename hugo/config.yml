@@ -9,6 +9,18 @@ languageCode: "en-us"
 defaultContentLanguage: "en"
 # Formats
 metaDataFormat: "yaml"
+
+menu:
+  main:
+  - identifier: news
+    name: News
+    pre: <i class='fa fa-heart'></i>
+    url: /news/
+    weight: 100
+
+permalinks:
+  news: /:year/:month/:title/
+
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE
 # -----------------------------

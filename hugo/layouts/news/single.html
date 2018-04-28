@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div >
+              <h3>{{ .Title }}<br> <small>{{ .Description }}</small></h3>
+              <hr>
+              {{ .Content }}
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div> <!-- Post-specific -->
+                <h4>{{ .Date.Format "January 2, 2006" }}<br>
+                <small>{{ .WordCount }} words</small></h4>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
