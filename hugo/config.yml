@@ -1,6 +1,6 @@
 ---
 # Site
-baseurl: "https://liberland.org"
+baseurl: "https://demo.liberland.org"
 title: "Liberland"
 enableRobotsTXT: true
 googleAnalytics: ""
