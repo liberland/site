@@ -1,10 +1,22 @@
 backend:
   name: github # git-gateway if using Netlify Identity integration
-  repo:  kozy/liberland-hugo
+  repo:  liberland/site
   branch: master
-  base_url: # See https://github.com/vencax/netlify-cms-github-oauth-provider or remove if using Netlify Identity
+  # base_url: # See https://github.com/vencax/netlify-cms-github-oauth-provider or remove if using Netlify Identity
+
 publish_mode: editorial_workflow
 media_folder: "hugo/static/assets"
 public_folder: "/assets"
-collections: # See netlify-cms docs
 
+# display_url: https://demo.liberland.org
+
+collections: # See netlify-cms docs
+  - label: "News"
+    name: "news"
+    folder: "_posts/news"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
