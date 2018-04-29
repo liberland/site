@@ -21,8 +21,8 @@ collections: # See netlify-cms docs
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  - label: "News"
-    name: "news"
+  - label: "Representative office"
+    name: "representative_offices"
     folder: "hugo/data/representative_offices"
     create: true
     fields:
