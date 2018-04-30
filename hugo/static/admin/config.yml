@@ -26,7 +26,7 @@ collections: # See netlify-cms docs
     folder: "hugo/content/representative_offices"
     create: true
     fields:
-      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Representative photo", name: "photo", widget: "image" }
       - { label: "Country ISO code", name: "shortcode", widget: "string" }
