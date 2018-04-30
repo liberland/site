@@ -1,0 +1,30 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="clearfix">
+              <img class="col-md-4 pull-left" src="/images/vit-jedlicka.jpg" />
+
+              <h3>{{ .Title }}</h3>
+              {{ with .Params }}
+              <div class="panel-body">
+                {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
+                {{ replace .address "\n" "<br />" | safeHTML }}
+
+                <br / >
+
+                {{ if .email }}
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
+                <a href="mailto:{{ .email }}">{{ .email }}</a>
+                {{ end }}
+              </div>
+              {{ end }}
+              <hr>
+              {{ .Content }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
