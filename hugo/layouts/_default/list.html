@@ -1,6 +1,20 @@
-
 {{ define "main" }}
-<main>
-  {{ range .Data.Pages }}{{ .Title }}{{ end }}
-</main>
+  {{ partial "title.html" . }}
+
+  <div class="container simple-page">
+    <div class="row">
+      <ul>
+      {{ range .Data.Pages }}
+
+      <li>
+        <a href="{{ .Permalink }}">
+          {{ .Title }}<br />
+        </a>
+      </li>
+
+      {{ end }}
+    </ul>
+    </div>
+  </div>
+
 {{ end }}
