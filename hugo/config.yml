@@ -17,6 +17,11 @@ menu:
     url: /news/
     weight: 100
 
+  - identifier: representative_offices
+    name: Representative offices
+    url: /representative_offices
+    weight: 100
+
 permalinks:
   news: /:year/:month/:title/
 
