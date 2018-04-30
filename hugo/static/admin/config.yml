@@ -21,9 +21,9 @@ collections: # See netlify-cms docs
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  - label: "Representative office"
+  - label: "Representative offices"
     name: "representative_offices"
-    folder: "hugo/data/representative_offices"
+    folder: "hugo/content/representative_offices"
     create: true
     fields:
       - { label: "Name", name: "name", widget: "string" }
@@ -31,9 +31,9 @@ collections: # See netlify-cms docs
       - { label: "Representative photo", name: "photo", widget: "image" }
       - { label: "Country ISO code", name: "shortcode", widget: "string" }
       - { label: "Contact", name: "contact", widget: "string" }
-      - { label: "Address", name: "address", widget: "string" }
-      - { label: "Facebook link", name: "facebook", widget: "string" }
-      - { label: "Title of facebook page", name: "facebook_name", widget: "string" }
-      - { label: "Twitter", name: "twitter", widget: "string" }
+      - { label: "Address", name: "address", widget: "string", required: false }
+      - { label: "Facebook link", name: "facebook", widget: "string", required: false }
+      - { label: "Title of facebook page", name: "facebook_name", widget: "string", required: false }
+      - { label: "Twitter", name: "twitter", widget: "string", required: false }
       - { label: "email", name: "email", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
