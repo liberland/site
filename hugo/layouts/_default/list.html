@@ -2,18 +2,15 @@
   {{ partial "title.html" . }}
 
   <div class="container simple-page">
-    <div class="row">
-      <ul>
+    <div class="row list-group">
+
       {{ range .Data.Pages }}
 
-      <li>
-        <a href="{{ .Permalink }}">
+        <a class="list-group-item" href="{{ .Permalink }}">
           {{ .Title }}<br />
         </a>
-      </li>
 
       {{ end }}
-    </ul>
     </div>
   </div>
 
