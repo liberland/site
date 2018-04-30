@@ -24,6 +24,7 @@ collections: # See netlify-cms docs
   - label: "Representative offices"
     name: "representative_offices"
     folder: "hugo/content/representative_offices"
+    label_singular: Representative office
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
