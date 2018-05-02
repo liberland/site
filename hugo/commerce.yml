@@ -1,0 +1,22 @@
+---
+# Site
+baseurl: "https://chamber_of_commerce.liberland.org"
+title: "Liberland chamber of commerce"
+enableRobotsTXT: true
+googleAnalytics: ""
+# Content
+languageCode: "en-us"
+defaultContentLanguage: "en"
+# Formats
+metaDataFormat: "yaml"
+
+# contentDir is broken https://github.com/gohugoio/hugo/pull/4590
+
+contentDir: "./commerce"
+
+# -----------------------------
+# DO NOT CHANGE BELOW THIS LINE
+# -----------------------------
+disableLiveReload: true
+watch: false
+---

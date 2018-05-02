@@ -1,6 +1,6 @@
 ---
 # Site
-baseurl: "https://liberland.org"
+baseurl: "https://demo.liberland.org"
 title: "Liberland"
 enableRobotsTXT: true
 googleAnalytics: ""
@@ -9,6 +9,22 @@ languageCode: "en-us"
 defaultContentLanguage: "en"
 # Formats
 metaDataFormat: "yaml"
+
+menu:
+  main:
+  - identifier: news
+    name: News
+    url: /news/
+    weight: 100
+
+  - identifier: representative_offices
+    name: Representative offices
+    url: /representative_offices
+    weight: 100
+
+permalinks:
+  news: /:year/:month/:title/
+
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE
 # -----------------------------

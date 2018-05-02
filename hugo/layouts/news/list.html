@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+
+  <div class="container simple-page">
+    <div class="row">
+      <ul>
+      {{ range .Data.Pages }}
+      {{ .Render "li" }}
+      {{ end }}
+    </ul>
+    </div>
+  </div>
+
+{{ end }}

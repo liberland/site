@@ -1,6 +1,6 @@
 ---
 # Site
-baseurl: "https://liberland.org"
+baseurl: "https://ico.liberland.org"
 title: "Liberland"
 enableRobotsTXT: true
 googleAnalytics: ""
@@ -14,7 +14,7 @@ metaDataFormat: "yaml"
 # for now use disableKinds
 
 #contentDir: "./application/"
-disableKinds: [ "home", "sitemap", "404" ] 
+disableKinds: [ "home", "sitemap", "404" ]
 
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE

@@ -1,10 +1,40 @@
 backend:
   name: github # git-gateway if using Netlify Identity integration
-  repo:  kozy/liberland-hugo
+  repo:  liberland/site
   branch: master
-  base_url: # See https://github.com/vencax/netlify-cms-github-oauth-provider or remove if using Netlify Identity
+  # base_url: # See https://github.com/vencax/netlify-cms-github-oauth-provider or remove if using Netlify Identity
+
 publish_mode: editorial_workflow
 media_folder: "hugo/static/assets"
 public_folder: "/assets"
-collections: # See netlify-cms docs
 
+display_url: https://demo.liberland.org
+
+collections: # See netlify-cms docs
+  - label: "News"
+    name: "news"
+    folder: "hugo/content/news"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - label: "Representative offices"
+    name: "representative_offices"
+    folder: "hugo/content/representative_offices"
+    label_singular: Representative office
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Representative photo", name: "photo", widget: "image" }
+      - { label: "Country ISO code", name: "shortcode", widget: "string" }
+      - { label: "Contact", name: "contact", widget: "string" }
+      - { label: "Address", name: "address", widget: "string", required: false }
+      - { label: "Facebook link", name: "facebook", widget: "string", required: false }
+      - { label: "Title of facebook page", name: "facebook_name", widget: "string", required: false }
+      - { label: "Twitter", name: "twitter", widget: "string", required: false }
+      - { label: "email", name: "email", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }

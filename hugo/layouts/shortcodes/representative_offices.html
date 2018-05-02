@@ -1,52 +1,53 @@
 <section id="countries">
   <div class="container">
     <div class="row" id="sort_contacts">
-        {{ range sort $.Page.Params.representative_offices "name" }}
-        <div class="col-sm-4" id="{{ .shortcode }}">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{ .name }}</h3>
-            </div>
-            <div class="panel-body">
-              {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
-              {{ replace .address "\n" "<br />" | safeHTML }}
+      {{ with .Site.GetPage "section" "representative_offices" }}
+        {{ range .Data.Pages  }}{{ with .Params }}
+          <div class="col-sm-4" id="{{ .shortcode }}">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">{{ .title }}</h3>
+              </div>
+              <div class="panel-body">
+                {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
+                {{ replace .address "\n" "<br />" | safeHTML }}
 
-              <br / >
+                <br / >
 
-              {{ if .email }}
-              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
-              <a href="mailto:{{ .email }}">{{ .email }}</a>
-              {{ end }}
-
-
-              {{ if .phone }}
-              <br/>
-              <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
-              <a href="tel:{{ .phone }}">{{ .phone }}</a>
-              {{ end }}
-
-              {{ if .phone2 }}
-              <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
-              <a href="tel:{{ .phone2 }}">{{ .phone2 }}</a>
-              {{ end }}
-
-              <br/>
-
-              {{ if .facebook }}
-              <img src="/images/icon-fb.svg" height="14px"/>&nbsp;
-              <a href="{{ .facebook }}">
-                {{ if .facebook_name }}
-                {{ .facebook_name }}
-                {{ else }}
-                Liberland {{ .name }}
+                {{ if .email }}
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
+                <a href="mailto:{{ .email }}">{{ .email }}</a>
                 {{ end }}
-              </a>
-              {{ end }}
+
+
+                {{ if .phone }}
+                <br/>
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
+                <a href="tel:{{ .phone }}">{{ .phone }}</a>
+                {{ end }}
+
+                {{ if .phone2 }}
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
+                <a href="tel:{{ .phone2 }}">{{ .phone2 }}</a>
+                {{ end }}
+
+                <br/>
+
+                {{ if .facebook }}
+                <img src="/images/icon-fb.svg" height="14px"/>&nbsp;
+                <a href="{{ .facebook }}">
+                  {{ if .facebook_name }}
+                  {{ .facebook_name }}
+                  {{ else }}
+                  Liberland {{ .title }}
+                  {{ end }}
+                </a>
+                {{ end }}
+              </div>
             </div>
           </div>
-        </div>
+        {{ end }}{{ end }}
       {{ end }}
-
     </div>
   </div>
 </section>
