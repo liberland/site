@@ -1,19 +1,76 @@
 body.coc {
 	header {
 		background: white ;
-		h1, h2 { text-shadow: none;}
-		h1 { margin: 30px 0 10px}
-		h2 { 
-			color: $gray-m;
-			margin: 0 0 30px;
+		a.home {
+			box-shadow: none;
+		}
+		img.logomark {
+			width: 70px;
+			height: 70px;
+			float: left;
+			margin: 10px 8px 10px 0;
 			
 		}
+		h1, h2 { text-shadow: none; display: inline-block; }
+		h1 { 
+			margin: 15px 0px 5px 5px;
+			font-size: 36px;
+		}
+		h2 { 
+			color: $gray-m;
+			margin: 0 0px 20px 5px;
+			font-size: 14px;
+		}
+		@media only screen and (min-width: 450px) {
+		    h1, h2 { 
+				margin-right: 153px;
+			}
+		}
+		@media only screen and (min-width: 750px) {
+		    h1, h2 { 
+				margin-right: 160px;
+			}
+		}
+		
+		@include breakpoint(sm){
+			img.logomark {
+				width: 90px;
+				height: 90px;
+			}
+			h1 { 
+				margin: 30px 260px 10px 5px;
+				font-size: 42px;
+			}
+			h2 { 
+				color: $gray-m;
+				margin: 0 auto 20px 5px;
+				
+			}
+		}
+		@include breakpoint(md){
+			img.logomark {
+				width: 100px;
+				height: 100px;
+			}
+			h1 { 
+				margin: 30px 80px 10px 5px;
+				font-size: 42px;
+			}
+			h2 { 
+				color: $gray-m;
+				margin: 0 0 20px 5px;
+				
+			}
+		}
+		
+		
 		.flag {
 			width: 100%;
 			height: 30px;
 			background: $yellow url(/images/header-bg.png) repeat-x;
 			background-size: contain; 
 		}
+		border-bottom: 10px solid $yellow;
 	}
 	
 	nav.coc {
@@ -23,12 +80,19 @@ body.coc {
 		margin-top: -62px;
 		
 		@include breakpoint(sm){
-			margin-top: 92px;
+			margin-top: -42px;
+		}
+		@include breakpoint(md){
+			margin-top: 72px;
 		}
 		
 		button.navbar-toggle {
 			background: white;
 			border: none;
+			margin:  13px 0 0 0;
+			@include breakpoint(sm){
+				margin: 0 15px 8px 0;
+			}
 			span {
 				color: $gray-m;	
 			}
@@ -57,23 +121,30 @@ body.coc {
 		}
 	}
 	
+	footer {
+		border-top: 10px solid $yellow;
+	}
+	
 	section {
 		&#general {
 			position: relative;
-
-				padding: 0;
+			background: $gray-l;
+			padding: 0;
+				
 			#gmap {
 				height: 100vh;
+				min-height: 720px;
 			}
 
 			#overmap {
 				height: auto;
-				background: $gray-l;
+				
 				margin-top: 0px;
 				padding-top: 40px; 
 				
 				@include breakpoint(sm){
 					height: 98vh;
+					min-height: 720px;
 					margin-top: -98vh;
 					background: transparent;
 					position: relative;
@@ -99,6 +170,33 @@ body.coc {
 					}
 				}
 			}
+			@media only screen and (max-height: 400px) and (min-width: 800px) {
+			    #gmap {
+					height: 100vh;
+					min-height: 360px;
+				}
+				#overmap {
+					margin-top: 0px;
+					background: $gray-l;
+					.col-sm-4 {
+						width: 50%;
+					}
+/*
+					.col-sm-4.col-sm-pull-8 {
+						width: 50%;
+						margin-left: 50% !important;
+					}
+*/
+					.col-sm-4.col-sm-pull-8 {
+						width: 50%;
+						margin-right: -20% !important;
+					}
+					.col-sm-4.col-sm-offset-8 {
+						width: 50%;
+						margin-left: 50% !important;
+					}
+				}
+			}
 
 		}
 		&#who {
@@ -107,6 +205,11 @@ body.coc {
 			background-position: center top;
 			h3 {
 				margin-bottom: 120px;
+			}
+			p {
+				font-weight: 700;
+			    font-size: 16px;
+			    text-shadow: 0 0 25px rgba(white,.75);
 			}
 		}
 		&#why {
@@ -122,6 +225,136 @@ body.coc {
 			canvas {
 				display: block;
 				vertical-align: bottom;
+			}
+			.container {
+				position: relative;
+				z-index: 120;
+				a {
+					display: block;
+					box-shadow: none;
+					.circ {
+						background: $gray-m;
+						text-align: center;
+						position: relative;
+						margin-bottom: 25px;
+						box-shadow: 0 0 0px 10px $gray-m, 0 0 0px 10px $gray-m;
+						transition: all .5s;
+						&:after {
+							content: "";
+							display: block;
+							padding-bottom: 100%;	
+						}
+						p {
+							padding: 0px;
+							position: absolute;
+							left:50%;
+							top:50%;
+							width: 65%;
+							transform: translate(-50%,-50%);
+							color: $gray-l;
+							transition: all .25s;
+						}
+					}
+					&:hover {
+						.circ {
+							box-shadow: 0 0 0px 10px $gray-m, 0 0 10px 20px rgba($gray-m,0);
+							p { color: white !important; }
+						}
+					}
+				}
+			}
+		}
+		&#what {
+			img {
+				margin-bottom: 20px;
+			}
+			a {
+				margin-bottom: 45px;
+			}
+		}
+	}
+	&.coc-about {
+		#about {
+			h3 {
+				color: $yellow;
+			}
+			
+		}
+		#lists {
+/*
+			background-image: url(../images/coc/anim-bg.gif);
+			background-size: contain;
+			.container {
+				background: url(../images/coc/dot-grid.png);
+			}
+*/
+		}
+	}
+	&.coc-liberland {
+		#future {
+			background-image: url(../images/coc/circuit.svg);
+			background-position: right bottom;
+			background-repeat: no-repeat;
+			background-size: contain;
+			p{
+				font-size: 16px;
+				font-weight: 600;
+			}
+		}
+	}
+	&.coc-members {
+		#filter {
+			padding-bottom: 5px;
+			.dropdown-toggle {
+				width: 100%;
+			}
+		}
+		#members {
+			display: block;
+			position: relative;
+			padding-top: 0;
+			padding-bottom: 100px;
+			
+			.cell {
+				//background: red;
+				height: 50vw;
+				//padding-bottom: 10px;
+				margin-bottom: 45px;
+				@include breakpoint(sm){
+					height: 15vw;
+				}
+				@include breakpoint(md){
+					height: 30vw;
+				}
+				@include breakpoint(lg){
+					height: 15vw;
+				}
+
+				button.transparent {
+/*
+					top: 50%;
+					transform: translateY(-50%);
+*/
+					background: transparent;
+					border: none;
+					width: 100%;
+					height: 100%;
+					padding: 10px 0;
+					img {
+						max-width: 80%;
+						max-height: 80%;
+					}
+				}
+			}
+			
+			
+		}
+	}
+	&.coc-contact {
+		#map {
+			height: 80vh;
+			#vmap {
+				height: 100%;
 			}
 		}
 	}
