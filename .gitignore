@@ -35,3 +35,7 @@ logs
 pids
 *.pid
 *.seed
+
+
+# Vagrant
+.vagrant
