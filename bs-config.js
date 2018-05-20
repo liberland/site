@@ -13,9 +13,21 @@
  |
  */
 
-const env = process.env.NODE_ENV;
+var exec = require('child_process').execSync;
 
+const env = process.env.NODE_ENV;
 const isStaging = env === 'staging';
+
+let inVbox;
+
+try {
+  exec('uname | grep Linux && sudo /usr/sbin/dmidecode -t system | /bin/grep VirtualBox');
+  inVbox = true;
+} catch (error) {
+  inVbox = false
+}
+
+console.log('inVbox', inVbox);
 
 module.exports = {
   "files": [
@@ -33,4 +45,5 @@ module.exports = {
   "server": {
     "baseDir": "public"
   },
+  "host": inVbox ? "192.168.33.10" : null
 };
