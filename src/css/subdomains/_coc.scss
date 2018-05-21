@@ -125,6 +125,16 @@ body.coc {
 		border-top: 10px solid $yellow;
 	}
 	
+	
+	.icon-like {
+		color: $yellow;
+		text-shadow: 5px 10px 0 $gray-m;
+		font-family: $slab;
+		font-size: 128px;
+		line-height: 146px;
+	}
+	
+	
 	section {
 		&#general {
 			position: relative;
@@ -265,12 +275,16 @@ body.coc {
 			}
 		}
 		&#what {
-			img {
-				margin-bottom: 20px;
+			background: linear-gradient(#fafafa 50%, rgba(237, 237, 237, 0) 50%);
+		    background-size: 30px;
+		    padding: 0;
+		    padding: 40px 0;
+			.container {
+				background: white;
+				padding: 40px 0;
+				border-radius: 500px;
 			}
-			a {
-				margin-bottom: 45px;
-			}
+			
 		}
 	}
 	&.coc-about {

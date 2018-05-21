@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="Megaphone" image-rendering="auto" baseProfile="basic" version="1.1" x="0px" y="0px" width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Scene-1-copy" overflow="visible">
+    <g id="Symbol-97" transform="translate(0 71.9)">
+      <path fill="#000" stroke="none" d="M359.8 3.1Q351.95 -2.2 346.15 1.6L167.95 61.2Q167.85 61.2 167.75 61.2L76.25 61.2Q44.2 61.2 22.1 83.4 0 105.6 0 137.65 0 169.55 22.65 192 43.25 212.35 71.2 214L47.25 286.1Q43.45 291.65 48.7 299.85 54.8 305.95 61 305.95L122 305.95Q126.6 305.95 130.5 302.9 134.5 299.75 135.7 295.25L162.65 214.15 167.8 214.15 346.15 273.8Q347.15 274.8 348.45 275.15 349.2 275.35 350.75 275.35 353.7 275.35 359.8 272.3 366 266.3 366 260L366 15.35Q366 9.1 359.8 3.1M335.5 36.7L335.5 238.65 295.75 225.5 255.1 212.05 183 188.2 183 87.2 255.1 63.35 295.75 49.9 335.5 36.7M76.25 183.6Q56.75 183.6 43.6 170.35 30.5 157.25 30.5 137.65 30.5 118.4 44.2 105 57.65 91.8 76.25 91.8L152.5 91.8 152.5 183.6 76.25 183.6M111.3 275.35L82.25 275.35 102.15 214.15 131.05 214.15 111.3 275.35Z" test="Symbol 1"/>
+      <path fill="#FFF" stroke="none" d="M295.75 49.9L255.1 63.35 255.1 212.05 295.75 225.5 295.75 49.9Z" test="Symbol 1"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-96" transform="translate(383.6 220.75)">
+        <path id="Layer57_0_1_STROKES" stroke="#FFF" stroke-opacity="0" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L100.2 0" test="Symbol 20"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.622;.649;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-95" transform="translate(383.6 220.75)">
+        <path id="Layer56_0_1_STROKES" stroke="#FFF" stroke-opacity=".333" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L100.2 0" test="Symbol 19"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.595;.622;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-94" transform="translate(383.6 220.75)">
+        <path id="Layer55_0_1_STROKES" stroke="#FFF" stroke-opacity=".666" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L100.2 0" test="Symbol 18"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.568;.595;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-93" transform="translate(383.6 220.75)">
+        <path id="Layer54_0_1_STROKES" stroke="#FFF" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L100.2 0" test="Symbol 17"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.541;.568;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-92" transform="translate(385.55 220.75)">
+        <path id="Layer53_0_1_STROKES" stroke="#FFF" stroke-width="4.45" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L88.25 0" test="Symbol 16"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.514;.541;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-91" transform="translate(387.5 220.75)">
+        <path id="Layer52_0_1_STROKES" stroke="#FFF" stroke-width="8.85" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L76.3 0" test="Symbol 15"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.486;.514;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-90" transform="translate(389.4 220.75)">
+        <path id="Layer51_0_1_STROKES" stroke="#FFF" stroke-width="13.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L64.4 0" test="Symbol 14"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.459;.486;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-89" transform="translate(391.35 220.75)">
+        <path id="Layer50_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L52.45 0" test="Symbol 13"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.432;.459;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-88" transform="translate(393.3 220.75)">
+        <path id="Layer49_0_1_STROKES" stroke="#FFF" stroke-width="21.9" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L40.5 0" test="Symbol 12"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.405;.432;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-87" transform="translate(395.25 220.75)">
+        <path id="Layer48_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L28.55 0" test="Symbol 11"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.378;.405;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-86" transform="translate(397.15 220.75)">
+        <path id="Layer47_0_1_STROKES" stroke="#FFF" stroke-width="30.65" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L16.65 0" test="Symbol 10"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.351;.378;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-85" transform="translate(399.1 220.75)">
+        <path id="Layer46_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.7 0" test="Symbol 9"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.324;.351;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-84" transform="translate(391.35 220.75)">
+        <path id="Layer45_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L52.45 0" test="Symbol 8"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.243;.27;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-83" transform="translate(393.95 220.75)">
+        <path id="Layer44_0_1_STROKES" stroke="#FFF" stroke-width="23.35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L36.5 0" test="Symbol 7"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.216;.243;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-82" transform="translate(396.5 220.75)">
+        <path id="Layer43_0_1_STROKES" stroke="#FFF" stroke-width="29.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L20.65 0" test="Symbol 6"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.189;.216;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-81" transform="translate(399.1 220.75)">
+        <path id="Layer42_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.7 0" test="Symbol 5"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.162;.189;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-80" transform="translate(391.35 220.75)">
+        <path id="Layer41_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L52.45 0" test="Symbol 4"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.054;.081;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-79" transform="translate(395.25 220.75)">
+        <path id="Layer40_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L28.55 0" test="Symbol 3"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;.054;1" values="none;inline;none;none"/>
+    </g>
+    <g>
+      <g id="Symbol-78" transform="translate(399.1 220.75)">
+        <path id="Layer39_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.7 0" test="Symbol 2"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;1" values="inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-77" transform="translate(383.75 289.35)">
+        <path id="Layer38_0_1_STROKES" stroke="#FFF" stroke-opacity="0" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L78.2 62.7" test="Symbol 39"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.622;.649;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-76" transform="translate(383.7 289.5)">
+        <path id="Layer37_0_1_STROKES" stroke="#FFF" stroke-opacity=".333" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L78.4 62.45" test="Symbol 38"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.595;.622;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-75" transform="translate(383.65 289.6)">
+        <path id="Layer36_0_1_STROKES" stroke="#FFF" stroke-opacity=".666" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L78.55 62.2" test="Symbol 37"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.568;.595;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-74" transform="translate(383.6 289.75)">
+        <path id="Layer35_0_1_STROKES" stroke="#FFF" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 0L78.75 61.95" test="Symbol 36"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.541;.568;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-73" transform="translate(385.95 290.55)">
+        <path id="Layer34_0_1_STROKES" stroke="#FFF" stroke-width="4.45" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L69.45 54.4" test="Symbol 35"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.514;.541;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-72" transform="translate(388.35 291.35)">
+        <path id="Layer33_0_1_STROKES" stroke="#FFF" stroke-width="8.85" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L60.15 46.9" test="Symbol 34"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.486;.514;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-71" transform="translate(390.7 292.1)">
+        <path id="Layer32_0_1_STROKES" stroke="#FFF" stroke-width="13.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L50.85 39.4" test="Symbol 33"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.459;.486;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-70" transform="translate(393.1 292.9)">
+        <path id="Layer31_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L41.55 31.9" test="Symbol 32"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.432;.459;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-69" transform="translate(395.45 293.7)">
+        <path id="Layer30_0_1_STROKES" stroke="#FFF" stroke-width="21.9" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L32.25 24.35" test="Symbol 31"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.405;.432;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-68" transform="translate(397.8 294.5)">
+        <path id="Layer29_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L22.95 16.8" test="Symbol 30"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.378;.405;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-67" transform="translate(400.2 295.25)">
+        <path id="Layer28_0_1_STROKES" stroke="#FFF" stroke-width="30.65" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L13.65 9.35" test="Symbol 29"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.351;.378;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-66" transform="translate(402.55 296.05)">
+        <path id="Layer27_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.35 1.8" test="Symbol 28"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.324;.351;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-65" transform="translate(388.5 293.9)">
+        <path id="Layer26_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L40.1 33.85" test="Symbol 27"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.243;.27;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-64" transform="translate(393.2 294.6)">
+        <path id="Layer25_0_1_STROKES" stroke="#FFF" stroke-width="23.35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L28.15 23.2" test="Symbol 26"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.216;.243;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-63" transform="translate(397.85 295.35)">
+        <path id="Layer24_0_1_STROKES" stroke="#FFF" stroke-width="29.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L16.3 12.45" test="Symbol 25"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.189;.216;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-62" transform="translate(402.55 296.05)">
+        <path id="Layer23_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.35 1.8" test="Symbol 24"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.162;.189;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-61" transform="translate(388.5 293.9)">
+        <path id="Layer22_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L40.1 33.85" test="Symbol 23"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.054;.081;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-60" transform="translate(395.55 295)">
+        <path id="Layer21_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L22.2 17.8" test="Symbol 22"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;.054;1" values="none;inline;none;none"/>
+    </g>
+    <g>
+      <g id="Symbol-59" transform="translate(402.55 296.05)">
+        <path id="Layer20_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 0L4.35 1.8" test="Symbol 21"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;1" values="inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-58" transform="translate(383.65 84.4)">
+        <path id="Layer19_0_1_STROKES" stroke="#FFF" stroke-opacity="0" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 58.85L81.05 0" test="Symbol 58"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.622;.649;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-57" transform="translate(383.65 84.3)">
+        <path id="Layer18_0_1_STROKES" stroke="#FFF" stroke-opacity=".333" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 58.95L80.95 0" test="Symbol 57"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.595;.622;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-56" transform="translate(383.6 84.15)">
+        <path id="Layer17_0_1_STROKES" stroke="#FFF" stroke-opacity=".666" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 59.1L80.95 0" test="Symbol 56"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.568;.595;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-55" transform="translate(383.6 84.05)">
+        <path id="Layer16_0_1_STROKES" stroke="#FFF" stroke-width=".1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" fill="none" d="M0 59.2L80.85 0" test="Symbol 55"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.541;.568;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-54" transform="translate(385.25 90.55)">
+        <path id="Layer15_0_1_STROKES" stroke="#FFF" stroke-width="4.45" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 52L71.25 0" test="Symbol 54"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.514;.541;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-53" transform="translate(386.85 97)">
+        <path id="Layer14_0_1_STROKES" stroke="#FFF" stroke-width="8.85" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 44.8L61.75 0" test="Symbol 53"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.486;.514;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-52" transform="translate(388.5 103.5)">
+        <path id="Layer13_0_1_STROKES" stroke="#FFF" stroke-width="13.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 37.6L52.15 0" test="Symbol 52"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.459;.486;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-51" transform="translate(390.1 110)">
+        <path id="Layer12_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 30.4L42.65 0" test="Symbol 51"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.432;.459;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-50" transform="translate(391.75 116.45)">
+        <path id="Layer11_0_1_STROKES" stroke="#FFF" stroke-width="21.9" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 23.2L33.05 0" test="Symbol 50"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.405;.432;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-49" transform="translate(393.35 122.95)">
+        <path id="Layer10_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 16L23.5 0" test="Symbol 49"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.378;.405;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-48" transform="translate(395 129.4)">
+        <path id="Layer9_0_1_STROKES" stroke="#FFF" stroke-width="30.65" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 8.8L13.95 0" test="Symbol 48"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.351;.378;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-47" transform="translate(396.6 135.9)">
+        <path id="Layer8_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 1.6L4.4 0" test="Symbol 47"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.324;.351;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-46" transform="translate(388.75 105.7)">
+        <path id="Layer7_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 32.65L41.1 0" test="Symbol 46"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.243;.27;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-45" transform="translate(391.35 115.75)">
+        <path id="Layer6_0_1_STROKES" stroke="#FFF" stroke-width="23.35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 22.3L28.9 0" test="Symbol 45"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.216;.243;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-44" transform="translate(394 125.85)">
+        <path id="Layer5_0_1_STROKES" stroke="#FFF" stroke-width="29.2" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 11.95L16.6 0" test="Symbol 44"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.189;.216;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-43" transform="translate(396.6 135.9)">
+        <path id="Layer4_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 1.6L4.4 0" test="Symbol 43"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.162;.189;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-42" transform="translate(388.75 105.7)">
+        <path id="Layer3_0_1_STROKES" stroke="#FFF" stroke-width="17.55" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 32.65L41.1 0" test="Symbol 42"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.054;.081;1" values="none;inline;none;none"/>
+    </g>
+    <g display="none">
+      <g id="Symbol-41" transform="translate(392.7 120.8)">
+        <path id="Layer2_0_1_STROKES" stroke="#FFF" stroke-width="26.3" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 17.15L22.75 0" test="Symbol 41"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;.054;1" values="none;inline;none;none"/>
+    </g>
+    <g>
+      <g id="Symbol-40" transform="translate(396.6 135.9)">
+        <path id="Layer1_0_1_STROKES" stroke="#FFF" stroke-width="35" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" fill="none" d="M0 1.6L4.4 0" test="Symbol 40"/>
+      </g>
+      <animate attributeName="display" repeatCount="indefinite" dur="1.542s" keyTimes="0;.027;1" values="inline;none;none"/>
+    </g>
+  </g>
+</svg>

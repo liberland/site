@@ -25,6 +25,10 @@ $time: .25s;
 }
 
 @mixin breakpoint($class) {
+  @if $class == xxs {
+    @media (max-width: 450px) { @content; }
+  }
+	
   @if $class == xs {
     @media (max-width: 767px) { @content; }
   }
@@ -68,7 +72,9 @@ $time: .25s;
     }
 }
 
-
+.input-group-addon{
+	background: $gray-l
+}
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -133,18 +139,29 @@ a {
     transition: all .5s;
     &.btn-more {
 	    color: $gray-d;
-	    border: none;
+	    border: $yellow;
 	    background-image: linear-gradient(to top, rgba($yellow-d,1) 0%,rgba($yellow-d,0) 100%);
 	    background-color: $yellow;
 	    &:hover {
 	        color: black;
 		    box-shadow: 0 2px 5px rgba(black,.15);
         }
+        &.shadow {
+	        box-shadow: 5px 10px 0 $gray-m;
+	        transition: all .25s; 
+	        &:hover {
+		        box-shadow: 1px 2px 0 $gray-m;
+		    }
+        }
     }
-		&.white {
-			background-image: none;
-			background-color: white;
-		}
+    &.btn-default {
+	    background: $gray-l;
+	    border: none;
+    }
+	&.white {
+		background-image: none;
+		background-color: white;
+	}
     &.btn-ghost {
 	    border: 3px solid $yellow;
 	    background: transparent;
@@ -315,8 +332,10 @@ body {
 	section{
 		padding: 50px 0;
 		&.bg-yellow{
-			h3 { color: white;}
 			background-color: $yellow;
+			
+			h3 { color: white;}
+			.panel h3 { color: $yellow}
 			.btn-more{
 				background-color: white;
 				background-image: none;
@@ -338,6 +357,10 @@ body {
 		&.bg-dark{
 			background-color: $gray-d;
 			color: white;
+			.panel {
+				color: $gray-d;
+				box-shadow: 0 5px 25px rgba(black,.5);
+			}
 		}
 	}
 	&>footer {
