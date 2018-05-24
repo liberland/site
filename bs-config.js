@@ -27,8 +27,6 @@ try {
   inVbox = false
 }
 
-console.log('inVbox', inVbox);
-
 module.exports = {
   "files": [
     'public/**/*.html',
