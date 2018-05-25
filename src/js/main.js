@@ -12,6 +12,8 @@ import 'jqvmap/dist/maps/jquery.vmap.world';
 import './about';
 import './application';
 import './representative_offices_map';
+import './commerce/index';
+
 
 function onReady(e) {
   registerServiceWorker();
