@@ -9322,7 +9322,7 @@ npm@^6.0.0:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nps@^5.8.2:
+nps@^5.9.0:
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/nps/-/nps-5.9.0.tgz#432d781b98d7ffc497b0cb4f478873dd958d89ff"
   dependencies:

@@ -18,6 +18,7 @@
     "flag-icon-css": "^3.0.0",
     "jqvmap": "^1.5.1",
     "npm": "^6.0.0",
+    "nps": "^5.9.0",
     "sanitize.css": "^5.0.0",
     "to": "^0.2.9",
     "update": "^0.7.4"
@@ -45,7 +46,6 @@
     "hugo-bin": "^0.22.0",
     "jest-cli": "^22.4.2",
     "node-sass": "^4.8.3",
-    "nps": "^5.8.2",
     "postcss-cli": "^5.0.0",
     "postcss-import": "^11.1.0",
     "stylelint": "^9.1.3",
