@@ -1,0 +1,42 @@
+version: 0.2
+
+env:
+  variables:
+     HOME: /opt/buildhome
+     YARN_FLAGS: --ignore-engines
+     HUGO_VERSION: 0.40.1
+
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  #install:
+    #commands:
+      # - command
+      # - command
+
+  pre_build:
+    commands:
+      - cp -r $CODEBUILD_SRC_DIR /opt/buildhome/repo
+  build:
+    commands:
+      - build npm run build
+
+  post_build:
+    commands:
+      - . $HOME/python2.7/bin/activate
+      - aws s3 sync $HOME/repo/public/ s3://liberdev --delete
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+
+      # - command
+
+artifacts:
+  files:
+    - public/**/*
+  #discard-paths: yes
+  base-directory: /opt/buildhome/repo
+
+cache:
+  paths:
+    - /opt/buildhome/cache
