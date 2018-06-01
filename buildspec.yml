@@ -26,7 +26,7 @@ phases:
   post_build:
     commands:
       - . $HOME/python2.7/bin/activate
-      - aws s3 sync $HOME/repo/public/ s3://liberdev --delete
+      - aws s3 sync $HOME/repo/public/ s3://$APP_BUCKET --delete
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
 
       # - command
