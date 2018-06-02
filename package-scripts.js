@@ -23,7 +23,12 @@ const rel = to => join(process.cwd(), to);
 const cssTasks = (src, dest) => {
   const getTask = (isProd) => {
 
-    return `node-sass --include-path ./node_modules -o ${dest} ${join(src, '*.scss')}`;
+    const plugins = 'autoprefixer postcss-import';
+    const prodPlugins = `${plugins} cssnano`;
+
+    console.log(`node-sass --include-path ./node_modules -o ${dest} ${join(src, '*.scss')}`);
+
+    return `postcss -d ${dest} ${esc(join(src, '*.css'))} -u ${isProd ? prodPlugins : plugins} ${isProd ? '--no-map' : ''}`;
 
   };
 
