@@ -39,7 +39,7 @@ const cssTasks = (src, dest) => {
       `stylelint ${esc(join(src, '**/*.css'))}`,
       'Lints CSS with stylelint + stylelint-config-standard',
     ),
-    watch: priv(watch('nps css.compile', join(src, '**/*.(s)css'))),
+    watch: priv(watch('nps css.compile', join(src, '**/*.*css'))),
   };
 };
 
