@@ -8,7 +8,7 @@
   {{ partial "head/local" . }}
 </head>
 
-<body class="{{ .Title | urlize }}">
+<body class="{{ block "extra-body-class" . }}{{ end }} {{ .Title | urlize }}">
   {{ partial "menu.html" . }}
   {{ block "main" . }}
     <!-- The part of the page that begins to differ between templates -->
