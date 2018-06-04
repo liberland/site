@@ -1,0 +1,20 @@
+---
+# Site
+#baseurl:
+title: "Representative offices"
+enableRobotsTXT: true
+googleAnalytics: ""
+# Content
+languageCode: "en-us"
+defaultContentLanguage: "en"
+# Formats
+metaDataFormat: "yaml"
+
+contentDir: "./representative_offices"
+
+# -----------------------------
+# DO NOT CHANGE BELOW THIS LINE
+# -----------------------------
+disableLiveReload: true
+watch: false
+---
