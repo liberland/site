@@ -2,51 +2,57 @@
   <div class="container">
     <div class="row" id="sort_contacts">
       {{ with .Site.GetPage "section" "representative_offices" }}
-        {{ range .Data.Pages  }}{{ with .Params }}
-          <div class="col-sm-4" id="{{ .shortcode }}">
+        {{ range .Data.Pages  }}
+          <div class="col-sm-4" id="{{ .Params.shortcode }}">
             <div class="panel panel-default">
               <div class="panel-heading">
-                  <h3 class="panel-title">{{ .title }}</h3>
+                  <h3 class="panel-title">{{ .Params.title }}</h3>
               </div>
               <div class="panel-body">
-                {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
-                {{ replace .address "\n" "<br />" | safeHTML }}
+                {{ if .Params.contact }}<strong>{{ .Params.contact }}</strong><br/>{{ end }}
+                {{ replace .Params.address "\n" "<br />" | safeHTML }}
 
                 <br / >
 
-                {{ if .email }}
+                <img src="/images/icon-company.svg" height="14px"/>&nbsp;
+                <a href="//{{ with .Slug }}{{ . }}{{ else }}{{ .BaseFileName }}{{ end }}.{{ .Site.Data.web_locations.main }}">
+                  Website
+                </a>
+                <br / >
+
+                {{ if .Params.email }}
                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
-                <a href="mailto:{{ .email }}">{{ .email }}</a>
+                <a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a>
                 {{ end }}
 
 
-                {{ if .phone }}
+                {{ if .Params.phone }}
                 <br/>
                 <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
-                <a href="tel:{{ .phone }}">{{ .phone }}</a>
+                <a href="tel:{{ .Params.phone }}">{{ .Params.phone }}</a>
                 {{ end }}
 
-                {{ if .phone2 }}
+                {{ if .Params.phone2 }}
                 <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;
-                <a href="tel:{{ .phone2 }}">{{ .phone2 }}</a>
+                <a href="tel:{{ .Params.phone2 }}">{{ .Params.phone2 }}</a>
                 {{ end }}
 
                 <br/>
 
-                {{ if .facebook }}
+                {{ if .Params.facebook }}
                 <img src="/images/icon-fb.svg" height="14px"/>&nbsp;
-                <a href="{{ .facebook }}">
-                  {{ if .facebook_name }}
-                  {{ .facebook_name }}
+                <a href="{{ .Params.facebook }}">
+                  {{ if .Params.facebook_name }}
+                  {{ .Params.facebook_name }}
                   {{ else }}
-                  Liberland {{ .title }}
+                  Liberland {{ .Params.title }}
                   {{ end }}
                 </a>
                 {{ end }}
               </div>
             </div>
           </div>
-        {{ end }}{{ end }}
+        {{ end }}
       {{ end }}
     </div>
   </div>
