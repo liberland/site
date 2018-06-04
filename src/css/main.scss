@@ -28,7 +28,7 @@ $time: .25s;
   @if $class == xxs {
     @media (max-width: 450px) { @content; }
   }
-	
+
   @if $class == xs {
     @media (max-width: 767px) { @content; }
   }
@@ -148,7 +148,7 @@ a {
         }
         &.shadow {
 	        box-shadow: 5px 10px 0 $gray-m;
-	        transition: all .25s; 
+	        transition: all .25s;
 	        &:hover {
 		        box-shadow: 1px 2px 0 $gray-m;
 		    }
@@ -286,7 +286,7 @@ body {
 		.container {
 			height: 100%;
 			position: relative;
-			
+
 		}
 
 	}
@@ -333,7 +333,7 @@ body {
 		padding: 50px 0;
 		&.bg-yellow{
 			background-color: $yellow;
-			
+
 			h3 { color: white;}
 			.panel h3 { color: $yellow}
 			.btn-more{
@@ -763,5 +763,5 @@ $time: .25s;
 	}
 }
 
-@import "subdomains/embassy";
+@import "subdomains/representative_offices";
 @import "subdomains/coc";
