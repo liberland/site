@@ -19,6 +19,10 @@ phases:
   pre_build:
     commands:
       - cp -r $CODEBUILD_SRC_DIR /opt/buildhome/repo
+
+      # Aws downloaded zip replaces symlinks with text files
+      - rm /opt/buildhome/repo/hugo/content/representative_offices
+      - ln -s /opt/buildhome/repo/hugo/representative_offices/representative_offices /opt/buildhome/repo/hugo/content/representative_offices
   build:
     commands:
       - build npm run build
