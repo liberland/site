@@ -5,7 +5,7 @@ const prod = str => `cross-env NODE_ENV=production ${str}`;
 
 const esc = str => `"${str}"`;
 
-const watch = (task, dir) => `${task} && chokidar ${esc(dir)} -c ${esc(task)}`;
+const watch = (task, dir) => `${task} && chokidar ${esc(dir)} -c ${esc(task)} --ignore /node_modules/`;
 
 const priv = script => ({
   hiddenFromHelp: true,
