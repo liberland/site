@@ -1,7 +1,7 @@
 ---
 # Site
-baseurl: "https://demo.liberland.org"
-title: "Liberland"
+#baseurl:
+title: "Representative offices"
 enableRobotsTXT: true
 googleAnalytics: ""
 # Content
@@ -10,15 +10,7 @@ defaultContentLanguage: "en"
 # Formats
 metaDataFormat: "yaml"
 
-menu:
-  main:
-  - identifier: news
-    name: News
-    url: /news/
-    weight: 100
-
-permalinks:
-  news: /:year/:month/:title/
+contentDir: "./representative_offices"
 
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE

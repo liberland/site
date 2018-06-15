@@ -1,3 +1,5 @@
+{{ define "extra-body-class" }}representative_offices{{ end }}
+
 {{ define "main" }}
   {{ partial "title.html" . }}
 
@@ -5,35 +7,34 @@
     <div class="row">
       {{ with .Params }}
         <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body clearfix">
-              <h3>{{ .Title }}</h3>
+          <div class="panel panel-default evo_widget widget_core_free_html">
+            <div class="panel-heading"><h4 class="panel-title">Office information and contacts</h4></div>
+              <div class="panel-body">
+                {{ if .contact }}Head of Office:  <strong>{{ .contact }}</strong><br/>{{ end }}
+                Address:
+                {{ replace .address "\n" "<br />" | safeHTML }}
 
-              <img class="thumbnail col-md-4 pull-left" src="/images/vit-jedlicka.jpg" />
-              <div class="caption">
-                <h3>{{ .contact }}</h3>
-                <p>...</p>
+                {{ if .email }}
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
+                <a href="mailto:{{ .email }}">{{ .email }}</a>
+                {{ end }}
+
+
+                <!-- Email: <b>slovenia@liberland.org</b><br>
+                Telephone: <br><b>+386 40 663 336</b><br>
+                Facebook:
+                <a target="_blank" href="https://www.facebook.com/si.office.liberland/"><img src="http://www.k2-taekwondo.si/skupno/Facebook2.gif" height="20"></a> -->
+
               </div>
             </div>
-        </div>
+            <br / >
+
+            {{ .Content }}
+
       </div>
 
       <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            {{ if .contact }}<strong>{{ .contact }}</strong><br/>{{ end }}
-            {{ replace .address "\n" "<br />" | safeHTML }}
-
-            <br / >
-
-            {{ if .email }}
-            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;
-            <a href="mailto:{{ .email }}">{{ .email }}</a>
-            {{ end }}
-
-            {{ .Content }}
-          </div>
-        </div>
+        <img src="http://shrani.si/f/1x/MI/4S7pocQD/embsi.jpg" />
       </div>
       {{ end }}
   </div>

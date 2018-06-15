@@ -5,7 +5,7 @@ const prod = str => `cross-env NODE_ENV=production ${str}`;
 
 const esc = str => `"${str}"`;
 
-const watch = (task, dir) => `${task} && chokidar ${esc(dir)} -c ${esc(task)}`;
+const watch = (task, dir) => `${task} && chokidar ${esc(dir)} -c ${esc(task)} --ignore /node_modules/`;
 
 const priv = script => ({
   hiddenFromHelp: true,
@@ -23,6 +23,10 @@ const rel = to => join(process.cwd(), to);
 const cssTasks = (src, dest) => {
   const getTask = (isProd) => {
 
+    const plugins = 'autoprefixer postcss-import';
+    const prodPlugins = `${plugins} cssnano`;
+
+    // return `postcss -d ${dest} ${esc(join(src, '*.css'))} -u ${isProd ? prodPlugins : plugins} ${isProd ? '--no-map' : ''}`;
     return `node-sass --include-path ./node_modules -o ${dest} ${join(src, '*.scss')}`;
 
   };
@@ -34,7 +38,7 @@ const cssTasks = (src, dest) => {
       `stylelint ${esc(join(src, '**/*.css'))}`,
       'Lints CSS with stylelint + stylelint-config-standard',
     ),
-    watch: priv(watch('nps css.compile', join(src, '**/*.(s)css'))),
+    watch: priv(watch('nps css.compile', join(src, '**/*.*css'))),
   };
 };
 
