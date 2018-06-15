@@ -8,13 +8,18 @@
   {{ partial "head/local" . }}
 </head>
 
-<body class="{{ .Title | urlize }}">
-  {{ partial "menu.html" . }}
+<body class="{{ .Title | urlize }} coc" > <!-- dirty hack - works just for CoC -->
+	{{ block "menu-extra" . }}
+	  	{{ partial "menu.html" . }}
+	  {{ end }}
+  
   {{ block "main" . }}
     <!-- The part of the page that begins to differ between templates -->
   {{ end }}
-
-  {{ partial "footer.html" . }}
+  
+  {{ block "footer-extra" . }}
+  	{{ partial "footer.html" . }}
+  {{ end }}
   {{ partial "netlify_footer" . }}
 </body>
 </html>
