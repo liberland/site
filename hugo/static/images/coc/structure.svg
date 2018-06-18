@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="585px" height="400px" viewBox="0 0 585 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>structure</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M30,0 L555,0 C571.568542,-3.04359188e-15 585,13.4314575 585,30 L585,70 C585,86.5685425 571.568542,100 555,100 L30,100 C13.4314575,100 2.02906125e-15,86.5685425 0,70 L0,30 C-2.02906125e-15,13.4314575 13.4314575,3.04359188e-15 30,0 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="585" height="100" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M30,0 L440,0 C456.568542,-3.04359188e-15 470,13.4314575 470,30 L470,70 C470,86.5685425 456.568542,100 440,100 L30,100 C13.4314575,100 2.02906125e-15,86.5685425 0,70 L-3.55271368e-15,30 C-5.58177493e-15,13.4314575 13.4314575,3.04359188e-15 30,0 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="470" height="100" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <path d="M30,0 L365,0 C381.568542,-3.04359188e-15 395,13.4314575 395,30 L395,70 C395,86.5685425 381.568542,100 365,100 L30,100 C13.4314575,100 2.02906125e-15,86.5685425 0,70 L0,30 C-2.02906125e-15,13.4314575 13.4314575,3.04359188e-15 30,0 Z" id="path-5"></path>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="395" height="100" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="structure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle">
+            <use stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="20" stroke-dasharray="999999" xlink:href="#path-1"></use>
+            <text id="GENERAL-MEETING" font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#1C172D">
+                <tspan x="195.273438" y="46">GENERAL MEETING</tspan>
+            </text>
+            <text id="members" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300" fill="#1C172D">
+                <tspan x="250.28" y="69">members</tspan>
+            </text>
+        </g>
+        <g id="Rectangle" transform="translate(0.000000, 150.000000)">
+            <use stroke="#FFFFFF" mask="url(#mask-4)" stroke-width="20" stroke-dasharray="999999" xlink:href="#path-3"></use>
+            <text id="GENERAL-MEETING" font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#1C172D">
+                <tspan x="138.876953" y="46">EXECUTIVE BOARD</tspan>
+            </text>
+            <text id="members" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300" fill="#1C172D">
+                <tspan x="176.09" y="69">3 - 5 persons</tspan>
+            </text>
+        </g>
+        <g id="Rectangle" transform="translate(0.000000, 300.000000)">
+            <use stroke="#FFFFFF" mask="url(#mask-6)" stroke-width="20" stroke-dasharray="999999" xlink:href="#path-5"></use>
+            <text id="GENERAL-MEETING" font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#1C172D">
+                <tspan x="85.8154297" y="46">SUPERVISORY BOARD</tspan>
+            </text>
+            <text id="members" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300" fill="#1C172D">
+                <tspan x="138.59" y="69">3 - 5 persons</tspan>
+            </text>
+        </g>
+        <g id="Group-2" transform="translate(395.000000, 104.000000)">
+            <path d="M0,246 C70,246 108.333333,246 115,246 C125,246 135,236 135,226 C135,219.333333 135,146.666667 135,8" id="Path" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="15,8"></path>
+            <polygon id="Rectangle-2" fill="#FFFFFF" points="135 0 144 20 126 20"></polygon>
+        </g>
+        <g id="Group" transform="translate(47.000000, 100.000000)">
+            <path d="M9,38 L9,0" id="Path-Copy" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="15,8"></path>
+            <polygon id="Rectangle-2-Copy" fill="#FFFFFF" transform="translate(9.000000, 38.000000) rotate(-180.000000) translate(-9.000000, -38.000000) " points="9 28 18 48 0 48"></polygon>
+        </g>
+        <g id="Group-Copy" transform="translate(47.000000, 250.000000)">
+            <path d="M9,38 L9,0" id="Path-Copy" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="15,8"></path>
+            <polygon id="Rectangle-2-Copy" fill="#FFFFFF" transform="translate(9.000000, 38.000000) rotate(-180.000000) translate(-9.000000, -38.000000) " points="9 28 18 48 0 48"></polygon>
+        </g>
+    </g>
+</svg>

@@ -6,6 +6,10 @@
 		background: white;
 		padding: 40px 20px;
 		border-radius: 500px;
+		
+		div[class^='col-'] {
+			padding-bottom: 60px;
+		}
 	}
 }
 
@@ -236,7 +240,10 @@ body.coc {
 			background-size: cover;
 			background-position: center top;
 			h3 {
-				margin-bottom: 120px;
+				margin-bottom: 20px;
+			}
+			div[class^='col-'] {
+				padding-bottom: 60px;
 			}
 			p {
 				font-weight: 700;
@@ -316,6 +323,21 @@ body.coc {
 				background: url(../images/coc/dot-grid.png);
 			}
 */
+			h4 {
+				padding-bottom: 15px;
+			}
+			ul {
+				list-style: none;
+				padding-left: 0;
+				li {
+					padding-bottom: 20px;
+					//font-size: 16px;
+					font-weight: 600;
+				}
+			}
+		}
+		#formal {
+			font-size: 18px;
 		}
 	}
 	&.about-liberland {
