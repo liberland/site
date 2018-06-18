@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>honorary</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="honorary" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(140.000000, 362.000000)" stroke="#000000" stroke-width="10">
+            <path d="M182.125334,17.3853577 L182.125334,210.280228 L232.125334,142.475694 L282.125334,210.280228 L282.125334,17.3853577 L182.125334,17.3853577 Z" id="Rectangle-Copy" transform="translate(232.125334, 118.935339) rotate(-20.000000) translate(-232.125334, -118.935339) "></path>
+            <path d="M38.1253341,18.3853577 L38.1253341,211.280228 L88.1253341,143.475694 L138.125334,211.280228 L138.125334,18.3853577 L38.1253341,18.3853577 Z" id="Rectangle-Copy-2" transform="translate(88.125334, 119.935339) scale(-1, 1) rotate(-20.000000) translate(-88.125334, -119.935339) "></path>
+        </g>
+        <circle id="Oval" stroke="#FFFFFF" stroke-width="50" cx="300" cy="230" r="175"></circle>
+    </g>
+</svg>

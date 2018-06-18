@@ -8,7 +8,7 @@
   {{ partial "head/local" . }}
 </head>
 
-<body class="{{ block "extra-body-class" . }}{{ end }}{{ .Title | urlize }}" > <!-- dirty hack - works just for CoC -->
+<body class="{{ block "extra-body-class" . }}{{ end }}{{ .Title | urlize }}" >
 	{{ block "menu-extra" . }}
 	  	{{ partial "menu.html" . }}
 	  {{ end }}

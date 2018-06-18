@@ -1,3 +1,14 @@
+@mixin abc {
+	background: linear-gradient(#fafafa 50%, rgba(237, 237, 237, 0) 50%);
+    background-size: 20px 20px;
+    padding: 40px 0;
+	.container {
+		background: white;
+		padding: 40px 20px;
+		border-radius: 500px;
+	}
+}
+
 body.coc {
 	header {
 		background: white ;
@@ -19,7 +30,7 @@ body.coc {
 		h2 { 
 			color: $gray-m;
 			margin: 0 0px 20px 5px;
-			font-size: 14px;
+			font-size: 18px;
 		}
 		@media only screen and (min-width: 450px) {
 		    h1, h2 { 
@@ -83,7 +94,7 @@ body.coc {
 			margin-top: -42px;
 		}
 		@include breakpoint(md){
-			margin-top: 72px;
+			margin-top: 75px;
 		}
 		
 		button.navbar-toggle {
@@ -156,6 +167,10 @@ body.coc {
 					pointer-events: auto;
 				}
 				
+				.panel {
+					box-shadow: 0 0 5px rgba(black,.05);
+				}
+				
 				@include breakpoint(sm){
 					height: 98vh;
 					min-height: 720px;
@@ -181,6 +196,9 @@ body.coc {
 					    .panel {
 						    pointer-events: auto;
 					    }
+					}
+					.panel {
+						box-shadow: 0 0 50px rgba(black,.15);
 					}
 				}
 			}
@@ -279,19 +297,11 @@ body.coc {
 			}
 		}
 		&#what {
-			background: linear-gradient(#fafafa 50%, rgba(237, 237, 237, 0) 50%);
-		    background-size: 20px 20px;
-		    padding: 0;
-		    padding: 40px 0;
-			.container {
-				background: white;
-				padding: 40px 0;
-				border-radius: 500px;
-			}
+			@include abc;
 			
 		}
 	}
-	&.coc-about {
+	&.about {
 		#about {
 			h3 {
 				color: $yellow;
@@ -308,15 +318,22 @@ body.coc {
 */
 		}
 	}
-	&.coc-liberland {
+	&.about-liberland {
 		#history {
-			background-image: url(../images/coc/masterplan.jpg);
+			background-image: url(/images/coc/masterplan.jpg);
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+		#key {
+			p {
+				font-size: 22px;
+				font-weight: 300;
+			}
+		}
 		#future {
-			background-image: url(../images/coc/circuit.svg);
+			background-color: $gray-l;
+			background-image: url(/images/coc/circuit.svg);
 			background-position: right bottom;
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -325,8 +342,12 @@ body.coc {
 				font-weight: 600;
 			}
 		}
+		#business {
+			@include abc;
+			border-top: 10px solid $yellow;
+		}
 	}
-	&.coc-members {
+	&.members {
 		#filter {
 			padding-bottom: 5px;
 			.dropdown-toggle {
@@ -391,7 +412,7 @@ body.coc {
 			}
 		}
 	}
-	&.coc-contact {
+	&.contact {
 		#map {
 			height: 80vh;
 			#vmap {

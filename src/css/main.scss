@@ -4,10 +4,12 @@
 //@import "flag-icon-css/css/flag-icon";
 
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
-@import url('https://fonts.googleapis.com/css?family=Andada');
+//@import url('https://fonts.googleapis.com/css?family=Andada');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
 
 
-$sans: "Helvetica", sans-serif;
+
+$sans: 'Source Sans Pro', "Helvetica", sans-serif;
 $slab:  'Alfa Slab One', serif;
 $yellow: #FFCB05;
 $yellow-d: #F1C823;
@@ -109,6 +111,26 @@ h5 {
 	margin: 5px 0;
 }
 
+
+.padding-top-10 {
+	padding-top: 10px;
+}
+.padding-top-20 {
+	padding-top: 20px;
+}
+.padding-top-30 {
+	padding-top: 30px;
+}
+.padding-top-40 {
+	padding-top: 40px;
+}
+.padding-top-50 {
+	padding-top: 50px;
+}
+.padding-top-60 {
+	padding-top: 60px;
+}
+
 hr {
 	border: none;
 	border-top: 1px solid $gray-l;
@@ -125,6 +147,7 @@ a {
 		color: black;
 	}
 }
+
 
 .circ {
 	border-radius: 100%;
@@ -298,6 +321,7 @@ nav.navbar {
 }
 
 body {
+	font-family: $sans;
 	#intro {
 		.container {
 			height: 100%;
@@ -790,4 +814,4 @@ $time: .25s;
 
 @import "subdomains/coc";
 //@import "subdomains/kayak";
-@import "subdomains/embassy";
+//@import "subdomains/embassy";
