@@ -151,6 +151,10 @@ body.coc {
 	
 	
 	section {
+		.panel {
+			margin-bottom: 0;
+		}
+		
 		&#general {
 			position: relative;
 			background: $gray-l;
@@ -307,6 +311,9 @@ body.coc {
 			@include abc;
 			
 		}
+		p {
+			font-weight: 700;
+		}
 	}
 	&.about {
 		#about {
@@ -338,6 +345,9 @@ body.coc {
 		}
 		#formal {
 			font-size: 18px;
+		}
+		#activities {
+			//padding-bottom: 30px;
 		}
 	}
 	&.about-liberland {
@@ -636,10 +646,16 @@ body.coc {
 		}
 		
 		#gallery {
-			
+			a {
+				padding: 0;
+				&:hover {
+					
+				}
+			}
 		}
 	}
 	&.contact {
+		background: none;
 		#map {
 			height: 80vh;
 			#vmap {
