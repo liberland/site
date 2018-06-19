@@ -2,116 +2,153 @@
 title: Events
 draft: false
 type: commerce
-
-menu: main
-
+menu:
+  main:
+    name: Events
+    weight: 160
 ---
 
-<section id="filter">
-	        <div class="container">
-                <div class="row text-left">
-                    <div class="col-lg-12">
-	                    <h3>Members</h3>
-                        <p>List of members and partners of Liberland Chamber of commerce .</p>
-                    </div>
-                </div>
-                <div class="row">
-	                <div class="col-sm-6">
-		                <div class="input-group">
-					     <div class="input-group-btn search-panel">
-					      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					        <span id="search_concept">All Categories</span> <span class="caret"></span>
-					      </button>
-					      <ul class="dropdown-menu scrollable-dropdown" role="menu">
-					        <li><a href="#">Attractions & entertainment</a></li>
-					        <li><a href="#">Blockchain & Cryptocurrencies</a></li>
-					        <li><a href="#">Eating & drinking & food</a></li>
-					        <li><a href="#">Education</a></li>
-					        <li><a href="#">Energy & power & renewables</a></li>
-					        <li><a href="#">Finance & banking & payments services</a></li>
-					        <li><a href="#">IT - online & HW & SW</a></li>
-					        <li><a href="#">Manufacturing & construction</a></li>
-					        <li><a href="#">Marketing & media & communication</a></li>
-					        <li><a href="#">Medical & health</a></li>
-					        <li><a href="#">Public & non profit services </a></li>
-					        <li><a href="#">Other services</a></li>
-					        <li><a href="#">Shops & shopping</a></li>
-					        <li><a href="#">Tourism & Travelling & accommodation</a></li>
-					        <li><a href="#">Transportation & auto-moto</a></li>
-					        <li><a href="#">Wholesale & shops & distribution</a></li>
-					      </ul>
-					     </div>
-		                </div>
-		            </div>
-		            <div class="col-sm-6">
-			            <div class="input-group">
-					     <input type="hidden" name="search_param" value="all" id="search_param">
-					     <input type="text" class="form-control col-sm-6 col-md-12" name="x" id="search" placeholder="Search">
-					     <span class="input-group-btn">
-						     <button class="btn btn-default" type="button">
-						       <span class="glyphicon glyphicon-search"></span>
-						     </button>
-						 </span>
-					    </div>
-					   </div>
-	                </div>
-                </div>
-	        </div>
-        </section>
-		
-		
-		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">My Company</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-			      <div class="row">
-                    <div class="col-md-3 col-xs-12 metadata">
-						Web
-                    </div>
-                    <div class="col-md-9 col-xs-12 ">
-	                    <strong><a href="#" target="_blank">www.mycompany.com</a></strong> <span class="glyphicon glyphicon-new-window yellow" aria-hidden="true"></span>
-                    </div>
-					<div class="col-md-3 col-xs-12 metadata">
-						Short descrtipton
-					</div>
-                    <div class="col-md-9 col-xs-12">	
-						ImaginaryCompany is building a special type of software for protecting data securitiy for both business and individual users. It's using a unique technology of blockchain xyz, which allows to protect and record in real time 
-					</div>
-                    <div class="col-md-3 col-xs-12 metadata">
-						Tags
-					</div>
-                    <div class="col-md-9 col-xs-12">	
-						<a href="#" class="tag">cryptocurrencies</a>, <a href="#" class="tag">data security</a>, <a href="#" class="tag">bitcoin</a>, <a href="#" class="tag">software</a>, <a href="#" class="tag">gdpr</a>
-					</div>
-                    <div class="col-md-3 col-xs-12 metadata">
-						Industry 
-					</div>
-                    <div class="col-md-9 col-xs-12">	
-						data security
-					</div>
-                    <div class="col-md-3 col-xs-12 metadata">
-						Main interest	
-					</div>
-                    <div class="col-md-9 col-xs-12">	
-						customers, contacts, opening branch
-					</div>
-                    <div class="col-md-3 col-xs-12 metadata">
-						Contact
-					</div>
-                    <div class="col-md-9 col-xs-12">	
-						<strong><a href="mailto:">josepph@mycompany.io</a></strong>
-                    </div>
-			      </div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		  </div>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+<section>
+    <div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-8" id="events">
+				<ul class="event-list">
+					<li>
+						<time datetime="2014-07-20">
+							<span class="day">4</span>
+							<span class="month">Jul</span>
+							<span class="year">2014</span>
+							<span class="time">ALL DAY</span>
+						</time>
+						<img alt="Independence Day" src="https://farm4.staticflickr.com/3100/2693171833_3545fb852c_q.jpg" />
+						<div class="info">
+							<h2 class="title">Independence Day</h2>
+							<p class="desc">United States Holiday</p>
+						</div>
+						<div class="social">
+							<ul>
+								<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+								<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+								<li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li>
+						<time datetime="2014-07-20 0000">
+							<span class="day">8</span>
+							<span class="month">Jul</span>
+							<span class="year">2014</span>
+							<span class="time">12:00 AM</span>
+						</time>
+						<div class="info">
+							<h2 class="title">One Piece Unlimited World Red</h2>
+							<p class="desc">PS Vita</p>
+							<ul>
+								<li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span> Website</a></li>
+								<li style="width:50%;"><span class="fa fa-money"></span> $39.99</li>
+							</ul>
+						</div>
+						<div class="social">
+							<ul>
+								<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+								<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+								<li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li>
+						<time datetime="2014-07-20 2000">
+							<span class="day">20</span>
+							<span class="month">Jan</span>
+							<span class="year">2014</span>
+							<span class="time">8:00 PM</span>
+						</time>
+						<img alt="My 24th Birthday!" src="https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg" />
+						<div class="info">
+							<h2 class="title">Mouse0270's 24th Birthday!</h2>
+							<p class="desc">Bar Hopping in Erie, Pa.</p>
+							<ul>
+								<li style="width:33%;">1 <span class="glyphicon glyphicon-ok"></span></li>
+								<li style="width:34%;">3 <span class="fa fa-question"></span></li>
+								<li style="width:33%;">103 <span class="fa fa-envelope"></span></li>
+							</ul>
+						</div>
+						<div class="social">
+							<ul>
+								<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+								<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+								<li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li>
+						<time datetime="2014-07-31 1600">
+							<span class="day">31</span>
+							<span class="month">Jan</span>
+							<span class="year">2014</span>
+							<span class="time">4:00 PM</span>
+						</time>
+						<img alt="Disney Junior Live On Tour!" src="http://www.thechaifetzarena.com/images/main/DL13_PiratePrincess_thumb.jpg" />
+						<div class="info">
+							<h2 class="title">Disney Junior Live On Tour!</h2>
+							<p class="desc"> Pirate and Princess Adventure</p>
+							<ul>
+								<li style="width:33%;">$49.99 <span class="fa fa-male"></span></li>
+								<li style="width:34%;">$29.99 <span class="fa fa-child"></span></li>
+							</ul>
+						</div>
+						<div class="social">
+							<ul>
+								<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+								<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+								<li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-4" id="gallery">
+				<div class="row">
+				<div class='list-group gallery'>
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+		                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+		                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+		                </a>
+		            </div> <!-- col-6 / end -->
+		        </div> <!-- list-group / end -->
+				</div>
+			</div>
 		</div>
+	</div>
+</section>
