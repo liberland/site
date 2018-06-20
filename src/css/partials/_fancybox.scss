@@ -1,0 +1,40 @@
+.fancybox-overlay {
+	a, a:hover {
+		box-shadow: none;
+	}
+	a.fancybox-close {
+		background-color: $yellow;
+		background-image: none;
+		border-radius: 100%;
+		text-decoration: none;
+		&:after {
+			content: "×";
+			position: absolute;
+		    font-size: 40px;
+		    top: -11px;
+		    left: 8px;
+		}
+	}
+/*
+	.fancybox-nav {
+		background-color: $yellow;
+		background-image: none;
+		border-radius: 100%;
+		text-decoration: none;
+		&.fancybox-prev:after  {
+			content: "<";
+			position: absolute;
+		    font-size: 40px;
+		    top: -11px;
+		    left: 8px;
+		}
+		&.fancybox-next:after  {
+			content: ">";
+			position: absolute;
+		    font-size: 40px;
+		    top: -11px;
+		    left: 8px;
+		}
+	} 
+*/
+}

@@ -811,7 +811,10 @@ $time: .25s;
 		display: inline;
 	}
 }
+@import "partials/fancybox";
 
 @import "subdomains/coc";
 //@import "subdomains/kayak";
 //@import "subdomains/embassy";
+
+
