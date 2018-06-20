@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>compass</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="compass" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M169,464.141084 C120.847464,425.660461 90,366.432636 90,300 C90,184.020203 184.020203,90 300,90 C415.979797,90 510,184.020203 510,300 C510,366.432636 479.152536,425.660461 431,464.141084 L431,497.90287 C431,520.190838 428.67936,528.272994 424.321682,536.421143 C419.964005,544.569291 413.569291,550.964005 405.421143,555.321682 C397.272994,559.67936 389.190838,562 366.90287,562 L233.09713,562 C210.809162,562 202.727006,559.67936 194.578857,555.321682 C186.430709,550.964005 180.035995,544.569291 175.678318,536.421143 C171.32064,528.272994 169,520.190838 169,497.90287 L169,464.141084 Z" id="Oval-4-Copy" fill="#FFCB05"></path>
+        <circle id="Oval-Copy" stroke="#000000" stroke-width="30" cx="300" cy="300" r="150"></circle>
+        <g id="Group" transform="translate(300.500000, 300.500000) rotate(11.000000) translate(-300.500000, -300.500000) translate(182.000000, 182.000000)" fill="#000000">
+            <polygon id="Rectangle-6" transform="translate(118.284271, 118.284271) rotate(45.000000) translate(-118.284271, -118.284271) " points="98.2842712 98.2842712 201.923882 34.6446609 138.284271 138.284271 34.6446609 201.923882"></polygon>
+            <polygon id="Rectangle-6-Copy" transform="translate(118.284271, 118.284271) rotate(-45.000000) translate(-118.284271, -118.284271) " points="98.2842712 98.2842712 201.923882 34.6446609 138.284271 138.284271 34.6446609 201.923882"></polygon>
+        </g>
+    </g>
+</svg>

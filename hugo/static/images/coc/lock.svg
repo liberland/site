@@ -5,9 +5,10 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="lock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M393,194 C393,138.5 420,93 486,93 C552,93 579,138.5 579,194 C579,231 579,251 579,254" id="Path-3-Copy" stroke="#35383A" stroke-width="30" stroke-linecap="round" transform="translate(486.000000, 173.500000) scale(-1, 1) translate(-486.000000, -173.500000) "></path>
-        <path d="M589,210.778931 C592.010209,212.741632 594,216.138446 594,220 L594,233 C594,239.075132 589.075132,244 583,244 L575,244 C568.924868,244 564,239.075132 564,233 L564,220 C564,216.138446 565.989791,212.741632 569,210.778931 L569,191 L589,191 L589,210.778931 Z" id="Rectangle" fill="#35383A"></path>
-        <rect id="Rectangle-4" stroke="#35383A" stroke-width="10" fill="#FFCB05" x="155" y="249" width="290" height="290" rx="30"></rect>
-        <rect id="Rectangle-5" fill="#35383A" x="150" y="354" width="300" height="80"></rect>
+        <path d="M393,194 C393,138.5 420,93 486,93 C552,93 579,138.5 579,194 C579,231 579,251 579,254" id="Path-3-Copy" stroke="#000000" stroke-width="30" stroke-linecap="round" transform="translate(486.000000, 173.500000) scale(-1, 1) translate(-486.000000, -173.500000) "></path>
+        <path d="M589,210.778931 C592.010209,212.741632 594,216.138446 594,220 L594,233 C594,239.075132 589.075132,244 583,244 L575,244 C568.924868,244 564,239.075132 564,233 L564,220 C564,216.138446 565.989791,212.741632 569,210.778931 L569,191 L589,191 L589,210.778931 Z" id="Rectangle" fill="#000000"></path>
+        <rect id="Rectangle-4" fill="#FFCB05" x="150" y="244" width="300" height="300" rx="30"></rect>
+        <rect id="Rectangle-5" fill="#000000" x="150" y="354" width="300" height="30"></rect>
+        <rect id="Rectangle-5-Copy" fill="#000000" x="150" y="414" width="300" height="30"></rect>
     </g>
 </svg>
