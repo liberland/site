@@ -2,6 +2,8 @@
 	background: linear-gradient(#fafafa 50%, rgba(237, 237, 237, 0) 50%);
     background-size: 20px 20px;
     padding: 40px 0;
+    border-top: 10px solid $yellow;
+	color: $gray-m;
 	.container {
 		background: white;
 		padding: 40px 20px;
@@ -394,7 +396,6 @@ body.coc {
 		}
 		#business {
 			@include abc;
-			border-top: 10px solid $yellow;
 		}
 	}
 	&.members {
