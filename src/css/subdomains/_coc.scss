@@ -334,6 +334,12 @@ body.coc {
 			}
 			
 		}
+		#membership {
+			div[class^=col-md] {
+				padding-top: 40px; 
+				//background: red;
+			}
+		}
 		#lists {
 /*
 			background-image: url(../images/coc/anim-bg.gif);
