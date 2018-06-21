@@ -1,4 +1,6 @@
-{{ define "extra-body-class" }}coc{{ end }}
+{{ define "extra-body-class" }}
+coc
+{{ end }}
 {{ define "header-extra" }}
 	<header>
         <div id="title" class="container">
@@ -30,8 +32,8 @@
                                     <li><a href="coc-events.html">Events</a></li>
                                     <li><a href="coc-contact.html">Contact</a></li>
 -->
-
-
+                                
+                                
                                 {{ $currentPage := . }}
 						        {{ range .Site.Menus.main }}
 						          {{ if .HasChildren }}
@@ -55,9 +57,9 @@
 						              </a>
 						          {{end}}
 						        {{end}}
-
+						        
 						        </ul>
-
+                                
                             </div>
                             <!--/.nav-collapse -->
                         </div>
