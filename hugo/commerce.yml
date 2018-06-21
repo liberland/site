@@ -10,6 +10,13 @@ defaultContentLanguage: "en"
 # Formats
 metaDataFormat: "yaml"
 
+menu:
+  main:
+  - identifier: members
+    name: Members
+    url: /members/
+    weight: 100
+
 # contentDir is broken https://github.com/gohugoio/hugo/pull/4590
 
 contentDir: "./commerce"
