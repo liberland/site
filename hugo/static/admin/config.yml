@@ -8,7 +8,7 @@ publish_mode: editorial_workflow
 media_folder: "hugo/static/assets"
 public_folder: "/assets"
 
-display_url: https://demo.liberland.org
+display_url: https://gov.ll.land
 
 collections: # See netlify-cms docs
   - label: "News"
@@ -37,4 +37,23 @@ collections: # See netlify-cms docs
       - { label: "Title of facebook page", name: "facebook_name", widget: "string", required: false }
       - { label: "Twitter", name: "twitter", widget: "string", required: false }
       - { label: "email", name: "email", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - label: "Chamber of commerce members"
+    name: "chamber_members"
+    folder: "hugo/content/commerce/members"
+    label_singular: Chamber of commerce member
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short description", name: "short_description", widget: "string" }
+      - { label: "Industry", name: "body", widget: "relation", collection: "categories", required: false }
+
+      - { label: "Logo", name: "photo", widget: "image" }
+      - { label: "Contact", name: "contact", widget: "string" }
+      - { label: "Address", name: "address", widget: "string", required: false }
+      - { label: "Web address", name: "facebook", widget: "string", required: false }
+      - { label: "email", name: "email", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+
       - { label: "Body", name: "body", widget: "markdown", required: false }
