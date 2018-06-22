@@ -21,6 +21,7 @@ collections: # See netlify-cms docs
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
+
   - label: "Representative offices"
     name: "representative_offices"
     folder: "hugo/content/representative_offices"
@@ -39,6 +40,16 @@ collections: # See netlify-cms docs
       - { label: "email", name: "email", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
+  - label: "Industries"
+    name: "industries"
+    folder: "hugo/commerce/industries"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
   - label: "Chamber of commerce members"
     name: "chamber_members"
     folder: "hugo/content/commerce/members"
@@ -47,7 +58,7 @@ collections: # See netlify-cms docs
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short description", name: "short_description", widget: "string" }
-      - { label: "Industry", name: "body", widget: "relation", collection: "categories", required: false }
+      - { label: "Industry", name: "body", widget: "relation", collection: "industries", searchFields: ["title", "body"], valueField: "title", required: false }
 
       - { label: "Logo", name: "photo", widget: "image" }
       - { label: "Contact", name: "contact", widget: "string" }
