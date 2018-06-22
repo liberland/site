@@ -354,21 +354,54 @@ body.coc {
 				padding-bottom: 25px;
 			}
 			ul {
-				list-style: none;
-				padding-left: 0;
-				text-align: left;
+				
 				li {
 					padding-bottom: 20px;
 					font-size: 20px;
 					font-weight: 300;
 					
 				}
+				&.rtl {
+					direction: rtl;
+				}
 			}
-			p {
+			p.text-right {
 				padding-bottom: 60px;
 			}
 			@include breakpoint(md) {
-				
+				ul {
+					list-style: none;
+					padding-left: 10px;
+					padding-right: 0;
+					li {
+						padding-bottom: 20px;
+						font-size: 20px;
+						font-weight: 300;
+						height: 76px;
+						&:nth-child(2) {
+							height: 104px;
+						}
+					}
+					&.rtl {
+						direction: rtl;
+						padding-left: 0;
+						padding-right: 10px;
+						li{ 
+							position: relative;
+							
+							&:after {
+								position: absolute;
+								content: "◑";
+								right: -35px;
+								top: 2px;
+							}
+							
+						}
+					}
+				}
+				p.text-right {
+					padding-bottom: 0px;
+				}
 			}
 		}
 		#formal {
