@@ -6,11 +6,11 @@ short_description: Energy Premier is a blockchain based energy retail & bidding
   electricity bidding sessions (subsequently recording the obligation on the blockchain),
   trade in our EPC utility tokens, and put their smart-grid electricity for auction,
   as well as connect smart meters to perform instant EPC payments.
-tags: |-
-  Energy
-  Power
-  Biding platform
-  Blockchain
-  P2P
+tags:
+  - Energy
+  - Power
+  - Biding platform
+  - Blockchain
+  - P2P
 industry: Energy
 ---
