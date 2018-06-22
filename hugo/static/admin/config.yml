@@ -52,7 +52,7 @@ collections: # See netlify-cms docs
 
   - label: "Chamber of commerce members"
     name: "chamber_members"
-    folder: "hugo/content/commerce/members"
+    folder: "hugo/commerce/members"
     label_singular: Chamber of commerce member
     create: true
     fields:
