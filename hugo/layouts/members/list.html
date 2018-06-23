@@ -28,16 +28,17 @@
   </section>
 
   {{ range .Data.Pages }}
+  {{ with .Params }}
+
     <div>
   	  <div class="modal-dialog" role="document">
   	    <div class="modal-content">
   	      <div class="modal-header">
-  	        <h5 class="modal-title" id="exampleModalLabel">{{ .Title }}</h5>
-            <img src="{{ .Params.image }}" style="width: 150px">
+  	        <h5 class="modal-title" id="exampleModalLabel">{{ .name }}</h5>
+            <img src="{{ .Params.logo }}" style="width: 150px">
 
   	      </div>
   	      <div class="modal-body">
-          {{ with .Params }}
   		      <div class="row">
               <div class="col-md-3 col-xs-12 metadata">Web</div>
                     <div class="col-md-9 col-xs-12 ">
@@ -50,24 +51,19 @@
           <div class="col-md-9 col-xs-12">
             {{ .short_description }}
   				</div>
-                    <div class="col-md-3 col-xs-12 metadata">
-  					Tags
-  				</div>
+
+          <div class="col-md-3 col-xs-12 metadata">Tags</div>
+
+          <div class="col-md-9 col-xs-12">
+            {{ range .tags }}<span href="" class="tag">{{ . }}</span>,{{ end }}
+          </div>
 
           <div class="col-md-3 col-xs-12 metadata">
   					Industry
   				</div>
 
           <div class="col-md-9 col-xs-12">
-  					data security
-  				</div>
-
-          <div class="col-md-3 col-xs-12 metadata">
-  					Main interest
-  				</div>
-
-          <div class="col-md-9 col-xs-12">
-  					customers, contacts, opening branch
+  					{{ .industry }}
   				</div>
 
           <div class="col-md-3 col-xs-12 metadata">
@@ -75,8 +71,17 @@
   				</div>
 
           <div class="col-md-9 col-xs-12">
-  					<strong><a href="mailto:">{{ .Email }}</a></strong>
+  					<strong><a href="mailto:">{{ .contact }}&nbsp;</a></strong>
           </div>
+
+          <div class="col-md-3 col-xs-12 metadata">
+            Email
+          </div>
+
+          <div class="col-md-9 col-xs-12">
+            <strong><a href="mailto:">{{ .email }}&nbsp;</a></strong>
+          </div>
+
   		      </div>
 
             <div class="col-md-9 col-xs-12">
