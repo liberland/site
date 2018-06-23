@@ -30,15 +30,14 @@
   {{ range .Data.Pages }}
   {{ with .Params }}
 
-    <div>
-  	  <div class="modal-dialog" role="document">
-  	    <div class="modal-content">
-  	      <div class="modal-header">
+    <div class="container">
+  	    <div class="row">
+  	      <div class="">
   	        <h5 class="modal-title" id="exampleModalLabel">{{ .name }}</h5>
             <img src="{{ .Params.logo }}" style="width: 150px">
 
   	      </div>
-  	      <div class="modal-body">
+  	      <div class="body">
   		      <div class="row">
               <div class="col-md-3 col-xs-12 metadata">Web</div>
                     <div class="col-md-9 col-xs-12 ">
@@ -91,8 +90,8 @@
           {{ end }}
 
   	      </div>
+          <hr />
   	    </div>
-  	  </div>
   	</div>
   {{ end }}
 {{ end }}
