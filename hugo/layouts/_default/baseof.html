@@ -8,7 +8,7 @@
 </head>
 
 <body class="{{ block "extra-body-class" . }}{{ end }}{{ .Title | urlize }}" >
-	{{ block "menu-extra" . }}
+	{{ block "menu" . }}
 	  	{{ partial "menu.html" . }}
 	  {{ end }}
 
