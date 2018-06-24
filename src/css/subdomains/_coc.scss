@@ -15,7 +15,7 @@
 	}
 }
 
-body.coc {
+body.commerce {
 	&.soon {
 		nav, footer {
 			display: none;
@@ -102,11 +102,11 @@ body.coc {
 		border-bottom: 10px solid $yellow;
 	}
 
-	.coc .navbar-header {
+	.navbar-header {
 		display: none;
 	}
 
-	nav.coc {
+	nav {
 		background: transparent;
 		position: relative;
 		z-index: 100;
