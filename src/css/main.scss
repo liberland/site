@@ -21,6 +21,9 @@ $dark-blue: #13111f;
 
 $time: .25s;
 
+$footer-height-desktop: 223px;
+$footer-height-mobile: 324px;
+
 .fixit {
 	background: rgba(red, .1) !important;
 	color: red !important;
@@ -30,7 +33,7 @@ $time: .25s;
   @if $class == xxs {
     @media (max-width: 450px) { @content; }
   }
-	
+
   @if $class == xs {
     @media (max-width: 767px) { @content; }
   }
@@ -76,7 +79,7 @@ $time: .25s;
 
 .input-group-addon{
 	background: $gray-l;
-	
+
 }
 
 
@@ -178,7 +181,7 @@ a {
         }
         &.shadow {
 	        box-shadow: 5px 10px 0 $gray-m;
-	        transition: all .25s; 
+	        transition: all .25s;
 	        &:hover {
 		        box-shadow: 1px 2px 0 $gray-m;
 		    }
@@ -324,13 +327,23 @@ nav.navbar {
 	}
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
 	font-family: $sans;
+
+  margin-bottom: $footer-height-mobile;
+  @include breakpoint(md){
+    margin-bottom: $footer-height-desktop;
+  }
+
 	#intro {
 		.container {
 			height: 100%;
 			position: relative;
-			
+
 		}
 
 	}
@@ -376,10 +389,10 @@ body {
 	section{
 		padding: 50px 0;
 		background-size: cover;
-		
+
 		&.bg-yellow{
 			background-color: $yellow;
-			
+
 			h3 { color: white;}
 			.panel h3 { color: $yellow}
 			.btn-more{
@@ -414,6 +427,10 @@ body {
 		color: white;
 		padding: 50px 0 30px;
 		border-top: 5px solid $yellow;
+
+    bottom: 0;
+    width: 100%;
+    position: absolute;
 
 		ul {
 			list-style-type: none;

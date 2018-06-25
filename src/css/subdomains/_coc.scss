@@ -1,3 +1,6 @@
+$footer-height-desktop: 210px;
+$footer-height-mobile: 404px;
+
 @mixin abc {
 	background: linear-gradient(#fafafa 50%, rgba(237, 237, 237, 0) 50%);
     background-size: 20px 20px;
@@ -14,6 +17,7 @@
 		}
 	}
 }
+
 
 body.commerce {
 	&.soon {
@@ -160,6 +164,11 @@ body.commerce {
 
 	footer {
 		border-top: 10px solid $yellow;
+		height: $footer-height-mobile;
+
+		@include breakpoint(md) {
+  		height: $footer-height-desktop;
+		}
 	}
 
 
