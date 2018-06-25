@@ -3,23 +3,20 @@
 
 <head>
   {{ partial "head/default" . }}
-  
-
+  {{ block "head-extra" . }}  {{ end }}
   {{ partial "head/local" . }}
-  {{ partial "head/fancybox" . }}
 </head>
 
-<body class="{{ block "extra-body-class" . }}{{ end }}{{ .Title | urlize }}" >
-	{{ block "header-extra" . }}  {{ end }}
-	{{ block "menu-extra" . }}
+<body class="{{ .Type }} {{ .Title | urlize }}" >
+	{{ block "menu" . }}
 	  	{{ partial "menu.html" . }}
 	  {{ end }}
-  
+
   {{ block "main" . }}
     <!-- The part of the page that begins to differ between templates -->
   {{ end }}
-  
-  {{ block "footer-extra" . }}
+
+  {{ block "footer" . }}
   	{{ partial "footer.html" . }}
   {{ end }}
   {{ partial "netlify_footer" . }}

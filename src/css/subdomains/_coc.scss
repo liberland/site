@@ -8,14 +8,14 @@
 		background: white;
 		padding: 40px 20px;
 		border-radius: 500px;
-		
+
 		div[class^='col-'] {
 			padding-bottom: 60px;
 		}
 	}
 }
 
-body.coc {
+body.commerce {
 	&.soon {
 		nav, footer {
 			display: none;
@@ -27,7 +27,7 @@ body.coc {
 			font-weight: 100;
 		}
 	}
-	
+
 	header {
 		background: white ;
 		a.home {
@@ -38,42 +38,42 @@ body.coc {
 			height: 70px;
 			float: left;
 			margin: 10px 8px 10px 0;
-			
+
 		}
 		h1, h2 { text-shadow: none; display: inline-block; }
-		h1 { 
+		h1 {
 			margin: 15px 0px 5px 5px;
 			font-size: 36px;
 		}
-		h2 { 
+		h2 {
 			color: $gray-m;
 			margin: 0 0px 20px 5px;
 			font-size: 18px;
 		}
 		@media only screen and (min-width: 450px) {
-		    h1, h2 { 
+		    h1, h2 {
 				margin-right: 153px;
 			}
 		}
 		@media only screen and (min-width: 750px) {
-		    h1, h2 { 
+		    h1, h2 {
 				margin-right: 160px;
 			}
 		}
-		
+
 		@include breakpoint(sm){
 			img.logomark {
 				width: 90px;
 				height: 90px;
 			}
-			h1 { 
+			h1 {
 				margin: 30px 260px 10px 5px;
 				font-size: 42px;
 			}
-			h2 { 
+			h2 {
 				color: $gray-m;
 				margin: 0 auto 20px 5px;
-				
+
 			}
 		}
 		@include breakpoint(md){
@@ -81,40 +81,44 @@ body.coc {
 				width: 100px;
 				height: 100px;
 			}
-			h1 { 
+			h1 {
 				margin: 30px 80px 10px 5px;
 				font-size: 42px;
 			}
-			h2 { 
+			h2 {
 				color: $gray-m;
 				margin: 0 0 20px 5px;
-				
+
 			}
 		}
-		
-		
+
+
 		.flag {
 			width: 100%;
 			height: 30px;
 			background: $yellow url(/images/header-bg.png) repeat-x;
-			background-size: contain; 
+			background-size: contain;
 		}
 		border-bottom: 10px solid $yellow;
 	}
-	
-	nav.coc {
+
+	.navbar-header {
+		display: none;
+	}
+
+	nav {
 		background: transparent;
 		position: relative;
 		z-index: 100;
 		margin-top: -62px;
-		
+
 		@include breakpoint(sm){
 			margin-top: -42px;
 		}
 		@include breakpoint(md){
 			margin-top: 75px;
 		}
-		
+
 		button.navbar-toggle {
 			background: white;
 			border: none;
@@ -123,15 +127,19 @@ body.coc {
 				margin: 0 15px 8px 0;
 			}
 			span {
-				color: $gray-m;	
+				color: $gray-m;
 			}
-			
+
 		}
-		
-		
+
+
+		ul.navbar-nav li.active {
+			padding: 0 7px 0 6px;
+		}
+
 		ul.nav.navbar-nav.navbar-right {
 
-			
+
 			li {
 				background: none;
 				margin: 0;
@@ -146,15 +154,15 @@ body.coc {
 					font-size: 20px;
 					padding: 15px 5px;
 				}
-			} 
+			}
 		}
 	}
-	
+
 	footer {
 		border-top: 10px solid $yellow;
 	}
-	
-	
+
+
 	.icon-like {
 		color: $yellow;
 		text-shadow: 5px 10px 0 $gray-m;
@@ -162,18 +170,18 @@ body.coc {
 		font-size: 128px;
 		line-height: 146px;
 	}
-	
-	
+
+
 	section {
 		.panel {
 			margin-bottom: 0;
 		}
-		
+
 		&#general {
 			position: relative;
 			background: $gray-l;
 			padding: 0;
-				
+
 			#gmap {
 				height: 100vh;
 				min-height: 720px;
@@ -181,18 +189,18 @@ body.coc {
 
 			#overmap {
 				height: auto;
-				
+
 				margin-top: 0px;
-				padding-top: 40px; 
-				
+				padding-top: 40px;
+
 				.row {
 					pointer-events: auto;
 				}
-				
+
 				.panel {
 					box-shadow: 0 0 5px rgba(black,.05);
 				}
-				
+
 				@include breakpoint(sm){
 					height: 98vh;
 					min-height: 720px;
@@ -299,7 +307,7 @@ body.coc {
 						&:after {
 							content: "";
 							display: block;
-							padding-bottom: 100%;	
+							padding-bottom: 100%;
 						}
 						p {
 							padding: 0px;
@@ -323,7 +331,7 @@ body.coc {
 		}
 		&#what {
 			@include abc;
-			
+
 		}
 		p {
 			font-weight: 700;
@@ -334,11 +342,11 @@ body.coc {
 			h3 {
 				color: $yellow;
 			}
-			
+
 		}
 		#membership {
 			div[class^=col-md] {
-				padding-top: 40px; 
+				padding-top: 40px;
 				//background: red;
 			}
 		}
@@ -354,12 +362,12 @@ body.coc {
 				padding-bottom: 25px;
 			}
 			ul {
-				
+
 				li {
 					padding-bottom: 20px;
 					font-size: 20px;
 					font-weight: 300;
-					
+
 				}
 				&.rtl {
 					direction: rtl;
@@ -386,16 +394,16 @@ body.coc {
 						direction: rtl;
 						padding-left: 0;
 						padding-right: 10px;
-						li{ 
+						li{
 							position: relative;
-							
+
 							&:after {
 								position: absolute;
 								content: "◑";
 								right: -35px;
 								top: 2px;
 							}
-							
+
 						}
 					}
 				}
@@ -451,7 +459,7 @@ body.coc {
 			position: relative;
 			padding-top: 0;
 			padding-bottom: 100px;
-			
+
 			.cell {
 				//background: red;
 				height: 50vw;
@@ -490,9 +498,9 @@ body.coc {
 			}
 			.col-xs-12 {
 				margin-bottom: 20px;
-				
+
 			}
-			
+
 			.metadata {
 				text-align: left;
 				margin-bottom: 0px;
@@ -611,36 +619,36 @@ body.coc {
 		    }
 		  }
 		}
-		
+
 		.facebook a, .twitter a, .google-plus a {
 		  display: block;
 		  width: 100%;
 		  color: rgb(75, 110, 168) !important;
 		}
-		
+
 		.twitter a {
 		  color: rgb(79, 213, 248) !important;
 		}
-		
+
 		.google-plus a {
 		  color: rgb(221, 75, 57) !important;
 		}
-		
+
 		.facebook:hover a {
 		  color: rgb(255, 255, 255) !important;
 		  background-color: rgb(75, 110, 168) !important;
 		}
-		
+
 		.twitter:hover a {
 		  color: rgb(255, 255, 255) !important;
 		  background-color: rgb(79, 213, 248) !important;
 		}
-		
+
 		.google-plus:hover a {
 		  color: rgb(255, 255, 255) !important;
 		  background-color: rgb(221, 75, 57) !important;
 		}
-		
+
 		@include breakpoint(sm){
 		  .event-list > li {
 		    position: relative;
@@ -704,12 +712,12 @@ body.coc {
 		    }
 		  }
 		}
-		
+
 		#gallery {
 			a {
 				padding: 0;
 				&:hover {
-					
+
 				}
 			}
 		}
@@ -728,6 +736,6 @@ body.coc {
 				font-weight: 200;
 			}
 		}
-		
+
 	}
 }

@@ -2,10 +2,9 @@
 title: Contact
 draft: false
 type: commerce
+
 menu:
   main:
-    name: Contact
-    weight: 200
 ---
 
 <section id="map" class="bg-dark">
@@ -21,7 +20,9 @@ menu:
 			  <div class="row">
 			    <div class="col-md-6">
 			      <div class="form-wrapper">
-			        <form>
+			        <form action="https://d58ytuke2e.execute-api.eu-west-1.amazonaws.com/dev" method="post">
+                <input type="hidden" name="_to" value="15b0bfb35e580a00706ffaee" />
+
 			          <!-- inputs -->
 			          <div class="form-group">
 			            <label class="sr-only" for="name">Name</label>
@@ -29,7 +30,7 @@ menu:
 			              <div class="input-group-addon">
 			                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 			              </div>
-			              <input type="text" class="form-control" id="name" placeholder="Name">
+			              <input type="text" class="form-control" id="name" placeholder="Name" name="message[name]">
 			            </div>
 			          </div>
 			          <div class="form-group">
@@ -38,7 +39,7 @@ menu:
 			              <div class="input-group-addon">
 			                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 			              </div>
-			              <input type="text" class="form-control" id="email" placeholder="Email">
+			              <input type="text" class="form-control" id="email" placeholder="Email" name="message[email]">
 			            </div>
 			          </div>
 			          <div class="form-group">
@@ -47,14 +48,14 @@ menu:
 			              <div class="input-group-addon">
 			                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 			              </div>
-			              <input type="text" class="form-control" id="subject" placeholder="Subject">
+			              <input type="text" class="form-control" id="subject" placeholder="Subject" name="message[subject]">
 			            </div>
 			          </div>
 			          <div class="form-group">
 			            <label class="sr-only" for="message">Message</label>
-			            <textarea class="form-control" id="message" rows="6" placeholder="Message"></textarea>
+			            <textarea class="form-control" id="message" rows="6" placeholder="Message" name="message[text]"></textarea>
 			          </div>
-			
+
 			          <!-- buttons -->
 			          <div class="btn-group pull-right" role="group">
 			            <button type="reset" class="btn btn-default">

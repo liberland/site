@@ -1,0 +1,103 @@
+{{ define "menu" }}
+	{{ partial "coc_menu" . }}
+{{ end }}
+
+{{ define "main" }}
+  <section id="filter">
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-lg-12">
+          <h3>Members</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-group">
+            <ul>
+              <ul>
+                {{ range $key, $value := .Site.Taxonomies.categories }}
+                <li>
+                  <a href="/categories/{{ $key | urlize }}">{{ $key | title }}</a>
+                </li>
+                {{ end }}
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ range .Data.Pages }}
+  {{ with .Params }}
+
+    <div class="container">
+  	    <div class="row">
+  	      <div class="">
+  	        <h5 class="modal-title" id="exampleModalLabel">{{ .name }}</h5>
+            <img src="{{ .Params.logo }}" style="width: 150px">
+
+  	      </div>
+  	      <div class="body">
+  		      <div class="row">
+              <div class="col-md-3 col-xs-12 metadata">Web</div>
+                    <div class="col-md-9 col-xs-12 ">
+                      <strong><a href="#" target="_blank">{{ .web }}</a></strong> <span class="glyphicon glyphicon-new-window yellow" aria-hidden="true"></span>
+                    </div>
+  				<div class="col-md-3 col-xs-12 metadata">
+  					Description
+  				</div>
+
+          <div class="col-md-9 col-xs-12">
+            {{ .short_description }}
+  				</div>
+
+          <div class="col-md-3 col-xs-12 metadata">Tags</div>
+
+          <div class="col-md-9 col-xs-12">
+            {{ range .tags }}<span href="" class="tag">{{ . }}</span>,{{ end }}
+          </div>
+
+          <div class="col-md-3 col-xs-12 metadata">
+  					Industry
+  				</div>
+
+          <div class="col-md-9 col-xs-12">
+  					{{ .industry }}
+  				</div>
+
+          <div class="col-md-3 col-xs-12 metadata">
+  					Contact
+  				</div>
+
+          <div class="col-md-9 col-xs-12">
+  					<strong><a href="mailto:">{{ .contact }}&nbsp;</a></strong>
+          </div>
+
+          <div class="col-md-3 col-xs-12 metadata">
+            Email
+          </div>
+
+          <div class="col-md-9 col-xs-12">
+            <strong><a href="mailto:">{{ .email }}&nbsp;</a></strong>
+          </div>
+
+  		      </div>
+
+            <div class="col-md-9 col-xs-12">
+              {{ .Content }}
+            </div>
+
+          {{ end }}
+
+  	      </div>
+          <hr />
+  	    </div>
+  	</div>
+  {{ end }}
+{{ end }}
+
+{{ define "footer" }}
+	{{ partial "coc_footer" . }}
+{{ end }}
