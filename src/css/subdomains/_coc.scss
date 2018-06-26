@@ -20,6 +20,13 @@ $footer-height-mobile: 404px;
 
 
 body.commerce {
+  min-height: calc(100vh - #{$footer-height-desktop});
+  position: relative;
+  margin-bottom: $footer-height-mobile;
+  @include breakpoint(md) {
+    margin-bottom: $footer-height-desktop;
+  }
+
 	&.soon {
 		nav, footer {
 			display: none;
@@ -165,8 +172,9 @@ body.commerce {
 	footer {
 		border-top: 10px solid $yellow;
 		height: $footer-height-mobile;
-
-		@include breakpoint(md) {
+    bottom: -$footer-height-mobile;
+    @include breakpoint(md) {
+      bottom: -$footer-height-desktop;
   		height: $footer-height-desktop;
 		}
 	}

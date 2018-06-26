@@ -332,6 +332,7 @@ html {
 }
 
 body {
+  position: relative;
 	font-family: $sans;
 
   margin-bottom: $footer-height-mobile;
@@ -428,9 +429,13 @@ body {
 		padding: 50px 0 30px;
 		border-top: 5px solid $yellow;
 
-    bottom: 0;
+
     width: 100%;
     position: absolute;
+    bottom: -$footer-height-mobile;
+    @include breakpoint(md) {
+      bottom: -$footer-height-desktop;
+    }
 
 		ul {
 			list-style-type: none;
