@@ -114,7 +114,15 @@ body.commerce {
 	}
 
 	.navbar-header {
-		display: none;
+		//display: none;
+		.navbar-brand {
+  		display: none;
+		}
+	}
+	@include breakpoint(sm) {
+  	#navbar ul li:nth-child(1) {
+  		display: none;
+  	}
 	}
 
 	nav {
