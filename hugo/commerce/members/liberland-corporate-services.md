@@ -1,11 +1,11 @@
 ---
 name: Liberland Corporate Services
-web: www.liberland.ltd
-short_description: Liberland Corporate Services is a Liberland based company providing
-  company, legal and advisory services in asset protection and tax optimation .
-tags:
-  - Corporate services
-  - Company incorporation
-  - Register
+short_description: >-
+  Liberland Corporate Services is a Liberland based company providing company,
+  legal and advisory services in asset protection and tax optimation .
 industry: Business administration
+logo: /assets/1gh6vrep18y38nkb.jpeg
+web: www.liberland.ltd
+date: '2018-06-28T00:00:00+02:00'
 ---
+
