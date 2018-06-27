@@ -59,12 +59,12 @@ collections: # See netlify-cms docs
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Short description", name: "short_description", widget: "string" }
-      - { label: "Industry", name: "body", widget: "relation", collection: "industries", searchFields: ["title", "body"], valueField: "title", required: false }
+      - { label: "Industry", name: "industry", widget: "relation", collection: "industries", searchFields: ["title", "body"], valueField: "title" }
       - { label: "Logo", name: "logo", widget: "image" }
-      - { label: "Contact", name: "contact", widget: "string" }
+      - { label: "Contact", name: "contact", widget: "string", required: false }
       - { label: "Address", name: "address", widget: "string", required: false }
       - { label: "Web address", name: "web", widget: "string", required: false }
-      - { label: "email", name: "email", widget: "string" }
+      - { label: "email", name: "email", widget: "string", required: false }
       - { label: "Publish Date", name: "date", widget: "datetime" }
 
       - { label: "Body", name: "body", widget: "markdown", required: false }
