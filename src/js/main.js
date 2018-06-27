@@ -13,7 +13,7 @@ import './about';
 import './application';
 import './representative_offices_map';
 import './commerce/index';
-
+import './commerce/search';
 
 function onReady(e) {
   registerServiceWorker();

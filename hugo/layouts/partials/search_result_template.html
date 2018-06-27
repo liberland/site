@@ -1,0 +1,13 @@
+<script id="search-result-template" type="text/x-js-template">
+  <div id="summary-${key}" style="min-height: 10em">
+    <div class="col-md-2 col-xs-12">
+      ${ isset logo }<img class="" src="${logo}" style="width: 160px; height: 160px"/>${ end }
+    </div>
+
+    <div class="col-md-10 col-xs-12" style="padding-top: 2em">
+      <h4><a href="${link}">${name}</a></h4>
+      <p>${snippet}</p>
+      ${ isset industry }<p>Industry: ${industry}</p>${ end }
+    </div>
+  </div>
+</script>
