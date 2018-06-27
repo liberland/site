@@ -27,16 +27,6 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
 
-
-						<script id="search-result-template" type="text/x-js-template">
-						  <div id="summary-${key}">
-						    <h4><a href="${link}">${name}</a></h4>
-						    <p>${snippet}</p>
-						    ${ isset tags }<p>Tags: ${tags}</p>${ end }
-						    ${ isset industry }<p>industry: ${industry}</p>${ end }
-						  </div>
-						</script>
-
 			<script>
 
 
@@ -158,10 +148,9 @@
 
 			if(result.length > 0){
 				populateResults(result);
-			}else{
-				$('#search-results').append("<p>No matches found</p>");
-			}
-
+				} else {
+					$('#search-results').append("<p>No matches found</p>");
+				}
 			}
 
 			$.getJSON( "index.json", (data) => {
@@ -269,4 +258,5 @@
 
 {{ define "footer" }}
 	{{ partial "coc_footer" . }}
+	{{ partial "search_result_template" . }}
 {{ end }}
