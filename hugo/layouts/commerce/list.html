@@ -10,15 +10,281 @@
           <h3>Members</h3>
         </div>
       </div>
+			<div class="row">
+
+
+				<form>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Search</label>
+				    <input id="search" type="text" class="form-control" id="search" aria-describedby="searchHelp" placeholder="term">
+				    <small id="searchHelp" class="form-text text-muted">Enter a search term.</small>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+
+
+						<script id="search-result-template" type="text/x-js-template">
+						  <div id="summary-${key}">
+						    <h4><a href="${link}">${name}</a></h4>
+						    <p>${snippet}</p>
+						    ${ isset tags }<p>Tags: ${tags}</p>${ end }
+						    ${ isset industry }<p>industry: ${industry}</p>${ end }
+						  </div>
+						</script>
+
+			<script>
+
+			var data = {
+				  "data" :
+				[
+
+				    {
+				  "name": "Balkaneum",
+				  "short_description" : "Balkaneum is an open-source company engaged in the development and implementation of blockchain technology.",
+
+
+				  "permalink" : "http://localhost:3000/members/balkaneum/"
+				}
+
+
+				    , {
+				  "name": "Cryptelo",
+				  "short_description" : "Cryptelo is Czech-based company with excellence in data encryption, providing ready-made solution for B2B data security. ",
+				  "tags" : ["Data security","Blockchain","P2P encryption"],
+				  "industry" : "Data encryption",
+				  "permalink" : "http://localhost:3000/members/cryptelo/"
+				}
+
+
+				    , {
+				  "name": "Energy Premier",
+				  "short_description" : "Energy Premier is a blockchain based energy retail \u0026 bidding platform that allows consumers (e.g. hotel owner, crypto miner, factory) to organize electricity bidding sessions (subsequently recording the obligation on the blockchain), trade in our EPC utility tokens, and put their smart-grid electricity for auction, as well as connect smart meters to perform instant EPC payments.",
+				  "tags" : ["Energy","Power","Biding platform","Blockchain","P2P"],
+				  "industry" : "Energy",
+				  "permalink" : "http://localhost:3000/members/energy-premier/"
+				}
+
+
+				    , {
+				  "name": "Ivo Gregurec",
+				  "short_description" : "Ivo is enterprenuer providing webdesign, corporate design and related services. Author of Liberland COC, embasies and Liberland govt webpages.",
+				  "tags" : ["Design","Graphics","Website","Corporate identity"],
+				  "industry" : "Webdesign",
+				  "permalink" : "http://localhost:3000/members/ivo-gregurec/"
+				}
+
+
+				    , {
+				  "name": "Liberbeer",
+				  "short_description" : "Liberbeer is buidling a global network of decentralised small breweries, fueled by cryptocurrency tokens, turning beer consumers, pubs and breweries into its own shareholders. ",
+				  "tags" : ["Craft beer","Decentralisation","Token","Brewery","Franchise"],
+				  "industry" : "Food and bewerages",
+				  "permalink" : "http://localhost:3000/members/liberbeer/"
+				}
+
+
+				    , {
+				  "name": "Liberland Corporate Services",
+				  "short_description" : "Liberland Corporate Services is a Liberland based company providing company, legal and advisory services in asset protection and tax optimation .",
+				  "tags" : ["Corporate services","Company incorporation","Register"],
+				  "industry" : "Business administration",
+				  "permalink" : "http://localhost:3000/members/liberland-corporate-services/"
+				}
+
+
+				    , {
+				  "name": "Nethemba",
+				  "short_description" : "Nethemba is a Slovak IT security company founded in 2007, primarily focused on web application security and various penetration tests. In addition to the broad portfolio that includes intranet and local system security audits, forensic digital analysis, wireless networks audits and VoIP, Nethemba is the only Slovak/Czech company that offers RFID security audits and active security research which is demonstrated by their regular presentations at worldwide conferences.",
+				  "tags" : ["Data security","Hackers"],
+				  "industry" : "IT security",
+				  "permalink" : "http://localhost:3000/members/nethemba/"
+				}
+
+
+				    , {
+				  "name": "Oju Group  - Wu Di",
+				  "short_description" : "Ojugroup is Thailand based global conglomerate consisting of multiple businesses mainly operating in travel and tourism. \nOju Hospitality Group develops its own unique 5 star niche hotel and real estate brands. Oju Coin Group is the core creative team masterminding a total integrated network of blockchain solutions for the real-world economy. Includes OjuX a crypto exchange. Oju Development Group is the key construction arm of the Oju Empire, cementing together the worlds of cryptocurrency and hospitality together with solid real estate assets. ",
+				  "tags" : ["Hospitality","Exchange","Cryptocurrency"],
+				  "industry" : "Hospitality",
+				  "permalink" : "http://localhost:3000/members/oju-group-wu-di/"
+				}
+
+
+				    , {
+				  "name": "Safex",
+				  "short_description" : "Safex is a decentralized marketplace that for the first time in history shifts paradigm of trade towards cryptocurrency and blockchain commerce.\nPeople can now become a part of the emerging global marketplace that rewards crypto assets and allows for a secure enclave where people can buy and sell goods and services in exchange for decentralized cryptocurrency.",
+				  "tags" : ["Marketplace","Cryptocurrency","E-commerce","Platform"],
+				  "industry" : "e-commerce",
+				  "permalink" : "http://localhost:3000/members/safex/"
+				}
+
+
+				    , {
+				  "name": "Wamalax",
+				  "short_description" : "Wamalax is Canary Islands  based company focusing on crypto-friendly solution for shops, merchants and customer infrastructure. ",
+				  "tags" : ["Cryptocurrencies","Point of Sale","Merchant","Bitcoin machines"],
+				  "industry" : "Cryptocurrencies",
+				  "permalink" : "http://localhost:3000/members/wamalax/"
+				}
+
+
+				    , {
+				  "name": "Xstar",
+				  "short_description" : "Xstar is HongKong based cryptocurrency exchange with potential all around the world\nUsing cutting-edge trading technology, reliable system, multi-level risk control, guaranteed security and bank-level digital encryption",
+				  "tags" : ["Cryptocurrencies","Exchange","Trading","Blockchain"],
+				  "industry" : "Cryptocurrencies",
+				  "permalink" : "http://localhost:3000/members/xstart/"
+				}
+
+
+				]
+
+			};
+
+			const debounce = (fn, time) => {
+			  let timeout;
+
+			  return function() {
+					$('#search-results').empty();
+			    const functionCall = () => fn.apply(this, arguments);
+
+			    clearTimeout(timeout);
+			    timeout = setTimeout(functionCall, time);
+			  }
+			}
+
+
+			var search = document.getElementById("search");
+
+			const summaryInclude=60;
+
+			var fuseOptions = {
+			shouldSort: true,
+			includeMatches: true,
+			threshold: 0.0,
+			tokenize:true,
+			location: 0,
+			distance: 100,
+			maxPatternLength: 32,
+			minMatchCharLength: 1,
+			keys: [
+			{ name:"name",weight:0.8 },
+			{ name:"short_description",weight:0.5 },
+			{ name:"industry", weight:0.3 },
+			]};
+
+			var pages = data.data;
+			var fuse = new Fuse(pages, fuseOptions);
+
+
+			function render(templateString, data) {
+				var conditionalMatches,conditionalPattern,copy;
+				conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
+				//since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
+				copy = templateString;
+				while ((conditionalMatches = conditionalPattern.exec(templateString)) !== null) {
+					if(data[conditionalMatches[1]]){
+						//valid key, remove conditionals, leave contents.
+						copy = copy.replace(conditionalMatches[0],conditionalMatches[2]);
+					} else {
+						//not valid, remove entire section
+						copy = copy.replace(conditionalMatches[0],'');
+					}
+				}
+				templateString = copy;
+				//now any conditionals removed we can do simple substitution
+				var key, find, re;
+				for (key in data) {
+					find = '\\$\\{\\s*' + key + '\\s*\\}';
+					re = new RegExp(find, 'g');
+					templateString = templateString.replace(re, data[key]);
+				}
+				return templateString;
+			}
+
+			function populateResults(result){
+				$.each(result,function(key,value){
+					console.log(key,value)
+
+					var contents = value.item.short_description;
+					var snippet = "";
+					var snippetHighlights=[];
+					var tags =[];
+					if( fuseOptions.tokenize ){
+						snippetHighlights.push(searchQuery);
+					}else{
+						$.each(value.matches,function(matchKey,mvalue){
+							if(mvalue.key == "tags" || mvalue.key == "industry" ){
+								snippetHighlights.push(mvalue.value);
+							}else if(mvalue.key == "contents"){
+								start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
+								end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
+								snippet += contents.substring(start,end);
+								snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
+							}
+						});
+					}
+
+					if(snippet.length<1){
+						snippet += contents.substring(0,summaryInclude*2);
+					}
+					//pull template from hugo templarte definition
+					var templateDefinition = $('#search-result-template').html();
+					//replace values
+					var output = render(templateDefinition,{key:key,name:value.item.name,link:value.item.permalink,tags:value.item.tags,industry:value.item.industry,snippet:snippet});
+					$('#search-results').append(output);
+
+					$.each(snippetHighlights,function(snipkey,snipvalue){
+						$("#summary-"+key).mark(snipvalue);
+					});
+
+				});
+			}
+
+
+
+
+			let searchQuery;
+
+
+			let doSearch = () => {
+				if(+search.value === 0) {
+					return;
+				}
+
+				searchQuery = search.value
+				var result = fuse.search(searchQuery);
+
+				console.log({"matches": result});
+
+			if(result.length > 0){
+				populateResults(result);
+			}else{
+				$('#search-results').append("<p>No matches found</p>");
+			}
+
+			}
+
+
+			search.oninput = debounce(doSearch, 800);
+
+			</script>
+
+
 
       <div class="row">
         <div class="col-sm-6">
           <div class="input-group">
             <ul>
               <ul>
-                {{ range $key, $value := .Site.Taxonomies.categories }}
+                {{ range $key, $value := .Site.Taxonomies.industry }}
                 <li>
-                  <a href="/categories/{{ $key | urlize }}">{{ $key | title }}</a>
+                  <a href="/industry/{{ $key | urlize }}">{{ $key | title }}</a>
                 </li>
                 {{ end }}
               </ul>
@@ -34,6 +300,8 @@
 
     <div class="container">
   	    <div class="row">
+					<div id="search-results"></div>
+
   	      <div class="">
   	        <h5 class="modal-title" id="exampleModalLabel">{{ .name }}</h5>
             <img src="{{ .Params.logo }}" style="width: 150px">
