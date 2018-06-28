@@ -1,5 +1,8 @@
 ---
 # Site
+params:
+  type: commerce
+
 baseurl: "https://commerce.ll.land"
 title: "Liberland chamber of commerce"
 enableRobotsTXT: true

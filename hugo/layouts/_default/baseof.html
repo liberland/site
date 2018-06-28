@@ -7,7 +7,7 @@
   {{ partial "head/local" . }}
 </head>
 
-<body class="{{ .Type }} {{ .Title | urlize }}" >
+<body class="{{ .Site.Params.Type | default .Type }} {{ .Title | urlize }}" >
 	{{ block "menu" . }}
 	  	{{ partial "menu.html" . }}
 	  {{ end }}
