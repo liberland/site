@@ -12,7 +12,7 @@
       </div>
 
 			<div class="row">
-				{{ partial "search_form" . }}
+				{{ partial "commerce/search_form" . }}
 			</div>
 
       <div class="row">
@@ -42,7 +42,7 @@
 
 {{ define "footer" }}
 	{{ partial "coc_footer" . }}
-	{{ partial "search_result_template" . }}
+	{{ partial "commerce/search_result_template" . }}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
 {{ end }}
