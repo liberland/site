@@ -11,17 +11,19 @@
         </div>
       </div>
 
+			{{ $var := .Scratch }}
+
+			{{ range $value := .Site.Taxonomies.industry }}
+				{{ $var.Add "industries" (slice (0 | index $value.Pages).Params.industry ) }}
+			{{ end }}
+
 			<div class="row">
 				{{ partial "commerce/search_form" . }}
 			</div>
 
       <div class="row">
         <div id="industry_select" class="text-center" style="padding-bottom:  3em">
-					{{ $var := .Scratch }}
 
-					{{ range $industry_name, $value := .Site.Taxonomies.industry }}
-						{{ $var.Add "industries" (slice $industry_name) }}
-					{{ end }}
 
           <ul class="list-inline center" style="display: inline">
 						{{ range $index, $industry_name := $var.Get "industries" }}

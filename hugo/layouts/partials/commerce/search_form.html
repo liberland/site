@@ -1,13 +1,13 @@
-<form id="member-search">
+<form id="member-search" disabled="disabled">
   <div class="form-group">
     <label for="search">Search</label>
 
     <fieldset>
-      <select class="col-md-3 col-xs-12 form-control" id="select_industries">
+      <select disabled="disabled" class="col-md-3 col-xs-12 form-control" id="select_industries">
         <option>all industries</option>
 
-        {{ range $key, $value := .Site.Taxonomies.industry }}
-        <option>{{ $key | title }}</option>
+        {{ range $index, $industry_name := .Scratch.Get "industries" }}
+        <option>{{ $industry_name }}</option>
         {{ end }}
       </select>
 

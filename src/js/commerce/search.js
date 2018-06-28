@@ -1,10 +1,11 @@
 
 
+const debounceInterval = 600;
+
 const debounce = (fn, time) => {
   let timeout;
 
   return function() {
-    $('#search-results').empty();
     const functionCall = () => fn.apply(this, arguments);
 
     clearTimeout(timeout);
@@ -13,7 +14,7 @@ const debounce = (fn, time) => {
 }
 
 var search = document.getElementById("search");
-var selected_category = document.getElementById("select_industries").value;
+var selected_category = document.getElementById("select_industries");
 
 const summaryInclude=60;
 
@@ -58,6 +59,8 @@ var fuseOptions = {
   }
 
   function populateResults(result){
+    $('#search-results').empty();
+
     $.each(result,function(key,value){
       var contents = value.item.short_description;
       var snippet = "";
@@ -94,25 +97,32 @@ var fuseOptions = {
     });
   }
 
-  let searchQuery = "";
+  let searchQuery ='';
   let pages;
   let fuse;
 
   let doSearch = () => {
-    if(+search.value === 0) {
-      return;
+
+    if(selected_category.selectedIndex !== 0) {
+      searchQuery = `${selected_category.value} `;
     }
 
-    searchQuery = search.value
-    var result = fuse.search(searchQuery);
-
-    if(result.length > 0){
-      populateResults(result);
-    } else {
-      $('#search-results').append("<p>No matches found</p>");
+    if(+search.value !== 0) {
+      searchQuery += search.value;
     }
+
+    if(searchQuery.length > 0) {
+
+      var result = fuse.search(searchQuery);
+
+      if(result.length > 0){
+        populateResults(result);
+      } else {
+        $('#search-results').append("<p>No matches found</p>");
+      }
+    }
+    searchQuery = '';
   }
-
 
   const showAll = (data) => {
     const everything = data.map(function(value, index){
@@ -131,10 +141,14 @@ var fuseOptions = {
       fuse = new Fuse(pages, fuseOptions);
 
       search.setAttribute('placeholder', 'search terms');
+
       search.removeAttribute('disabled');
+      selected_category.removeAttribute('disabled');
+
       search.focus();
 
-      search.oninput = debounce(doSearch, 600);
+      selected_category.onchange = doSearch;
+      search.oninput = debounce(doSearch, debounceInterval);
 
     });
   }
