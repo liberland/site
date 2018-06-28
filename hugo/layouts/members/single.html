@@ -8,7 +8,7 @@
 <div class="container" style="margin-top: 3em">
   <h3>{{ .name }}</h3>
 
-  <div class="row" style="border: 1px solid #f7f7f9; padding-top: 1em">
+  <div class="row" style="border: 1px solid #f7f7f9; padding: 1em 0">
 
     <div class="col-md-9 col-xs-12">
       {{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Description" "attr_value" .short_description ) }}
