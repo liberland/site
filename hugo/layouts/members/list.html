@@ -16,18 +16,19 @@
 			</div>
 
       <div class="row">
-        <div class="col-sm-6">
-          <div class="input-group">
-            <ul>
-              <ul>
-                {{ range $key, $value := .Site.Taxonomies.industry }}
-                <li>
-                  <a href="/industry/{{ $key | urlize }}">{{ $key | title }}</a>
-                </li>
-                {{ end }}
-              </ul>
-            </ul>
-          </div>
+        <div id="industry_select" class="text-center" style="padding-bottom:  3em">
+					{{ $var := .Scratch }}
+
+					{{ range $industry_name, $value := .Site.Taxonomies.industry }}
+						{{ $var.Add "industries" (slice $industry_name) }}
+					{{ end }}
+
+          <ul class="list-inline center" style="display: inline">
+						{{ range $index, $industry_name := $var.Get "industries" }}
+						<li><a href="#" onclick="document.getElementById('select_industries').selectedIndex = {{ $index | add 1 }}">{{ $industry_name }}</a>,</li>
+						{{ end }}
+          </ul>
+					<hr />
         </div>
       </div>
     </div>

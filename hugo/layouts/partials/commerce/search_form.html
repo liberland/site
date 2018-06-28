@@ -1,7 +1,17 @@
 <form id="member-search">
   <div class="form-group">
-    <label for="exampleInputEmail1">Search</label>
-    <input disabled="disabled" id="search" type="text" class="form-control" aria-describedby="searchHelp" placeholder="just a moment ...">
+    <label for="search">Search</label>
+
+    <fieldset>
+      <select class="col-md-3 col-xs-12 form-control" id="select_industries">
+        <option>all industries</option>
+
+        {{ range $key, $value := .Site.Taxonomies.industry }}
+        <option>{{ $key | title }}</option>
+        {{ end }}
+      </select>
+
+    <input disabled="disabled" id="search" type="text" class=" col-md-9 col-xs-12 form-control" aria-describedby="searchHelp" placeholder="just a moment ...">
     <small id="searchHelp" class="form-text text-muted">Enter a search term.</small>
   </div>
   <button type="submit" class="btn btn-primary" style="display: none">Submit</button>

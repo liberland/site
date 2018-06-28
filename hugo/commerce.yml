@@ -17,6 +17,12 @@ metaDataFormat: "yaml"
 
 contentDir: "./commerce"
 
+taxonomies:
+  category: categories
+  tag: tags
+  industry: industry
+
+
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE
 # -----------------------------
