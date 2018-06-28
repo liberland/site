@@ -133,6 +133,8 @@ let doSearch = () => {
     } else {
       $('#search-results').append("<p>No matches found</p>");
     }
+  } else {
+    showAll(pages);
   }
   searchQuery = '';
 }
