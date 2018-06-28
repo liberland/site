@@ -1,6 +1,6 @@
 ---
 # Site
-baseurl: "https://chamber_of_commerce.liberland.org"
+baseurl: "https://commerce.ll.land"
 title: "Liberland chamber of commerce"
 enableRobotsTXT: true
 googleAnalytics: ""
