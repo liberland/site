@@ -27,7 +27,7 @@
 
           <ul class="list-inline center" style="display: inline">
 						{{ range $index, $industry_name := $var.Get "industries" }}
-						<li><a href="#" onclick="document.getElementById('select_industries').selectedIndex = {{ $index | add 1 }}">{{ $industry_name }}</a>,</li>
+						<li><a class="category_select" href="#" data-value="{{ $index | add 1 }}">{{ $industry_name }}</a>,</li>
 						{{ end }}
           </ul>
 					<hr />

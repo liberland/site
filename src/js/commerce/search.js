@@ -16,6 +16,22 @@ const debounce = (fn, time) => {
 var search = document.getElementById("search");
 var selected_category = document.getElementById("select_industries");
 
+
+const setIndustryAndSearch = (categoryIndex) => {
+  document.getElementById('select_industries').selectedIndex = categoryIndex;
+  doSearch();
+}
+
+const links = document.querySelectorAll('.category_select');
+
+Array.prototype.forEach.call(links, function(el){
+  let industryIndex = el.getAttribute('data-value');
+
+  el.addEventListener("click", (() => {
+    setIndustryAndSearch(industryIndex);
+  }).bind(this));
+});
+
 const summaryInclude=60;
 
 var fuseOptions = {
