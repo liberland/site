@@ -13,6 +13,7 @@ const debounce = (fn, time) => {
 }
 
 var search = document.getElementById("search");
+var selected_category = document.getElementById("select_industries").value;
 
 const summaryInclude=60;
 
@@ -58,8 +59,6 @@ var fuseOptions = {
 
   function populateResults(result){
     $.each(result,function(key,value){
-      console.log(key,value)
-
       var contents = value.item.short_description;
       var snippet = "";
       var snippetHighlights=[];
@@ -95,7 +94,7 @@ var fuseOptions = {
     });
   }
 
-  let searchQuery;
+  let searchQuery = "";
   let pages;
   let fuse;
 
@@ -114,9 +113,21 @@ var fuseOptions = {
     }
   }
 
+
+  const showAll = (data) => {
+    const everything = data.map(function(value, index){
+      return { item: value, matches: [] };
+    });
+
+    populateResults(everything);
+  };
+
   const initialiseSearch = () => {
     $.getJSON( "index.json", (data) => {
       pages = data.data;
+
+      showAll(pages);
+
       fuse = new Fuse(pages, fuseOptions);
 
       search.setAttribute('placeholder', 'search terms');
@@ -124,6 +135,7 @@ var fuseOptions = {
       search.focus();
 
       search.oninput = debounce(doSearch, 600);
+
     });
   }
 
