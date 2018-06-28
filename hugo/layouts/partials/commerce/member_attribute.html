@@ -1,0 +1,9 @@
+{{ if  .attr_value }}
+<div class="col-md-3 col-xs-12 metadata">
+  {{ .attr_name }}
+</div>
+
+<div class="col-md-9 col-xs-12">
+  {{ .attr_value | default "&nbsp;" }}
+</div>
+{{ end }}
