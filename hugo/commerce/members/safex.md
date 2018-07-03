@@ -9,6 +9,11 @@ short_description: >-
 industry: E-commerce
 logo: /assets/safex-logo.jpg
 web: 'http://safex.io'
+tags:
+  - Marketplace
+  - Cryptocurrency
+  - E-commerce
+  - Platform
+  
 date: '2018-06-28T00:00:00+02:00'
 ---
-

@@ -10,5 +10,5 @@ industry: Cryptocurrencies
 logo: /assets/screen-shot-2018-05-25-at-3.54.30-pm.png
 web: xstar.io
 date: '2018-06-28T00:00:00+02:00'
----
 
+---

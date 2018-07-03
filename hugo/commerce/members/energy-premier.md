@@ -10,6 +10,11 @@ short_description: >-
 industry: Energy
 logo: /assets/thumbep.jpg
 web: www.energypremier.com
+tags:
+  - Energy
+  - Power
+  - Biding platform
+  - Blockchain
+  - P2P
 date: '2018-06-28T00:00:00+02:00'
 ---
-

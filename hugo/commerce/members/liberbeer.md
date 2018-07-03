@@ -7,5 +7,13 @@ short_description: >-
 industry: Food and beverages
 logo: /assets/liberbeer_web_obrazek__sub_pivo.jpg
 web: 'http://liberbeer.ll.land'
+
+tags:
+  - Craft beer
+  - Decentralisation
+  - Token
+  - Brewery
+  - Franchise
+
 date: '2018-06-28T00:00:00+02:00'
 ---

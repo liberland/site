@@ -5,6 +5,10 @@ short_description: >-
 industry: Webdesign
 logo: /assets/ivo_gregurec.png
 web: ''
+tags:
+  - Design
+  - Graphics
+  - Website
+  - Corporate identity
 date: '2018-06-28T00:00:00+02:00'
 ---
-

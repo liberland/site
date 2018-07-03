@@ -16,6 +16,8 @@ var fuseOptions = {
     { name:"name",weight:0.8 },
     { name:"short_description",weight:0.5 },
     { name:"industry", weight:0.3 },
+    { name:"tags", weight:0.4 },
+
 ]};
 
 const search = document.getElementById("search");
@@ -130,7 +132,6 @@ let doSearch = () => {
     fuse = new Fuse(data, fuseOptions);
 
     var result = fuse.search(searchQuery);
-    console.log('result', result);
 
     if(result.length > 0){
       populateResults(result);

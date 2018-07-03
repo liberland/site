@@ -11,6 +11,11 @@ short_description: >-
 industry: IT security
 logo: /assets/nethemba_vertical_positive.png
 web: 'http://nethemba.com'
+tags:
+  - Data security
+  - Hackers
+  - Security Audit
+  - Privacy
+  - Anonymity
 date: '2018-06-28T00:00:00+02:00'
 ---
-
