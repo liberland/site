@@ -1,8 +1,7 @@
 ---
 name: Safex
 short_description: >-
-  Safex is a decentralized marketplace that for the first time in history shifts
-  paradigm of trade towards cryptocurrency and blockchain commerce.
+  Safex is a decentralized marketplace that in history shifts the trade paradigm towards cryptocurrency and blockchain commerce for the first time in history.
 
   People can now become a part of the emerging global marketplace that rewards
   crypto assets and allows for a secure enclave where people can buy and sell

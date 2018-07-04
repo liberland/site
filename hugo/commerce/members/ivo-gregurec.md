@@ -1,8 +1,7 @@
 ---
 name: Ivo Gregurec
 short_description: >-
-  Ivo is enterprenuer providing webdesign, corporate design and related
-  services. Author of Liberland COC, embasies and Liberland govt webpages.
+  Ivo is entrepreneur providing webdesign, corporate design, and related services. Author of Liberland COC, embassies and Liberland government webpages.
 industry: Webdesign
 logo: /assets/ivo_gregurec.png
 web: ''
