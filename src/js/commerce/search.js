@@ -1,7 +1,7 @@
 
 
 const debounceInterval = 600;
-const summaryInclude=60;
+const summaryInclude=300;
 
 var fuseOptions = {
   shouldSort: true,
@@ -92,9 +92,9 @@ function populateResults(result){
         if(mvalue.key == "tags" || mvalue.key == "industry" ){
           snippetHighlights.push(mvalue.value);
         }else if(mvalue.key == "contents"){
-          start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
-          end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
-          snippet += contents.substring(start,end);
+          // start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
+          // end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
+          snippet += contents; //.substring(start,end);
           snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
         }
       });
