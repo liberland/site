@@ -1,40 +1,36 @@
-.fancybox-overlay {
-	a, a:hover {
-		box-shadow: none;
+.fancybox-content {
+	box-shadow: 0 10px 25px rgba(0,0,0,.5);
+}
+
+.fancybox-bg {
+	background: #1e1e1ee0;
+}
+
+.fancybox-slide--image .fancybox-close-small, .fancybox-slide--video .fancybox-close-small, .fancybox-slide--iframe .fancybox-close-small {
+	background-color: $yellow;
+	background-image: none;
+	position: absolute;
+
+	top: -22px ;
+	right: -22px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 8040;
+	color: black;
+	border-radius: 100%;
+	text-decoration: none;
+	&:hover {
+		color: #333;
 	}
-	a.fancybox-close {
-		background-color: $yellow;
-		background-image: none;
-		border-radius: 100%;
-		text-decoration: none;
-		&:after {
-			content: "×";
-			position: absolute;
-		    font-size: 40px;
-		    top: -11px;
-		    left: 8px;
-		}
-	}
-/*
-	.fancybox-nav {
-		background-color: $yellow;
-		background-image: none;
-		border-radius: 100%;
-		text-decoration: none;
-		&.fancybox-prev:after  {
-			content: "<";
-			position: absolute;
-		    font-size: 40px;
-		    top: -11px;
-		    left: 8px;
-		}
-		&.fancybox-next:after  {
-			content: ">";
-			position: absolute;
-		    font-size: 40px;
-		    top: -11px;
-		    left: 8px;
-		}
-	} 
-*/
+}
+
+.fancybox-button {
+	box-shadow: none;
+}
+
+.fancybox-slide--iframe .fancybox-content {
+	max-width  : 1024px;
+	max-height : 80%;
+	margin: 0;
 }
