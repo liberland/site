@@ -354,6 +354,13 @@ body.commerce {
 				}
 			}
 		}
+		&#chart {
+  		border-top: 10px solid $yellow;
+  		padding: 20px 0;
+  		a.canvasjs-chart-credit {
+    		display: none !important;
+  		}
+		}
 		&#what {
 			@include abc;
 
