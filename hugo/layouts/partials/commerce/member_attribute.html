@@ -4,6 +4,10 @@
 </dt>
 
 <dd class="col-md-10 col-xs-12">
-  {{ .attr_value }}
+  {{ if eq (printf "%T" .attr_value) "[]string" }}
+    {{ delimit .attr_value ", "}}
+  {{ else }}
+    {{ .attr_value }}
+  {{ end }}
 </dd>
 {{ end }}

@@ -11,6 +11,7 @@
     <div class="col-md-9 col-xs-12">
       {{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Description" "attr_value" .short_description ) }}
       {{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Industry" "attr_value" .industry ) }}
+			{{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Interests" "attr_value" .interests ) }}
       {{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Web" "attr_value" .web ) }}
       {{ partial "commerce/member_attribute" (dict "context" . "attr_name" "Contact" "attr_value" .contact ) }}
     </div>

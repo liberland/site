@@ -1,8 +1,15 @@
 ---
 name: Balkaneum
+industry: Software development
+interests:
+  - Users
+  - B2B partners
+  - Customers
+
 short_description: >-
   Balkaneum is an open-source company engaged in the development and
   implementation of blockchain technology.
+
 logo: /assets/ft20qq-y_400x400.jpg
 contact: Daniel Dabek
 web: 'https://www.facebook.com/balkaneum/'
