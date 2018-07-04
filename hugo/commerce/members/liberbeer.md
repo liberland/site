@@ -5,6 +5,12 @@ short_description: >-
   fueled by cryptocurrency tokens, turning beer consumers, pubs and breweries
   into its own shareholders.
 industry: Food and beverages
+
+interests:
+  - Investors for global expansion
+  - Brewery owners in all countries
+  - Liberbeer franchizants
+
 logo: /assets/liberbeer_web_obrazek__sub_pivo.jpg
 web: 'http://liberbeer.ll.land'
 

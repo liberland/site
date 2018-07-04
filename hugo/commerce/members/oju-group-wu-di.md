@@ -11,6 +11,9 @@ short_description: >-
   arm of the Oju Empire, cementing together the worlds of cryptocurrency and
   hospitality together with solid real estate assets.
 industry: Hospitality
+interests:
+  - Customers
+  - Partners
 logo: /assets/微信图片_20171211173329-1-300x300.jpg
 web: 'https://ojugroup.com'
 tags:

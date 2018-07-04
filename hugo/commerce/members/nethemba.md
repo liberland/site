@@ -8,6 +8,9 @@ short_description: >-
   only Slovak/Czech company that offers RFID security audits and active security
   research which is demonstrated by their regular presentations at worldwide
   conferences.
+interests:
+  - Customers
+  - Strategic parterships
 industry: IT security
 logo: /assets/nethemba_vertical_positive.png
 web: 'http://nethemba.com'

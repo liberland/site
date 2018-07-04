@@ -8,6 +8,10 @@ short_description: >-
   electricity for auction, as well as connect smart meters to perform instant
   EPC payments.
 industry: Energy
+interests:
+  - Customers (energy consumers)
+  - B2B partners
+  - ICO Investors
 logo: /assets/thumbep.jpg
 web: www.energypremier.com
 tags:
