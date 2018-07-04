@@ -114,19 +114,23 @@ function populateResults(result){
   });
 }
 
+const limitIndustry = (pages, categoryText) =>
+  pages.filter((el) => (el.industry === categoryText));
+
 let doSearch = () => {
+  let data = pages;
 
   if(selected_category.selectedIndex !== 0) {
-    searchQuery = `${selected_category.value} `;
+    data = limitIndustry(pages, selected_category.value);
   }
-
-  if(+search.value !== 0) {
-    searchQuery += search.value;
-  }
+  searchQuery = search.value;
 
   if(searchQuery.length > 0) {
 
+    fuse = new Fuse(data, fuseOptions);
+
     var result = fuse.search(searchQuery);
+    console.log('result', result);
 
     if(result.length > 0){
       populateResults(result);
@@ -134,7 +138,7 @@ let doSearch = () => {
       $('#search-results').append("<p>No matches found</p>");
     }
   } else {
-    showAll(pages);
+    showAll(data);
   }
   searchQuery = '';
 }
@@ -151,9 +155,8 @@ const initialiseSearch = () => {
   $.getJSON( "index.json", (data) => {
     pages = data.data;
 
+    // console.log(pages);
     showAll(pages);
-
-    fuse = new Fuse(pages, fuseOptions);
 
     search.setAttribute('placeholder', 'search terms');
 
