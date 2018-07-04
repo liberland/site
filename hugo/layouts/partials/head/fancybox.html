@@ -2,11 +2,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.js"></script>
 <script>
 	$(document).ready(function(){
-	    $(".fancybox").fancybox({
-	        openEffect: "fade",
-	        closeEffect: "fade"
-	    });
-
 			$().fancybox({
 			    selector : '[data-fancybox="member-results"]',
 					href: event.currentTarget,
@@ -14,24 +9,12 @@
 					smallBtn: true
 			});
 
-	    $("a.fancyvideo").click(function() {
-		    $.fancybox({
-		            'padding'       : 0,
-		            'autoScale'     : false,
-		            'transitionIn'  : 'fade',
-		            'transitionOut' : 'fade',
-		            'title'         : this.title,
-		            'width'     : 680,
-		            'height'        : 495,
-		            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
-		            'type'          : 'swf',
-		            'swf'           : {
-		                 'wmode'        : 'transparent',
-		                'allowfullscreen'   : 'true'
-		            }
-		        });
+	    $().fancybox({
+				selector: '[data-fancybox="video"]',
+        width: 680,
+        height: 495,
+				smallBtn: true
+      });
 
-		    return false;
-		});
 	});
 </script>
