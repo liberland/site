@@ -153,36 +153,43 @@ weight: 10
     </div>
 </section>
 <section id="chart" class="bg-dark">
-  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-  <script>
-    window.onload = function () {
+  <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 wow fadeInUp">
+              <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+              <script>
+                window.onload = function () {
 
-    //Better to construct options first and then pass it as a parameter
-    var options = {
-      theme: "dark2", // "light2", "dark1", "dark2"
-    	title: {
-    		text: "GDP in billion USD"
-    	},
-    	data: [
-    	{
-    		// Change type to "doughnut", "line", "splineArea", etc.
-    		type: "column",
-          color: "#FFCB05",
-    		dataPoints: [
-    			{ label: "San Marino",  y: 1.9  },
-    			{ label: "Andorra", y: 3.2  },
-    			{ label: "Liberland", y: 4.5  },
-    			{ label: "Monaco",  y: 6.1  },
-    			{ label: "Lichtenstein",  y: 6.7  }
-    		]
-    	}
-    	]
-    };
+                //Better to construct options first and then pass it as a parameter
+                var options = {
+                  theme: "dark2", // "light2", "dark1", "dark2"
+                	title: {
+                		text: "Estimated GDP in billion USD"
+                	},
+                	data: [
+                	{
+                		// Change type to "doughnut", "line", "splineArea", etc.
+                		type: "column",
+                      color: "#FFCB05",
+                		dataPoints: [
+                			{ label: "San Marino",  y: 1.9  },
+                			{ label: "Andorra", y: 3.2  },
+                			{ label: "Liberland", y: 4.5  },
+                			{ label: "Monaco",  y: 6.1  },
+                			{ label: "Lichtenstein",  y: 6.7  }
+                		]
+                	}
+                	]
+                };
 
-    $("#chartContainer").CanvasJSChart(options);
-    }
-  </script>
-  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                $("#chartContainer").CanvasJSChart(options);
+                }
+              </script>
+              <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            </div>
+        </div>
+  </div>
+
 </section>
 <section id="what" class="">
     <div class="container">
