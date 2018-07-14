@@ -20,6 +20,26 @@ $footer-height-mobile: 404px;
 
 
 body.commerce {
+
+  #chartContainer1, #chartContainer2, #chartContainer {
+		box-sizing: border-box;
+		position: relative;
+	  &:after {
+  	  content: "";
+  	  position: absolute;
+  	  bottom: 0;
+  	  left: 0;
+  	  right: 0;
+  	  height: 11px;
+  	  background: white;
+	  }
+	}
+
+  #chartContainer:after {
+ 	  background: #35373A;
+	}
+
+
   min-height: calc(100vh - #{$footer-height-desktop});
   position: relative;
   margin-bottom: $footer-height-mobile;
@@ -382,13 +402,7 @@ body.commerce {
 			}
 		}
 		#lists {
-/*
-			background-image: url(../images/coc/anim-bg.gif);
-			background-size: contain;
-			.container {
-				background: url(../images/coc/dot-grid.png);
-			}
-*/
+
 			h4 {
 				padding-bottom: 25px;
 			}
@@ -446,6 +460,9 @@ body.commerce {
 		#formal {
 			font-size: 18px;
 		}
+
+
+
 		#activities {
 			//padding-bottom: 30px;
 		}
