@@ -551,26 +551,29 @@ let wow;
   	companies_num = 65,
   	offices_num = 95;
 
-  	var citizenships = new CountUp('citizenships', 0, citizenships_num, 0, 1.5, options);
-  	var companies = new CountUp('companies', 0, companies_num, 0, 3.5, options);
-  	var offices = new CountUp('offices', 0, offices_num, 0, 5.5, options);
 
-  	// setup page animations on scroll
-  	wow = new WOW({
-  		boxClass:     'wow',      // default
-  		animateClass: 'animated', // default
-  		offset:       0,          // default
-  		mobile:       true,       // default
-  		live:         true,       // default
-  		callback:     function(box) {
-  			// Start countup when area reached
-  			if(!citizenships.error && $(box).hasClass('figures')) {
-  				citizenships.start();
-  				companies.start();
-  				offices.start();
-  			}
-  		}
-  	});
+    if(!$('body').hasClass('commerce')) { // FIXME: Very ugly workaround. this is logic for the main site. This can be removed once refactored as separate hugo instances
+    	var citizenships = new CountUp('citizenships', 0, citizenships_num, 0, 1.5, options);
+    	var companies = new CountUp('companies', 0, companies_num, 0, 3.5, options);
+    	var offices = new CountUp('offices', 0, offices_num, 0, 5.5, options);
+
+    	// setup page animations on scroll
+    	wow = new WOW({
+    		boxClass:     'wow',      // default
+    		animateClass: 'animated', // default
+    		offset:       0,          // default
+    		mobile:       true,       // default
+    		live:         true,       // default
+    		callback:     function(box) {
+    			// Start countup when area reached
+    			if(!citizenships.error && $(box).hasClass('figures')) {
+    				citizenships.start();
+    				companies.start();
+    				offices.start();
+    			}
+    		}
+    	});
+    };
 
   	// product icons
   	$("#products a.eres").hover(function(){
@@ -601,8 +604,11 @@ let wow;
 
   $(document).ready(function(){
     if($('body').hasClass('home')) {
+
     	initmain();
-    	wow.init();
+      if(!$('body').hasClass('commerce')) { // FIXME: Very ugly workaround. this is logic for the main site. This can be removed once refactored as separate hugo instances
+      	wow.init();
+      }
 
     	$(window).on('resize', function(){
     		if ( $(window).width() < 992 ) {
