@@ -12,48 +12,101 @@ menu:
 
 <section id="history" class="bg-dark">
 			<div class="container">
-                <div class="row text-left">
-                    <div class="col-lg-8 col-md-8 wow fadeInUp">
-	                    <h3>The History of Liberland</h3>
-	                    <p>The Free Republic of Liberland is a sovereign state located between Croatia and Serbia on the west bank of the Danube river. The nearest towns are Zmajevac (Croatia) and Bački Monoštor or Apatin (Serbia). The motto of the country is “To Live and Let Live”, following the rules of free trade and free market with absolute minimal State interference into people’s lives and business activities. Historically, this model has brought the highest level of development to societies, as demonstrated in countries like Singapore, Hong Kong, Liechtenstein, Switzerland, Monaco, and others.</p>
-		                    <p class="padding-top-20">
-			                    <a href="http://liberland.org" class="btn btn-more btn-lg" target="_blank">Learn More
-				                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-			                    </a>
-			                </p>
-                    </div>
-                </div>
-                <div class="row padding-top-60">
-                </div>
-                <div class="row padding-top-60">
-                </div>
-                <div class="row padding-top-60">
-                </div>
+          <div class="row text-left">
+              <div class="col-lg-8 col-md-8 wow fadeInUp">
+                <h3>The History of Liberland</h3>
+                <p>The Free Republic of Liberland is a sovereign state located between Croatia and Serbia on the west bank of the Danube river. The nearest towns are Zmajevac (Croatia) and Bački Monoštor or Apatin (Serbia). The motto of the country is “To Live and Let Live”, following the rules of free trade and free market with absolute minimal State interference into people’s lives and business activities. Historically, this model has brought the highest level of development to societies, as demonstrated in countries like Singapore, Hong Kong, Liechtenstein, Switzerland, Monaco, and others.</p>
+                  <p class="padding-top-20">
+                    <a href="http://liberland.org" class="btn btn-more btn-lg" target="_blank">Learn More
+	                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                    </a>
+                </p>
+              </div>
+          </div>
+          <div class="row padding-top-60">
+          </div>
+          <div class="row padding-top-60">
+          </div>
+          <div class="row padding-top-60">
+          </div>
 			</div>
 		</section>
 		<section id="key" class="bg-yellow">
 			<div class="container">
 				<div class="row text-center">
-	                <div class="col-lg-12 wow fadeInUp">
-	                    <h3>Key features</h3>
-	                </div>
-	            </div>
-	            <div class="row text-left">
-	                <div class="col-sm-6 col-md-7 col-lg-8 wow fadeInUp">
-	                    <ul class="text-light">
-	                    	<li>3x larger than Monaco</li>
-							<li>free trade and free society</li>
-							<li>500,000 registered users</li>
-							<li>100,000 eligible Citizenship applicants</li>
-	                    </ul>
-	                </div>
-	                <div class="col-sm-6 col-md-5 col-lg-4 wow fadeInUp">
-		                <a data-fancybox="video" href="https://www.youtube.com/watch?v=RbycSViIOnA&feature=youtu.be">
-		                	<img src="../images/coc/liberland-video.jpg" width="100%">
-		                </a>
-	                </div>
-	            </div>
+            <div class="col-lg-12 wow fadeInUp">
+                <h3>Key features</h3>
+            </div>
+          </div>
+          <div class="row text-left">
+              <div class="col-sm-6 col-md-7 col-lg-8 wow fadeInUp">
+                  <ul class="text-light">
+                  	<li>3x larger than Monaco</li>
+          					<li>free trade and free society</li>
+          					<li>500,000 registered users</li>
+          					<li>100,000 eligible Citizenship applicants</li>
+                  </ul>
+              </div>
+              <div class="col-sm-6 col-md-5 col-lg-4 wow fadeInUp">
+                <a data-fancybox="video" href="https://www.youtube.com/watch?v=RbycSViIOnA&feature=youtu.be">
+                	<img src="../images/coc/liberland-video.jpg" width="100%">
+                </a>
+              </div>
+          </div>
 			</div>
+		</section>
+		<section class="bg-light">
+  		<div class="container">
+  		  <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 wow fadeInUp">
+              <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+              <script>
+                window.onload = function () {
+
+                //Better to construct options first and then pass it as a parameter
+                var options2 = {
+                  theme: "light2", // "light2", "dark1", "dark2"
+                  animationEnabled: true,
+                	title: {
+                		text: "Liberland effect on GDP between 2020-2030"
+                	},
+                	data: [
+                	{
+                		// Change type to "doughnut", "line", "splineArea", etc.
+                		type: "stackedBar",
+                		axisY:{
+                  		interval: .25,
+                  		suffix: "%"
+                  	},
+                		color: "#666666",
+                		dataPoints: [
+                			{ label: "Serbia",  y: 148.0  },
+                			{ label: "Croatia", y: 124.3  }
+                		]
+                	},
+                	{
+                		// Change type to "doughnut", "line", "splineArea", etc.
+                		type: "stackedBar",
+                		axisX:{
+                  		interval: .25,
+                  		suffix: "%"
+                  	},
+                		color: "#FFCB05",
+                		dataPoints: [
+                			{ label: "Serbia with Liberland", y: 15.4 },
+                			{ label: "Croatia with Liberland",  y: 17  }
+                		]
+                	}
+                	]
+                };
+
+                $("#chartContainer2").CanvasJSChart(options2);
+                }
+              </script>
+              <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
 		</section>
 		<section id="future" class="bg-light">
 			<div class="container">
