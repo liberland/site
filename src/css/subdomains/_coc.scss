@@ -38,6 +38,9 @@ body.commerce {
   #chartContainer:after {
  	  background: #35373A;
 	}
+	.canvasjs-chart-credit {
+  	display: none;
+	}
 
 
   min-height: calc(100vh - #{$footer-height-desktop});
