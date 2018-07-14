@@ -181,58 +181,108 @@ menu:
 	        </div>
         </section>
         <section id="chart" class="bg-light">
-  <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 wow fadeInUp">
-              <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-              <script>
-                window.onload = function () {
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 wow fadeInUp">
+                <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+                <script>
+                  window.onload = function () {
 
-                //Better to construct options first and then pass it as a parameter
-                var options = {
-                  theme: "light2", // "light2", "dark1", "dark2"
-                	title: {
-                		text: "IMPACT OF LIBERLAND ON ANNUAL GROWTH RATE"
-                	},
-                	data: [
-                	{
-                		// Change type to "doughnut", "line", "splineArea", etc.
-                		type: "column",
-                		axisX:{
-                  		interval: .25,
-                  		suffix: "%"
+                  //Better to construct options first and then pass it as a parameter
+                  var options1 = {
+                    animationEnabled: true,
+                    theme: "light2", // "light2", "dark1", "dark2"
+                  	title: {
+                  		text: "IMPACT OF LIBERLAND ON ANNUAL GROWTH RATE"
                   	},
-                		color: "#666666",
-                		dataPoints: [
-                			{ label: "Serbia",  y: 4.0  },
-                			{ label: "Croatia", y: 2.2  }
-                		]
-                	},
-                	{
-                		// Change type to "doughnut", "line", "splineArea", etc.
-                		type: "column",
-                		axisX:{
-                  		interval: .25,
-                  		suffix: "%"
+                  	data: [
+                  	{
+                  		// Change type to "doughnut", "line", "splineArea", etc.
+                  		type: "column",
+                  		axisX:{
+                    		interval: .25,
+                    		suffix: "%"
+                    	},
+                  		color: "#666666",
+                  		dataPoints: [
+                  			{ label: "Serbia",  y: 4.0  },
+                  			{ label: "Croatia", y: 2.2  }
+                  		]
                   	},
-                		color: "#FFCB05",
-                		dataPoints: [
-                			{ label: "Serbia with Liberland", y: 5.0 },
-                			{ label: "Croatia with Liberland",  y: 3.7  }
-                		]
-                	}
-                	]
-                };
+                  	{
+                  		// Change type to "doughnut", "line", "splineArea", etc.
+                  		type: "column",
+                  		axisX:{
+                    		interval: .25,
+                    		suffix: "%"
+                    	},
+                  		color: "#FFCB05",
+                  		dataPoints: [
+                  			{ label: "Serbia with Liberland", y: 5.0 },
+                  			{ label: "Croatia with Liberland",  y: 3.7  }
+                  		]
+                  	}
+                  	]
+                  };
 
-                $("#chartContainer").CanvasJSChart(options);
-                }
-              </script>
-              <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                  $("#chartContainer1").CanvasJSChart(options1);
+                  }
+                </script>
+                <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+              </div>
             </div>
-        </div>
-  </div>
 
-</section>
+            <div class="row text-center">
+              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 wow fadeInUp">
+                <script>
+                  window.onload = function () {
+
+                  //Better to construct options first and then pass it as a parameter
+                  var options2 = {
+                    theme: "light2", // "light2", "dark1", "dark2"
+                    animationEnabled: true,
+                  	title: {
+                  		text: "Liberland effect on GDP between 2020-2030"
+                  	},
+                  	data: [
+                  	{
+                  		// Change type to "doughnut", "line", "splineArea", etc.
+                  		type: "stackedBar",
+                  		axisY:{
+                    		interval: .25,
+                    		suffix: "%"
+                    	},
+                  		color: "#666666",
+                  		dataPoints: [
+                  			{ label: "Serbia",  y: 148.0  },
+                  			{ label: "Croatia", y: 124.3  }
+                  		]
+                  	},
+                  	{
+                  		// Change type to "doughnut", "line", "splineArea", etc.
+                  		type: "stackedBar",
+                  		axisX:{
+                    		interval: .25,
+                    		suffix: "%"
+                    	},
+                  		color: "#FFCB05",
+                  		dataPoints: [
+                  			{ label: "Serbia with Liberland", y: 15.4 },
+                  			{ label: "Croatia with Liberland",  y: 17  }
+                  		]
+                  	}
+                  	]
+                  };
+
+                  $("#chartContainer2").CanvasJSChart(options2);
+                  }
+                </script>
+                <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+        </section>
 
         <section id="activities" class="bg-dark">
 	        <div class="container">
