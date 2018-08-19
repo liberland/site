@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="585px" height="400px" viewBox="0 0 585 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
     <title>structure</title>
     <desc>Created with Sketch.</desc>
     <defs>
@@ -33,7 +33,7 @@
                 <tspan x="138.876953" y="46">EXECUTIVE BOARD</tspan>
             </text>
             <text id="members" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300" fill="#1C172D">
-                <tspan x="176.09" y="69">3 - 5 persons</tspan>
+                <tspan x="170.53" y="69">5 - 10 persons</tspan>
             </text>
         </g>
         <g id="Rectangle" transform="translate(0.000000, 300.000000)">
