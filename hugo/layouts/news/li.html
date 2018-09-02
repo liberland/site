@@ -1,7 +1,12 @@
-<li>
-  <a href="{{ .Permalink }}">
-    {{ .Title }}<br />
-    {{ .Content }}<br />
-    <small>posted on {{ .Date.Format "January 2, 2006" }}</small></h5>
-  </a>
+<li style="margin-bottom: 2em ">
+  <h4>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </h4>
+
+  <p>
+    {{ truncate 128 .Content }} <a href="{{ .Permalink }}">Read on...</a>
+  </p>
+
+  <small>posted on {{ .Date.Format "January 2, 2006" }} </small>
+  <hr />
 </li>

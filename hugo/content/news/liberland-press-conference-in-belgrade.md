@@ -4,9 +4,6 @@ date: '2018-03-13T19:14:16+02:00'
 # thumbnail: /assets/screen-shot-2018-04-27-at-01.49.34.png
 ---
 
-Liberland Press Conference in Belgrade
-======================================
-
 On March 7, Daniel Dabek, Representative of Liberland in Serbia,  organised a press conference for the occasion of the opening of the Representative Offcie in Belgrade. President Vit Jedlička was present together with the First Lady and other members of the Liberland team. You can read the speaches of both participants form the event.  
 
 The office is now abailable and open from Monday to Friday 9-5 at the address Balkanska 2. You are welcome to come there and collect info about cryptocurrencies, citizenship, business in Liberland and many more. _Good afternoon ladies and gentlemen,__  
