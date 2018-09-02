@@ -17,7 +17,14 @@
 
         <h5>
         {{ if .GitInfo }}
-          {{ $linkStart := print "<a href=\"http://my.ll.land/translate/new?" "lang=" .File.Lang "item=" .File.Path  print "version=" .GitInfo.Hash "\">" | safeHTML }}
+
+          {{  .Scratch.Set "domain" (getenv "TMP_MY_LL") }}
+
+          {{ if not ( .Scratch.Get "domain" ) }}
+            {{ .Scratch.Set "domain" .Site.Data.web_locations.my }}
+          {{ end }}
+
+          {{ $linkStart := print "<a href=\"//" ( .Scratch.Get "domain" ) "/translate/new?" "lang=" .File.Lang "item=" .File.Path  print "version=" .GitInfo.Hash "\">" | safeHTML }}
           {{ $linkEnd := print "</a>" | safeHTML }}
 
           {{ $linkStart }}Желите ли то видети на српском?{{ $linkEnd }}
