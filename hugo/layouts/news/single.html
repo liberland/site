@@ -24,7 +24,7 @@
             {{ .Scratch.Set "domain" .Site.Data.web_locations.my }}
           {{ end }}
 
-          {{ $linkStart := print "<a href=\"//" ( .Scratch.Get "domain" ) "/translate/new?" "lang=" .File.Lang "&item=" .File.Path  print "&version=" .GitInfo.Hash "\">" | safeHTML }}
+          {{ $linkStart := print "<a href=\"//" ( .Scratch.Get "domain" ) "/translations/new?" "targetLanguage=" .File.Lang "&item=" .File.Path  print "&revision=" .GitInfo.Hash "\">" | safeHTML }}
           {{ $linkEnd := print "</a>" | safeHTML }}
 
           {{ $linkStart }}Желите ли то видети на српском?{{ $linkEnd }}
