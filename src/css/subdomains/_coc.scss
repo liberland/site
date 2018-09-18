@@ -208,6 +208,21 @@ body.commerce {
       bottom: -$footer-height-desktop;
   		height: $footer-height-desktop;
 		}
+
+		ul.icons {
+      li {
+        display: inline-block;
+        font-size: 24px;
+        margin-right: 15px;
+        a{
+
+          &:hover {
+            box-shadow: none;
+            color: white;
+          }
+        }
+      }
+		}
 	}
 
 
@@ -218,6 +233,7 @@ body.commerce {
 		font-size: 128px;
 		line-height: 146px;
 	}
+
 
 
 	section {
