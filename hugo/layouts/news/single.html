@@ -1,23 +1,37 @@
-{{ define "main" }}
-  {{ partial "title.html" . }}
+{{ define "main" }} {{ partial "title.html" . }}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <div >
-              <h3>{{ .Title }}<br> <small>{{ .Description }}</small></h3>
-              <hr>
-              {{ .Content }}
-            </div>
-        </div>
-
-        <!-- Sidebar -->
-        <div class="col-md-3">
-            <div> <!-- Post-specific -->
-                <h4>{{ .Date.Format "January 2, 2006" }}<br>
-                <small>{{ .WordCount }} words</small></h4>
-            </div>
-        </div>
+  <div class="row" style="margin-top: 2em">
+    <div class="col-md-9">
+      <div>
+        <h3>{{ .Title }}<br> <small>{{ .Description }}</small></h3>
+        <hr> {{ .Content }}
+      </div>
     </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+      <div>
+        <!-- Post-specific -->
+        <h4>{{ .Date.Format "January 2, 2006" }}<br>
+
+        <h5>
+        {{ if .GitInfo }}
+
+          {{  .Scratch.Set "domain" (getenv "TMP_MY_LL") }}
+
+          {{ if not ( .Scratch.Get "domain" ) }}
+            {{ .Scratch.Set "domain" .Site.Data.web_locations.my }}
+          {{ end }}
+
+          {{ $linkStart := print "<a href=\"//" ( .Scratch.Get "domain" ) "/translations/new?" "targetLanguage=" .File.Lang "&item=" .File.Path  print "&revision=" .GitInfo.Hash "\">" | safeHTML }}
+          {{ $linkEnd := print "</a>" | safeHTML }}
+
+          {{ $linkStart }}Желите ли то видети на српском?{{ $linkEnd }}
+        {{ end }}
+        </h5>
+      </div>
+    </div>
+  </div>
 </div>
 {{ end }}

@@ -1,6 +1,6 @@
 ---
 # Site
-baseurl: "https://demo.liberland.org"
+baseurl: "https://gov.ll.land"
 title: "Liberland"
 enableRobotsTXT: true
 googleAnalytics: ""
@@ -19,6 +19,8 @@ menu:
 
 permalinks:
   news: /:year/:month/:title/
+
+enableGitInfo: true
 
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE

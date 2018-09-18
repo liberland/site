@@ -12,6 +12,8 @@ metaDataFormat: "yaml"
 
 contentDir: "./representative_offices"
 
+enableGitInfo: true
+
 # -----------------------------
 # DO NOT CHANGE BELOW THIS LINE
 # -----------------------------
