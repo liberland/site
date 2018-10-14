@@ -6,11 +6,12 @@
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
 //@import url('https://fonts.googleapis.com/css?family=Andada');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
-
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300,400,500,600,700');
 
 
 $sans: 'Source Sans Pro', "Helvetica", sans-serif;
-$slab:  'Alfa Slab One', serif;
+$slab:  'Zilla Slab', 'Alfa Slab One', serif;
+
 $yellow: #FFCB05;
 $yellow-d: #F1C823;
 $gray-d: #35373A;
@@ -85,6 +86,7 @@ $footer-height-mobile: 324px;
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $slab;
+	font-weight: 700;
 	//font-family: 'Andada', serif;
 }
 h1 {
@@ -100,7 +102,7 @@ h2 {
 }
 h3 {
 	font-size: 32px;
-	font-weight: 200;
+	font-weight: 700;
 	margin: 0 0 35px;
 }
 h4 {
@@ -226,7 +228,8 @@ a {
 .figures {
 	padding-bottom: 50px;
 	.big {
-		font-family: 'Alfa Slab One', serif;
+		font-family: $slab;
+		font-weight: 900;
 		font-size: 48px;
 		color: white;
 	}
@@ -294,7 +297,8 @@ nav.navbar {
 		padding-left: 0;
 		margin: 0;
 		li {
-			font-family: 'Alfa Slab One', serif;
+			font-family: $slab;
+			font-weight: 700;
 			margin-left: 10px;
 			a {
 				padding: 15px 10px;
