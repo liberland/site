@@ -5,12 +5,6 @@
   {{ partial "head/default" . }}
   {{ block "head-extra" . }}  {{ end }}
   {{ partial "head/local" . }}
-
-  <!-- Required Core Stylesheet -->
-  <link rel="stylesheet" href="../../node_modules/@glidejs/glide/dist/css/glide.core.min.css">
-
-  <!-- Optional Theme Stylesheet -->
-  <link rel="stylesheet" href="../../node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
 </head>
 
 <body class="{{ .Type | default .Site.Params.Type }} {{ .Title | urlize }}" >
