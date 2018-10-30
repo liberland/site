@@ -9,6 +9,11 @@
 @import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300,400,500,600,700');
 
 
+@import "@glidejs/glide/src/assets/sass/glide.core";
+
+@import "@glidejs/glide/src/assets/sass/glide.theme";
+
+
 $sans: 'Source Sans Pro', "Helvetica", sans-serif;
 $slab:  'Zilla Slab', 'Alfa Slab One', serif;
 

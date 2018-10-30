@@ -14,6 +14,7 @@ import './application';
 import './representative_offices_map';
 import './commerce/index';
 import './commerce/search';
+import './glide';
 
 function onReady(e) {
   registerServiceWorker();
