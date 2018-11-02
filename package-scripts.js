@@ -90,7 +90,7 @@ module.exports = {
         'Removes the build folder.',
       ),
       default: pub(
-        'nps build.clean && concurrently "nps css.build" "nps js.build" "nps hugo.build" "nps svg.build" && nps sw && cp _redirects public/',
+        'nps build.clean && concurrently "nps css.build" "nps js.build" "./scripts/get_articles.bash $GRAPHQL_SERVER hugo/content/news" "nps hugo.build" "nps svg.build" && nps sw && cp _redirects public/',
         'Builds a production version of all assets and a service worker.',
       ),
     },
