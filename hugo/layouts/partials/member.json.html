@@ -1,8 +1,0 @@
-{
-  "name": {{ .Params.name | jsonify }},
-  {{ if  .Params.logo }}"logo" : {{ .Params.logo | jsonify }},{{ end }}
-  "short_description" : {{ .Params.short_description | jsonify }},
-  {{ if  .Params.tags }}"tags" : {{ .Params.tags | jsonify }},{{ end }}
-  {{ if  .Params.industry }}"industry" : {{ .Params.industry | jsonify }},{{ end }}
-  "permalink" : "{{ .Permalink }}"
-}

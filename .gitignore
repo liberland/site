@@ -1,41 +1,4 @@
-# OS generated files #
-######################
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Node modules #
-################
-node_modules
-bower_components
-
-# Build folder #
-################
-public
-
-# Sublime projects #
-####################
-*sublime*
-
-# Caches #
-##########
-.sass-cache
-
-# Logs #
-########
-logs
+node_modules/
+.vscode/
 *.log
-
-# Runtime data #
-################
-pids
-*.pid
-*.seed
-
-
-# Vagrant
-.vagrant
