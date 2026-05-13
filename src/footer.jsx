@@ -123,10 +123,11 @@ function Footer() {
 
         <div style={{ paddingTop: 28, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16, fontSize: 12, color: "rgba(243,238,229,0.55)" }}>
           <div>© {year} Liberland Limited · {c.director}</div>
-          <div style={{ display: "flex", gap: 24 }}>
+          <div style={{ display: "flex", gap: 24, alignItems: "center", flexWrap: "wrap" }}>
             <span>Hong Kong company</span>
             <span>Hospitality & brokerage services</span>
             <span>Not a fund</span>
+            <a href="assets/liberland-limited-company-introduction.pdf" target="_blank" rel="noreferrer" style={{ color: "rgba(243,238,229,0.7)", textDecoration: "underline", textUnderlineOffset: 3 }}>Company introduction (PDF)</a>
           </div>
         </div>
       </div>
