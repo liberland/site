@@ -23,8 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r liberland-limited/. _site/
+          cp -r new-site _site/candidate
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: liberland-limited
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
