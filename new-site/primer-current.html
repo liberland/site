@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liberland — How to Stand for Congress · Candidate Primer</title>
-<meta name="description" content="Everything you need to do — and everything you should do — to stand as a candidate for the Liberland Congress.">
+<title>Liberland — How to Stand for Congress · Candidate Primer (Current System)</title>
+<meta name="description" content="A practical guide for citizens who want to run for Congress on the current Liberland blockchain — what the system requires today, on Substrate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -322,12 +322,10 @@
     color: inherit;
     transition: padding 0.25s ease, background 0.25s ease;
     border-radius: 2px;
-    border-bottom: 1px dotted var(--rule);
   }
   .toc-item:hover {
     padding-left: 12px;
     background: rgba(212, 168, 67, 0.08);
-    border-bottom: 1px dotted var(--rule);
   }
   .toc-item .num {
     font-family: var(--font-display);
@@ -529,65 +527,6 @@
     border: 1px solid rgba(58, 110, 165, 0.25);
   }
 
-  /* ==================== TIMELINE ==================== */
-  .timeline {
-    margin: 40px 0;
-    position: relative;
-    padding-left: 24px;
-    border-left: 2px solid var(--rule);
-  }
-  .timeline-item {
-    position: relative;
-    padding: 0 0 32px 28px;
-  }
-  .timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -32px;
-    top: 4px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--paper);
-    border: 3px solid var(--gold);
-  }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-phase {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-deep);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .timeline-title {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--navy-deep);
-    margin: 0 0 10px;
-  }
-  .timeline-body {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.6;
-  }
-  .timeline-duration {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    background: var(--paper-warm);
-    border: 1px solid var(--rule-soft);
-    padding: 2px 8px;
-    border-radius: 3px;
-    margin-left: 10px;
-    vertical-align: middle;
-  }
-
   /* ==================== STEPS ==================== */
   .step {
     display: grid;
@@ -699,6 +638,41 @@
   .do-dont ul { margin: 0; padding-left: 18px; }
   .do-dont li { font-size: 14px; margin-bottom: 8px; color: var(--ink-soft); }
 
+  /* ==================== WALLET GRID ==================== */
+  .wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .wallet {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 22px 24px;
+  }
+  .wallet .wname {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--navy-deep);
+    margin: 0 0 4px;
+  }
+  .wallet .wmeta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
+  }
+  .wallet p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+  }
+
   /* ==================== FOOTER ==================== */
   .doc-footer {
     background: var(--navy-deep);
@@ -774,6 +748,7 @@
     .do-dont { grid-template-columns: 1fr; }
     .do-dont .side.do { border-right: none; border-bottom: 1px solid var(--rule); }
     .fact-bar { grid-template-columns: 1fr 1fr; }
+    .wallet-grid { grid-template-columns: 1fr; }
     .toc { padding: 28px; }
     .toc-item { grid-template-columns: 36px 1fr; }
     .toc-item .page-num { display: none; }
@@ -791,7 +766,7 @@
 <!-- ==================== STICKY NAV ==================== -->
 <nav class="doc-nav">
   <div class="brand">Liberland <em>·</em> Standing for Congress</div>
-  <div class="meta">Candidate Primer · v1.0</div>
+  <div class="meta">Candidate Primer · Current System</div>
 </nav>
 
 <!-- ==================== COVER ==================== -->
@@ -814,12 +789,12 @@
     <div class="cover-meta">
       Free Republic of <b>Liberland</b><br>
       Office of the <b>Citizenship Commission</b><br>
-      Reference: <b>CC-CG-2026-01</b>
+      Reference: <b>CC-CG-CUR-01</b>
     </div>
     <div class="cover-rule">
       Citizen-facing publication<br>
-      Version 1.0 &middot; 2026<br>
-      Status: Primer
+      Current blockchain system<br>
+      Status: Live guidance
     </div>
   </div>
 
@@ -830,23 +805,23 @@
       Congress.
     </h1>
     <p class="cover-tagline">
-      A practical guide for citizens who want to run — what the system requires, what the
-      community expects, and how to make a campaign people actually remember.
+      Everything you need to do — and everything you should do — to run for a seat
+      in the Liberland Congress on the blockchain we use today.
     </p>
   </div>
 
   <div class="cover-bottom">
     <div class="col">
       <h4>The constitutional truth</h4>
-      <p>Twenty-one seats. Stake-weighted voting. The Constitution is the law; everything else is execution.</p>
+      <p>The Constitution is the law of Liberland. Everything below is how it's currently implemented.</p>
     </div>
     <div class="col">
       <h4>The on-chain mechanism</h4>
-      <p>Register, lock a deposit, get voted on with the D21 method. Everything verifiable on Ethereum L2.</p>
+      <p>A Substrate chain, a Polkadot-style wallet, a Phragmén election, voted in LLM-weight.</p>
     </div>
     <div class="col">
       <h4>The human work</h4>
-      <p>Be known. Say what you believe. Show up where citizens gather. The blockchain doesn't campaign for you.</p>
+      <p>The chain counts votes. It does not campaign for you. Become known, say what you mean.</p>
     </div>
   </div>
 </section>
@@ -863,35 +838,37 @@
   </p>
 
   <p>
-    This primer walks through everything a serious Congressional candidate should do.
-    Some items are <strong>mandatory</strong>: without them, your candidacy literally cannot
-    be registered on-chain. Some are <strong>strongly encouraged</strong>: candidates who skip
-    them tend to be invisible on election day. Some are <strong>optional but
+    This primer walks through everything a serious Congressional candidate should do on the
+    current blockchain — the Substrate-based chain operated at
+    <a href="https://blockchain.liberland.org">blockchain.liberland.org</a>. Some items are
+    <strong>mandatory</strong>: without them, the chain simply will not register your
+    candidacy. Some are <strong>strongly encouraged</strong>: candidates who skip them tend
+    to be invisible to most voters. Some are <strong>optional but
     differentiating</strong>: they're how a candidate becomes recognisable, trusted, and remembered.
   </p>
 
   <p>
-    Liberland is small. The full electorate is in the low thousands. That means two things:
-    a single well-made video can reach a meaningful share of voters, and a single bad-faith
-    move can follow you for years. Treat both ends seriously.
+    Liberland is small. The active electorate is in the low thousands and most of them never
+    meet each other in person. That means a single well-made video can reach a meaningful
+    share of voters, and a single bad-faith move can follow you for years. Treat both seriously.
   </p>
 
   <div class="fact-bar">
     <div>
-      <div class="v">21</div>
-      <div class="l">Congressional seats</div>
-    </div>
-    <div>
-      <div class="v">10</div>
-      <div class="l">Runner-up positions</div>
-    </div>
-    <div>
-      <div class="v">14<em>+</em>14</div>
-      <div class="l">Candidacy + voting days</div>
+      <div class="v">90</div>
+      <div class="l">Day election cycle</div>
     </div>
     <div>
       <div class="v">5,000<em>+</em></div>
-      <div class="l">LLM minimum stake</div>
+      <div class="l">LLM required to run</div>
+    </div>
+    <div>
+      <div class="v">5<em>h</em></div>
+      <div class="l">Per week, the job</div>
+    </div>
+    <div>
+      <div class="v">32</div>
+      <div class="l">Char limit on profile fields</div>
     </div>
   </div>
 
@@ -902,7 +879,7 @@
       <div class="num">i.</div>
       <div>
         <div class="title">Are you eligible?</div>
-        <div class="sub">The constitutional and on-chain prerequisites</div>
+        <div class="sub">Citizenship, Merits, and the welfare rule</div>
       </div>
       <div class="page-num">§ 1</div>
     </a>
@@ -914,61 +891,69 @@
       </div>
       <div class="page-num">§ 2</div>
     </a>
-    <a class="toc-item" href="#mandatory">
+    <a class="toc-item" href="#onboarding">
       <div class="num">iii.</div>
+      <div>
+        <div class="title">Getting on the chain</div>
+        <div class="sub">Wallet, identity, Merits — the prerequisite steps</div>
+      </div>
+      <div class="page-num">§ 3</div>
+    </a>
+    <a class="toc-item" href="#mandatory">
+      <div class="num">iv.</div>
       <div>
         <div class="title">The mandatory list</div>
         <div class="sub">Without these, you cannot run</div>
       </div>
-      <div class="page-num">§ 3</div>
+      <div class="page-num">§ 4</div>
     </a>
     <a class="toc-item" href="#encouraged">
-      <div class="num">iv.</div>
+      <div class="num">v.</div>
       <div>
         <div class="title">The strongly encouraged list</div>
         <div class="sub">The video, the platform, the public presence</div>
       </div>
-      <div class="page-num">§ 4</div>
+      <div class="page-num">§ 5</div>
     </a>
     <a class="toc-item" href="#optional">
-      <div class="num">v.</div>
+      <div class="num">vi.</div>
       <div>
         <div class="title">The optional differentiators</div>
         <div class="sub">Endorsements, AMAs, debates, longer-form writing</div>
       </div>
-      <div class="page-num">§ 5</div>
-    </a>
-    <a class="toc-item" href="#understanding-d21">
-      <div class="num">vi.</div>
-      <div>
-        <div class="title">How voters will actually decide</div>
-        <div class="sub">D21 in plain language — four thumbs up, one thumb down</div>
-      </div>
       <div class="page-num">§ 6</div>
     </a>
-    <a class="toc-item" href="#timeline">
+    <a class="toc-item" href="#phragmen">
       <div class="num">vii.</div>
       <div>
-        <div class="title">The election timeline</div>
-        <div class="sub">What happens, when, and what you do at each step</div>
+        <div class="title">How voters will actually decide</div>
+        <div class="sub">Weighted Phragmén in plain language</div>
       </div>
       <div class="page-num">§ 7</div>
     </a>
-    <a class="toc-item" href="#conduct">
+    <a class="toc-item" href="#election-moments">
       <div class="num">viii.</div>
+      <div>
+        <div class="title">"Election moments", not election days</div>
+        <div class="sub">Why votes persist across cycles and what that means for you</div>
+      </div>
+      <div class="page-num">§ 8</div>
+    </a>
+    <a class="toc-item" href="#conduct">
+      <div class="num">ix.</div>
       <div>
         <div class="title">Conduct, integrity, and pitfalls</div>
         <div class="sub">What earns trust — and what loses it permanently</div>
       </div>
-      <div class="page-num">§ 8</div>
+      <div class="page-num">§ 9</div>
     </a>
     <a class="toc-item" href="#after">
-      <div class="num">ix.</div>
+      <div class="num">x.</div>
       <div>
-        <div class="title">After the vote — win or lose</div>
-        <div class="sub">Seating, runner-up status, and the next cycle</div>
+        <div class="title">After the cycle — win or lose</div>
+        <div class="sub">Seating, persistence of votes, and what comes next</div>
       </div>
-      <div class="page-num">§ 9</div>
+      <div class="page-num">§ 10</div>
     </a>
   </div>
 
@@ -977,48 +962,35 @@
   <h2 class="in-page">Before anything else, the eligibility check</h2>
 
   <p>
-    The on-chain system enforces five conditions before it will accept your candidacy registration.
-    These are evaluated by <code>CandidateEligibilityPolicy</code> at the moment you call
-    <code>registerCandidate()</code>. None of them are negotiable, and none can be waived.
+    The current Liberland blockchain checks three things before it will accept a candidacy
+    application. None of them are negotiable, and none can be waived.
   </p>
 
   <table>
-    <thead><tr><th>Requirement</th><th>Where it's checked</th><th>What "fail" looks like</th></tr></thead>
+    <thead><tr><th>Requirement</th><th>What "fail" looks like</th></tr></thead>
     <tbody>
       <tr>
-        <td><strong>You are a verified citizen</strong> of Liberland</td>
-        <td><code>IdentityRegistry</code></td>
-        <td>E-residents and applicants cannot run. KYC must be complete.</td>
+        <td><strong>You are a full citizen</strong> with on-chain identity</td>
+        <td>E-residents and applicants cannot run. You must have completed onboarding and claimed citizenship on-chain.</td>
       </tr>
       <tr>
-        <td><strong>You are an adult</strong> by the registry definition</td>
-        <td><code>IdentityRegistry</code></td>
-        <td>Minors cannot run; this is a Constitution-level requirement.</td>
+        <td><strong>You hold at least 5,000 Merits (LLM)</strong></td>
+        <td>Below 5,000 LLM, you cannot apply. This threshold also gates voting and other political rights.</td>
       </tr>
       <tr>
-        <td><strong>You have the minimum active stake</strong> (5,000+ LLM in good standing)</td>
-        <td><code>StakeRegistry</code></td>
-        <td>Liquid LLM doesn't count. It must be politically pooled (staked).</td>
-      </tr>
-      <tr>
-        <td><strong>No active unstaking cooldown</strong> on your stake</td>
-        <td><code>StakeRegistry</code></td>
-        <td>If you've started unstaking and the cooldown hasn't elapsed, you're locked out for this cycle.</td>
-      </tr>
-      <tr>
-        <td><strong>No final suspension</strong> against you</td>
-        <td><code>IdentityRegistry</code></td>
-        <td>Citizens under final judicial suspension cannot stand.</td>
+        <td><strong>You are not on welfare</strong></td>
+        <td>Citizens currently receiving welfare benefits cannot run for Congress. This applies to voting eligibility as well.</td>
       </tr>
     </tbody>
   </table>
 
   <div class="callout">
-    <h4>Read this before you stake</h4>
+    <h4>The job is real work</h4>
     <p>
-      If your LLM is not currently staked (politically pooled), staking it now means it counts.
-      But starting to <em>unstake</em> before or during a candidacy window will disqualify you
-      from this election. If in doubt, leave your stake alone for the full cycle.
+      The current docs are explicit: <strong>it takes a minimum of five hours a week to do the
+      job of Liberland congressman properly.</strong> If you don't have those five hours every week
+      for the next term, this is not the moment to run. Citizens read absence in Congress as
+      bad faith.
     </p>
   </div>
 
@@ -1036,14 +1008,14 @@
   <div class="tier-grid">
     <div class="tier mandatory">
       <div class="tier-label">▼ Mandatory</div>
-      <h3>The on-chain registration</h3>
+      <h3>On-chain registration</h3>
       <p>Without these, your candidacy literally does not exist in the system.</p>
       <ul>
-        <li>Verified blockchain identity</li>
-        <li>Minimum 5,000 LLM staked</li>
-        <li>Candidacy registered on-chain</li>
-        <li>Candidacy deposit locked</li>
-        <li>All within the 14-day window</li>
+        <li>Citizenship onboarded on-chain</li>
+        <li>5,000+ Merits in your account</li>
+        <li>Not on welfare</li>
+        <li>Candidacy submitted via the Congress tab</li>
+        <li>On-chain identity (display name) set</li>
       </ul>
     </div>
     <div class="tier recommended">
@@ -1052,7 +1024,7 @@
       <p>Skipping these means most citizens have no idea who you are on election day.</p>
       <ul>
         <li>A short campaign video (1–3 min)</li>
-        <li>A written candidate statement</li>
+        <li>A candidate page (own or liberland.org)</li>
         <li>An introduction post on the Forum</li>
         <li>Presence in Liberland Chat (Matrix)</li>
         <li>Clear position on 2–3 issues</li>
@@ -1066,18 +1038,109 @@
         <li>Long-form policy writing</li>
         <li>Live AMA on Matrix or Spaces</li>
         <li>Participation in candidate debates</li>
-        <li>Endorsements from named citizens</li>
+        <li>Named endorsements from citizens</li>
         <li>Track record of prior contribution</li>
       </ul>
     </div>
   </div>
 
-  <!-- ==================== § 3 — Mandatory ==================== -->
-  <p class="eyebrow" id="mandatory">§ 3 — Mandatory</p>
+  <!-- ==================== § 3 — Onboarding ==================== -->
+  <p class="eyebrow" id="onboarding">§ 3 — Get on the chain first</p>
+  <h2 class="in-page">If you haven't used the blockchain yet, start here</h2>
+
+  <p>
+    The current Liberland blockchain is built on Substrate — the same framework Polkadot
+    uses — and accepts standard Polkadot-ecosystem wallets. You need one before you can
+    do anything else. The full onboarding flow is documented at
+    <a href="https://docs.liberland.org/blockchain/for-citizens/onboarding">docs.liberland.org</a>;
+    this is the short version.
+  </p>
+
+  <div class="step">
+    <div class="step-num">1.</div>
+    <div class="step-body">
+      <h3>Confirm your status on the main website</h3>
+      <p>
+        Sign in at liberland.org. Confirm that your citizenship is active and that your Merit
+        balance is at least 5,000. If anything is off, contact the Citizenship Office before
+        going any further — fix on the website first, then on the chain.
+      </p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2.</div>
+    <div class="step-body">
+      <h3>Install a wallet</h3>
+      <p>Pick one and save the 12-word mnemonic seed phrase on paper. Anything you write it on must not be lost and must not be found by anyone else. Do not take a photo of it.</p>
+      <div class="wallet-grid">
+        <div class="wallet">
+          <div class="wname">SubWallet</div>
+          <div class="wmeta">Mobile · Browser · Recommended</div>
+          <p>The wallet the docs are written around. Mobile app works well on iOS and Android, and there's a browser extension for desktop.</p>
+        </div>
+        <div class="wallet">
+          <div class="wname">Talisman</div>
+          <div class="wmeta">Browser extension · Desktop</div>
+          <p>Polished extension for desktop browsers. Strong UX for managing multiple Substrate accounts at once.</p>
+        </div>
+        <div class="wallet">
+          <div class="wname">Polkadot.js</div>
+          <div class="wmeta">Browser extension · Technical</div>
+          <p>The reference extension. Less polished but maximally compatible — works with everything in the Substrate world.</p>
+        </div>
+        <div class="wallet">
+          <div class="wname">Ledger</div>
+          <div class="wmeta">Hardware · Polkadot app</div>
+          <p>If you hold significant LLD/LLM, use hardware. Install the Polkadot app on your Ledger to sign Liberland transactions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3.</div>
+    <div class="step-body">
+      <h3>Visit blockchain.liberland.org and claim</h3>
+      <p>
+        Open the dApp at <a href="https://blockchain.liberland.org">blockchain.liberland.org</a>
+        in the browser where your wallet is installed (or scan-pair from the mobile wallet).
+        Follow the on-screen flow to claim your citizenship and your Merits on-chain. Merits
+        typically arrive in about one business day after the claim is processed.
+      </p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4.</div>
+    <div class="step-body">
+      <h3>Set your identity</h3>
+      <p>
+        On the dApp, open your <a href="https://blockchain.liberland.org/home/profile">profile</a>
+        and click <strong>Update identity</strong>. This is where you set your display name,
+        legal name, and candidacy website — the three fields that appear next to your name
+        on every ballot. <strong>Each field has a 32-character limit.</strong> For long URLs,
+        use a shortener or ask a web admin for help.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <h4>The seed phrase is the only key</h4>
+    <p>
+      If you lose your 12-word phrase, no one in Liberland — not the Citizenship Office,
+      not the validators, not the Provisional Government — can recover your account. If
+      someone else gets it, they have your political identity and your Merits. Write it
+      down on paper. Keep it somewhere safe. Tell no one.
+    </p>
+  </div>
+
+  <!-- ==================== § 4 — Mandatory ==================== -->
+  <p class="eyebrow" id="mandatory">§ 4 — Mandatory</p>
   <h2 class="in-page">What you must do</h2>
 
   <p>
-    These are the items the smart contracts and the election law require. They are
+    These are the items the current chain and the election rules require. They are
     binary — either done or not — and there is no campaign without them.
   </p>
 
@@ -1085,63 +1148,67 @@
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">Your blockchain identity is set up and verified</div>
-        <div class="sub">Citizen ID linked to your EVM wallet address in <code>IdentityRegistry</code>. If you've onboarded through the standard Liberland flow (email + password, or WalletConnect), this is already done.</div>
+        <div class="label">Citizenship claimed on-chain and identity set</div>
+        <div class="sub">Your citizenship status is reflected in your on-chain account, and your identity (display name at minimum) is set in your profile.</div>
       </div>
       <div class="check-tag required">Required</div>
     </div>
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">At least 5,000 LLM is politically pooled (staked)</div>
-        <div class="sub">Liquid balance does not count toward eligibility. Stake must be active — no unstaking cooldown in progress.</div>
+        <div class="label">At least 5,000 Merits in your account</div>
+        <div class="sub">The hard threshold for political rights — including standing for Congress. Confirm the balance in your wallet before applying.</div>
       </div>
       <div class="check-tag required">Required</div>
     </div>
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">You have a clean status in the system</div>
-        <div class="sub">No final suspension against you. If you've had any judicial proceedings, check your status in your DigiID dashboard before registering.</div>
+        <div class="label">You are not currently on welfare</div>
+        <div class="sub">Citizens on welfare are excluded from both voting and standing for Congress. If you're unsure of your status, check before applying.</div>
       </div>
       <div class="check-tag required">Required</div>
     </div>
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">Your candidacy is registered on-chain during the 14-day window</div>
-        <div class="sub">Submit through the Congress Election app. The transaction calls <code>registerCandidate()</code> and locks your deposit. Registration outside this window is simply not accepted.</div>
+        <div class="label">Application submitted via the Congress tab</div>
+        <div class="sub">Open <a href="https://blockchain.liberland.org">blockchain.liberland.org</a>, go to the Congress tab, click <strong>Apply for Congress</strong>, and sign the transaction with your wallet.</div>
       </div>
       <div class="check-tag required">Required</div>
     </div>
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">Your candidacy deposit is locked</div>
-        <div class="sub">An anti-spam deposit is locked when you register. It is returned to all candidates after the election, regardless of whether you won. The amount is set by current governance and visible in the registration interface before you confirm.</div>
+        <div class="label">Display name, legal name, and website set in your profile</div>
+        <div class="sub">These are the three fields voters see next to your name on the ballot. All three are limited to 32 characters. Use a URL shortener for long links.</div>
       </div>
       <div class="check-tag required">Required</div>
     </div>
   </div>
 
-  <div class="callout navy">
-    <h4>Tie-break: earlier registration wins</h4>
-    <p>
-      If two candidates finish with identical D21 scores, the one whose <code>registerCandidate()</code>
-      transaction was confirmed earlier on-chain ranks higher. This is rare but real. If
-      you intend to stand, there is no reason to wait until the last day.
-    </p>
-  </div>
-
-  <h3>Withdrawing your candidacy</h3>
+  <h3>About the candidate website field</h3>
   <p>
-    You can withdraw any time during the candidacy phase by calling <code>withdrawCandidate()</code>.
-    Your deposit is returned. Once voting starts, withdrawal is closed — your name remains on the ballot
-    and votes against you still count. Decide early.
+    The <em>website</em> field on the candidate list points to wherever a voter goes to learn
+    about you. You have two choices:
+  </p>
+  <ul>
+    <li><strong>Your own URL.</strong> Anything you control — a personal site, a Forum thread,
+    a LinkedIn page, a Substack post. Keep the URL short or shorten it; the 32-character
+    limit is strict.</li>
+    <li><strong>An official liberland.org candidate page.</strong> The site can host candidate
+    pages at <code>liberland.org/elections</code>. Send a document with the content you'd like
+    on your page to a web admin and they will set it up. For an example of the format, see
+    past candidate sites under that URL.</li>
+  </ul>
+
+  <p>
+    Once your page exists, set its URL in your on-chain profile via the
+    <strong>Update identity</strong> action.
   </p>
 
-  <!-- ==================== § 4 — Encouraged ==================== -->
-  <p class="eyebrow" id="encouraged">§ 4 — Strongly encouraged</p>
+  <!-- ==================== § 5 — Encouraged ==================== -->
+  <p class="eyebrow" id="encouraged">§ 5 — Strongly encouraged</p>
   <h2 class="in-page">What separates real candidates from names on a list</h2>
 
   <p>
@@ -1151,26 +1218,25 @@
     you are competing only on name recognition — and most candidates don't have any.
   </p>
 
-  <!-- Spot box -->
   <div class="spot-box">
     <p class="eyebrow">The spot</p>
     <h3>A short campaign video</h3>
     <p>
-      Optional in the strictest sense — no smart contract checks for it — but in practice
+      Optional in the strictest sense — the chain doesn't check for it — but in practice
       this is the single most valuable piece of campaigning a candidate can produce. A
       one-to-three minute video where you, on camera, explain who you are, why you're
-      running, and what you would do in Congress.
+      running, and what you would actually do in Congress.
     </p>
     <p>
       It does not need production value. It needs to be <em>you</em>, speaking directly,
       saying something real. A clear, honest two-minute take filmed on a phone outperforms
-      a polished but generic clip every time. Citizens are voting on whether they trust
-      you to make decisions on their behalf for the next term. A face and a voice make
-      that judgement possible.
+      a polished but generic clip every time. Citizens are voting on whether they trust you
+      to make decisions on their behalf for the next term. A face and a voice make that
+      judgement possible.
     </p>
     <p>
-      Post it on the Forum, link it in your candidacy statement, share it in Liberland Chat.
-      Keep it pinned for the duration of the campaign.
+      Embed it on your candidate page, link it in your Forum introduction, share it in
+      Liberland Chat. Keep it pinned for the duration of the campaign.
     </p>
   </div>
 
@@ -1186,8 +1252,8 @@
     <div class="checklist-item">
       <div class="check-box"></div>
       <div class="check-content">
-        <div class="label">Write a candidate statement</div>
-        <div class="sub">300–800 words. Your background, your priorities, your stance on the 2–3 issues you actually care about. Treat it as the document people read after they watch the video.</div>
+        <div class="label">Build a candidate page</div>
+        <div class="sub">Either your own site, a single-page write-up at <code>liberland.org/elections</code>, or a long Forum thread. Whichever you pick, that URL goes in the candidate profile's website field.</div>
       </div>
       <div class="check-tag encouraged">Encouraged</div>
     </div>
@@ -1195,7 +1261,7 @@
       <div class="check-box"></div>
       <div class="check-content">
         <div class="label">Introduce yourself on the Liberland Forum</div>
-        <div class="sub">A dedicated thread at <code>forum.liberland.org</code>. Pin your video, paste your statement, link your wallet address so citizens can verify your on-chain registration. Reply to comments.</div>
+        <div class="sub">A dedicated thread at <code>forum.liberland.org</code>. Embed your video, link your candidate page, post your on-chain account address so citizens can verify it matches the candidate list. Reply to comments.</div>
       </div>
       <div class="check-tag encouraged">Encouraged</div>
     </div>
@@ -1211,7 +1277,7 @@
       <div class="check-box"></div>
       <div class="check-content">
         <div class="label">State your position on 2–3 substantive issues</div>
-        <div class="sub">Pick the issues you actually have something to say about. Generic libertarian talking points are background noise — citizens will reward specifics: what you'd vote for, what you'd vote against, what you'd propose.</div>
+        <div class="sub">Pick the issues you actually have something to say about. Generic libertarian talking points are background noise — citizens reward specifics: what you'd vote for, what you'd vote against, what you'd propose.</div>
       </div>
       <div class="check-tag encouraged">Encouraged</div>
     </div>
@@ -1225,14 +1291,14 @@
     </div>
   </div>
 
-  <!-- ==================== § 5 — Optional ==================== -->
-  <p class="eyebrow" id="optional">§ 5 — Optional differentiators</p>
+  <!-- ==================== § 6 — Optional ==================== -->
+  <p class="eyebrow" id="optional">§ 6 — Optional differentiators</p>
   <h2 class="in-page">What separates finalists from also-rans</h2>
 
   <p>
-    These are not required. Many successful candidates have run without them. But they
-    consistently appear in the campaigns of citizens who finish in the top of the
-    rankings. Pick the ones that fit your style and your time.
+    None of these are required. Many successful candidates have run without them. But they
+    consistently appear in the campaigns of citizens who finish at the top of the rankings.
+    Pick the ones that fit your style and your time.
   </p>
 
   <div class="checklist">
@@ -1256,7 +1322,7 @@
       <div class="check-box"></div>
       <div class="check-content">
         <div class="label">Participate in candidate debates</div>
-        <div class="sub">If community-organised debates happen — and they often do — show up. Declining sends a stronger signal than any of your campaign material.</div>
+        <div class="sub">When community-organised debates happen — and they often do — show up. Declining sends a stronger signal than any of your campaign material.</div>
       </div>
       <div class="check-tag optional">Optional</div>
     </div>
@@ -1264,7 +1330,7 @@
       <div class="check-box"></div>
       <div class="check-content">
         <div class="label">Collect named endorsements</div>
-        <div class="sub">Citizens, current and former Congress members, validators, registrars. Endorsements only count when they're public, named, and tied to a real on-chain identity.</div>
+        <div class="sub">Citizens, current and former Congress members, validators, ministry staff. Endorsements only count when they're public, named, and tied to a real on-chain identity.</div>
       </div>
       <div class="check-tag optional">Optional</div>
     </div>
@@ -1272,15 +1338,7 @@
       <div class="check-box"></div>
       <div class="check-content">
         <div class="label">Document your prior contribution</div>
-        <div class="sub">If you've already done work for Liberland — code, writing, organising, validator operation, judicial scaffolding — link it. Track record beats promises.</div>
-      </div>
-      <div class="check-tag optional">Optional</div>
-    </div>
-    <div class="checklist-item">
-      <div class="check-box"></div>
-      <div class="check-content">
-        <div class="label">Run a personal site or campaign page</div>
-        <div class="sub">Optional, but useful if you want one canonical link to share. Keep it minimal — citizens will follow it back to the Forum anyway.</div>
+        <div class="sub">If you've already done work for Liberland — code, writing, organising, validator operation, judicial scaffolding, public events — link it. Track record beats promises.</div>
       </div>
       <div class="check-tag optional">Optional</div>
     </div>
@@ -1294,126 +1352,114 @@
     </div>
   </div>
 
-  <!-- ==================== § 6 — D21 ==================== -->
-  <p class="eyebrow" id="understanding-d21">§ 6 — The voting method</p>
+  <!-- ==================== § 7 — Phragmén ==================== -->
+  <p class="eyebrow" id="phragmen">§ 7 — The voting method</p>
   <h2 class="in-page">How voters will actually decide</h2>
 
   <p>
-    Liberland uses the Janeček D21 method, with each citizen's vote weighted by their staked LLM.
-    Understanding this changes how you campaign — because it changes what voters can do with
-    you on the ballot.
+    The current Liberland blockchain uses <strong>Weighted Phragmén</strong> — the same
+    algorithm Polkadot uses to elect its on-chain bodies. It's a single algorithm with one
+    job: convert a set of voters (each with some weight in Merits) and their candidate
+    preferences into a Congress, while wasting as few votes as possible.
   </p>
 
-  <p>Each voter has:</p>
-  <ul>
-    <li><strong>Up to four positive votes</strong> ("thumbs up") to give to different candidates.</li>
-    <li><strong>Up to one negative vote</strong> ("thumbs down") to give to a single candidate.</li>
-  </ul>
+  <h3>What a voter actually does</h3>
+  <p>
+    A voter selects every candidate they would be happy to see in Congress. There is no
+    fixed limit on how many. They can rank them in order of preference if they like —
+    but the ranking only matters for selecting the Speaker of Congress later, not for
+    electing members.
+  </p>
 
   <p>
-    Each vote is weighted by the voter's politically pooled LLM at the start of the voting period.
-    Your final <strong>score</strong> is the sum of positive vote-weights minus the sum of negative
-    vote-weights. Scores can be negative. The 21 highest scores fill Congress; the next 10 become
-    runners-up.
+    The algorithm then redistributes weight intelligently. If a voter chose three
+    candidates and the first two are already comfortably elected by other voters' weight,
+    the algorithm shifts that voter's weight toward their third choice, where it might
+    actually make a difference. This is the "vote isn't wasted" property and it changes
+    how candidates should think about their base.
   </p>
 
   <h3>What this means for your strategy</h3>
 
   <div class="do-dont">
     <div class="side do">
-      <h4>↑ What works under D21</h4>
+      <h4>↑ What works under Phragmén</h4>
       <ul>
-        <li>Being a candidate that <em>broadly acceptable</em> citizens can give one of their four positive votes to.</li>
-        <li>Clear positions stated calmly — citizens reward specificity.</li>
-        <li>Reaching beyond your existing supporters. The marginal positive vote often comes from someone who agrees with you on one issue out of three.</li>
-        <li>Visible decency. The downvote in D21 is rare but devastating — it costs the full weight of a large stakeholder, not just one vote.</li>
+        <li>Being the candidate a broad set of voters are comfortable adding to their selection — not just their first choice.</li>
+        <li>Substantive positions on real issues. Most voters select multiple candidates; you want to be on the list, not necessarily at the top.</li>
+        <li>Reaching beyond your existing supporters. Even a marginal addition to a voter's selection can swing the algorithm in your favour.</li>
+        <li>Visibility late in the cycle. Because votes can be updated at any time, undecideds often pick their last selections in the final days.</li>
       </ul>
     </div>
     <div class="side dont">
       <h4>↓ What backfires</h4>
       <ul>
-        <li>Polarising positions designed to excite a base. Under D21, the citizens you repel matter as much as the ones you energise.</li>
-        <li>Attacking other candidates by name. This tends to invite reciprocal negative votes and rarely converts anyone.</li>
-        <li>Vague platitudes. With only four positive votes to allocate, voters prefer candidates with at least one concrete position.</li>
-        <li>Disappearing after registration. Silence between candidacy registration and election day is read as "doesn't actually want this."</li>
+        <li>Polarising positions. There is no formal downvote, but citizens who actively dislike you simply leave you off their selection — and that's most of what matters.</li>
+        <li>Attacking other candidates by name. It tends to push their supporters to drop you from their list rather than convert them.</li>
+        <li>Vague platitudes. Voters who have ten candidates to evaluate skim hard. Specificity is what catches them.</li>
+        <li>Disappearing after applying. Silence between submission and election day reads as "doesn't actually want this."</li>
       </ul>
     </div>
   </div>
 
   <div class="callout">
-    <h4>A worked example</h4>
+    <h4>Delegation: don't be surprised by it</h4>
     <p>
-      Five candidates, three voters (Alice with 10,000 LLM staked, Bob with 50,000, Carol with 5,000).
-      Alice gives +1 each to A, B, C and a −1 to E. Bob gives +1 each to A, B, D and a −1 to C.
-      Carol gives +1 each to B, C, D, E and a −1 to A.
-    </p>
-    <p>
-      Candidate B finishes first with 65,000 (everyone supported, no one opposed). Candidates A and
-      D tie at 55,000 — A wins the tie on earlier registration. Candidate C drops to −35,000 because
-      Bob's single downvote at 50,000 LLM weight overwhelmed two smaller positive votes. <strong>
-      One large-stakeholder downvote can sink a candidate two small upvotes had supported.</strong>
-      The system is meritocratic in the constitutional sense: stake matters.
+      Voters who don't want to evaluate every candidate themselves can <strong>delegate</strong>
+      their voting power to a sitting member of Congress. That delegate's selections then
+      apply with the delegator's Merit weight added. This means a respected Congress member
+      can move significant weight by including you in their selection — and excluding you
+      moves it the other way. Cultivate relationships with sitting Congress members early,
+      not the week before the cycle ends.
     </p>
   </div>
 
-  <!-- ==================== § 7 — Timeline ==================== -->
-  <p class="eyebrow" id="timeline">§ 7 — The election cycle</p>
-  <h2 class="in-page">What happens, when, and what you do</h2>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 1 — Candidacy Registration <span class="timeline-duration">14 days</span></div>
-      <div class="timeline-title">Get on the ballot, get yourself known</div>
-      <div class="timeline-body">
-        Eligible citizens call <code>registerCandidate()</code>; the deposit locks. Minimum 22 candidates
-        must register for the election to proceed (one more than the number of seats). If fewer than
-        22 register, the phase extends by 7 days; if still under 22, all registered candidates win
-        by default. <strong>What you do:</strong> register early in the window, publish your video and
-        statement on the Forum, introduce yourself on Matrix.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 2 — Voting <span class="timeline-duration">14 days</span></div>
-      <div class="timeline-title">Citizens cast and change votes on-chain</div>
-      <div class="timeline-body">
-        Each vote is a transaction that records voter, candidate, and direction (+/−). Votes are
-        publicly verifiable. Vote weight is snapshotted at the start of this phase. <strong>What
-        you do:</strong> stay visible, answer questions, do an AMA if you can, participate in any
-        community-organised debates. Stop posting promotional material in the last 48 hours — it
-        reads as desperation.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 3 — Tallying <span class="timeline-duration">Automatic</span></div>
-      <div class="timeline-title">On-chain finalisation</div>
-      <div class="timeline-body">
-        Scores compute automatically at end of voting. Top 21 → Congress; next 10 → runners-up.
-        Results are immutable. A 14-day challenge window follows, during which the Supreme Court
-        can review procedural issues. <strong>What you do:</strong> nothing on-chain; thank
-        supporters and people who debated honestly with you.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 4 — Seating <span class="timeline-duration">After challenge period</span></div>
-      <div class="timeline-title">The new Congress takes office</div>
-      <div class="timeline-body">
-        After the 14-day challenge period clears, the new Congress is seated. The previous
-        Congress remains in office until that moment, so there is no governance gap. All
-        candidate deposits are returned regardless of outcome.
-      </div>
-    </div>
-  </div>
-
-  <h3>By-elections and vacancies</h3>
+  <h3>Speaker of Congress: where preference ordering matters</h3>
   <p>
-    If a Congress member resigns, is dismissed, or is removed by Public Veto, the highest-ranked
-    runner-up takes the seat automatically. Only if no runners-up remain does a by-election trigger,
-    using the same D21 method but with a shortened 7-day candidacy and 7-day voting period.
-    Runners-up: stay engaged, your seat may still come.
+    Once Congress is elected, the <em>preference order</em> in each voter's selection is used
+    to pick the Speaker. If you have ambitions beyond a seat — toward chairing the chamber —
+    you also need voters to put you near the top of their list, not just on it.
   </p>
 
-  <!-- ==================== § 8 — Conduct ==================== -->
-  <p class="eyebrow" id="conduct">§ 8 — Conduct &amp; integrity</p>
+  <!-- ==================== § 8 — Election moments ==================== -->
+  <p class="eyebrow" id="election-moments">§ 8 — The cycle</p>
+  <h2 class="in-page">"Election moments", not election days</h2>
+
+  <p>
+    Liberland Congressional elections conclude every <strong>90 days</strong>, but they are
+    not single-day events. The current docs use a specific phrase for what actually happens:
+    <em>election moments</em>. Votes do not reset between cycles — unless a citizen
+    actively changes their selection, their previous vote carries forward into the next
+    cycle automatically.
+  </p>
+
+  <p>This changes how a candidate should think about timing:</p>
+
+  <ul>
+    <li><strong>You don't get a 14-day window of attention.</strong> You get whatever attention
+    you earn from citizens whenever they happen to log in and reconsider their selections.</li>
+    <li><strong>Applying just before a cycle ends is too late.</strong> Most voters set their
+    selection weeks earlier and never change it. Apply early in the cycle and start being
+    visible immediately.</li>
+    <li><strong>Once you're in the candidate list, you stay in it</strong> until you withdraw or
+    the cycle resolves. Don't wait for "campaign season" — Liberland politics doesn't really
+    have one.</li>
+    <li><strong>Delegation persists too.</strong> A delegator who picked a sitting member months
+    ago is still delegating now. If your relationship with that member changes, the weight
+    behind your name changes too — silently, on its own.</li>
+  </ul>
+
+  <div class="callout navy">
+    <h4>The practical implication</h4>
+    <p>
+      <strong>Treat campaigning as a continuous activity, not a sprint.</strong> Candidates
+      who appear three weeks before the cycle ends, push hard, then disappear, do worse than
+      candidates who are quietly visible for the full 90 days. The chain rewards persistence.
+    </p>
+  </div>
+
+  <!-- ==================== § 9 — Conduct ==================== -->
+  <p class="eyebrow" id="conduct">§ 9 — Conduct &amp; integrity</p>
   <h2 class="in-page">What earns trust — and what loses it permanently</h2>
 
   <p>
@@ -1426,11 +1472,11 @@
   <div class="callout red">
     <h4>The things candidates lose campaigns over</h4>
     <ul style="margin: 8px 0 0;">
-      <li><strong>Hidden financial conflicts.</strong> If you have a commercial interest that touches Liberland policy, disclose it in your candidate statement. Citizens forgive disclosed conflicts; they do not forgive discovered ones.</li>
-      <li><strong>Coordinated vote-buying.</strong> Soliciting LLM-weighted votes in exchange for any benefit is treated as a constitutional violation. Don't.</li>
+      <li><strong>Hidden financial conflicts.</strong> If you have a commercial interest that touches Liberland policy, disclose it in your candidate page. Citizens forgive disclosed conflicts; they do not forgive discovered ones.</li>
+      <li><strong>Vote-buying.</strong> Soliciting LLM-weighted votes in exchange for any benefit, on-chain or off, is a constitutional violation. Don't.</li>
       <li><strong>Sockpuppet endorsements.</strong> Endorsements from anonymous or newly-created accounts are easy to spot and uniformly counterproductive.</li>
-      <li><strong>Personal attacks on other candidates.</strong> A downvote in D21 is procedural, not editorial — attacking another candidate by name in your campaign material tends to mobilise their supporters' downvotes against you.</li>
-      <li><strong>Going dark after registration.</strong> Citizens read silence as either bad faith or lack of commitment. Both are reasons not to vote for you.</li>
+      <li><strong>Personal attacks on other candidates.</strong> In Phragmén, the cost of being attacked is that the attacker's supporters drop the target from their list — but the attacker often loses voters faster. It rarely converts anyone.</li>
+      <li><strong>Going dark after applying.</strong> The cycle is 90 days. Disappearing for 80 of them and then asking for votes is a strong signal of how you'll behave in office.</li>
     </ul>
   </div>
 
@@ -1442,41 +1488,42 @@
     for a position they take seriously — not a marketing exercise, not a personality contest.
   </p>
 
-  <!-- ==================== § 9 — After ==================== -->
-  <p class="eyebrow" id="after">§ 9 — After the vote</p>
+  <!-- ==================== § 10 — After ==================== -->
+  <p class="eyebrow" id="after">§ 10 — After the cycle</p>
   <h2 class="in-page">Win or lose, what comes next</h2>
 
   <h3>If you're elected to Congress</h3>
   <p>
-    You will be seated after the 14-day challenge window. From that point you have the powers
-    and duties described in the Constitution and the Citizenship Law: voting on referenda
-    submitted by Congress, exercising the limited delay power for formal defects, and the rest
-    of the Congressional remit. The on-chain <code>CongressRegistry</code> reflects your status;
-    services that gate on Congress membership recognise you automatically.
+    You take your seat immediately when the cycle resolves. From that point you have the
+    powers and duties described in the Constitution and the Citizenship Law: proposing and
+    passing legislation (subject to public referenda), passing budgets (subject to Senate
+    veto), and the rest of the Congressional remit. <strong>The five-hours-a-week minimum
+    is not a guideline; it is the floor.</strong> Citizens watch attendance and participation
+    in the next cycle's selection.
   </p>
 
-  <h3>If you're a runner-up</h3>
+  <h3>If you're not elected this cycle</h3>
   <p>
-    The next 10 candidates by score become runners-up. If a seat opens during the term, the
-    highest-ranked available runner-up fills it without an election. This is not a consolation
-    prize — runners-up have filled seats in real cycles. Stay engaged. Keep contributing.
+    Your application remains active. Your Merits are unaffected. Your political rights are
+    unchanged. And — because votes persist across cycles — the citizens who selected you
+    this cycle will still be selecting you in the next one, unless they actively change
+    their minds. The natural strategy is to keep doing what made them pick you in the
+    first place: stay visible, stay substantive, stay in the conversation.
   </p>
 
-  <h3>If you finish further down — or with a negative score</h3>
+  <h3>If you want to withdraw</h3>
   <p>
-    A negative score is not a disqualification. It simply means more weighted opposition than support
-    in this cycle. Your deposit is returned, your citizenship is unaffected, your political rights
-    are unchanged, and nothing stops you running again in the next cycle. Many citizens who serve
-    in Congress lost their first race. The community remembers candidates who run a clean,
-    substantive campaign even when they don't win.
+    You can remove your candidacy at any time from the Congress tab. Your Merits remain
+    yours. Withdrawal is reversible — you can reapply in a later cycle without penalty.
   </p>
 
   <div class="callout green">
     <h4>A note on losing well</h4>
     <p>
       The best thing a defeated candidate can do is publish a short post — on the Forum, on
-      Matrix — acknowledging the result, thanking voters, and saying what they intend to keep
-      working on. It costs nothing and almost always pays back the next time you stand.
+      Matrix — acknowledging the result, thanking voters, and saying what they intend to
+      keep working on. Because votes persist across cycles, this is also the most direct
+      way to keep the support you already have for the next round.
     </p>
   </div>
 
@@ -1485,23 +1532,25 @@
   <h2 class="in-page">The shortest version of this guide</h2>
 
   <ol>
-    <li><strong>Confirm eligibility.</strong> Citizen, adult, 5,000+ LLM staked, no cooldown, no suspension.</li>
-    <li><strong>Register on-chain during the 14-day candidacy window.</strong> Deposit locks; tie-break favours earlier registration.</li>
+    <li><strong>Confirm eligibility.</strong> Full citizen, 5,000+ Merits, not on welfare.</li>
+    <li><strong>Onboard.</strong> Install a wallet (SubWallet, Talisman, Polkadot.js, or Ledger), claim your citizenship and Merits at <code>blockchain.liberland.org</code>.</li>
+    <li><strong>Apply.</strong> Submit via the Congress tab. Set your display name, legal name, and website on your profile (32-character limit each).</li>
     <li><strong>Publish your campaign video.</strong> One to three minutes. You, on camera, telling the truth.</li>
-    <li><strong>Publish your candidate statement and pin it on the Forum.</strong> Stake out 2–3 real positions.</li>
+    <li><strong>Build a candidate page.</strong> Your own URL or an official one at <code>liberland.org/elections</code>. Link it in your on-chain profile.</li>
     <li><strong>Be present where citizens are.</strong> Forum threads, Matrix chat, any community AMAs or debates.</li>
     <li><strong>Run cleanly.</strong> Disclose conflicts, avoid personal attacks, no sockpuppets.</li>
-    <li><strong>Stay visible through the voting period.</strong> Answer questions; don't disappear.</li>
+    <li><strong>Stay visible across the full 90 days.</strong> Votes persist; attention is continuous.</li>
     <li><strong>Whatever the result, close it well.</strong> Thank voters, name what you'll keep working on.</li>
   </ol>
 
   <div class="callout navy">
     <h4>The constitutional truth</h4>
     <p>
-      Liberland's election system is built on the Constitution. The Referendum Law and the on-chain
-      mechanics are how the Constitution is implemented — they can be changed by lawful process.
-      The Constitution is the only document that is the truth. If you intend to stand for Congress,
-      you will be expected to know it. Read it before you register: <a href="https://docs.liberland.org" style="color: var(--gold-soft);">docs.liberland.org</a>.
+      Liberland's election system is built on the Constitution. The current blockchain and
+      its election rules are how the Constitution is implemented today — they have evolved
+      before and will evolve again. The Constitution is the only document that is the truth.
+      If you intend to stand for Congress, you will be expected to know it. Read it before
+      you apply: <a href="https://docs.liberland.org" style="color: var(--gold-soft);">docs.liberland.org</a>.
     </p>
   </div>
 
@@ -1513,11 +1562,11 @@
   <div class="links">
     <a href="https://liberland.org">liberland.org</a>
     <a href="https://docs.liberland.org">docs.liberland.org</a>
-    <a href="https://forum.liberland.org">forum.liberland.org</a>
     <a href="https://blockchain.liberland.org">blockchain.liberland.org</a>
+    <a href="https://forum.liberland.org">forum.liberland.org</a>
   </div>
   <div class="meta">
-    Free Republic of Liberland &middot; Candidate Primer &middot; v1.0 &middot; 2026
+    Free Republic of Liberland &middot; Candidate Primer &middot; Current System
   </div>
 </footer>
 

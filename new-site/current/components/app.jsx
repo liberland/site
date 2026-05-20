@@ -1,12 +1,14 @@
-// Mount everything.
+// Mount.
 
 const App = () => (
   <>
-    <Hero />
+    <HeroCurrent />
     <Eligibility />
+    <Onboard />
     <Tiers />
-    <Timeline />
-    <D21 />
+    <TakeAction />
+    <Cycle />
+    <Phragmen />
     <Conduct />
     <Closing />
   </>
