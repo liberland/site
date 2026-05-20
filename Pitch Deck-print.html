@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liberland Limited — Company Introduction</title>
+<link rel="icon" href="assets/liberland-limited-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,300..600&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #14181a;
+    --ink-soft: #2a3032;
+    --ink-mute: #6a7174;
+    --paper: #f3eee5;
+    --paper-warm: #ebe4d6;
+    --paper-card: #faf6ee;
+    --teal: #155663;
+    --teal-deep: #0d3b46;
+    --teal-soft: #2c7787;
+    --cream: #e5dcc8;
+    --rule: rgba(20, 24, 26, 0.13);
+    --rule-strong: rgba(20, 24, 26, 0.32);
+    --serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
+    --sans: "Geist", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0a0e10; font-family: var(--sans); color: var(--ink); }
+
+  deck-stage { background: #0a0e10; }
+
+  /* Each slide is 1920×1080 — the deck-stage scales for us */
+  section.slide {
+    width: 1920px;
+    height: 1080px;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  section.slide.warm { background: var(--paper-warm); }
+  section.slide.ink  { background: var(--ink); color: var(--paper); }
+  section.slide.ink .label { color: rgba(243,238,229,0.55); }
+  section.slide.ink em { color: #8fcad7; }
+
+  /* Layout helpers */
+  .pad { padding: 96px 120px; }
+  .pad-lg { padding: 120px 160px; }
+  .row { display: flex; align-items: center; gap: 32px; }
+  .col { display: flex; flex-direction: column; }
+  .grow { flex: 1; }
+  .between { justify-content: space-between; }
+  .gap-8 { gap: 8px; }
+  .gap-16 { gap: 16px; }
+  .gap-24 { gap: 24px; }
+  .gap-32 { gap: 32px; }
+  .gap-48 { gap: 48px; }
+  .gap-64 { gap: 64px; }
+  .flex-1 { flex: 1; }
+  .mt-auto { margin-top: auto; }
+
+  /* Type */
+  .label {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .label--teal { color: var(--teal); }
+  .label--ink  { color: var(--ink); }
+
+  .display {
+    font-family: var(--serif);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 0.96;
+    text-wrap: balance;
+  }
+  .display em { font-style: italic; font-weight: 300; color: var(--teal); }
+
+  .h0 { font-family: var(--serif); font-weight: 300; font-size: 132px; line-height: 0.95; letter-spacing: -0.03em; }
+  .h1 { font-family: var(--serif); font-weight: 300; font-size: 88px;  line-height: 0.98; letter-spacing: -0.025em; }
+  .h2 { font-family: var(--serif); font-weight: 300; font-size: 64px;  line-height: 1.02; letter-spacing: -0.022em; }
+  .h3 { font-family: var(--serif); font-weight: 400; font-size: 36px;  line-height: 1.1;  letter-spacing: -0.012em; }
+  .h4 { font-family: var(--serif); font-weight: 400; font-size: 28px;  line-height: 1.15; letter-spacing: -0.01em; }
+
+  .lede { font-family: var(--serif); font-weight: 300; font-size: 30px; line-height: 1.35; color: var(--ink-soft); text-wrap: pretty; }
+  .body { font-size: 20px; line-height: 1.5; color: var(--ink-soft); text-wrap: pretty; }
+  .small { font-size: 17px; line-height: 1.5; color: var(--ink-mute); }
+  .num   { font-family: var(--serif); font-variant-numeric: tabular-nums; }
+
+  /* Header & footer on every slide */
+  .slide-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 36px 96px 0;
+    color: var(--ink-mute);
+    flex: 0 0 auto;
+  }
+  .slide.ink .slide-head { color: rgba(243,238,229,0.55); }
+  .slide-head .brand { display: flex; align-items: center; gap: 16px; }
+  .slide-head .brand img { width: 36px; height: 36px; }
+  .slide.ink .slide-head .brand img { filter: brightness(0) invert(1); }
+  .slide-head .brand .n { font-family: var(--serif); font-size: 22px; color: var(--ink); }
+  .slide.ink .slide-head .brand .n { color: var(--paper); }
+  .slide-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 96px 36px;
+    color: var(--ink-mute);
+    flex: 0 0 auto;
+  }
+  .slide.ink .slide-foot { color: rgba(243,238,229,0.55); }
+  .slide-foot .label { font-size: 13px; }
+
+  .body-pad { padding: 24px 96px; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+
+  /* Card */
+  .card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    padding: 40px;
+  }
+  .slide.warm .card { background: var(--paper); }
+  .slide.ink .card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+
+  /* Slide 01 — cover */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 120px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover .dove { position: absolute; right: -120px; top: -80px; width: 1200px; opacity: 0.12; }
+  .cover-title { font-family: var(--serif); font-weight: 300; font-size: 168px; line-height: 0.92; letter-spacing: -0.035em; }
+  .cover-title em { font-style: italic; color: #8fcad7; font-weight: 300; }
+  .cover .label { color: rgba(243,238,229,0.7); }
+  .cover .lede { color: rgba(243,238,229,0.85); }
+
+  /* Stats grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat {
+    padding: 40px 40px 40px 0;
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .stat:last-child { border-right: 0; padding-right: 0; }
+  .stat .v { font-family: var(--serif); font-size: 72px; line-height: 1; font-weight: 300; letter-spacing: -0.025em; }
+  .stat .v em { font-style: italic; color: var(--teal); font-weight: 300; }
+  .stat .k { font-size: 18px; color: var(--ink-soft); line-height: 1.4; }
+
+  /* Pillar column */
+  .pillar { display: flex; flex-direction: column; gap: 24px; padding-top: 32px; border-top: 1px solid var(--rule); height: 100%; }
+  .pillar .num-mark { font-family: var(--serif); font-size: 56px; font-weight: 300; color: var(--teal); line-height: 1; }
+  .pillar h3 { margin: 0; }
+  .pillar .body { margin: 0; }
+
+  /* Tier table for pitch */
+  .tiers {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .tiers .tcell {
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .tiers .tcell:nth-child(5n) { border-right: 0; }
+  .tiers .tcell.h {
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+    border-color: var(--ink);
+  }
+  .tiers .tcell.price {
+    font-family: var(--serif);
+    font-size: 40px;
+    line-height: 1;
+    color: var(--teal);
+    font-weight: 300;
+    padding: 22px;
+  }
+  .tiers .tcell.price .u { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); margin-top: 8px; }
+
+  /* Calendar */
+  .calendar {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .cal-card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    min-height: 0;
+  }
+  .slide.warm .cal-card { background: var(--paper); }
+  .cal-card .when {
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal);
+  }
+  .cal-card .where { font-size: 17px; color: var(--ink-mute); margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .cal-card.featured { background: var(--ink); color: var(--paper); border-color: var(--ink); grid-row: span 1; grid-column: span 1; }
+  .cal-card.featured .where { color: rgba(243,238,229,0.6); border-color: rgba(255,255,255,0.18); }
+  .cal-card.featured .when { color: #8fcad7; }
+  .cal-card img { height: 180px; object-fit: cover; margin: -28px -28px 0; width: calc(100% + 56px); }
+
+  /* Revenue bars */
+  .bar { height: 64px; background: var(--paper-card); border: 1px solid var(--rule); position: relative; overflow: hidden; }
+  .bar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--teal); }
+  .bar .lbl { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); z-index: 2; }
+  .bar .val { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 28px; color: var(--ink); z-index: 2; }
+  .bar.alt .fill { background: var(--teal-soft); }
+  .bar.alt2 .fill { background: var(--ink); }
+  .bar.alt3 .fill { background: var(--cream); }
+  .bar.alt3 .val, .bar.alt3 .lbl { color: var(--ink); }
+
+  /* Roadmap */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 40px;
+  }
+  .timeline::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 32px; height: 1px; background: var(--rule-strong);
+  }
+  .tcol {
+    position: relative;
+    padding-top: 64px;
+    padding-right: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .tcol::before {
+    content: ""; position: absolute; left: 0; top: 26px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--ink);
+  }
+  .tcol.now::before { background: var(--teal); border-color: var(--teal); }
+  .tcol .q { font-family: var(--mono); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+  .tcol .t { font-family: var(--serif); font-size: 26px; line-height: 1.15; color: var(--ink); margin: 0; }
+  .tcol .d { font-size: 17px; line-height: 1.45; color: var(--ink-mute); }
+
+  /* Quote slide */
+  section.slide { display: flex; flex-direction: column; }
+  .quote-mark {
+    font-family: var(--serif); font-size: 280px; line-height: 0.5;
+    color: var(--teal); opacity: 0.4;
+    height: 80px; margin-bottom: 0;
+  }
+
+  /* Cover decorative dove */
+  .cover .dove circle { fill: #8fcad7; opacity: 0.6; }
+  .cover .dove path { fill: #8fcad7; }
+
+  /* "Why now" pillars */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .why { display: flex; flex-direction: column; gap: 20px; padding: 36px 0 0; border-top: 2px solid var(--ink); }
+  .slide.ink .why { border-color: var(--teal); }
+  .why .yr { font-family: var(--serif); font-size: 68px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+  .slide.ink .why .yr { color: var(--paper); }
+  .why .yr em { color: var(--teal); font-style: italic; }
+  .slide.ink .why .yr em { color: #8fcad7; }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .team-portrait { aspect-ratio: 4/5; background: var(--paper-card); border: 1px solid var(--rule); overflow: hidden; }
+  .team-portrait img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(1.02); }
+
+  /* Contact card */
+  .contact-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-card);
+  }
+  .contact-card > div { padding: 56px; }
+  .contact-card > div + div { border-left: 1px solid var(--rule); }
+</style>
+</head>
+
+<body>
+<deck-stage>
+
+  <!-- 01 — COVER -->
+  <section class="slide cover" data-screen-label="01 Cover">
+    <svg class="dove" viewBox="0 0 600 600" aria-hidden="true">
+      <circle cx="300" cy="300" r="280" />
+      <path d="M170 320 C 220 270, 280 250, 340 270 C 360 240, 400 230, 440 250 C 410 260, 400 290, 410 310 C 380 305, 360 320, 350 350 C 340 330, 320 325, 300 335 C 270 320, 220 330, 170 320 Z"/>
+    </svg>
+
+    <div class="row between" style="position: relative; z-index: 2;">
+      <div class="row gap-16">
+        <img src="assets/liberland-limited-logo.png" alt="" style="width: 56px; height: 56px; filter: brightness(0) invert(1);">
+        <div>
+          <div style="font-family: var(--serif); font-size: 28px; color: var(--paper);">Liberland Limited</div>
+          <div class="label" style="font-size: 13px; margin-top: 4px;">Hong Kong · Est. MMXXIV</div>
+        </div>
+      </div>
+      <div class="label">Company Introduction · May 2026</div>
+    </div>
+
+    <div class="grow col" style="justify-content: flex-end; position: relative; z-index: 2; gap: 40px;">
+      <div class="label" style="font-size: 24px;">A members' house for the Liberland community.</div>
+      <h1 class="cover-title">
+        Membership.<br>
+        Gatherings.<br>
+        A place on <em>the&nbsp;Danube.</em>
+      </h1>
+      <div class="row between" style="align-items: flex-end;">
+        <p class="lede" style="max-width: 800px; margin: 0; font-size: 28px;">
+          A Hong Kong company providing membership services, hosting community
+          gatherings, and brokering residences at Ark Village in Apatin, Serbia.
+        </p>
+        <div class="label" style="text-align: right; font-size: 16px;">
+          Confidential · For introduction only<br>
+          <span style="color: rgba(243,238,229,0.4);">limited@liberland.org</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 02 — IN ONE PAGE -->
+  <section class="slide" data-screen-label="02 In one page">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">02 — In one page</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1200px;">
+          A private, paid-membership house for the Liberland community — and the office that keeps it running.
+        </h2>
+        <span class="label">Page one</span>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="v"><em>1,240</em>+</div>
+          <div class="k">Paying members across four tiers</div>
+        </div>
+        <div class="stat">
+          <div class="v">6 — 8</div>
+          <div class="k">Community gatherings per year</div>
+        </div>
+        <div class="stat">
+          <div class="v">38</div>
+          <div class="k">Residences brokered at Ark Village</div>
+        </div>
+        <div class="stat">
+          <div class="v"><em>3</em></div>
+          <div class="k">Revenue lines — all paid for services</div>
+        </div>
+      </div>
+
+      <p class="lede" style="max-width: 1400px;">
+        We do not run a fund. We do not hold client money. We do not sell securities. We sell
+        memberships, tickets, and a brokerage service — and we keep the office in Hong Kong.
+      </p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">02 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 03 — THE COMMUNITY (problem / why we exist) -->
+  <section class="slide warm" data-screen-label="03 The community">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">03 — Why we exist</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row gap-64" style="align-items: flex-start;">
+        <div class="col gap-32" style="flex: 1.1;">
+          <span class="label label--teal">The community</span>
+          <h2 class="display h1">
+            Thousands of people share a project.<br>
+            <em>Almost none of them share an address.</em>
+          </h2>
+          <p class="lede" style="max-width: 800px;">
+            The Liberland community has grown for a decade across borders, in chats and at the
+            occasional festival. It has no clubhouse, no permanent calendar, no front desk.
+          </p>
+          <p class="body" style="max-width: 720px;">
+            Liberland Limited is the simplest answer to that gap: a Hong Kong company that
+            sells a membership, runs a calendar, and helps members find a cottage on the river
+            when they want one.
+          </p>
+        </div>
+
+        <div class="col gap-24" style="flex: 0.9;">
+          <div class="card">
+            <span class="label label--teal">What was missing</span>
+            <ul style="margin: 24px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px;">
+              <li class="body" style="display: flex; gap: 16px; color: var(--ink);"><span style="color: var(--teal); font-family: var(--serif); font-size: 32px; line-height: 0.8;">—</span> A clear front door for new members.</li>
+              <li class="body" style="display: flex; gap: 16px; color: var(--ink);"><span style="color: var(--teal); font-family: var(--serif); font-size: 32px; line-height: 0.8;">—</span> A predictable calendar of gatherings.</li>
+              <li class="body" style="display: flex; gap: 16px; color: var(--ink);"><span style="color: var(--teal); font-family: var(--serif); font-size: 32px; line-height: 0.8;">—</span> One office to email when you need help.</li>
+              <li class="body" style="display: flex; gap: 16px; color: var(--ink);"><span style="color: var(--teal); font-family: var(--serif); font-size: 32px; line-height: 0.8;">—</span> A way to find a residence at Ark, with someone to walk you through it.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">03 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 04 — WHAT WE DO (three pillars) -->
+  <section class="slide" data-screen-label="04 What we do">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">04 — What we do</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1500px;">
+          Three things, well.<br>
+          <em>Membership, gatherings, residences.</em>
+        </h2>
+      </div>
+
+      <div class="row gap-32" style="align-items: stretch;">
+        <div class="pillar flex-1">
+          <div class="row between">
+            <span class="label label--teal">01 — Membership</span>
+            <span class="num-mark">I.</span>
+          </div>
+          <h3 class="h3">A members' register, kept by hand.</h3>
+          <p class="body">
+            Four annual tiers — Silver, Gold, Platinum, Founder. Named members,
+            an address book posted once a year, a concierge that answers email.
+          </p>
+          <div class="mt-auto label label--ink" style="padding-top: 24px; border-top: 1px solid var(--rule);">
+            $150 — $20,000 per year
+          </div>
+        </div>
+
+        <div class="pillar flex-1">
+          <div class="row between">
+            <span class="label label--teal">02 — Gatherings</span>
+            <span class="num-mark">II.</span>
+          </div>
+          <h3 class="h3">Six to eight dates a year.</h3>
+          <p class="body">
+            The Anniversary in April. Floating Man in August. A Salon in Hong Kong.
+            A winter retreat at Ark. Tickets sold to members and a curated guest list.
+          </p>
+          <div class="mt-auto label label--ink" style="padding-top: 24px; border-top: 1px solid var(--rule);">
+            From $49 / ticket
+          </div>
+        </div>
+
+        <div class="pillar flex-1">
+          <div class="row between">
+            <span class="label label--teal">03 — Residences</span>
+            <span class="num-mark">III.</span>
+          </div>
+          <h3 class="h3">Brokerage at Ark Village.</h3>
+          <p class="body">
+            We introduce members to cottages and houses sold by the Serbian
+            developer of Ark Village. We coordinate the visit, paperwork, and move-in.
+          </p>
+          <div class="mt-auto label label--ink" style="padding-top: 24px; border-top: 1px solid var(--rule);">
+            Brokerage paid by developer
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">04 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 05 — MEMBERSHIP TIERS -->
+  <section class="slide warm" data-screen-label="05 Membership tiers">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">05 — Membership</span>
+    </div>
+
+    <div class="body-pad" style="gap: 48px;">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1300px;">
+          Four tiers. <em>One register, kept by hand.</em>
+        </h2>
+        <p class="body" style="max-width: 480px; text-align: right;">
+          Annual contracts, paid in USD by card or wire. Reviewed every year.
+        </p>
+      </div>
+
+      <div class="tiers">
+        <div class="tcell h">Tier</div>
+        <div class="tcell h">Silver</div>
+        <div class="tcell h">Gold</div>
+        <div class="tcell h">Platinum</div>
+        <div class="tcell h">Founder</div>
+
+        <div class="tcell"><strong style="font-family: var(--serif); font-size: 24px; font-weight: 400;">Annual fee</strong><br><span class="small">USD, paid per year</span></div>
+        <div class="tcell price">$150<span class="u">/ year</span></div>
+        <div class="tcell price">$1,000<span class="u">/ year</span></div>
+        <div class="tcell price">$10,000<span class="u">/ year</span></div>
+        <div class="tcell price">$20,000<span class="u">/ year</span></div>
+
+        <div class="tcell"><strong style="font-family: var(--serif); font-size: 24px; font-weight: 400;">Seats</strong><br><span class="small">Cohort cap per year</span></div>
+        <div class="tcell">Open intake</div>
+        <div class="tcell">240 places</div>
+        <div class="tcell">80 places</div>
+        <div class="tcell">12 seats</div>
+
+        <div class="tcell"><strong style="font-family: var(--serif); font-size: 24px; font-weight: 400;">What it is</strong><br><span class="small">In one line</span></div>
+        <div class="tcell">An open door to the community.</div>
+        <div class="tcell">Closer involvement, a seat at the table.</div>
+        <div class="tcell">Hosted attendance, reserved hospitality.</div>
+        <div class="tcell">A standing seat in the room.</div>
+      </div>
+
+      <p class="body" style="text-align: center; color: var(--ink-mute); max-width: 1400px; margin: 0 auto;">
+        Membership is a personal contract for services. It is not a securities subscription, an investment, or an interest in any vehicle.
+      </p>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">05 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 06 — GATHERINGS -->
+  <section class="slide" data-screen-label="06 Gatherings">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">06 — Gatherings</span>
+    </div>
+
+    <div class="body-pad" style="gap: 48px;">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1300px;">
+          The calendar.<br>
+          <em>Six dates this year.</em>
+        </h2>
+        <p class="body" style="max-width: 480px; text-align: right;">
+          Tickets at member rate; a small allocation is held back for guests by invitation.
+        </p>
+      </div>
+
+      <div class="calendar">
+        <div class="cal-card featured" style="padding: 0;">
+          <img src="https://ark.ll.land/wp-content/uploads/2023/07/20210813_123554-1-scaled-1-e1689673660879-1024x632.jpg" alt="" style="margin: 0; height: 220px; width: 100%;">
+          <div style="padding: 24px 28px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <span class="when">Featured · Aug 2026</span>
+            <h3 class="h3" style="color: var(--paper); margin: 0; font-size: 30px;">Floating Man Festival</h3>
+            <p style="font-size: 18px; line-height: 1.45; color: rgba(243,238,229,0.75); margin: 0;">
+              A week of art, music, and conversation on the Danube.
+            </p>
+            <div class="where">17 — 23 Aug 2026 · Ark Village</div>
+          </div>
+        </div>
+
+        <div class="cal-card">
+          <span class="when">Oct 2026</span>
+          <h4 class="h4" style="margin: 0;">Members' Salon — Hong Kong</h4>
+          <p class="body" style="font-size: 18px; margin: 0;">
+            An evening dinner for members travelling through Asia. Forty seats, candlelight.
+          </p>
+          <div class="where">24 October 2026 · Wing On Centre, Hong Kong</div>
+        </div>
+
+        <div class="cal-card">
+          <span class="when">Dec 2026</span>
+          <h4 class="h4" style="margin: 0;">Winter Retreat at Ark</h4>
+          <p class="body" style="font-size: 18px; margin: 0;">
+            Four quiet days between the years. Long walks, long table, fires by the river.
+          </p>
+          <div class="where">27 — 30 December 2026 · Ark Village</div>
+        </div>
+
+        <div class="cal-card">
+          <span class="when">Apr 2027</span>
+          <h4 class="h4" style="margin: 0;">Liberland 12th Anniversary</h4>
+          <p class="body" style="font-size: 18px; margin: 0;">
+            Four days of programme and conversation marking the twelfth year. Tickets open Sep 2026.
+          </p>
+          <div class="where">9 — 12 April 2027 · Ark Village</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">06 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 07 — RESIDENCES -->
+  <section class="slide" data-screen-label="07 Residences">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">07 — Residences</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row gap-64" style="align-items: flex-start;">
+        <div class="col gap-32" style="flex: 1;">
+          <span class="label label--teal">Brokerage</span>
+          <h2 class="display h1">
+            Cottages and houses<br>
+            at <em>Ark Village.</em>
+          </h2>
+          <p class="lede" style="max-width: 760px;">
+            We don't develop and we don't own. We introduce members to homes sold
+            by the Serbian developer of Ark Village in Apatin, on the Danube.
+          </p>
+
+          <div class="card" style="margin-top: 16px;">
+            <span class="label label--teal">How the brokerage works</span>
+            <ol style="margin: 24px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px;">
+              <li class="body" style="color: var(--ink); margin: 0;">Member requests an introduction through Liberland Limited.</li>
+              <li class="body" style="color: var(--ink); margin: 0;">We confirm availability with the developer; we coordinate the visit.</li>
+              <li class="body" style="color: var(--ink); margin: 0;">The sale is concluded directly between the buyer and the developer in Serbia.</li>
+              <li class="body" style="color: var(--ink); margin: 0;">Liberland Limited is paid a brokerage fee by the developer on completion.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="col gap-24" style="flex: 1.05;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <figure style="margin: 0; aspect-ratio: 4/5;">
+              <img src="https://ark.ll.land/wp-content/uploads/2023/07/Cabin4-1024x768.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9);">
+            </figure>
+            <figure style="margin: 0; aspect-ratio: 4/5;">
+              <img src="https://ark.ll.land/wp-content/uploads/2023/07/351147079_1186107902074878_7268019130542026426_n-1024x768.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9);">
+            </figure>
+          </div>
+
+          <div class="row between" style="padding-top: 16px; border-top: 1px solid var(--rule);">
+            <div>
+              <div class="label">Brokered to date</div>
+              <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 8px;">38</div>
+            </div>
+            <div>
+              <div class="label">Avg time, intro to keys</div>
+              <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 8px;">11 wk</div>
+            </div>
+            <div>
+              <div class="label">Site</div>
+              <div style="font-family: var(--serif); font-size: 32px; margin-top: 8px; color: var(--teal);">ark.ll.land</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">07 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 08 — REVENUE MODEL -->
+  <section class="slide warm" data-screen-label="08 Revenue model">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">08 — How we make money</span>
+    </div>
+
+    <div class="body-pad" style="gap: 56px;">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1400px;">
+          Three lines of revenue.<br>
+          <em>All paid for services rendered.</em>
+        </h2>
+        <p class="body" style="max-width: 460px; text-align: right; color: var(--ink-mute);">
+          Indicative mix for the year ending Dec 2026.
+        </p>
+      </div>
+
+      <div class="col gap-24">
+        <div class="bar">
+          <div class="fill" style="width: 56%;"></div>
+          <span class="lbl">01 · Membership fees</span>
+          <span class="val">56% — recurring, annual</span>
+        </div>
+        <div class="bar alt">
+          <div class="fill" style="width: 26%;"></div>
+          <span class="lbl">02 · Ticket revenue</span>
+          <span class="val">26% — by event</span>
+        </div>
+        <div class="bar alt2">
+          <div class="fill" style="width: 18%;"></div>
+          <span class="lbl">03 · Residence brokerage</span>
+          <span class="val">18% — paid by developer</span>
+        </div>
+      </div>
+
+      <div class="row gap-32" style="margin-top: 24px;">
+        <div class="card flex-1">
+          <span class="label label--teal">What we never do</span>
+          <ul style="margin: 20px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li class="body" style="color: var(--ink); margin: 0;">— We do not operate a fund or any pooled vehicle.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— We do not hold client money or custody assets.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— We do not sell shares, tokens, or any security.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— We do not own the residences we introduce.</li>
+          </ul>
+        </div>
+        <div class="card flex-1">
+          <span class="label label--teal">What that means in practice</span>
+          <ul style="margin: 20px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li class="body" style="color: var(--ink); margin: 0;">— Card and wire payments only, into a Hong Kong corporate account.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— Standard small-company accounting and annual filings in Hong Kong.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— KYC on members at Platinum and Founder tiers.</li>
+            <li class="body" style="color: var(--ink); margin: 0;">— Receipted, line-item invoices on every contract.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">08 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 09 — TRACTION / NUMBERS -->
+  <section class="slide ink" data-screen-label="09 Numbers">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">09 — The numbers</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="color: var(--paper); max-width: 1400px;">
+          What it looks like<br>
+          <em>after eighteen months.</em>
+        </h2>
+        <span class="label">As of May 2026</span>
+      </div>
+
+      <div class="why-grid">
+        <div class="why">
+          <span class="label" style="color: rgba(243,238,229,0.5);">Membership</span>
+          <div class="yr"><em>1,240</em>+</div>
+          <p class="body" style="color: rgba(243,238,229,0.7); margin: 0;">
+            Paying members across four tiers — 81% on Silver, 14% Gold, 4% Platinum, 1% Founder.
+          </p>
+        </div>
+        <div class="why">
+          <span class="label" style="color: rgba(243,238,229,0.5);">Gatherings</span>
+          <div class="yr"><em>4,800</em></div>
+          <p class="body" style="color: rgba(243,238,229,0.7); margin: 0;">
+            Total ticketed attendance across Anniversary and Floating Man, 2024 — 2025.
+          </p>
+        </div>
+        <div class="why">
+          <span class="label" style="color: rgba(243,238,229,0.5);">Residences</span>
+          <div class="yr"><em>38</em></div>
+          <p class="body" style="color: rgba(243,238,229,0.7); margin: 0;">
+            Cottages and houses introduced to members and completed by the developer at Ark.
+          </p>
+        </div>
+      </div>
+
+      <div class="row between" style="padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.18);">
+        <div>
+          <div class="label" style="color: rgba(243,238,229,0.5);">Annual recurring fees</div>
+          <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 12px; color: var(--paper);">≈ $1.9M</div>
+        </div>
+        <div>
+          <div class="label" style="color: rgba(243,238,229,0.5);">Renewal rate, year one</div>
+          <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 12px; color: var(--paper);">88%</div>
+        </div>
+        <div>
+          <div class="label" style="color: rgba(243,238,229,0.5);">Members from</div>
+          <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 12px; color: var(--paper);">52 countries</div>
+        </div>
+        <div>
+          <div class="label" style="color: rgba(243,238,229,0.5);">Office</div>
+          <div class="num" style="font-family: var(--serif); font-size: 64px; font-weight: 300; line-height: 1; margin-top: 12px; color: var(--paper);">Hong Kong</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">09 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 10 — TEAM -->
+  <section class="slide" data-screen-label="10 The office">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">10 — The office</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="team-grid">
+        <div class="team-portrait">
+          <img src="https://anniversary.ll.land/wp-content/uploads/2025/03/Vit-Jedlicka.jpg" alt="Vít Jedlička" loading="lazy">
+        </div>
+
+        <div class="col gap-32">
+          <span class="label label--teal">Director</span>
+          <h2 class="display h1" style="margin: 0;">
+            Vít Jedlička<br>
+            <span style="color: var(--ink-mute); font-size: 56px;">Director · Liberland Limited</span>
+          </h2>
+          <p class="lede" style="max-width: 900px;">
+            Founder of the wider Liberland community, ten years on the Danube,
+            host of every Anniversary since 2015. Directs the company day to day from Hong Kong.
+          </p>
+
+          <div class="row gap-32" style="margin-top: 16px;">
+            <div class="card flex-1">
+              <span class="label label--teal">The office</span>
+              <p class="body" style="margin: 16px 0 0; color: var(--ink);">
+                Room 1601, 16th Floor, Wing On Centre, 111 Connaught Road Central, Hong Kong.
+              </p>
+              <p class="body" style="margin: 16px 0 0; color: var(--ink);">
+                Three staff plus the Director. Tuesday — Friday, 10:00 — 17:00 HKT.
+              </p>
+            </div>
+            <div class="card flex-1">
+              <span class="label label--teal">Counsel</span>
+              <p class="body" style="margin: 16px 0 0; color: var(--ink);">
+                Hong Kong company secretary on retainer. Local Serbian counsel for residence
+                introductions. Auditor engaged for the year ending December 2026.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">10 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 11 — ROADMAP -->
+  <section class="slide warm" data-screen-label="11 Roadmap">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">11 — The next eighteen months</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h1" style="max-width: 1400px;">
+          Quiet growth.<br>
+          <em>Predictable cadence.</em>
+        </h2>
+        <p class="body" style="max-width: 460px; text-align: right;">
+          A single roadmap, kept short on purpose.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="tcol now">
+          <span class="q">Now · Q2 2026</span>
+          <h4 class="t">Front desk goes live.</h4>
+          <p class="d">New website, single application form, members' concierge handling all enquiries.</p>
+        </div>
+        <div class="tcol">
+          <span class="q">Q3 2026</span>
+          <h4 class="t">Floating Man 2026.</h4>
+          <p class="d">Third edition on the Danube. 400 places, Gold passes capped at 80.</p>
+        </div>
+        <div class="tcol">
+          <span class="q">Q4 2026</span>
+          <h4 class="t">Hong Kong Salon.</h4>
+          <p class="d">First Asia-facing dinner. Winter Retreat at Ark closes the year.</p>
+        </div>
+        <div class="tcol">
+          <span class="q">Q1 2027</span>
+          <h4 class="t">Founder cohort closes.</h4>
+          <p class="d">Twelve seats filled and registered. Annual audited accounts published.</p>
+        </div>
+        <div class="tcol">
+          <span class="q">Q2 2027</span>
+          <h4 class="t">Anniversary XII.</h4>
+          <p class="d">Twelfth Anniversary at Ark Village. Programme published in autumn 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">11 / 12</span>
+    </div>
+  </section>
+
+
+  <!-- 12 — CLOSING / CONTACT -->
+  <section class="slide ink" data-screen-label="12 Get in touch">
+    <div class="slide-head">
+      <div class="brand"><img src="assets/liberland-limited-logo.png" alt=""><span class="n">Liberland Limited</span></div>
+      <span class="label">12 — Get in touch</span>
+    </div>
+
+    <div class="body-pad">
+      <div class="row between" style="align-items: flex-end;">
+        <h2 class="display h0" style="color: var(--paper); max-width: 1500px;">
+          Write to us.<br>
+          <em>We answer.</em>
+        </h2>
+      </div>
+
+      <div class="contact-card" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.18);">
+        <div>
+          <span class="label" style="color: rgba(243,238,229,0.55);">The office</span>
+          <p style="font-family: var(--serif); font-size: 28px; line-height: 1.4; color: var(--paper); margin: 24px 0 0;">
+            Room 1601, 16th Floor<br>
+            Wing On Centre<br>
+            111 Connaught Road Central<br>
+            Hong Kong
+          </p>
+        </div>
+        <div style="border-color: rgba(255,255,255,0.18);">
+          <span class="label" style="color: rgba(243,238,229,0.55);">By email</span>
+          <p style="font-family: var(--serif); font-size: 40px; line-height: 1.2; color: #8fcad7; margin: 24px 0 32px;">
+            limited@liberland.org
+          </p>
+          <span class="label" style="color: rgba(243,238,229,0.55);">Director</span>
+          <p style="font-family: var(--serif); font-size: 28px; line-height: 1.3; color: var(--paper); margin: 16px 0 0;">
+            Vít Jedlička
+          </p>
+        </div>
+      </div>
+
+      <div class="row between" style="padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.18); align-items: center;">
+        <span class="label">Sister sites · ark.ll.land · anniversary.ll.land · floatingman.ll.land</span>
+        <span class="label">Liberland Limited · Hong Kong · MMXXIV</span>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span class="label">Liberland Limited · Confidential</span>
+      <span class="label">12 / 12</span>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+<script>
+(async () => {
+  try { await customElements.whenDefined('deck-stage'); } catch (e) {}
+  const ds = document.querySelector('deck-stage');
+  if (ds) {
+    // Weigh only slide children — same filter as deck-stage.length. Skipping
+    // slotted script/style/template keeps inline Babel/CSS from registering
+    // as stable "content" before the framework has mounted anything.
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of ds.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll('img,svg,canvas,video').length;
+      }
+      return text + media * 100;
+    };
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      if (n > 0 && n === last) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  try { await document.fonts.ready; } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
