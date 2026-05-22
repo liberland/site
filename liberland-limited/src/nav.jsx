@@ -47,7 +47,7 @@ function Nav() {
             <div style={{ fontFamily: "var(--serif)", fontSize: 18, fontWeight: 400, letterSpacing: "0.01em", color: "var(--ink)" }}>
               Liberland Limited
             </div>
-            <div className="label" style={{ fontSize: 9.5, marginTop: 4 }}>HONG KONG · EST. 2024</div>
+            <div className="label" style={{ fontSize: 9.5, marginTop: 4 }}>HONG KONG · EST. 2015</div>
           </div>
         </a>
 
