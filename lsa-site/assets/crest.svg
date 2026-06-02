@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="LSOOC crest">
+  <defs>
+    <path id="crestTopArc" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"></path>
+    <path id="crestBotArc" d="M 36 100 A 64 64 0 0 0 164 100" fill="none"></path>
+  </defs>
+  
+  <circle cx="100" cy="100" r="98" fill="#15130E"></circle>
+  <circle cx="100" cy="100" r="92" fill="#F2C200"></circle>
+  <circle cx="100" cy="100" r="68" fill="#F7F3E8" stroke="#15130E" stroke-width="2.5"></circle>
+  
+  <text font-family="Archivo, sans-serif" font-size="11" font-weight="700" letter-spacing="2.4" fill="#15130E">
+    <textPath href="#crestTopArc" startOffset="50%" text-anchor="middle">LIBERLAND SPORTS · OLYMPIC COMMITTEE</textPath>
+  </text>
+  <text font-family="Archivo, sans-serif" font-size="10" font-weight="700" letter-spacing="3" fill="#15130E">
+    <textPath href="#crestBotArc" startOffset="50%" text-anchor="middle">EST · MMXXVI</textPath>
+  </text>
+  
+  <text x="100" y="104" font-family="Fraunces, Georgia, serif" font-size="62" font-weight="900" fill="#15130E" text-anchor="middle" dominant-baseline="middle">L</text>
+  
+  <g>
+    <circle cx="72" cy="132" r="6" fill="#0F76C2"></circle>
+    <circle cx="86" cy="132" r="6" fill="#F2C200" stroke="#15130E" stroke-width="1"></circle>
+    <circle cx="100" cy="132" r="6" fill="#15130E"></circle>
+    <circle cx="114" cy="132" r="6" fill="#1A8F6B"></circle>
+    <circle cx="128" cy="132" r="6" fill="#C8432F"></circle>
+  </g>
+</svg>
