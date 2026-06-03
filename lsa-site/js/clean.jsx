@@ -24,14 +24,14 @@ function Accordion({ items }) {
 }
 
 const ELIGIBILITY = [
-  { t: "Bodily autonomy affirmed", d: "Each athlete owns their body. The LSOOC imposes no coercive prohibition on private consumption — what you do with your own body is your own." },
+  { t: "Bodily autonomy affirmed", d: "Each athlete owns their body. The LOS imposes no coercive prohibition on private consumption — what you do with your own body is your own." },
   { t: "Eligibility is a voluntary acceptance", d: "To enter sanctioned competition, an athlete freely and in writing accepts the relevant International Federation rules, the World Anti-Doping Code and the anti-manipulation codes." },
-  { t: "Consequences confined to eligibility", d: "A breach affects eligibility to compete under LSOOC sanction — nothing more. There is no punishment of private conduct, no coercive sanction beyond the agreement entered." },
+  { t: "Consequences confined to eligibility", d: "A breach affects eligibility to compete under LOS sanction — nothing more. There is no punishment of private conduct, no coercive sanction beyond the agreement entered." },
   { t: "Freedom to decline", d: "An athlete may decline the conditions and simply not enter sanctioned competition. The choice is always the athlete's." },
 ];
 
 const ARB = [
-  { n: "1", t: "Internal good-faith resolution", d: "Disputes are first addressed directly and in good faith within the federation or the LSOOC." },
+  { n: "1", t: "Internal good-faith resolution", d: "Disputes are first addressed directly and in good faith within the federation or the LOS." },
   { n: "2", t: "Arbitration", d: "Unresolved matters go to the independent Court of Sport Arbitration of Liberland, which follows settled reasoning and higher authority." },
   { n: "3", t: "Public courts — last resort", d: "Only where arbitration cannot resolve a matter do the public courts of Liberland come into play." },
 ];
@@ -46,8 +46,8 @@ const DUE = [
 ];
 
 const FAQ = [
-  { q: "Does the LSOOC test for and ban substances?", a: <><p>For <strong>sanctioned competition</strong>, yes — through the rules an athlete voluntarily accepts on entry, aligned with the World Anti-Doping Code and the relevant International Federation. What is different is the framing: this is a <em>condition of entry you agree to</em>, not a coercive prohibition on what you may do with your own body in private.</p></> },
-  { q: "What happens if an athlete breaches the accepted rules?", a: <><p>The consequence is confined to <strong>eligibility</strong> — the ability to compete under LSOOC sanction. There is no further punishment of private conduct. Any process follows the due-process guarantees set out above and may be appealed to the Court of Sport Arbitration.</p></> },
+  { q: "Does the LOS test for and ban substances?", a: <><p>For <strong>sanctioned competition</strong>, yes — through the rules an athlete voluntarily accepts on entry, aligned with the World Anti-Doping Code and the relevant International Federation. What is different is the framing: this is a <em>condition of entry you agree to</em>, not a coercive prohibition on what you may do with your own body in private.</p></> },
+  { q: "What happens if an athlete breaches the accepted rules?", a: <><p>The consequence is confined to <strong>eligibility</strong> — the ability to compete under LOS sanction. There is no further punishment of private conduct. Any process follows the due-process guarantees set out above and may be appealed to the Court of Sport Arbitration.</p></> },
   { q: "How is combat sport compatible with the Non-Aggression Principle?", a: <><p>Combat is NAP-compatible because each contestant <strong>freely and informedly consents</strong> within published rules — consent that is revocable and never authorises harm beyond what was agreed. The MMA federation publishes its medical and safety standards in full.</p></> },
   { q: "How are minors and vulnerable participants protected?", a: <><p>A dedicated safeguarding policy governs the protection of minors and vulnerable participants across every federation, with clear, confidential reporting channels routed through the Integrity hub.</p></> },
   { q: "Where do anti-corruption and match-fixing rules sit?", a: <><p>Fraud and competition manipulation are treated as violations of <strong>property and contract</strong> — among the gravest breaches in a movement built on consent. They are prohibited under the integrity framework and reportable confidentially.</p></> },
@@ -130,7 +130,7 @@ function CleanSport() {
           <div className="reveal" style={{ position: "sticky", top: 100 }}>
             <Eyebrow>Athlete FAQ</Eyebrow>
             <h2 className="title" style={{ fontSize: "clamp(26px,3vw,38px)" }}>Straight answers</h2>
-            <p className="lead">The questions athletes ask most about how clean sport works at the LSOOC.</p>
+            <p className="lead">The questions athletes ask most about how clean sport works at the LOS.</p>
             <div style={{ marginTop: 24 }}>
               <p style={{ fontFamily: "var(--ui)", fontWeight: 700, fontSize: 11.5, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 12 }}>Authoritative codes</p>
               <div className="linklist">

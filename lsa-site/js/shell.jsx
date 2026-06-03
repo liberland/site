@@ -1,5 +1,5 @@
 /* ============================================================
-   shell.jsx — LSOOC shared: data, Crest, Header, Footer, helpers
+   shell.jsx — LOS shared: data, Crest, Header, Footer, helpers
    ============================================================ */
 
 const ROUTES = [
@@ -38,9 +38,9 @@ const FEDS = [
 ];
 
 const NEWS = [
-  { tag: "Announcement", fed: "LSOOC", date: "28 May 2026", title: "LSOOC publishes its founding Bylaws and first transparency dossier", excerpt: "The full statutes, org chart and funding statement are now public — the cornerstone of our recognition file.", img: "var(--green)" },
+  { tag: "Announcement", fed: "LOS", date: "28 May 2026", title: "LOS publishes its founding Bylaws and first transparency dossier", excerpt: "The full statutes, org chart and funding statement are now public — the cornerstone of our recognition file.", img: "var(--green)" },
   { tag: "Athletics", fed: "LAF", date: "21 May 2026", title: "National athletics records ratified ahead of the GSSE cycle", excerpt: "Six events get their first official Liberland marks.", img: "var(--red)" },
-  { tag: "Governance", fed: "LSOOC", date: "14 May 2026", title: "General Assembly elects first Executive Board", excerpt: "Results published in full under meritocratic voting.", img: "var(--blue)" },
+  { tag: "Governance", fed: "LOS", date: "14 May 2026", title: "General Assembly elects first Executive Board", excerpt: "Results published in full under meritocratic voting.", img: "var(--blue)" },
 ];
 
 const EVENTS = [
@@ -56,7 +56,7 @@ function fedColor(f){ return f.c; }
 function Crest({ size = 56 }) {
   const id = "c" + size;
   return (
-    <svg width={size} height={size} viewBox="0 0 200 200" aria-label="LSOOC crest" style={{ display: "block" }}>
+    <svg width={size} height={size} viewBox="0 0 200 200" aria-label="LOS crest" style={{ display: "block" }}>
       <defs>
         <path id={id + "t"} d="M 30 100 A 70 70 0 0 1 170 100" fill="none" />
         <path id={id + "b"} d="M 36 100 A 64 64 0 0 0 164 100" fill="none" />
@@ -118,7 +118,7 @@ function Header({ route }) {
         <div className="brand" onClick={() => go("/")}>
           <Crest size={42} />
           <div>
-            <div className="wm-a">LSOOC</div>
+            <div className="wm-a">LOS</div>
             <div className="wm-b">Liberland · Olympic Committee</div>
           </div>
         </div>
@@ -162,7 +162,7 @@ function Footer() {
             <div className="brand" style={{ marginBottom: 4 }} onClick={() => go("/")}>
               <Crest size={52} />
               <div>
-                <div className="wm-a" style={{ fontSize: 22 }}>LSOOC</div>
+                <div className="wm-a" style={{ fontSize: 22 }}>LOS</div>
                 <div className="wm-b">Liberland Sports & Olympic Committee</div>
               </div>
             </div>
@@ -201,7 +201,7 @@ function Footer() {
           </div>
         </div>
         <p className="disclaimer">
-          The LSOOC is a private, voluntary, member-based association financed exclusively by voluntary means. It is not a tax-funded state organ and makes no claim on the public treasury. The LSOOC is not yet recognised by the International Olympic Committee; no Olympic recognition is implied. Olympic-related marks are used only as permitted. This site is a design prototype.
+          The LOS is a private, voluntary, member-based association financed exclusively by voluntary means. It is not a tax-funded state organ and makes no claim on the public treasury. The LOS is not yet recognised by the International Olympic Committee; no Olympic recognition is implied. Olympic-related marks are used only as permitted. This site is a design prototype.
         </p>
         <div className="bottom">
           <span>© MMXXVI Liberland Sports & Olympic Committee</span>

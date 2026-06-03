@@ -25,7 +25,7 @@ const OFFICERS = [
 ];
 
 const DOCS = [
-  { nm: "LSOOC Bylaws (current consolidated text)", mt: "PDF · Adopted MMXXVI · rev. 1.0", c: "var(--gold-deep)" },
+  { nm: "LOS Bylaws (current consolidated text)", mt: "PDF · Adopted MMXXVI · rev. 1.0", c: "var(--gold-deep)" },
   { nm: "Code of Ethics & Conduct", mt: "PDF · Article 12 framework", c: "var(--green)" },
   { nm: "Strategic Plan 2026–2030 (with targets)", mt: "PDF · GSSE & recognition milestones", c: "var(--blue)" },
   { nm: "Audited Annual Accounts 2026", mt: "PDF · Independently audited", c: "var(--red)" },
@@ -109,7 +109,7 @@ function About() {
           <div className="reveal">
             <Eyebrow>Who we are</Eyebrow>
             <p className="bignote" style={{ marginTop: 20 }}>
-              The LSOOC is a <em>private, voluntary, member-based association</em>. It acts as the National Olympic Committee of Liberland and as the confederation of its national sports federations.
+              The LOS is a <em>private, voluntary, member-based association</em>. It acts as the National Olympic Committee of Liberland and as the confederation of its national sports federations.
             </p>
             <p style={{ marginTop: 22, maxWidth: "60ch" }}>
               It is <strong>not</strong> a tax-funded state organ. It exercises no compulsion over anyone, holds no claim on the public treasury, and exists only for as long as its members choose to sustain it (Bylaws Art. 1).
@@ -150,7 +150,7 @@ function About() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: "center", marginBottom: 44 }}>
             <Eyebrow className="center">Governance organs</Eyebrow>
-            <h2 className="title">How the LSOOC is structured</h2>
+            <h2 className="title">How the LOS is structured</h2>
           </div>
           <div className="org reveal d1">
             <div className="orgnode gold"><div className="t">General Assembly</div><div className="s">Sovereign body · all member federations</div></div>

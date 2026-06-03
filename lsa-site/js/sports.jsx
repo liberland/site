@@ -9,7 +9,7 @@ const CRITERIA = [
   "One federation per sport — no competing claims to the same discipline.",
   "A minimum base of clubs and individual members, published and verifiable.",
   "At least one national championship held each year.",
-  "Adoption of the LSOOC Bylaws, Code of Ethics and the integrity framework.",
+  "Adoption of the LOS Bylaws, Code of Ethics and the integrity framework.",
   "Statutes, an elected board and transparent, audited finances of its own.",
 ];
 

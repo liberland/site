@@ -1,5 +1,5 @@
 /* ============================================================
-   home.jsx — LSOOC Home (Stadium Dark)
+   home.jsx — LOS Home (Stadium Dark)
    ============================================================ */
 
 const { useReveal, Eyebrow, PH, FEDS, NEWS, EVENTS, go } = window;

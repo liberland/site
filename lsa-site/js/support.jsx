@@ -9,7 +9,7 @@ const SOURCES = [
   { t: "Sponsorship", d: "Commercial partners who choose to back the movement." },
   { t: "Donations & bequests", d: "Gifts from individuals who share the mission." },
   { t: "Broadcasting & licensing", d: "Returns on the movement's own media and marks." },
-  { t: "Returns on property", d: "Income from assets the LSOOC holds." },
+  { t: "Returns on property", d: "Income from assets the LOS holds." },
   { t: "Patron contributions", d: "Proceeds from honorary and proprietary Patron Titles." },
 ];
 
@@ -17,7 +17,7 @@ const TIERS = [
   { name: "Supporter", price: "From €25 / year", c: "var(--green)",
     perks: ["Named on the digital recognition wall", "Newsroom & athlete-pathway updates", "Supporter's digital emblem"] },
   { name: "Patron Title — Honorary", price: "From €500", c: "var(--gold-deep)",
-    perks: ["A protected, named Honorary Patron Title", "Transferable and inheritable private property", "Invitations to LSOOC and federation events", "Permanent place on the recognition wall"], feat: true },
+    perks: ["A protected, named Honorary Patron Title", "Transferable and inheritable private property", "Invitations to LOS and federation events", "Permanent place on the recognition wall"], feat: true },
   { name: "Patron Title — Proprietary", price: "By arrangement", c: "var(--violet)",
     perks: ["A proprietary Patron Title with defined rights", "Clear protection & anti-dilution terms", "Confers no power to compel anyone", "Fully transferable and inheritable"] },
 ];
@@ -83,7 +83,7 @@ function Support() {
   return (
     <div>
       <PageHead crumb="Support & Patrons" title="Support the movement"
-        sub="The LSOOC is financed exclusively by voluntary means — no compelled tax, no levy, no claim on the public treasury. Here is exactly how, and how to help." />
+        sub="The LOS is financed exclusively by voluntary means — no compelled tax, no levy, no claim on the public treasury. Here is exactly how, and how to help." />
 
       {/* funding model */}
       <section className="section">
@@ -134,7 +134,7 @@ function Support() {
 
           <div className="callout reveal d2" style={{ marginTop: 32 }}>
             <span className="l">Tokenised proprietary instruments</span>
-            <p>Where the LSOOC issues any tokenised proprietary instrument, it is described honestly and in full: what right it represents, how it is protected, and the rules against arbitrary dilution (Bylaws Art. 13). A token is property — and is treated like property.</p>
+            <p>Where the LOS issues any tokenised proprietary instrument, it is described honestly and in full: what right it represents, how it is protected, and the rules against arbitrary dilution (Bylaws Art. 13). A token is property — and is treated like property.</p>
           </div>
         </div>
       </section>
