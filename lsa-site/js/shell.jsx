@@ -65,7 +65,7 @@ function Crest({ size = 56 }) {
       <circle cx="100" cy="100" r="92" fill="#F2C200" />
       <circle cx="100" cy="100" r="68" fill="#F7F3E8" stroke="#15130E" strokeWidth="2.5" />
       <text fontFamily="Archivo" fontSize="11" fontWeight="700" letterSpacing="2.1" fill="#15130E">
-        <textPath href={"#" + id + "t"} startOffset="50%" textAnchor="middle">LIBERLAND SPORTS · OLYMPIC CTTE</textPath>
+        <textPath href={"#" + id + "t"} startOffset="50%" textAnchor="middle">LIBERLAND OLYMPIC · SPORTS CTTE</textPath>
       </text>
       <text fontFamily="Archivo" fontSize="10" fontWeight="700" letterSpacing="3" fill="#15130E">
         <textPath href={"#" + id + "b"} startOffset="50%" textAnchor="middle">EST · MMXXVI</textPath>
@@ -119,7 +119,7 @@ function Header({ route }) {
           <Crest size={42} />
           <div>
             <div className="wm-a">LOS</div>
-            <div className="wm-b">Liberland · Olympic Committee</div>
+            <div className="wm-b">Liberland Olympic and Sports Committee</div>
           </div>
         </div>
         <nav className="nav-links">
@@ -163,7 +163,7 @@ function Footer() {
               <Crest size={52} />
               <div>
                 <div className="wm-a" style={{ fontSize: 22 }}>LOS</div>
-                <div className="wm-b">Liberland Sports & Olympic Committee</div>
+                <div className="wm-b">Liberland Olympic and Sports Committee</div>
               </div>
             </div>
             <p className="motto">"Live Free, Respect Others"</p>
@@ -204,7 +204,7 @@ function Footer() {
           The LOS is a private, voluntary, member-based association financed exclusively by voluntary means. It is not a tax-funded state organ and makes no claim on the public treasury. The LOS is not yet recognised by the International Olympic Committee; no Olympic recognition is implied. Olympic-related marks are used only as permitted. This site is a design prototype.
         </p>
         <div className="bottom">
-          <span>© MMXXVI Liberland Sports & Olympic Committee</span>
+          <span>© MMXXVI Liberland Olympic and Sports Committee</span>
           <a href="#/about">Privacy</a>
           <a href="#/about">Cookies</a>
           <a href="#/about">Terms</a>

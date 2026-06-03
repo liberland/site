@@ -9,7 +9,7 @@
   <circle cx="100" cy="100" r="68" fill="#F7F3E8" stroke="#15130E" stroke-width="2.5"></circle>
   
   <text font-family="Archivo, sans-serif" font-size="11" font-weight="700" letter-spacing="2.4" fill="#15130E">
-    <textPath href="#crestTopArc" startOffset="50%" text-anchor="middle">LIBERLAND SPORTS · OLYMPIC COMMITTEE</textPath>
+    <textPath href="#crestTopArc" startOffset="50%" text-anchor="middle">LIBERLAND OLYMPIC AND SPORTS COMMITTEE</textPath>
   </text>
   <text font-family="Archivo, sans-serif" font-size="10" font-weight="700" letter-spacing="3" fill="#15130E">
     <textPath href="#crestBotArc" startOffset="50%" text-anchor="middle">EST · MMXXVI</textPath>
