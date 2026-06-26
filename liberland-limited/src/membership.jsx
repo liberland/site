@@ -72,9 +72,14 @@ function TierCard({ tier, active, onClick, billing }) {
         ))}
       </ul>
       <div style={{ marginTop: "auto", paddingTop: 12 }}>
-        <span className={"btn " + (tier.featured ? "btn--solid" : "")} style={{ width: "100%", justifyContent: "center" }}>
+        <a
+          href={`mailto:info@liberland.org?subject=Membership%20Application%20%E2%80%94%20${encodeURIComponent(tier.name)}`}
+          className={"btn " + (tier.featured ? "btn--solid" : "")}
+          style={{ width: "100%", justifyContent: "center" }}
+          onClick={e => e.stopPropagation()}
+        >
           Apply for {tier.name}
-        </span>
+        </a>
       </div>
     </button>
   );
