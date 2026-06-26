@@ -56,7 +56,7 @@ function Hero() {
             </p>
 
             <div className="hero-actions">
-              <a href="#membership" className="btn btn--solid">
+              <a href="mailto:info@liberland.org?subject=Membership%20Application" className="btn btn--solid">
                 Become a member <span className="arrow">→</span>
               </a>
               <a href="#events" className="btn">
