@@ -64,7 +64,7 @@ function Nav() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <ThemeToggle />
-          <a href="mailto:info@liberland.org?subject=Membership%20Application" className="btn btn--solid btn--sm">Become a member</a>
+          <a href="#membership" className="btn btn--solid btn--sm">Become a member</a>
           <button className="mob-toggle" aria-label="Menu"
                   onClick={() => setOpen(!open)}
                   style={{ display: "none", width: 36, height: 36, borderRadius: 4, border: "1px solid var(--rule-strong)" }}>
