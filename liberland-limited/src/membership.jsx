@@ -1,6 +1,91 @@
 // Membership — tier selector with a comparator (4 tiers).
 const { useState: useStateMem } = React;
 
+function buildMailtoHref(tier) {
+  const subjects = {
+    silver:   "Silver Membership Application — Liberland Limited",
+    gold:     "Gold Membership Application — Liberland Limited",
+    platinum: "Platinum Membership Application — Liberland Limited",
+    founder:  "Founder Membership Enquiry — Liberland Limited",
+  };
+
+  const bodies = {
+    silver: `Dear Liberland Limited,
+
+I would like to apply for Silver membership.
+
+I am interested in:
+- Staying connected with the Liberland community via the members' newsletter
+- Attending community gatherings at the member rate
+- Being listed in the members' directory
+- Priority on the cottage waitlist at Ark Village
+
+My preferred billing: [annual ($150) / monthly ($15)]
+
+Please let me know the next steps.
+
+Kind regards,
+[Your name]`,
+
+    gold: `Dear Liberland Limited,
+
+I would like to apply for Gold membership.
+
+I am particularly interested in:
+- Regular access to community gatherings with complimentary tickets
+- Members' lounge access at Ark Village
+- Quarterly briefings with the Director
+- Members' concierge for travel and stays
+
+My preferred billing: [annual ($1,000) / monthly ($95)]
+
+Please let me know the next steps.
+
+Kind regards,
+[Your name]`,
+
+    platinum: `Dear Liberland Limited,
+
+I would like to apply for Platinum membership.
+
+I am particularly interested in:
+- VIP passes for major gatherings throughout the year
+- Reserved cottage during Anniversary and Floating Man weeks
+- Private dinners and the founder's salon
+- Guest list privileges for two named companions
+
+My preferred billing: [annual ($10,000) / monthly ($900)]
+
+Please let me know the next steps.
+
+Kind regards,
+[Your name]`,
+
+    founder: `Dear Liberland Limited,
+
+I am writing to express my interest in Founder membership.
+
+I understand that Founder seats are limited to 12 per year and are by introduction only. I would welcome the opportunity to discuss this further.
+
+I am drawn to:
+- A numbered, lifetime membership recorded in the founders' register
+- A reserved table at every gathering
+- The annual private retreat
+- Direct access to the Director's office
+
+My connection to Liberland / introduction: [please describe]
+
+My preferred billing: [annual ($20,000) / monthly ($1,800)]
+
+Kind regards,
+[Your name]`,
+  };
+
+  const subject = encodeURIComponent(subjects[tier.id] || `${tier.name} Membership Application — Liberland Limited`);
+  const body = encodeURIComponent(bodies[tier.id] || `Dear Liberland Limited,\n\nI would like to apply for ${tier.name} membership.\n\nKind regards,\n[Your name]`);
+  return `mailto:info@liberland.org?subject=${subject}&body=${body}`;
+}
+
 function Tick({ on = true }) {
   return (
     <span aria-hidden="true" style={{
@@ -73,7 +158,7 @@ function TierCard({ tier, active, onClick, billing }) {
       </ul>
       <div style={{ marginTop: "auto", paddingTop: 12 }}>
         <a
-          href={`mailto:info@liberland.org?subject=Membership%20Application%20%E2%80%94%20${encodeURIComponent(tier.name)}`}
+          href={buildMailtoHref(tier)}
           className={"btn " + (tier.featured ? "btn--solid" : "")}
           style={{ width: "100%", justifyContent: "center" }}
           onClick={e => e.stopPropagation()}
