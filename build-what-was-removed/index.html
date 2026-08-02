@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build What Was Removed | Gornja Siga Settlement Recovery</title>
+<meta name="description" content="An evidence-based campaign to document disputed property removals, pursue lawful recovery, replace essential infrastructure and build a peaceful, environmentally responsible settlement.">
+<link rel="canonical" href="https://buildwhatwasremoved.org/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build What Was Removed">
+<meta property="og:url" content="https://buildwhatwasremoved.org/">
+<meta property="og:title" content="Build What Was Removed | Gornja Siga Settlement Recovery">
+<meta property="og:description" content="An evidence-based campaign to document disputed property removals, pursue lawful recovery, replace essential infrastructure and build a peaceful, environmentally responsible settlement.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build What Was Removed | Gornja Siga Settlement Recovery">
+<meta name="twitter:description" content="An evidence-based campaign to document disputed property removals, pursue lawful recovery, replace essential infrastructure and build a peaceful, environmentally responsible settlement.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Build What Was Removed — Public Evidence Ledger",
+  "description": "A public ledger of property reported removed, destroyed, seized or not returned during interventions affecting the Gornja Siga settlement project.",
+  "url": "https://buildwhatwasremoved.org/ledger"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Relative paths throughout: the router is hash-based (#/incidents/...),
+     so the document itself is always served from one real URL and this
+     site works unmodified whether it's mounted at a domain root (its own
+     Netlify site) or a subpath (e.g. a GitHub Pages preview). -->
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="vendor/babel.min.js"></script>
+
+<script src="src/router.js"></script>
+<script src="src/metrics.js"></script>
+<script src="src/data.js"></script>
+<script src="src/submissions-adapter.js"></script>
+
+<script type="text/babel" src="src/components/EvidenceStatusNotice.jsx"></script>
+<script type="text/babel" src="src/components/Nav.jsx"></script>
+<script type="text/babel" src="src/components/Footer.jsx"></script>
+<script type="text/babel" src="src/components/Home.jsx"></script>
+<script type="text/babel" src="src/components/Ledger.jsx"></script>
+<script type="text/babel" src="src/components/IncidentDetail.jsx"></script>
+<script type="text/babel" src="src/components/CasePage.jsx"></script>
+<script type="text/babel" src="src/components/EvidencePage.jsx"></script>
+<script type="text/babel" src="src/components/FundPage.jsx"></script>
+<script type="text/babel" src="src/components/UpdatesPage.jsx"></script>
+<script type="text/babel" src="src/components/ReplyPage.jsx"></script>
+<script type="text/babel" src="src/components/LegalPage.jsx"></script>
+<script type="text/babel" src="src/app.jsx"></script>
+</body>
+</html>
