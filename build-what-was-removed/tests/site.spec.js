@@ -3,8 +3,8 @@ const { test, expect } = require('@playwright/test');
 test.describe('Homepage', () => {
   test('renders hero, CTAs and the evidence notice link', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toHaveText('Build What Was Removed');
-    await expect(page.getByRole('button', { name: 'Fund the Recovery' }).first()).toBeVisible();
+    await expect(page.locator('h1')).toHaveText('Foster What We Built');
+    await expect(page.getByRole('button', { name: 'Fund the Settlement' }).first()).toBeVisible();
     await expect(page.getByRole('button', { name: 'Review the Evidence' })).toBeVisible();
   });
 

@@ -151,8 +151,8 @@ function IncidentDetail({ incidentId }) {
             </div>
 
             <div style={{ padding: "22px 24px", border: "1px solid var(--rule-strong)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
-              <div className="small" style={{ fontSize: 17 }}>Support the lawful recovery effort.</div>
-              <button className="btn" onClick={go("fund")}>Fund the recovery</button>
+              <div className="small" style={{ fontSize: 17 }}>Support the settlement.</div>
+              <button className="btn" onClick={go("fund")}>Fund the settlement</button>
             </div>
           </div>
 

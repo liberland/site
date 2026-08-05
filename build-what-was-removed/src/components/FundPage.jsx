@@ -12,11 +12,12 @@ function FundPage() {
     <section className="section section--tight">
       <div style={{ display: "grid", gridTemplateColumns: "1.25fr .75fr", gap: 64, alignItems: "start" }}>
         <div>
-          <div className="eyebrow" style={{ marginBottom: 22 }}>The recovery fund</div>
-          <h1 className="h2" style={{ marginBottom: 24, maxWidth: "18ch" }}>Fund the recovery</h1>
+          <div className="eyebrow" style={{ marginBottom: 22 }}>The settlement fund</div>
+          <h1 className="h2" style={{ marginBottom: 24, maxWidth: "18ch" }}>Fund the settlement</h1>
           <p className="body-text" style={{ fontSize: 19.5, marginBottom: 44 }}>
-            Contributions preserve evidence, pursue lawful recovery in Croatian proceedings, replace essential
-            infrastructure and pay for independent review of our own accounts.
+            Contributions defend and foster our existing settlement: they preserve evidence, pursue lawful recovery
+            of property taken in Croatian proceedings, sustain essential infrastructure and pay for independent
+            review of our own accounts.
           </p>
           <div className="evidence-notice" style={{ marginBottom: 48, fontSize: 17 }}>{window.Data.EVIDENCE_NOTICE}</div>
 

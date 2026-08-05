@@ -15,28 +15,29 @@ function Hero() {
         <div>
           <div className="row gap-14" style={{ marginBottom: 40 }}>
             <span style={{ width: 40, height: 1, background: "var(--accent-2)" }} />
-            <span className="eyebrow eyebrow--accent">The Gornja Siga Settlement Recovery Campaign</span>
+            <span className="eyebrow eyebrow--accent">The Gornja Siga Settlement Campaign</span>
           </div>
           <h1 className="h1" style={{ maxWidth: "12ch", marginBottom: 34 }}>
-            Build What Was Removed
+            Foster What We Built
           </h1>
           <p className="lede" style={{ marginBottom: 22 }}>
-            Since 2023, residents and supporters of the Gornja Siga settlement project have documented repeated
-            demolitions, removals and seizures affecting homes, tools, communications equipment and personal
-            belongings.
+            Since 2023, residents have maintained a peaceful, permanent settlement at Gornja Siga — and documented
+            repeated demolitions, removals and seizures affecting homes, tools, communications equipment and
+            personal belongings.
           </p>
           <p className="small" style={{ color: "var(--muted-3)", maxWidth: "60ch", marginBottom: 22, fontSize: 18, lineHeight: 1.66 }}>
             One Croatian criminal complaint arising from the 21 September 2023 intervention recorded €54,486.22 in
             claimed losses. Other incidents remain under documentation, valuation or legal review.
           </p>
           <p className="small" style={{ color: "var(--muted-3)", maxWidth: "60ch", marginBottom: 40, fontSize: 18, lineHeight: 1.66 }}>
-            We are building a lawful, transparent recovery effort: preserve the evidence, pursue the return or
-            compensation of property, replace essential infrastructure and establish a peaceful permanent settlement
-            designed for safety, environmental stewardship and open public accountability.
+            We already have a peaceful, permanent settlement at Gornja Siga. We are funding a lawful, transparent
+            effort to defend it: preserve the evidence, pursue the return or compensation of property, replace
+            essential infrastructure and foster a settlement designed for safety, environmental stewardship and
+            open public accountability.
           </p>
           <div className="row-wrap gap-14" style={{ marginBottom: 34 }}>
             <button className="btn btn--solid" onClick={go("fund")}>
-              Fund the Recovery
+              Fund the Settlement
             </button>
             <button className="btn btn--ghost-dark" onClick={go("ledger")}>
               Review the Evidence
@@ -130,7 +131,7 @@ function MetricBand() {
     <section style={{ background: "var(--ink-2)", color: "var(--paper)" }}>
       <div className="container" style={{ padding: "52px 34px 46px" }}>
         <div className="row-wrap gap-24" style={{ justifyContent: "space-between", marginBottom: 34 }}>
-          <div className="eyebrow eyebrow--accent">Recovery position — qualified aggregates</div>
+          <div className="eyebrow eyebrow--accent">Settlement position — qualified aggregates</div>
           <div className="row-wrap gap-8">
             {periods.map(([v, label]) => (
               <button
@@ -248,7 +249,7 @@ function KeyIncident() {
 
 function WhySettlement() {
   const cards = [
-    { n: "C.01", title: "Peaceful presence", body: "A permanent, nonviolent community is a practical alternative to recurring confrontation and unmanaged uncertainty." },
+    { n: "C.01", title: "Peaceful presence", body: "Our permanent, nonviolent community already exists as a practical alternative to recurring confrontation and unmanaged uncertainty." },
     { n: "C.02", title: "Environmental stewardship", body: "The project will publish waste, sanitation, fire, safety and visitor protocols and will seek independent environmental review." },
     { n: "C.03", title: "Regional opportunity", body: "Lawful low-impact accommodation, boating, cycling, education, cultural exchange, local purchasing and cooperation with neighbouring communities." },
     { n: "C.04", title: "Property and process", body: "Difficult territorial questions do not eliminate the need to document, preserve and account for private property." },
@@ -258,9 +259,9 @@ function WhySettlement() {
       <div className="section-number">
         <span className="mono" style={{ color: "var(--accent)", fontSize: 12 }}>02</span>
         <span className="rule-short" />
-        <span className="eyebrow">The case for building</span>
+        <span className="eyebrow">The case for fostering</span>
       </div>
-      <h2 className="h2" style={{ marginBottom: 56, maxWidth: "20ch" }}>Why the settlement should exist</h2>
+      <h2 className="h2" style={{ marginBottom: 56, maxWidth: "20ch" }}>Why the settlement must endure</h2>
       <div className="card-grid card-grid--4">
         {cards.map((c) => (
           <div key={c.n}>

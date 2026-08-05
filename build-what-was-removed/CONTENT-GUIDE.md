@@ -17,8 +17,9 @@ human or AI — must follow these rules before editing copy or adding data.
 - "Croatia has no jurisdiction." → use "The extent and legal basis of
   Croatia's jurisdiction over particular non-border activities remain
   disputed."
-- "Liberland has an absolute right to build." → use "The campaign seeks a
-  peaceful, reviewable legal framework for permanent settlement."
+- "Liberland has an absolute right to build." → use "The campaign defends
+  the existing, peaceful settlement and seeks a reviewable legal framework
+  for it to continue and grow."
 - "Police violence." → use "Reported or recorded use of force, pending
   legal assessment."
 - "Robbery clock" / "Total Stolen" as an unqualified metric → use the

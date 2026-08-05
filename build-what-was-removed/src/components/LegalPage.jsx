@@ -14,7 +14,7 @@ function LegalPage({ section }) {
       <div id="terms" style={{ padding: "32px 0", borderTop: "1px solid var(--rule-strong)" }}>
         <h2 className="h3" style={{ marginBottom: 14 }}>Terms of use</h2>
         <p className="body-text">
-          This site is published by the Gornja Siga Settlement Recovery Campaign as a documentation and fundraising
+          This site is published by the Gornja Siga Settlement Campaign as a documentation and fundraising
           resource. It is not legal advice, not an investment offering, and not a guarantee of any outcome in any
           proceeding. TODO — final terms of use pending the recipient legal entity's confirmation and counsel review.
         </p>

@@ -26,7 +26,7 @@ function UtilityBar() {
         <span>Liberland</span>
         <span style={{ width: 1, height: 14, background: "rgba(203,169,110,.35)" }} />
         <span className="label-mono" style={{ color: "var(--muted-dark)" }}>
-          RECOVERY&nbsp;CAMPAIGN
+          SETTLEMENT&nbsp;CAMPAIGN
         </span>
       </div>
       <div className="utility-bar__meta">
@@ -43,7 +43,7 @@ function SiteNav({ view }) {
     <div className="site-nav">
       <div className="site-nav__inner">
         <button className="site-nav__brand" onClick={goTo("home")}>
-          Build What Was Removed
+          Foster What We Built
         </button>
         <nav aria-label="Primary" className="site-nav__links">
           {BWWR_NAV_ITEMS.map((n) => (
@@ -57,7 +57,7 @@ function SiteNav({ view }) {
             </button>
           ))}
           <button className="site-nav__cta" onClick={goTo("fund")}>
-            Fund the Recovery
+            Fund the Settlement
           </button>
         </nav>
       </div>

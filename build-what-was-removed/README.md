@@ -1,7 +1,8 @@
-# Build What Was Removed
+# Foster What We Built
 
-The Gornja Siga Settlement Recovery Campaign — a public, evidence-based
-fundraising and accountability site. See `ARCHITECTURE.md`,
+The Gornja Siga Settlement Campaign — a public, evidence-based
+fundraising and accountability site for the existing, permanent Gornja Siga
+settlement. See `ARCHITECTURE.md`,
 `CONTENT-GUIDE.md`, `EVIDENCE-PUBLICATION-CHECKLIST.md`,
 `DATA-DICTIONARY.md`, `LEGAL-REVIEW-CHECKLIST.md` and `DEPLOYMENT.md` before
 changing content or publishing evidence.

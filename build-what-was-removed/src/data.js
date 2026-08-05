@@ -227,8 +227,8 @@
   const casePillars = [
     { n: "01", title: "Rule of law", body: "Public power should be exercised under a clear legal basis by a competent decision-maker, with written reasons capable of review. The campaign does not assert that any particular intervention was unlawful; it asserts that the record required to test that question should exist and should be disclosable." },
     { n: "02", title: "Property safeguards", body: "Where property is removed, an itemised inventory, a preservation duty and a return or compensation route are the minimum standards. Difficult territorial questions do not eliminate the need to document, preserve and account for private property." },
-    { n: "03", title: "Environmental stewardship", body: "An environmental mandate should protect a forest. The settlement project will publish waste, sanitation, fire, safety and visitor protocols, and will seek independent environmental review rather than resist it." },
-    { n: "04", title: "Peaceful settlement", body: "A permanent, nonviolent community is a practical alternative to recurring confrontation and unmanaged uncertainty. The campaign is funded to document rather than to confront." },
+    { n: "03", title: "Environmental stewardship", body: "An environmental mandate should protect a forest. The settlement will publish waste, sanitation, fire, safety and visitor protocols, and will seek independent environmental review rather than resist it." },
+    { n: "04", title: "Peaceful settlement", body: "An existing, permanent, nonviolent community is a practical alternative to recurring confrontation and unmanaged uncertainty. The campaign is funded to document and foster it rather than to confront." },
     { n: "05", title: "Regional economic opportunity", body: "The long-term vision includes lawful low-impact accommodation, boating, cycling, education, cultural exchange, local purchasing and cooperation with neighbouring communities." },
     { n: "06", title: "Acknowledgement of Croatian interests", body: "Croatia has legitimate border-security, environmental, navigation, construction, camping and public-safety interests. The proposition is not that those interests are illegitimate, but that they should be implemented through clear powers, written reasons, itemised records, proportional action, preservation of property and effective remedies." },
     { n: "07", title: "Unresolved legal questions", body: "Sovereignty, permitted use and the lawfulness of each intervention are unresolved on this record. No court has established Liberland sovereignty or an unrestricted right to build, and this site does not claim otherwise." },
@@ -245,7 +245,7 @@
   ];
 
   const EVIDENCE_NOTICE =
-    "This website documents property reported as removed, destroyed, seized or not returned during interventions affecting the Gornja Siga settlement project. Descriptions of criminal conduct are allegations contained in identified complaints or witness accounts unless expressly marked as adjudicated. “Claimed value” is not a court award. Temporary seizures are not treated as permanent losses unless the property is finally forfeited, destroyed or remains unreturned after the applicable process. Corrections and official responses are invited.";
+    "This website documents property reported as removed, destroyed, seized or not returned during interventions affecting the Gornja Siga settlement. Descriptions of criminal conduct are allegations contained in identified complaints or witness accounts unless expressly marked as adjudicated. “Claimed value” is not a court award. Temporary seizures are not treated as permanent losses unless the property is finally forfeited, destroyed or remains unreturned after the applicable process. Corrections and official responses are invited.";
 
   return {
     incidents,

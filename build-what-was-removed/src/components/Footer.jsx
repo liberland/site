@@ -11,12 +11,13 @@ function SiteFooter() {
               <path d="M50 5v90M5 50h90" />
             </svg>
             <span style={{ fontFamily: "var(--serif)", fontSize: 19, letterSpacing: ".02em", color: "var(--paper)" }}>
-              Build What Was Removed
+              Foster What We Built
             </span>
           </div>
           <p className="small" style={{ color: "var(--muted-dark)", maxWidth: "52ch", marginBottom: 20 }}>
-            The Gornja Siga Settlement Recovery Campaign. An evidence-based effort to document disputed property
-            removals, pursue lawful recovery and build a peaceful, environmentally responsible settlement.
+            The Gornja Siga Settlement Campaign. An evidence-based effort to defend and foster our existing,
+            peaceful settlement — documenting disputed property removals, pursuing lawful recovery of what was
+            taken, and sustaining an environmentally responsible community that is already home.
           </p>
           <div className="label-mono" style={{ lineHeight: 1.8 }}>
             NO ADJUDICATED SOVEREIGNTY IS ASSERTED. NO FINAL CRIMINAL FINDING IS ASSERTED.
