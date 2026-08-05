@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/build-liberland-webpage-K3j1g]
+    branches: [master, claude/build-liberland-webpage-K3j1g, claude/build-what-was-removed-rrbeth]
   workflow_dispatch:
 
 permissions:
@@ -28,6 +28,7 @@ jobs:
           mkdir -p _site
           cp -r liberland-limited/. _site/
           cp -r new-site _site/candidate
+          cp -r build-what-was-removed _site/build-what-was-removed
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
