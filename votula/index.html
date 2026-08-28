@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votula — Tokenised property on the Danube</title>
+<meta name="description" content="Votula is Liberland's blockchain and crypto branch. We tokenise real property at Ark Village and across Liberland, run the LLM treasury behind it, and give builders the rails to ship on top of both.">
+<meta name="theme-color" content="#06090E">
+
+<link rel="icon" href="assets/votula-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/votula-mark.svg">
+<link rel="canonical" href="https://votula.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Votula">
+<meta property="og:url" content="https://votula.com/">
+<meta property="og:title" content="Votula — Tokenised property on the Danube">
+<meta property="og:description" content="Liberland's blockchain arm. Tokenised real property, the LLM treasury, and the rails for builders.">
+<meta property="og:image" content="https://votula.com/assets/votula-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Votula — Tokenised property on the Danube">
+<meta name="twitter:description" content="Liberland's blockchain arm. Tokenised real property, the LLM treasury, and the rails for builders.">
+<meta name="twitter:image" content="https://votula.com/assets/votula-og.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Votula, Ltd.",
+  "url": "https://votula.com/",
+  "logo": "https://votula.com/assets/votula-mark.svg",
+  "description": "Votula, Ltd. is Liberland's blockchain and crypto branch, registered in Victoria, Seychelles. It tokenises real property, operates the LLM treasury, and supports builders on the Liberland chain.",
+  "parentOrganization": { "@type": "Organization", "name": "Liberland", "url": "https://liberland.org" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Victoria", "addressCountry": "SC" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="home">
+  <a href="#main" class="btn btn--quiet" style="position:absolute;left:-9999px;top:8px;z-index:100" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
+  <div id="root"></div>
+
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
+
+  <script type="text/babel" src="src/data.jsx"></script>
+  <script type="text/babel" src="src/kit.jsx"></script>
+  <script type="text/babel" src="src/chrome.jsx"></script>
+  <script type="text/babel" src="src/page-home.jsx"></script>
+  <script type="text/babel">window.VT_mount();</script>
+</body>
+</html>

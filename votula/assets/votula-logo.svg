@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" width="520" height="140" role="img" aria-label="Votula">
+  <title>Votula</title>
+  <defs>
+    <clipPath id="horizon"><rect x="0" y="0" width="120" height="66"/></clipPath>
+  </defs>
+  <g transform="translate(10 10)">
+    <circle cx="60" cy="66" r="34" fill="#FFD200" clip-path="url(#horizon)"/>
+    <path d="M26 66 L60 108 L94 66" fill="none" stroke="#FBF7EC" stroke-width="9" stroke-linejoin="miter"/>
+    <rect x="10" y="62" width="100" height="7" fill="#12D8B0"/>
+  </g>
+  <text x="150" y="92" font-family="Bricolage Grotesque, Inter Tight, Helvetica, Arial, sans-serif"
+        font-size="72" font-weight="800" letter-spacing="-2.2" fill="#FBF7EC">VOTULA</text>
+</svg>

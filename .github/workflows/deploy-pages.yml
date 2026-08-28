@@ -28,6 +28,7 @@ jobs:
           mkdir -p _site
           cp -r liberland-limited/. _site/
           cp -r new-site _site/candidate
+          cp -r votula _site/votula
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
