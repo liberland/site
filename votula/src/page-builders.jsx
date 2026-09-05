@@ -1,20 +1,33 @@
 // Builders — dApps on Liberland, and the grant programme.
 
 function Builders() {
-  const { PLACEHOLDER: P, COMPANY } = window.VT_DATA;
+  const { PLACEHOLDER: P, CHAIN, COMPANY } = window.VT_DATA;
   const { ChainStrip, PageHero, SectionHead } = window.VT;
 
-  const snippet = `import { votula } from "@votula/sdk";
+  // Real calls against the generated ABIs. No proprietary SDK exists,
+  // and inventing one on a marketing page would be the wrong first lie.
+  const snippet = `import { createPublicClient, http } from "viem";
+import { sepolia } from "viem/chains";
 
-// One SPV, one asset, one fixed supply.
-const spv = await votula.property.get("ark-phase-1");
+import config from "./sepolia-demo.json";
+import citizenPolicyAbi from "./abis/CitizenEligibilityPolicy.json";
+import votingPowerAbi from "./abis/VotingPowerPolicy.json";
 
-// Ownership is a balance, not a filing cabinet.
-const stake = await spv.balanceOf(wallet.address);
+const client = createPublicClient({ chain: sepolia, transport: http() });
 
-// Distributions arrive in LLM, pro rata, on schedule.
-spv.on("distribution", ({ amountLLM, blockNumber }) => {
-  console.log(\`\${amountLLM} LLM at block \${blockNumber}\`);
+// Ask the policy. Never reimplement the rule in your UI.
+const isCitizen = await client.readContract({
+  address: config.citizenEligibilityPolicy,
+  abi: citizenPolicyAbi,
+  functionName: "isCitizenInGoodStanding",
+  args: [wallet],
+});
+
+const weight = await client.readContract({
+  address: config.votingPowerPolicy,
+  abi: votingPowerAbi,
+  functionName: "votingPower",
+  args: [wallet],
 });`;
 
   return (
@@ -43,6 +56,9 @@ spv.on("distribution", ({ amountLLM, blockNumber }) => {
               </div>
             </div>
             <p className="small">Milestone-based, paid in LLM, no equity taken.</p>
+            <p className="small" style={{ color: "var(--text-4)" }}>
+              Programme figures are illustrative until the first budget envelope is enacted.
+            </p>
           </div>
         }
       />
@@ -58,21 +74,21 @@ spv.on("distribution", ({ amountLLM, blockNumber }) => {
           {[
             {
               c: "var(--yellow)",
-              k: "Property primitives",
-              t: "SPV registry & fixed-supply interests",
-              b: "Read any SPV's asset, supply, holders and distribution history. Subscribe and transfer through audited contracts you did not have to write.",
+              k: "Registries",
+              t: "Facts you can read directly",
+              b: "Identity, stake, land titles, companies, offices, budgets, referenda and seats. Generated ABIs for every one of them ship inside the frozen release.",
             },
             {
               c: "var(--lagoon)",
-              k: "Identity",
-              t: "e-Residency as a signer",
-              b: "Liberland citizenship and e-Residency as an on-chain credential. Gate a function on a verified human without holding their documents yourself.",
+              k: "Policies",
+              t: "Rules you can ask instead of copying",
+              b: "Citizenship, voting power, candidate eligibility, election timing, unstake portions, land signers. Ask the policy and your app stays correct after a referendum changes it.",
             },
             {
               c: "var(--danube-lift)",
-              k: "Settlement",
-              t: "LLM rails and price reference",
-              b: "Transfers, fee handling and a published reference rate, so your app quotes the same number the treasury page does.",
+              k: "Apps",
+              t: "Workflows with the checks already in them",
+              b: "Write through the app contracts and you inherit the office roles, eligibility gates and timelock discipline instead of reimplementing them and getting one wrong.",
             },
             {
               c: "var(--sunset)",
@@ -95,8 +111,8 @@ spv.on("distribution", ({ amountLLM, blockNumber }) => {
       <section className="section wrap section--flush-t">
         <SectionHead
           index="02"
-          title={{ eyebrow: "Shape of it", head: "Ownership is a balance" }}
-          note="The whole design goal: reading who owns what should be one call, not a records request."
+          title={{ eyebrow: "Shape of it", head: "Ask the chain, don't copy the rule" }}
+          note="There is no proprietary SDK. It is viem, wagmi and the ABIs generated at the frozen tag — like any other contract system."
         />
         <div className="grid grid--wide" style={{ paddingTop: 32 }}>
           <div className="prose" style={{ maxWidth: "none" }} data-reveal>
@@ -104,16 +120,22 @@ spv.on("distribution", ({ amountLLM, blockNumber }) => {
           </div>
           <div className="stack stack--lg" data-reveal>
             <p className="body">
-              Contracts are audited before they are documented, and documented before they are announced.
-              Breaking changes get a deprecation window measured in months, published on the docs page and
-              nowhere else — no surprise migrations in a Telegram channel at midnight.
+              Every constitutional value is governed, which means it can change by referendum without anyone
+              touching your frontend. A hardcoded threshold is a bug with a delay fuse on it. Read the policy.
+            </p>
+            <p className="body">
+              The same applies to timelock delays, election windows and unstake portions. If the contract exposes
+              it, the contract is the answer — and if the docs and the Solidity disagree, the Solidity wins.
             </p>
             <div className="flex" style={{ gap: 8 }}>
-              <span className="pill pill--lagoon">Audited first</span>
-              <span className="pill pill--yellow">Versioned</span>
+              <span className="pill pill--lagoon">Generated ABIs</span>
+              <span className="pill pill--yellow">Frozen tag</span>
               <span className="pill">No equity taken</span>
             </div>
-            <a href="docs.html" className="btn btn--ghost btn--sm" style={{ width: "fit-content" }}>Full documentation <span className="arrow">→</span></a>
+            <div className="flex" style={{ gap: 12 }}>
+              <a href="docs.html" className="btn btn--ghost btn--sm">Full documentation <span className="arrow">→</span></a>
+              <a href={CHAIN.repo} target="_blank" rel="noopener noreferrer" className="btn btn--quiet btn--sm">Repository ↗</a>
+            </div>
           </div>
         </div>
       </section>
@@ -140,7 +162,7 @@ spv.on("distribution", ({ amountLLM, blockNumber }) => {
 
         <div className="grid grid--3" style={{ marginTop: 44 }}>
           {[
-            ["What we fund", "Wallets, explorers, tooling for property interests, identity integrations, anything that makes an SPV easier to read."],
+            ["What we fund", "Wallets, block explorers, governance and ballot interfaces, cadastre viewers, identity integrations — anything that makes a registry easier to read."],
             ["What we do not", "Yield products dressed as savings accounts, anything promising a return, and forks of things that already work."],
             ["Terms", `Paid in LLM from a ${P.grantPool} LLM pool. Milestone-based. You keep ownership of everything you build.`],
           ].map(([t, b]) => (

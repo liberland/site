@@ -1,8 +1,9 @@
 // Landing page.
 
 function Home() {
-  const { PLACEHOLDER: P, COMPANY, MARQUEE } = window.VT_DATA;
+  const { PLACEHOLDER: P, CHAIN, COMPANY, MARQUEE } = window.VT_DATA;
   const { Mark, WaveRule, ChainStrip, SunsetBackdrop, SectionHead, Stat } = window.VT;
+  const E = CHAIN.evidence;
 
   return (
     <React.Fragment>
@@ -44,20 +45,21 @@ function Home() {
               VOTULA
             </h1>
 
-            <p className="lede" style={{ margin: "26px 0 0", maxWidth: "22ch", fontSize: "clamp(20px, 2.4vw, 30px)" }}>
-              Land on the Danube, cut into pieces you can actually own.
+            <p className="lede" style={{ margin: "26px 0 0", maxWidth: "24ch", fontSize: "clamp(20px, 2.4vw, 30px)" }}>
+              We run the chain a country governs itself on.
             </p>
 
-            <p className="body" style={{ margin: "18px auto 0", maxWidth: "58ch", color: "var(--text-2)" }}>
-              Votula is Liberland's blockchain arm. We tokenise real property, run the LLM treasury behind it,
-              and hand builders the rails to ship on top of both. Registered in Victoria. Settled on-chain.
+            <p className="body" style={{ margin: "18px auto 0", maxWidth: "62ch", color: "var(--text-2)" }}>
+              Votula is Liberland's blockchain and crypto branch. We operate Liberland EVM — constitution-aligned
+              contracts covering identity, elections, treasury, a land cadastre and a company registry — and we build
+              the property and merit rails on top of it. Registered in Victoria. Frozen for audit on {CHAIN.frozen}.
             </p>
 
             <div className="flex" style={{ justifyContent: "center", gap: 12, marginTop: 34 }}>
-              <a href="property.html#offerings" className="btn btn--primary">
-                View offerings <span className="arrow">→</span>
+              <a href="protocol.html" className="btn btn--primary">
+                Read the protocol <span className="arrow">→</span>
               </a>
-              <a href="#how" className="btn btn--ghost">How it works</a>
+              <a href="property.html#offerings" className="btn btn--ghost">View offerings</a>
               <a href="docs.html" className="btn btn--quiet">Docs ↗</a>
             </div>
           </div>
@@ -69,10 +71,10 @@ function Home() {
         <div className="wrap" style={{ position: "relative", padding: "clamp(36px, 5vw, 52px) var(--gutter)" }}>
           <div className="grid grid--4" style={{ gap: 28 }} data-reveal>
             {[
-              { label: "Parcels tokenised", value: P.parcelsTokenised, note: "Ark Village + Liberland" },
-              { label: "Treasury", value: P.treasuryLLM, unit: "LLM", note: `reserve ratio ${P.reserveRatio}` },
-              { label: "Teams shipping", value: P.buildersShipping, note: "on Liberland chain" },
-              { label: "Independent audits", value: P.audits, note: "published in full" },
+              { label: "Tests passing", value: E.testsPassed, note: `${E.testsFailed} failing, ${E.invariants} invariants` },
+              { label: "LLM hard cap", value: "70,000,000", note: "no mint in treasury custody" },
+              { label: "Congress seats", value: "7", note: "90-day cycles, 17:00 UTC" },
+              { label: "Audit status", value: "Frozen", note: "external review pending" },
             ].map(s => (
               <div key={s.label} className="stack stack--sm">
                 <div style={{ fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.65 }}>
@@ -106,18 +108,29 @@ function Home() {
       <section className="section wrap">
         <SectionHead
           index="01"
-          title={{ eyebrow: "What we do", head: "Three things, one ledger" }}
-          note="Property is the point. The token and the tooling exist because property needs both."
+          title={{ eyebrow: "What we do", head: "Four things, one ledger" }}
+          note="The protocol is the foundation. Everything else is something useful standing on it."
         />
 
-        <div className="grid grid--3" style={{ paddingTop: 32 }}>
+        {/* Two-up, not auto-fit: four cards this wordy read better as 2x2 than
+            as three across with an orphan underneath. */}
+        <div className="grid grid--2" style={{ paddingTop: 32 }}>
           {[
             {
-              href: "property.html",
-              eyebrow: "Flagship",
+              href: "protocol.html",
+              eyebrow: "Foundation",
               tone: "eyebrow eyebrow--yellow",
-              title: "Tokenised property",
-              body: "Deeds on the Danube, held in a Seychelles SPV and cut into a fixed supply of transferable interests. Ark Village first, then the rest of Liberland's build-out.",
+              title: "Liberland EVM",
+              body: "Constitution-aligned governance in Solidity: identity, stake, referenda, Congress elections, Senate powers, treasury, land and companies. No super-admin, no arbitrary executor.",
+              cta: "Read the protocol",
+              accent: "var(--yellow)",
+            },
+            {
+              href: "property.html",
+              eyebrow: "Programme",
+              tone: "eyebrow eyebrow--yellow",
+              title: "Land and property",
+              body: "A versioned on-chain cadastre with dual-consent transfers, and Seychelles vehicles that cut a deed into a fixed supply of interests. Ark Village first, then the rest of the build-out.",
               cta: "See current offerings",
               accent: "var(--yellow)",
             },
@@ -125,9 +138,9 @@ function Home() {
               href: "llm.html",
               eyebrow: "The unit",
               tone: "eyebrow",
-              title: "LLM & treasury",
-              body: "Liberland Merit is the unit of account across everything we issue. We hold the reserves, publish the ratio, and let anyone check the arithmetic.",
-              cta: "Read the treasury page",
+              title: "LLM, stake & lending",
+              body: "Liberland Merit is governance collateral: an 18-decimal ERC-20 with a 70,000,000 hard cap, staked for citizenship, bonded for candidacy, and borrowable against at 30% LTV.",
+              cta: "Read the merit page",
               accent: "var(--lagoon)",
             },
             {
@@ -135,7 +148,7 @@ function Home() {
               eyebrow: "The rails",
               tone: "eyebrow eyebrow--sunset",
               title: "Builder programme",
-              body: "Contracts, identity primitives, and grants for teams shipping dApps on Liberland — including the ones we would rather not build ourselves.",
+              body: "Generated ABIs, identity primitives, and grants for teams shipping on Liberland — including the apps we would rather not build ourselves.",
               cta: "Start building",
               accent: "var(--sunset)",
             },
@@ -201,7 +214,7 @@ function Home() {
               <WaveRule height={16} opacity={0.5} />
               <div className="flex" style={{ justifyContent: "space-between" }}>
                 <div className="data">Riverside · Liberland</div>
-                <div className="data">Settles in LLM</div>
+                <div className="data">Settles in stablecoin</div>
               </div>
             </div>
 
@@ -229,8 +242,8 @@ function Home() {
             steps={[
               { title: "Title in", body: "A parcel or unit is contributed to a Seychelles SPV. The deed sits with the SPV, never with Votula." },
               { title: "Structure", body: "The SPV's economic interest is split into a fixed supply. One token is one share of exactly the same thing." },
-              { title: "Issue", body: "Tokens are issued on Liberland's chain, to wallets that have cleared identity checks." },
-              { title: "Distribute", body: "Rent and proceeds flow back pro rata, in LLM, on a published schedule." },
+              { title: "Issue", body: "Interests are issued to wallets that have cleared identity checks, against a linked identity." },
+              { title: "Distribute", body: "Rent and proceeds flow back pro rata, on a published schedule." },
               { title: "Secondary venue", body: "Listing on a regulated secondary market. Not live. We will not pretend otherwise." },
             ]}
           />
@@ -261,7 +274,7 @@ function Home() {
             {
               k: "Regulators & banks",
               t: "Ask for the file",
-              b: "Every SPV, deed, reserve ratio and audit in one place. Short paperwork, but there is paperwork.",
+              b: "Contracts, parameters, audit scope and every SPV in one place. Short paperwork, but there is paperwork.",
               c: "var(--danube-lift)",
             },
           ].map(a => (
@@ -278,52 +291,75 @@ function Home() {
       <section className="section wrap section--flush-t">
         <SectionHead
           index="05"
-          title={{ eyebrow: "Proof", head: "The numbers, unattended" }}
-          note="Published continuously, not quarterly. If a figure is stale, that is a bug."
+          title={{ eyebrow: "Proof", head: "Frozen, evidenced, unfinished" }}
+          note="The whole point of a public chain is that you do not have to take our word for any of this."
         />
 
         <div className="grid grid--2" style={{ paddingTop: 32 }}>
           <div className="card card--warm card--pad stack stack--lg" style={{ position: "relative", overflow: "hidden" }} data-reveal>
             <div className="flex" style={{ justifyContent: "space-between" }}>
-              <div className="eyebrow eyebrow--mute">Treasury balance</div>
-              <div className="data" style={{ color: "var(--lagoon)" }}>● live</div>
+              <div className="eyebrow eyebrow--mute">Audit freeze</div>
+              <div className="data" style={{ color: "var(--yellow)" }}>◼ frozen</div>
             </div>
-            <div className="figure" style={{ fontSize: 48 }}>
-              {P.treasuryLLM}<span style={{ fontSize: 22, color: "var(--yellow)", marginLeft: 8, letterSpacing: 0 }}>LLM</span>
-            </div>
-            <svg viewBox="0 0 300 70" style={{ width: "100%", height: 70 }} preserveAspectRatio="none" aria-hidden="true">
-              <path d="M0 58 L30 50 L60 54 L90 38 L120 42 L150 26 L180 30 L210 18 L240 22 L270 10 L300 6 L300 70 L0 70 Z" fill="rgba(18,216,176,.14)" />
-              <path d="M0 58 L30 50 L60 54 L90 38 L120 42 L150 26 L180 30 L210 18 L240 22 L270 10 L300 6" fill="none" stroke="var(--lagoon)" strokeWidth="3" />
-            </svg>
-            <div className="flex" style={{ gap: 20 }}>
-              <span className="data">{P.treasuryChange}</span>
-              <span className="data">reserve ratio {P.reserveRatio}</span>
-              <span className="data">1 LLM = {P.llmPrice} USDC</span>
-            </div>
+            <div className="data" style={{ fontSize: 15, color: "var(--text)" }}>{CHAIN.tag}</div>
+
+            {[
+              ["Statements", E.coverageStatements],
+              ["Lines", E.coverageLines],
+              ["Functions", E.coverageFunctions],
+              ["Branches", E.coverageBranches],
+            ].map(([label, pct]) => (
+              <div key={label} className="stack stack--sm">
+                <div className="flex" style={{ justifyContent: "space-between" }}>
+                  <span className="small" style={{ color: "var(--text-2)" }}>{label}</span>
+                  <span className="data" style={{ color: "var(--lagoon)" }}>{pct}</span>
+                </div>
+                <div style={{ height: 8, borderRadius: 999, background: "rgba(251,247,236,.1)", overflow: "hidden" }}>
+                  <div style={{ width: pct, height: "100%", background: "var(--ramp-depth)" }} />
+                </div>
+              </div>
+            ))}
+
+            <p className="small">
+              {E.testsPassed} tests, {E.testsFailed} failing. Branch coverage is the weak one, and pretending
+              otherwise would be the fastest way to lose the argument with an auditor.
+            </p>
           </div>
 
           <div className="card card--clip" data-reveal>
             <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--line)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-              <h3 className="h3">Recent settlement</h3>
+              <h3 className="h3">Module classes</h3>
               <div className="data" style={{ letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-4)" }}>
-                block {P.latestBlock}
+                kernel registry
               </div>
             </div>
             <div className="ledger">
               {[
-                { h: "0x7A3f…9Cd2", a: "+ 12,400.00", s: "settled", l: "Settled" },
-                { h: "0x1c88…40Ab", a: "− 980.55", s: "pending", l: "Pending 2/12" },
-                { h: "0xBe02…771F", a: "+ 2,019.00", s: "settled", l: "Settled" },
-                { h: "0x44dA…08e1", a: "+ 640.00", s: "kyc", l: "KYC verified" },
+                { m: "GovernanceRouter", c: "Core", s: "alert", l: "Not repointable" },
+                { m: "IdentityRegistry", c: "State", s: "pending", l: "Double threshold" },
+                { m: "VotingPowerPolicy", c: "Policy", s: "pending", l: "Double threshold" },
+                { m: "ReferendumApp", c: "Authority", s: "pending", l: "Double threshold" },
+                { m: "DecisionApp", c: "Application", s: "settled", l: "Ordinary" },
               ].map(r => (
-                <div key={r.h} className="ledger-row" style={{ gridTemplateColumns: "1fr auto auto" }}>
-                  <div style={{ color: "var(--text-2)" }}>{r.h}</div>
-                  <div>{r.a}</div>
+                <div key={r.m} className="ledger-row" style={{ gridTemplateColumns: "1fr auto auto" }}>
+                  <div style={{ color: "var(--text-2)" }}>{r.m}</div>
+                  <div style={{ color: "var(--text-4)" }}>{r.c}</div>
                   <div className={`status status--${r.s}`} style={{ fontSize: 10 }}>{r.l}</div>
                 </div>
               ))}
             </div>
+            <div style={{ padding: "16px 24px 20px", borderTop: "1px solid var(--line-soft)" }}>
+              <p className="small">
+                A module's class decides how hard it is to replace. Router origins and the review hook are
+                authorities, so no protocol-wide power changes on an ordinary vote.
+              </p>
+            </div>
           </div>
+        </div>
+
+        <div className="flex" style={{ gap: 12, marginTop: 20 }} data-reveal>
+          <a href="protocol.html#audit" className="btn btn--ghost btn--sm">See the audit status <span className="arrow">→</span></a>
+          <a href={CHAIN.release} target="_blank" rel="noopener noreferrer" className="btn btn--quiet btn--sm">The frozen release ↗</a>
         </div>
       </section>
 

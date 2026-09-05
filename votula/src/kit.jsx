@@ -207,6 +207,62 @@ function SectionHead({ index, title, note, tone = "lagoon" }) {
   );
 }
 
+/* ── Parameter table ─────────────────────────────────────────
+   Protocol values are data, so they are set in the mono face and
+   right-aligned in every column but the first. Wide tables scroll
+   inside their own box rather than pushing the page sideways.
+------------------------------------------------------------- */
+function ParamTable({ title, cols, rows, note }) {
+  return (
+    <div className="card card--clip stack" style={{ gap: 0, alignContent: "start" }}>
+      <div style={{ padding: "18px 22px", borderBottom: "1px solid var(--line)" }}>
+        <h3 className="h4">{title}</h3>
+      </div>
+      <div className="table-wrap">
+        <table className="ptable">
+          <thead>
+            <tr>{cols.map(c => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr key={r[0]}>
+                {r.map((cell, i) => (
+                  <td key={i} className={i === 0 ? "ptable-key" : undefined}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {note && (
+        <p className="small" style={{ padding: "14px 22px 18px", borderTop: "1px solid var(--line-soft)" }}>{note}</p>
+      )}
+    </div>
+  );
+}
+
+/* ── Module chips ────────────────────────────────────────────
+   One kernel layer: its name, what it is for, and the contracts
+   that live in it. Contract names are data, so: mono.
+------------------------------------------------------------- */
+function LayerCard({ name, note, modules, colour, badge }) {
+  return (
+    <div className="card card--pad stack stack--lg" style={{ position: "relative", overflow: "hidden" }}>
+      <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: colour, opacity: 0.85 }} />
+      <div className="flex" style={{ justifyContent: "space-between", alignItems: "baseline" }}>
+        <div className="stack stack--sm">
+          <div className="eyebrow" style={{ color: colour }}>{name}</div>
+          <p className="small" style={{ color: "var(--text-2)" }}>{note}</p>
+        </div>
+        {badge && <span className="data" style={{ color: "var(--text-4)", whiteSpace: "nowrap" }}>{badge}</span>}
+      </div>
+      <div className="flex" style={{ gap: 8 }}>
+        {modules.map(m => <span key={m} className="chip">{m}</span>)}
+      </div>
+    </div>
+  );
+}
+
 /* ── Stat ────────────────────────────────────────────────── */
 function Stat({ label, value, unit, note }) {
   return (
@@ -238,4 +294,7 @@ function useReveal() {
   }, []);
 }
 
-window.VT = { Mark, Lockup, WaveRule, ChainStrip, SunsetBackdrop, PageHero, SectionHead, Stat, useReveal, wavePath };
+window.VT = {
+  Mark, Lockup, WaveRule, ChainStrip, SunsetBackdrop, PageHero, SectionHead, Stat,
+  ParamTable, LayerCard, useReveal, wavePath,
+};
