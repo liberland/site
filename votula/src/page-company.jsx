@@ -9,7 +9,7 @@ function Company() {
       k: "Sovereign layer",
       c: "var(--yellow)",
       name: "Liberland",
-      note: "Issues citizenship and e-Residency. Operates the chain and the merit. Not a party to any Votula offering.",
+      note: "Issues citizenship and e-Residency, and holds every governing power the protocol grants. Not a party to any Votula offering.",
       href: COMPANY.parentUrl,
       external: true,
     },
@@ -17,7 +17,7 @@ function Company() {
       k: "Operating layer",
       c: "var(--lagoon)",
       name: "Votula, Ltd.",
-      note: `Registered in ${COMPANY.city}. Structures the vehicles, runs the treasury and the builder programme. Holds no client assets.`,
+      note: `Registered in ${COMPANY.city}. Operates the protocol, structures the vehicles and runs the builder programme. Holds no client assets and no governing power.`,
     },
     {
       k: "Asset layer",
@@ -67,20 +67,20 @@ function Company() {
             <p className="body" style={{ fontSize: 17 }}>
               Liberland is a small country with a large diaspora and an unusually literate one. It has land to
               develop, citizens scattered across every timezone, and a merit token most of them already hold.
-              What it lacked was a company willing to do the unglamorous middle: form the vehicles, keep the
-              register, answer the bank's questions, and publish the ratio.
+              What it lacked was a company willing to do the unglamorous middle: run the chain, keep the
+              register, form the vehicles, and answer the bank's questions.
             </p>
             <p className="body">
-              That is Votula. We are not a fund, not a bank, and not a custodian. We structure vehicles, operate
-              the treasury that stands behind what we issue, and fund the builders who make the whole thing
+              That is Votula. We are not a fund, not a bank, and not a custodian. We operate Liberland EVM,
+              structure the vehicles that hold real assets, and fund the builders who make the whole thing
               usable by somebody other than us.
             </p>
           </div>
           <div className="grid grid--2" style={{ gap: 16 }} data-reveal>
             {[
-              ["We are", "An operating and structuring company for tokenised real assets, and the steward of the LLM treasury."],
+              ["We are", "The operator of the Liberland EVM protocol, and a structuring company for tokenised real assets."],
               ["We are not", "A fund manager, a bank, a broker, or a custodian of your keys."],
-              ["We hold", "The SPV registers, the reserve accounts, and the obligation to publish both."],
+              ["We hold", "The deployment keys, the SPV registers, and the obligation to publish what the protocol does not already publish itself."],
               ["You hold", "Your keys, and a recorded interest in a company that owns one specific thing."],
             ].map(([t, b]) => (
               <div key={t} className="card card--pad stack stack--sm">
@@ -143,7 +143,7 @@ function Company() {
             ["Segregation", "Reserve accounts are kept separate from operating accounts, and the split is published rather than asserted."],
             ["Offering documents", "Every issuance has one. It names the asset, the fees, the distribution policy and what happens if a phase does not fill."],
             ["Jurisdiction limits", "Some offerings are unavailable where you live. The check happens before you spend anything, not after."],
-            ["Reporting", "Reserve ratio published continuously; audits published in full rather than as a summary with a logo on it."],
+            ["Reporting", "Protocol code, parameters and the internal audit report are published in full at a frozen tag, external review pending — not as a summary with a logo on it."],
           ].map(([t, b]) => (
             <div key={t} className="card card--pad stack stack--sm" data-reveal>
               <h3 className="h4">{t}</h3>
@@ -170,7 +170,7 @@ function Company() {
           {[
             ["Property & offerings", "Offering documents, subscription mechanics, eligibility.", `subject=Offering%20documents`],
             ["Builders & grants", "Grant applications, integration help, contract questions.", `subject=Grant%20application`],
-            ["Institutions & press", "Structure, reserves, audits, and the file you asked for.", `subject=Institutional%20enquiry`],
+            ["Institutions & press", "Structure, audit scope, protocol parameters, and the file you asked for.", `subject=Institutional%20enquiry`],
           ].map(([t, b, q]) => (
             <a key={t} href={`mailto:${COMPANY.email}?${q}`} className="card card--pad card--hover stack stack--lg" data-reveal style={{ color: "inherit" }}>
               <h3 className="h3">{t}</h3>

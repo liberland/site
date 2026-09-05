@@ -7,8 +7,9 @@ const { test, expect } = require('@playwright/test');
 
 const PAGES = [
   { path: '/', page: 'home', heading: 'VOTULA' },
+  { path: '/protocol.html', page: 'protocol', heading: 'A constitution you can compile' },
   { path: '/property.html', page: 'property', heading: 'Deeds, cut into pieces' },
-  { path: '/llm.html', page: 'llm', heading: 'LLM, and the reserves behind it' },
+  { path: '/llm.html', page: 'llm', heading: 'Merit is collateral, not currency' },
   { path: '/builders.html', page: 'builders', heading: 'Build the parts we would rather not' },
   { path: '/company.html', page: 'company', heading: 'Registered in Victoria' },
   { path: '/docs.html', page: 'docs', heading: 'Read it before you deploy it' },
@@ -54,8 +55,8 @@ for (const { path, page: name, heading } of PAGES) {
 }
 
 test('every internal link points at a page that exists', async ({ page }) => {
-  // Seven full page loads, each compiling JSX in the browser.
-  test.setTimeout(120000);
+  // Eight full page loads, each compiling JSX in the browser.
+  test.setTimeout(150000);
   const known = new Set(PAGES.map(p => (p.path === '/' ? 'index.html' : p.path.slice(1))));
   for (const { path } of PAGES) {
     await page.goto(path);
@@ -87,4 +88,31 @@ test('the offerings CTA in the nav reaches the offerings section', async ({ page
     () => page.evaluate(() => Math.round(document.getElementById('offerings').getBoundingClientRect().top)),
     { timeout: 10000 }
   ).toBeLessThan(200);
+});
+
+test('protocol figures come from the frozen-release block in data.jsx', async ({ page }) => {
+  await page.goto('/protocol.html');
+  await page.waitForSelector('#root main');
+
+  const chain = await page.evaluate(() => window.VT_DATA.CHAIN);
+  expect(chain.tag).toBe('audit-freeze-2026-08-03');
+
+  // The release link, the tag and the headline evidence must all be on the page.
+  await expect(page.locator(`a[href="${chain.release}"]`).first()).toBeVisible();
+  await expect(page.getByText(chain.tag).first()).toBeVisible();
+  await expect(page.getByText(chain.evidence.testsPassed, { exact: false }).first()).toBeVisible();
+
+  // Honesty guardrail: the page must not claim an external audit it has not had.
+  const body = await page.locator('body').innerText();
+  expect(body).toContain('Not approved for Ethereum mainnet launch');
+});
+
+test('wide parameter tables scroll inside their own box', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/protocol.html');
+  await page.waitForSelector('#root main');
+  const count = await page.locator('.table-wrap').count();
+  expect(count).toBeGreaterThan(0);
+  const overflows = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  expect(overflows).toBe(false);
 });

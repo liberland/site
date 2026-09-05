@@ -15,7 +15,7 @@ function Property() {
       placed: P.arkPhaseSold,
       total: P.arkPhaseUnits,
       unit: "units placed",
-      facts: [["Vehicle", "Seychelles SPV"], ["Settles in", "LLM"], ["Distribution", "Quarterly, pro rata"]],
+      facts: [["Vehicle", "Seychelles SPV"], ["Settles in", "Stablecoin"], ["Distribution", "Quarterly, pro rata"]],
     },
     {
       id: "ark-2",
@@ -27,7 +27,7 @@ function Property() {
       placed: "—",
       total: "—",
       unit: "not yet issued",
-      facts: [["Vehicle", "In formation"], ["Settles in", "LLM"], ["Distribution", "To be set"]],
+      facts: [["Vehicle", "In formation"], ["Settles in", "Stablecoin"], ["Distribution", "To be set"]],
     },
     {
       id: "liberland-land",
@@ -39,7 +39,7 @@ function Property() {
       placed: P.parcelsTokenised,
       total: "—",
       unit: "parcels recorded",
-      facts: [["Vehicle", "Per-parcel SPV"], ["Settles in", "LLM"], ["Distribution", "On disposal"]],
+      facts: [["Vehicle", "Per-parcel SPV"], ["Settles in", "Stablecoin"], ["Distribution", "On disposal"]],
     },
   ];
 
@@ -126,20 +126,66 @@ function Property() {
           <ChainStrip
             confirmed={3}
             steps={[
-              { title: "Title in", body: "The asset is conveyed to a Seychelles SPV formed for that asset alone. One SPV, one thing." },
+              { title: "Title in", body: "The parcel is recorded in the on-chain cadastre and conveyed to a Seychelles SPV formed for that asset alone. One SPV, one thing." },
               { title: "Structure", body: "The SPV's economic interest is divided into a fixed supply. Terms, fees and distribution policy are set in the offering document before issuance." },
-              { title: "Issue", body: "Tokens are minted on Liberland's chain and delivered to wallets that have cleared identity checks." },
-              { title: "Distribute", body: "Net income and disposal proceeds flow back pro rata in LLM, on the published schedule." },
+              { title: "Issue", body: "Interests are issued to wallets that have cleared identity checks, against the linked identity rather than a bare address." },
+              { title: "Distribute", body: "Net income and disposal proceeds flow back pro rata, on the published schedule." },
               { title: "Secondary venue", body: "A regulated venue for resale. Under discussion, not operating. Assume you cannot sell on demand." },
             ]}
           />
         </div>
       </section>
 
+      {/* ── The cadastre ──────────────────────────────────── */}
+      <section id="cadastre" className="section wrap section--flush-t">
+        <SectionHead
+          index="03"
+          title={{ eyebrow: "The register", head: "A cadastre, not a spreadsheet" }}
+          note="The land layer is part of the protocol Votula operates, and it is deliberately narrower than a land registry needs to be."
+          tone="yellow"
+        />
+        <div className="grid grid--split" style={{ paddingTop: 32 }}>
+          <div className="stack stack--lg" data-reveal>
+            <p className="body" style={{ fontSize: 17 }}>
+              A title is held by a namespaced party — a person, a company or an office — not by a wallet. That one
+              decision is what lets a key rotate, a director change or an administrator leave without the title
+              moving anywhere. The current signer is resolved by policy at the moment of signing.
+            </p>
+            <p className="body">
+              Transfers are a registrar-submitted dual-consent flow: both sides sign an EIP-712 authorisation
+              against a pinned title version, and the registrar finalises before the deadline. Parcel and title
+              versions chain their content and source-document hashes, so the lineage of a record is checkable
+              rather than asserted.
+            </p>
+            <div className="flex" style={{ gap: 8 }}>
+              <span className="pill pill--yellow">Versioned records</span>
+              <span className="pill pill--lagoon">Dual-consent transfer</span>
+              <span className="pill">Atomic subdivision</span>
+            </div>
+            <a href="protocol.html#modules" className="btn btn--ghost btn--sm" style={{ width: "fit-content" }}>
+              See the module map <span className="arrow">→</span>
+            </a>
+          </div>
+          <div className="grid grid--2" style={{ gap: 16 }} data-reveal>
+            {[
+              ["What it stores", "Parcels, titles, parties, encumbrances, disputes and version lineage — the facts a register has to be able to prove."],
+              ["What it refuses", "No geometry engine, no fee custody, no insurance fund, no court-order override. Those need law before they need code."],
+              ["Who can write", "Clerks may draft. Every live record change is the registrar or the office admin, and the app enforces it rather than the UI."],
+              ["What blocks a deal", "Accepted disputes and active encumbrances stop transfers and structural operations. A merely filed dispute does not."],
+            ].map(([t, b]) => (
+              <div key={t} className="card card--pad stack stack--sm">
+                <h3 className="h4">{t}</h3>
+                <p className="small">{b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Offerings ─────────────────────────────────────── */}
       <section id="offerings" className="section wrap section--flush-t">
         <SectionHead
-          index="03"
+          index="04"
           title={{ eyebrow: "Offerings", head: "What is open right now" }}
           note="Phases open and close. Nothing here is an offer to sell; eligibility depends on where you live."
           tone="yellow"
@@ -191,7 +237,7 @@ function Property() {
       {/* ── Risk ──────────────────────────────────────────── */}
       <section id="risk" className="section wrap section--flush-t">
         <SectionHead
-          index="04"
+          index="05"
           title={{ eyebrow: "Risk", head: "What can go wrong" }}
           note="On the same page as the returns, because regulators and degens read the same page."
           tone="sunset"

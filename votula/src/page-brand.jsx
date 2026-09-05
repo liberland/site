@@ -358,7 +358,7 @@ function Brand() {
           <div className="card card--warm card--pad stack stack--lg" data-reveal>
             <div className="flex" style={{ justifyContent: "space-between" }}>
               <div className="eyebrow eyebrow--mute" style={{ letterSpacing: "0.18em" }}>Treasury balance</div>
-              <div className="data" style={{ color: "var(--lagoon)" }}>● live</div>
+              <div className="data" style={{ color: "var(--text-4)" }}>specimen</div>
             </div>
             <div className="figure" style={{ fontSize: 48 }}>
               4,201,908<span style={{ fontSize: 22, color: "var(--yellow)", marginLeft: 8, letterSpacing: 0 }}>LLM</span>
