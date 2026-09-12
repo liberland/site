@@ -22,7 +22,7 @@ function UpdatesPage() {
         <div key={i} style={{ display: "grid", gridTemplateColumns: "160px 1fr", gap: 24, padding: "20px 0", borderTop: "1px solid var(--rule-strong)" }}>
           <div className="mono" style={{ color: "var(--accent)", fontSize: 12 }}>{e.date}</div>
           <div>
-            <p style={{ fontSize: 17.5, lineHeight: 1.6, color: "#3C372F", margin: "0 0 8px" }}>{e.text}</p>
+            <p style={{ fontSize: 17.5, lineHeight: 1.6, color: "var(--muted-2)", margin: "0 0 8px" }}>{e.text}</p>
             <button
               className="mono"
               style={{ background: "none", border: 0, padding: 0, color: "var(--accent)", fontSize: 11.5 }}

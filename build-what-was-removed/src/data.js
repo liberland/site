@@ -186,6 +186,212 @@
     { id: "accounting", name: "Public accounting and independent review", desc: "Bookkeeping, publication of financial reports and external review of this campaign’s own accounts.", targetCents: 1200000, receivedCents: 305000, spentCents: 145000, report: "REPORT R-2026-Q1" },
   ];
 
+  // ── Documentary imagery ─────────────────────────────────────────────
+  // "The land is the image": the Danube, the floodplain, the light on the
+  // water, the site as it actually is. Natural light only, no filters, no
+  // renders of unbuilt towers, no posed crowds.
+  //
+  // Every entry must carry its author, licence and source page — these are
+  // third-party photographs used under their licence terms, and the credit
+  // line renders directly beneath the image. An entry with src: null
+  // renders its placeholder instead, so the page is never broken.
+  //
+  // NOTE: these are documentary photographs of the territory. They are
+  // never used to illustrate an incident — evidence imagery is held to the
+  // separate standard in EVIDENCE-PUBLICATION-CHECKLIST.md.
+  const images = {
+    hero: {
+      src: null,
+      alt: "The Danube floodplain at Gornja Siga in daylight.",
+      placeholder: "Documentary photograph — Gornja Siga, wide, daylight",
+      caption: "Gornja Siga",
+      author: null,
+      license: null,
+      sourceUrl: null,
+    },
+    land: {
+      src: null,
+      alt: "Woodland and open ground on the claimed territory.",
+      placeholder: "Documentary photograph — the floodplain and treeline",
+      caption: "The floodplain",
+      author: null,
+      license: null,
+      sourceUrl: null,
+    },
+    river: {
+      src: null,
+      alt: "The Danube at the left bank beside the claimed territory.",
+      placeholder: "Documentary photograph — the Danube at the left bank",
+      caption: "The Danube",
+      author: null,
+      license: null,
+      sourceUrl: null,
+    },
+  };
+
+  // ── Cost of enforcement borne by Croatia ────────────────────────────
+  // What the enforcement posture toward the settlement costs the Croatian
+  // public purse. This ledger follows exactly the same discipline as the
+  // property ledger: a figure enters the headline total only when it is
+  // backed by an official published source. Every other row shows the
+  // structure of the cost and the specific inputs still required.
+  //
+  // TO ADD A FIGURE: set amountCents (integer minor units), set basis to
+  // one of the costBases keys below, fill `source`, and set includeInTotal
+  // to true only for a basis whose `totals` is "COUNTS".
+  // See COSTS-DATA-GUIDE.md for the full procedure.
+  const croatiaCosts = [
+    {
+      id: "CC-01",
+      category: "Policing and patrols",
+      title: "Police attendance at settlement operations",
+      description:
+        "Officer time, vehicles and river craft deployed to interventions at the Gornja Siga site, including the operation of 21 September 2023.",
+      period: "2023–2026",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "At least one operation involving police personnel is recorded in this dataset (GS-2023-09-21).",
+      inputsNeeded: [
+        "Officer-hours per operation, from operational records or an access-to-information request",
+        "Published MUP hourly personnel cost for the relevant grades",
+        "Vessel and vehicle operating hours, and the published per-hour running rate",
+      ],
+      source: null,
+    },
+    {
+      id: "CC-02",
+      category: "Inspection and administrative process",
+      title: "Inspectorate attendance and certificate issuance",
+      description:
+        "Inspector time, travel and file handling for on-site inspections and the issuing of seizure certificates.",
+      period: "2026",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "One itemised temporary-seizure certificate is on the record (SRC-030, 2 July 2026), listing five items.",
+      inputsNeeded: [
+        "Inspector-hours per attendance",
+        "Published hourly cost for the issuing inspectorate",
+        "Number of certificates and administrative files opened across the period",
+      ],
+      source: null,
+    },
+    {
+      id: "CC-03",
+      category: "Removal, transport and demolition",
+      title: "Dismantling operations and plant hire",
+      description:
+        "Machinery, transport and personnel used to dismantle structures and move property off the site.",
+      period: "2023–2024",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "Three interventions in this dataset report dismantling, removal or demolition activity (GS-2023-09-21, GS-2024-02-16, GS-2024-05-18).",
+      inputsNeeded: [
+        "Contractor invoices or internal plant-hire charges for each operation",
+        "Transport distances and the published per-kilometre rate",
+        "Personnel hours for forestry and contracted staff",
+      ],
+      source: null,
+    },
+    {
+      id: "CC-04",
+      category: "Storage and custody",
+      title: "Custody of seized property",
+      description:
+        "Secure storage, handling and administration of property held pending the outcome of a process.",
+      period: "2026–",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "Five items have been in official custody since 2 July 2026 under an itemised certificate. The custody period is open.",
+      inputsNeeded: [
+        "Published storage rate per item or per cubic metre, per month",
+        "Confirmed custody start date and current status for each item",
+      ],
+      source: null,
+    },
+    {
+      id: "CC-05",
+      category: "Prosecution and court process",
+      title: "Misdemeanour and criminal file handling",
+      description:
+        "Prosecutorial and judicial time spent on files arising from the settlement, including any proceedings that do not result in a final penalty.",
+      period: "2023–",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "One criminal complaint is on the record (SRC-001). One misdemeanour process is recorded as open and not final.",
+      inputsNeeded: [
+        "Published average cost per misdemeanour file and per criminal file",
+        "Count of files opened, and their current procedural stage",
+      ],
+      source: null,
+    },
+    {
+      id: "CC-06",
+      category: "Legal exposure",
+      title: "Contingent liability for property claims",
+      description:
+        "Potential compensation and costs exposure if property claims or procedural challenges succeed. This is an exposure, not a spend, and is never added to money already spent.",
+      period: "Open",
+      amountCents: null,
+      basis: "needs_source",
+      includeInTotal: false,
+      documented:
+        "€54,486.22 is alleged in a filed criminal complaint. An allegation is not a finding and not an award.",
+      inputsNeeded: [
+        "Status of each claim and the amount actually claimed against the state",
+        "Any award, settlement or dismissal, with the deciding body and date",
+      ],
+      source: null,
+    },
+  ];
+
+  // How a cost figure may be grounded. Mirrors the evidence-grade
+  // discipline used for property: only the top two bases may enter the
+  // headline total, and an estimate is never silently merged into a
+  // sourced figure.
+  const costBases = [
+    {
+      key: "primary_official",
+      label: "Primary official",
+      desc: "A published budget line, an access-to-information response, or an official statement of what was spent.",
+      totals: "COUNTS",
+      tone: "ok",
+    },
+    {
+      key: "official_rate",
+      label: "Official rate × documented quantity",
+      desc: "An officially published unit rate multiplied by a quantity that is itself documented on this site.",
+      totals: "COUNTS",
+      tone: "ok",
+    },
+    {
+      key: "estimate_methodology",
+      label: "Estimate from stated method",
+      desc: "A calculation from public inputs, published with its method and its inputs. Shown separately and never merged into the sourced total.",
+      totals: "SHOWN SEPARATELY",
+      tone: "warn",
+    },
+    {
+      key: "needs_source",
+      label: "Needs source",
+      desc: "The cost structure is identified but no figure is published. The row states exactly what is required to complete it.",
+      totals: "EXCLUDED",
+      tone: "bad",
+    },
+  ];
+
+  const COSTS_NOTICE =
+    "This ledger records the cost to the Croatian public of the enforcement posture toward the Gornja Siga settlement. It is published to the same standard as every other figure on this site: a number appears in the headline total only where an official source supports it. Where no figure is published, the row states the cost structure and the specific inputs required — it does not estimate in place of evidence. Nothing here asserts that any expenditure was unlawful.";
+
   const grades = [
     { key: "primary_official", label: "Primary official", desc: "Decisions, certificates and records issued by a public authority.", totals: "COUNTS", tone: "ok" },
     { key: "primary_legal_filing", label: "Primary legal filing", desc: "Complaints and filings lodged with a court or prosecutor. Establishes an allegation, not a finding.", totals: "COUNTS", tone: "ok" },
@@ -251,6 +457,10 @@
     incidents,
     items,
     budget,
+    images,
+    croatiaCosts,
+    costBases,
+    COSTS_NOTICE,
     grades,
     policies,
     approvedTerms,

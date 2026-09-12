@@ -153,7 +153,7 @@ function Ledger({ initialParams }) {
         {metricCards.map((c) => (
           <div key={c.label} style={{ padding: "22px 22px 20px" }}>
             <div className="field-label" style={{ marginBottom: 12, minHeight: 26 }}>{c.label}</div>
-            <div style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: 31, lineHeight: 1, marginBottom: 9 }}>{c.value}</div>
+            <div style={{ fontFamily: "var(--display)", fontWeight: 400, fontSize: 31, lineHeight: 1, marginBottom: 9 }}>{c.value}</div>
             <div className="label-mono" style={{ lineHeight: 1.65 }}>{c.qualifier}</div>
           </div>
         ))}
@@ -208,7 +208,7 @@ function Ledger({ initialParams }) {
               <span className="mono small">{r.date}</span>
               <span className={badgeClass(r.status)}>{r.statusLabel}</span>
             </div>
-            <div style={{ fontFamily: "var(--serif)", fontSize: 18, marginBottom: 4 }}>{r.incident}</div>
+            <div style={{ fontFamily: "var(--display)", fontSize: 18, marginBottom: 4 }}>{r.incident}</div>
             <div className="small">{r.item} · {r.category}</div>
             <div className="row-wrap gap-8" style={{ justifyContent: "space-between", marginTop: 10 }}>
               <span className="mono small">{r.gradeLabel}</span>

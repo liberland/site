@@ -22,6 +22,41 @@ test.describe('Homepage', () => {
   });
 });
 
+test.describe("Croatia's costs", () => {
+  test('the home page surfaces the cost-of-enforcement section', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: 'What this has cost Croatia' })).toBeVisible();
+    await page.getByRole('button', { name: 'Open the cost ledger' }).click();
+    await expect(page).toHaveURL(/#\/costs/);
+  });
+
+  test('the cost ledger lists every identified cost structure', async ({ page }) => {
+    await page.goto('/#/costs');
+    await expect(page.locator('h1')).toHaveText('What this has cost Croatia');
+    for (const id of ['CC-01', 'CC-02', 'CC-03', 'CC-04', 'CC-05', 'CC-06']) {
+      await expect(page.getByText(new RegExp(id))).toBeVisible();
+    }
+  });
+
+  test('an unsourced cost row shows NEEDS SOURCE and is excluded from the total', async ({ page }) => {
+    await page.goto('/#/costs');
+    // No official figure is published yet, so the headline total must stay empty
+    // rather than showing a fabricated or zeroed-out number.
+    const sourced = page.locator('.card-grid > div').filter({ hasText: 'Sourced expenditure' });
+    await expect(sourced.locator('.cost-total__figure')).toHaveText('—');
+    await expect(sourced).toContainText('NO OFFICIAL FIGURE PUBLISHED YET');
+    await expect(page.getByText('NEEDS SOURCE').first()).toBeVisible();
+    await expect(page.getByText(/6 of 6 rows are awaiting an official figure/i)).toBeVisible();
+  });
+
+  test('opening a cost row reveals the inputs required to publish a figure', async ({ page }) => {
+    await page.goto('/#/costs');
+    await page.getByRole('button', { name: /Police attendance at settlement operations/ }).click();
+    await expect(page.getByText('INPUTS REQUIRED TO PUBLISH A FIGURE')).toBeVisible();
+    await expect(page.getByText(/Published MUP hourly personnel cost/)).toBeVisible();
+  });
+});
+
 test.describe('Ledger', () => {
   test('lists incident and item rows and supports full-text search', async ({ page }) => {
     await page.goto('/#/ledger');

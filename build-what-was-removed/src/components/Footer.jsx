@@ -4,13 +4,17 @@ function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer__grid">
         <div>
-          <div className="row gap-12" style={{ marginBottom: 20 }}>
-            <svg width="20" height="20" viewBox="0 0 100 100" fill="none" stroke="#CBA96E" strokeWidth="3.4" aria-hidden="true">
-              <circle cx="50" cy="50" r="45" />
-              <circle cx="50" cy="50" r="34" />
-              <path d="M50 5v90M5 50h90" />
-            </svg>
-            <span style={{ fontFamily: "var(--serif)", fontSize: 19, letterSpacing: ".02em", color: "var(--paper)" }}>
+          <div style={{ marginBottom: 20 }}>
+            <hr className="yellow-rule" style={{ width: 40, marginBottom: 18 }} />
+            <span
+              style={{
+                fontFamily: "var(--display)",
+                fontWeight: 500,
+                fontSize: 21,
+                letterSpacing: "-0.015em",
+                color: "var(--chalk)",
+              }}
+            >
               Foster What We Built
             </span>
           </div>

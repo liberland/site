@@ -139,6 +139,82 @@
       .sort((a, b) => (a.date < b.date ? 1 : -1));
   }
 
+  // ── Cost of enforcement borne by Croatia ──────────────────────────
+  // A basis that "COUNTS" may enter the headline sourced total. An
+  // estimate is accumulated separately and is never merged into it —
+  // the same separation the property ledger keeps between a claimed
+  // loss and a temporary seizure.
+  const COUNTING_BASES = ["primary_official", "official_rate"];
+  const ESTIMATE_BASES = ["estimate_methodology"];
+
+  function isCountingBasis(basis) {
+    return COUNTING_BASES.includes(basis);
+  }
+
+  function computeCostTotals(costs) {
+    let sourcedCents = 0;
+    let sourcedCount = 0;
+    let estimatedCents = 0;
+    let estimatedCount = 0;
+    let pendingCount = 0;
+
+    (costs || []).forEach((c) => {
+      const hasAmount = c.amountCents != null;
+      if (hasAmount && c.includeInTotal && isCountingBasis(c.basis)) {
+        sourcedCents += c.amountCents;
+        sourcedCount += 1;
+      } else if (hasAmount && ESTIMATE_BASES.includes(c.basis)) {
+        estimatedCents += c.amountCents;
+        estimatedCount += 1;
+      } else {
+        pendingCount += 1;
+      }
+    });
+
+    return {
+      sourcedCents,
+      sourcedCount,
+      hasSourced: sourcedCount > 0,
+      estimatedCents,
+      estimatedCount,
+      hasEstimated: estimatedCount > 0,
+      pendingCount,
+      totalCount: (costs || []).length,
+    };
+  }
+
+  function costsToCsv(costs) {
+    const head = [
+      "id",
+      "category",
+      "title",
+      "period",
+      "amount_eur",
+      "basis",
+      "counts_toward_total",
+      "source",
+    ];
+    const esc = (v) => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+    const lines = [head.join(",")];
+    (costs || []).forEach((c) => {
+      lines.push(
+        [
+          c.id,
+          c.category,
+          c.title,
+          c.period,
+          c.amountCents == null ? "" : (c.amountCents / 100).toFixed(2),
+          c.basis,
+          c.amountCents != null && c.includeInTotal && isCountingBasis(c.basis) ? "yes" : "no",
+          c.source ? c.source.title : "",
+        ]
+          .map(esc)
+          .join(",")
+      );
+    });
+    return lines.join("\n");
+  }
+
   return {
     isEligibleGrade,
     formatEUR,
@@ -146,5 +222,8 @@
     computeMetrics,
     buildLedgerRows,
     filterRows,
+    isCountingBasis,
+    computeCostTotals,
+    costsToCsv,
   };
 });

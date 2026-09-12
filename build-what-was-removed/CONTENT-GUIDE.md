@@ -29,6 +29,43 @@ human or AI — must follow these rules before editing copy or adding data.
   never be published without independently verified evidence and specific
   legal-counsel approval.
 
+## Writing about Croatia's costs
+
+The cost ledger (`#/costs`) is the most easily abused page on this site. It
+reports what enforcement cost the Croatian public. It does not editorialise
+about it.
+
+- "Croatia wasted €X hounding settlers." → use "€X recorded in <source> for
+  <cost category>, <period>."
+- "Millions squandered on harassment." → no unsourced magnitude, ever. If
+  there is no figure, the row says `NEEDS SOURCE` and stays empty.
+- "Croatian taxpayers are being robbed by their own government." → use
+  "This expenditure is borne by Croatian taxpayers." State the fact; the
+  reader draws the conclusion.
+- Never call any expenditure unlawful, corrupt or wasteful in the data or
+  the copy. The page's force comes from itemisation, not adjectives.
+- Never add a sourced figure and an estimate together. They render on
+  separate lines for a reason.
+- A contingent liability is not money spent. Keep exposure (`CC-06`) out of
+  any expenditure total.
+
+An empty total is the page working correctly, not a gap to be filled. See
+`COSTS-DATA-GUIDE.md`.
+
+## Voice — Liberland State Design Language V2
+
+Optimistic, precise, never salesy. State the fact of record, then say plainly
+what is being built.
+
+- Do: "Founded 13 April 2015 on unclaimed land. Governed by consent."
+- Do: "Seven square kilometres. Two colours. One rule: to live and let live."
+- Don't: "The world's most exciting new country — join the movement!"
+- Don't: "Get your citizenship now — limited spots, don't miss out!"
+
+The record outranks the claim: lead with dates, coordinates, article numbers,
+tallies and hashes — with what can be checked. This rule outranks any
+aesthetic or rhetorical preference.
+
 ## Approved metric names
 
 `Documented Recovery Value`, `Claimed Permanent Loss`,

@@ -11,7 +11,7 @@ function CasePage() {
         <div key={p.n} style={{ display: "grid", gridTemplateColumns: ".7fr 1.3fr", gap: 56, padding: "40px 0", borderTop: "1px solid var(--rule-strong)", alignItems: "start" }}>
           <div>
             <div className="mono" style={{ color: "var(--accent)", marginBottom: 14, fontSize: 11.5 }}>{p.n}</div>
-            <h2 style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: 31, lineHeight: 1.12, margin: 0 }}>{p.title}</h2>
+            <h2 style={{ fontFamily: "var(--display)", fontWeight: 400, fontSize: 31, lineHeight: 1.12, margin: 0 }}>{p.title}</h2>
           </div>
           <p className="body-text" style={{ fontSize: 18.5 }}>{p.body}</p>
         </div>

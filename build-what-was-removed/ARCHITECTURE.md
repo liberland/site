@@ -60,12 +60,14 @@ given the deployment-flexibility requirement.
 
 ```
 index.html               entry point, script/link tags in dependency order
-styles.css                design tokens + component classes ported from the
-                           Claude Design source (Build What Was Removed.dc.html)
+styles.css                Liberland State Design Language V2 tokens +
+                           component classes
 src/
   router.js                hash router
-  metrics.js                pure aggregation logic (dual Node/browser)
-  data.js                   seed data: incidents, items, budget, grades, terms
+  metrics.js                pure aggregation logic (dual Node/browser),
+                             property metrics + Croatia cost totals
+  data.js                   seed data: incidents, items, budget, images,
+                             croatiaCosts, grades, terms
   submissions-adapter.js    abstract adapter for corrections/right-of-reply
   app.jsx                    route switch + layout (nav, footer, skip link)
   components/*.jsx           one file per page/section
@@ -74,14 +76,49 @@ tests/
   site.spec.js              Playwright end-to-end tests
 ```
 
-## Design source
+## Design language
 
-The visual design (charcoal `#17130F` / off-white `#F3EDE2` / gold accent
-`#A9834E`; Cormorant Garamond + Space Grotesk + IBM Plex Mono) was ported
-directly from the Claude Design project's `Build What Was Removed.dc.html`
-component, including its exact copy, view structure and metric/business
-logic (`data()`, `metrics()`, `filtered()`, `badge()` methods). The
-`.dc.html` format is a design-tool preview format (custom `<x-dc>`,
-`sc-for`/`sc-if` template markup, a `DCLogic` preview harness) not meant to
-run standalone in production; this implementation is a faithful port of
-its content and logic into real React components and CSS.
+The site implements the **Liberland State Design Language V2**.
+
+V2 explicitly supersedes the register this site was originally built in.
+The first implementation was ported from the Claude Design source
+(`Build What Was Removed.dc.html`) and used muted heraldic gold `#A9834E`,
+Cormorant Garamond and a forbidden radius — which is precisely what the V2
+document describes as V1 and replaces. The migration was therefore a direct
+one:
+
+| | V1 (was) | V2 (is) |
+|---|---|---|
+| Identity colour | Muted heraldic gold `#A9834E` | True flag yellow `#FFC800` |
+| Ground | Off-white `#F3EDE2` | Chalk `#F6F5F2` on Void `#0A0A0B` |
+| Display face | Cormorant Garamond | Playfair Display |
+| Text/UI face | Space Grotesk | Archivo |
+| Record face | IBM Plex Mono | IBM Plex Mono (unchanged) |
+| Radius | Forbidden everywhere | Structural scale: 0 record, 4 field, 14 panel, 28 surface, 999 action |
+| Mark | An invented sun-and-star seal | No invented mark (see below) |
+
+Rules carried into the CSS and enforced by convention:
+
+- **A record is square.** Ledger tables, rows, status tags, certificates and
+  anything bearing a signature or a hash use `--r-record: 0`. Only surfaces
+  that hold possibility take a curve.
+- **Yellow never decorates.** Every yellow area marks something primary —
+  one yellow action per view. On light grounds, yellow is illegible as text,
+  so `--amber #C99700` carries it for text and rules.
+- **No shadows.** Depth comes from ground changes only.
+- **The land is the image.** Documentary photography of the Danube and the
+  floodplain in natural light; no renders, no filters, no posed crowds.
+
+### On the absence of a mark
+
+V2 names three pieces of state artwork — the flag, the escutcheon and the
+great arms — and records that a vector redraw of the arms is *still open*.
+V1's invented seal is called out as "the wrong trade". Since no authentic
+escutcheon artwork is available to this repo, the site follows the
+document's own fallback: *"If none of those apply, use no mark at all."*
+The 2px yellow rule beneath the utility bar carries the flag instead. The
+former invented seal has been removed from the utility bar and the footer.
+
+Do not add a hand-drawn coat of arms to this site. If official artwork
+becomes available, it belongs in the utility bar at ≥22px, never recoloured,
+never on a photograph.

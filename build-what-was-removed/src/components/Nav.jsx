@@ -1,6 +1,7 @@
 const BWWR_NAV_ITEMS = [
   { view: "home", label: "Home" },
   { view: "ledger", label: "Ledger" },
+  { view: "costs", label: "Croatia's Costs" },
   { view: "case", label: "The Case" },
   { view: "evidence", label: "Evidence" },
   { view: "updates", label: "Updates" },
@@ -17,21 +18,23 @@ function goTo(view, opts) {
 function UtilityBar() {
   return (
     <div className="utility-bar">
+      {/* No mark. The state owns three pieces of artwork — flag, escutcheon,
+          achievement — and a vector redraw of the arms is still open. V1's
+          invented seal was the wrong trade; where no real mark applies, the
+          design language says use none. The 2px yellow rule below this bar
+          carries the flag instead. */}
       <div className="utility-bar__brand">
-        <svg width="18" height="18" viewBox="0 0 100 100" fill="none" stroke="#CBA96E" strokeWidth="3.4" aria-hidden="true">
-          <circle cx="50" cy="50" r="45" />
-          <circle cx="50" cy="50" r="34" />
-          <path d="M50 5v90M5 50h90" />
-        </svg>
         <span>Liberland</span>
-        <span style={{ width: 1, height: 14, background: "rgba(203,169,110,.35)" }} />
+        <span style={{ width: 1, height: 12, background: "var(--rule-on-dark)" }} />
         <span className="label-mono" style={{ color: "var(--muted-dark)" }}>
           SETTLEMENT&nbsp;CAMPAIGN
         </span>
       </div>
       <div className="utility-bar__meta">
-        <span>EVIDENCE&nbsp;BUILD&nbsp;v1.0</span>
-        <span style={{ color: "#5F5849" }}>·</span>
+        <span>45°46′N&nbsp;18°53′E</span>
+        <span style={{ color: "#6b6962" }}>·</span>
+        <span>EVIDENCE&nbsp;BUILD&nbsp;v2.0</span>
+        <span style={{ color: "#6b6962" }}>·</span>
         <span>NO&nbsp;FINAL&nbsp;CRIMINAL&nbsp;FINDING&nbsp;ASSERTED</span>
       </div>
     </div>

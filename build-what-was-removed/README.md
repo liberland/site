@@ -4,11 +4,23 @@ The Gornja Siga Settlement Campaign — a public, evidence-based
 fundraising and accountability site for the existing, permanent Gornja Siga
 settlement. See `ARCHITECTURE.md`,
 `CONTENT-GUIDE.md`, `EVIDENCE-PUBLICATION-CHECKLIST.md`,
-`DATA-DICTIONARY.md`, `LEGAL-REVIEW-CHECKLIST.md` and `DEPLOYMENT.md` before
-changing content or publishing evidence.
+`DATA-DICTIONARY.md`, `COSTS-DATA-GUIDE.md`, `LEGAL-REVIEW-CHECKLIST.md` and
+`DEPLOYMENT.md` before changing content or publishing evidence.
 
 **No live payment method is enabled.** See `LEGAL-REVIEW-CHECKLIST.md` for
 what must happen before this site is used for real fundraising.
+
+**The Croatia cost ledger ships with no figures.** `#/costs` identifies six
+cost structures and publishes none of them, because none has been sourced
+yet. The headline total is empty by design and stays empty until an official
+source carries a number — see `COSTS-DATA-GUIDE.md` for how to add one and
+where to obtain it.
+
+**Documentary images are third-party works.** Every photograph in
+`Data.images` carries its author, licence and source page, rendered as a
+credit line beneath the image. Do not add one without those fields, and do
+not use a documentary photograph to illustrate an incident — evidence
+imagery is held to `EVIDENCE-PUBLICATION-CHECKLIST.md` instead.
 
 ## Stack
 

@@ -27,7 +27,7 @@ function FundPage() {
             return (
               <div key={b.id} style={{ padding: "24px 0", borderTop: "1px solid var(--rule-strong)" }}>
                 <div className="row-wrap gap-24" style={{ justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-                  <div style={{ fontFamily: "var(--serif)", fontSize: 26 }}>{b.name}</div>
+                  <div style={{ fontFamily: "var(--display)", fontSize: 26 }}>{b.name}</div>
                   <div className="mono small" style={{ whiteSpace: "nowrap" }}>{eur(b.receivedCents)} / {eur(b.targetCents)}</div>
                 </div>
                 <div className="small" style={{ maxWidth: "66ch", marginBottom: 14 }}>{b.desc}</div>
@@ -56,7 +56,7 @@ function FundPage() {
                     padding: "13px 6px",
                     fontFamily: "var(--mono)",
                     fontSize: 12.5,
-                    border: `1px solid ${amount === a ? "var(--ink)" : "rgba(23,19,15,.25)"}`,
+                    border: `1px solid ${amount === a ? "var(--ink)" : "var(--rule-strong)"}`,
                     background: amount === a ? "var(--ink)" : "#fff",
                     color: amount === a ? "var(--paper)" : "var(--ink)",
                   }}
@@ -93,7 +93,7 @@ function FundPage() {
             </label>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
               {methods.map((m) => (
-                <div key={m.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "13px 15px", border: "1px dashed rgba(23,19,15,.3)" }}>
+                <div key={m.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "13px 15px", border: "1px dashed var(--rule-strong)" }}>
                   <span className="label-mono">{m.name}</span>
                   <span className="label-mono" style={{ color: "var(--bad-fg)" }}>{m.state}</span>
                 </div>

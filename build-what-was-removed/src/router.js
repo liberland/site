@@ -15,6 +15,7 @@
     if (segs.length === 0) return { view: "home", params };
     if (segs[0] === "ledger") return { view: "ledger", params };
     if (segs[0] === "incidents" && segs[1]) return { view: "incident", incidentId: decodeURIComponent(segs[1]), params };
+    if (segs[0] === "costs") return { view: "costs", params };
     if (segs[0] === "case") return { view: "case", params };
     if (segs[0] === "evidence") return { view: "evidence", params };
     if (segs[0] === "fund") return { view: "fund", params };
@@ -33,6 +34,8 @@
         return "#/ledger" + (opts.search ? "?" + opts.search : "");
       case "incident":
         return "#/incidents/" + encodeURIComponent(opts.incidentId);
+      case "costs":
+        return "#/costs" + (opts.search ? "?" + opts.search : "");
       case "case":
         return "#/case";
       case "evidence":

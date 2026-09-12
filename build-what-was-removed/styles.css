@@ -1,38 +1,89 @@
-/* Build What Was Removed — design tokens ported from the Claude Design
-   source (Build What Was Removed.dc.html): charcoal / off-white / one
-   restrained gold accent, serif display + grotesk sans + mono labels. */
+/* ============================================================
+   Gornja Siga Settlement Campaign
+   Liberland State Design Language — V2
+
+   V2 replaces the antique register of V1 (muted heraldic gold
+   #A9834E, Cormorant Garamond, radius forbidden, an invented
+   seal) with the real flag yellow, a high-contrast modern serif
+   and a structural radius scale.
+
+   Legacy V1 token names are kept as aliases pointing at V2
+   values, so inline component styles inherit the new language
+   without a rewrite at every call site.
+   ============================================================ */
 
 :root {
-  --ink: #17130f;
-  --ink-2: #2b2621;
-  --paper: #f3ede2;
-  --paper-card: #faf7f0;
-  --paper-warm: #ede6d8;
-  --accent: #a9834e;
-  --accent-2: #cba96e;
-  --muted: #857a6b;
-  --muted-2: #5a544a;
-  --muted-3: #9a907e;
-  --muted-dark: #8b8272;
-  --body-on-dark: #c8bfb0;
-  --rule: rgba(23, 19, 15, 0.14);
-  --rule-strong: rgba(23, 19, 15, 0.24);
-  --rule-on-dark: rgba(203, 169, 110, 0.22);
-  --bad-bg: rgba(138, 75, 60, 0.1);
-  --bad-border: rgba(138, 75, 60, 0.45);
-  --bad-fg: #7a3f32;
-  --ok-bg: rgba(74, 122, 92, 0.12);
-  --ok-border: rgba(74, 122, 92, 0.4);
-  --ok-fg: #3c6b4e;
-  --warn-bg: rgba(169, 131, 78, 0.13);
-  --warn-border: rgba(169, 131, 78, 0.45);
-  --warn-fg: #7a5f35;
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Space Grotesk", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* ── The pair ─────────────────────────────────────────── */
+  --yellow: #ffc800; /* Flag Yellow. The identity. Full fields, primary action. */
+  --void: #0a0a0b; /* Flag black, cooled. Covers, primary text. */
+
+  /* ── Neutrals and the one variant ─────────────────────── */
+  --carbon: #16171a; /* Panels on dark. */
+  --stone: #6e6c66; /* Muted text and labels. */
+  --concrete: #e6e4de; /* Dividers and inset fills. */
+  --chalk: #f6f5f2; /* Default page ground. */
+  --amber: #c99700; /* Yellow made legible on light. Text and rules only. */
+  --on-dark: #e4e2db; /* Body text on dark grounds. */
+
+  /* ── Heraldic palette — documentary use only, never brand ── */
+  --terra: #6b2f1f; /* The chief. Soil and the ground itself. */
+  --rowan: #2f6b33; /* The tree. The only green permitted. */
+  --sun: #dfa01b; /* Heraldic only. Never substituted for Flag Yellow. */
+  --danube: #1379be; /* The river base. Maps, water data, the border question. */
+  --cyan: #0fa3b1; /* The ledger. The one hue not in the arms. */
+
+  /* ── Typography ───────────────────────────────────────── */
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Archivo", -apple-system, "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* ── Geometry ─────────────────────────────────────────── */
+  --r-record: 0; /* Decrees, certificates, tables, ledger rows, status tags. */
+  --r-field: 4px;
+  --r-panel: 14px;
+  --r-surface: 28px; /* Image surfaces. */
+  --r-action: 999px;
+
+  --s-inline: 8px;
+  --s-element: 16px;
+  --s-gutter: 24px;
+  --s-block: 48px;
+  --s-group: 80px;
+  --s-section: 100px;
+
   --maxw: 1240px;
   --maxw-wide: 1400px;
-  --gutter: 34px;
+  --gutter: 40px; /* Outer margin ≥40 on web. */
+
+  --rule: rgba(10, 10, 11, 0.13); /* Dividers — 1px rgba(void,.13). */
+  --rule-strong: rgba(10, 10, 11, 0.24);
+  --rule-on-dark: rgba(228, 226, 219, 0.18);
+
+  /* ── Status tones, drawn from the documentary palette ─── */
+  --bad-bg: rgba(107, 47, 31, 0.09);
+  --bad-border: rgba(107, 47, 31, 0.42);
+  --bad-fg: var(--terra);
+  --ok-bg: rgba(47, 107, 51, 0.1);
+  --ok-border: rgba(47, 107, 51, 0.4);
+  --ok-fg: var(--rowan);
+  --warn-bg: rgba(201, 151, 0, 0.12);
+  --warn-border: rgba(201, 151, 0, 0.45);
+  --warn-fg: #8a6800;
+
+  /* ── V1 aliases — resolve to V2 values ────────────────── */
+  --ink: var(--void);
+  --ink-2: var(--carbon);
+  --paper: var(--chalk);
+  --paper-card: #ffffff;
+  --paper-warm: var(--concrete);
+  --accent: var(--amber); /* On light: amber. Yellow is never text on white. */
+  --accent-2: var(--yellow); /* On dark: true flag yellow. */
+  --muted: var(--stone);
+  --muted-2: #4a4945;
+  --muted-3: #a6a49c;
+  --muted-dark: #9a978e;
+  --body-on-dark: var(--on-dark);
+  --serif: var(--display);
 }
 
 * {
@@ -47,9 +98,11 @@ body {
   padding: 0;
 }
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--serif);
+  background: var(--chalk);
+  color: var(--void);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -62,15 +115,17 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--amber);
   text-decoration: none;
 }
 a:hover {
-  color: #8a6a3c;
+  color: var(--void);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 ::selection {
-  background: var(--accent-2);
-  color: var(--ink);
+  background: var(--yellow);
+  color: var(--void);
 }
 button {
   font: inherit;
@@ -94,12 +149,14 @@ button {
   position: absolute;
   left: 12px;
   top: -60px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--yellow);
+  color: var(--void);
   padding: 12px 18px;
   font-family: var(--sans);
-  font-size: 13px;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   z-index: 200;
   transition: top 160ms ease;
 }
@@ -107,7 +164,7 @@ button {
   top: 12px;
 }
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
 
@@ -123,70 +180,90 @@ button {
 }
 
 /* ── Type ─────────────────────────────────────────────── */
+/* Label — Archivo 600 · 10.5–11.5 / .28em */
 .eyebrow {
   font-family: var(--sans);
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.3em;
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--stone);
 }
 .eyebrow--accent {
-  color: var(--accent-2);
+  color: var(--yellow);
 }
 .mono {
   font-family: var(--mono);
 }
+/* Record — Plex Mono 400 · 10.5–13 */
 .label-mono {
   font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted-dark);
-}
-.h1 {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(44px, 6.4vw, 96px);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.h2 {
-  font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(32px, 4.4vw, 52px);
-  line-height: 1.04;
-  letter-spacing: -0.01em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+/* Display — Playfair 400 · 92–132 / −.015em */
+.h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(46px, 7.4vw, 116px);
+  line-height: 1;
+  letter-spacing: -0.015em;
   margin: 0;
 }
-.h3 {
-  font-family: var(--serif);
+/* H1 — Playfair 500 · 44–58 / −.015em */
+.h2 {
+  font-family: var(--display);
   font-weight: 500;
-  font-size: 25px;
+  font-size: clamp(32px, 4.2vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
   margin: 0;
 }
+/* H2 — Playfair 500 · 26–32 / −.005em */
+.h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+/* Lead — Archivo 400 · 20–24 */
 .lede {
+  font-family: var(--sans);
   font-size: 21px;
-  line-height: 1.62;
-  font-weight: 300;
-  color: var(--body-on-dark);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--on-dark);
   max-width: 56ch;
   margin: 0;
 }
+/* Body — Archivo 400 · 16–18.5 */
 .body-text {
+  font-family: var(--sans);
   font-size: 18px;
-  line-height: 1.64;
+  line-height: 1.62;
   color: var(--muted-2);
-  max-width: 70ch;
+  max-width: 66ch; /* Reading column ≤66ch. */
 }
 .small {
-  font-size: 15.5px;
-  line-height: 1.55;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.58;
   color: var(--muted-2);
 }
+.motto {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px; /* Italic never below 20px. */
+  letter-spacing: -0.005em;
+}
 
-/* ── Buttons ──────────────────────────────────────────── */
+/* ── Buttons — radius 999, one yellow action per view ─── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -194,8 +271,9 @@ button {
   cursor: pointer;
   background: none;
   border: 1px solid var(--rule-strong);
-  color: var(--ink);
-  padding: 15px 28px;
+  border-radius: var(--r-action);
+  color: var(--void);
+  padding: 14px 28px;
   font-family: var(--sans);
   font-size: 11.5px;
   font-weight: 600;
@@ -204,56 +282,58 @@ button {
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 .btn:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--void);
+  color: var(--chalk);
+  border-color: var(--void);
 }
+/* The one yellow action. */
 .btn--solid {
-  background: var(--accent);
-  color: var(--ink);
-  border-color: var(--accent);
+  background: var(--yellow);
+  color: var(--void);
+  border-color: var(--yellow);
 }
 .btn--solid:hover {
-  background: var(--accent-2);
-  color: var(--ink);
-  border-color: var(--accent-2);
+  background: var(--void);
+  color: var(--yellow);
+  border-color: var(--void);
 }
 .btn--dark {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--void);
+  color: var(--chalk);
+  border-color: var(--void);
 }
 .btn--dark:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--ink);
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--void);
 }
 .btn--ghost-dark {
   background: none;
-  color: var(--paper);
-  border: 1px solid rgba(243, 237, 226, 0.34);
+  color: var(--on-dark);
+  border: 1px solid rgba(228, 226, 219, 0.32);
 }
 .btn--ghost-dark:hover {
-  border-color: var(--accent-2);
-  color: var(--accent-2);
+  border-color: var(--yellow);
+  color: var(--yellow);
   background: none;
 }
 .btn[disabled] {
   cursor: not-allowed;
-  background: rgba(23, 19, 15, 0.18);
-  color: #6b6355;
-  border: 0;
+  background: var(--concrete);
+  color: #8d8b84;
+  border: 1px solid var(--concrete);
 }
 .btn[disabled]:hover {
-  background: rgba(23, 19, 15, 0.18);
-  color: #6b6355;
+  background: var(--concrete);
+  color: #8d8b84;
+  border-color: var(--concrete);
 }
 .btn-full {
   width: 100%;
   justify-content: center;
 }
 
-/* ── Badges / status ──────────────────────────────────── */
+/* ── Status tags — square. They belong to the record. ─── */
 .badge {
   display: inline-block;
   font-family: var(--mono);
@@ -261,6 +341,7 @@ button {
   letter-spacing: 0.08em;
   padding: 5px 9px;
   border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
   white-space: nowrap;
 }
 .badge--bad {
@@ -279,31 +360,39 @@ button {
   color: var(--warn-fg);
 }
 .badge--neutral {
-  background: rgba(23, 19, 15, 0.05);
+  background: rgba(10, 10, 11, 0.04);
   border-color: var(--rule-strong);
   color: var(--muted-2);
 }
 
-/* ── Layout blocks ────────────────────────────────────── */
+/* ── Layout blocks — 8pt scale ────────────────────────── */
 .section {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 110px 34px;
+  padding: var(--s-section) var(--gutter);
 }
 .section--tight {
-  padding-top: 64px;
-  padding-bottom: 110px;
+  padding-top: var(--s-block);
+  padding-bottom: var(--s-section);
 }
 .section-number {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 26px;
+  margin-bottom: var(--s-gutter);
 }
 .section-number .rule-short {
   width: 30px;
   height: 1px;
   background: var(--rule-strong);
+}
+
+/* A 2px yellow rule — the sanctioned yellow gesture. */
+.yellow-rule {
+  height: 2px;
+  background: var(--yellow);
+  border: 0;
+  margin: 0;
 }
 
 .card-grid {
@@ -333,19 +422,64 @@ button {
   }
 }
 
-/* ── Image slot placeholder ───────────────────────────── */
+/* ── Imagery — the land is the image ──────────────────── */
+/* 28px-radius image surfaces between reading blocks. */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-surface);
+  background: var(--concrete);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Natural light only — no filters, no duotone. */
+}
+.photo--record {
+  border-radius: var(--r-record);
+}
+.photo__credit {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.photo__credit a {
+  color: var(--stone);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.photo__credit a:hover {
+  color: var(--void);
+}
+.photo__credit--on-dark,
+.photo__credit--on-dark a {
+  color: var(--muted-dark);
+}
+.photo__credit--on-dark a:hover {
+  color: var(--yellow);
+}
+
+/* Evidence placeholders stay placeholders — a documentary
+   photograph of the land is never dressed up as evidence of
+   an intervention. */
 .image-slot {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
-  background: var(--paper-warm);
+  background: var(--concrete);
   border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
   font-family: var(--mono);
   font-size: 10.5px;
   line-height: 1.7;
-  color: var(--muted);
+  color: var(--stone);
   letter-spacing: 0.02em;
 }
 .image-slot--withheld {
@@ -353,12 +487,12 @@ button {
   background: transparent;
 }
 .image-slot--on-dark {
-  border-color: rgba(203, 169, 110, 0.3);
-  background: rgba(243, 237, 226, 0.04);
-  color: var(--muted-3);
+  border-color: var(--rule-on-dark);
+  background: rgba(228, 226, 219, 0.04);
+  color: var(--muted-dark);
 }
 
-/* ── Forms ────────────────────────────────────────────── */
+/* ── Forms — radius 4 ─────────────────────────────────── */
 .field {
   display: flex;
   flex-direction: column;
@@ -366,21 +500,22 @@ button {
 }
 .field-label {
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--stone);
 }
 .field input,
 .field select,
 .field textarea {
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   padding: 11px 13px;
-  border: 1px solid rgba(23, 19, 15, 0.25);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-field);
   background: #fff;
-  color: var(--ink);
+  color: var(--void);
 }
 .field textarea {
   resize: vertical;
@@ -388,29 +523,31 @@ button {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--amber);
   outline-offset: 1px;
 }
 
-/* ── Nav ──────────────────────────────────────────────── */
+/* ── Nav — sticky utility bar ─────────────────────────── */
 .utility-bar {
-  background: var(--ink);
-  padding: 11px 34px;
+  background: var(--void);
+  padding: 11px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  border-bottom: 2px solid var(--yellow);
 }
 .utility-bar__brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--serif);
-  font-size: 15px;
-  letter-spacing: 0.3em;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--chalk);
 }
 .utility-bar__meta {
   display: flex;
@@ -418,7 +555,7 @@ button {
   gap: 18px;
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--muted-dark);
   flex-wrap: wrap;
 }
@@ -427,14 +564,14 @@ button {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(243, 237, 226, 0.94);
+  background: rgba(246, 245, 242, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule);
 }
 .site-nav__inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 16px 34px;
+  padding: 16px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -445,20 +582,21 @@ button {
   background: none;
   border: 0;
   padding: 0;
-  font-family: var(--serif);
-  font-size: 21px;
-  letter-spacing: 0.02em;
-  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--void);
   text-align: left;
 }
 .site-nav__links {
   display: flex;
-  gap: 26px;
+  gap: 24px;
   align-items: center;
   flex-wrap: wrap;
   font-family: var(--sans);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -466,40 +604,45 @@ button {
   background: none;
   border: 0;
   padding: 4px 0;
-  border-bottom: 1.5px solid transparent;
-  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  color: var(--stone);
+}
+.site-nav__link:hover {
+  color: var(--void);
 }
 .site-nav__link[aria-current="page"] {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
+  color: var(--void);
+  border-bottom-color: var(--yellow);
 }
 .site-nav__cta {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--void);
+  color: var(--chalk);
   border: 0;
-  padding: 11px 20px;
+  border-radius: var(--r-action);
+  padding: 11px 22px;
   letter-spacing: 0.16em;
   font-family: var(--sans);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
 }
 .site-nav__cta:hover {
-  background: var(--accent);
+  background: var(--yellow);
+  color: var(--void);
 }
 
 /* ── Footer ───────────────────────────────────────────── */
 .site-footer {
-  background: var(--ink);
+  background: var(--void);
   color: var(--muted-dark);
 }
 .site-footer__grid {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 70px 34px 40px;
+  padding: var(--s-group) var(--gutter) 40px;
   display: grid;
   grid-template-columns: 1.4fr 0.6fr 0.6fr 0.6fr;
-  gap: 48px;
+  gap: var(--s-block);
 }
 @media (max-width: 820px) {
   .site-footer__grid {
@@ -508,11 +651,11 @@ button {
 }
 .site-footer h4 {
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--accent-2);
+  color: var(--yellow);
   margin: 0 0 16px;
 }
 .site-footer__links {
@@ -520,7 +663,7 @@ button {
   flex-direction: column;
   gap: 10px;
   font-family: var(--sans);
-  font-size: 13.5px;
+  font-size: 14px;
 }
 .site-footer__links a {
   color: var(--muted-dark);
@@ -533,21 +676,23 @@ button {
 .site-footer__bottom {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 22px 34px 44px;
+  padding: 22px var(--gutter) 44px;
   border-top: 1px solid var(--rule-on-dark);
   font-family: var(--mono);
   font-size: 10.5px;
   letter-spacing: 0.1em;
-  color: #5f5849;
+  color: #6b6962;
 }
 
 /* ── Evidence notice ──────────────────────────────────── */
 .evidence-notice {
-  border: 1px solid rgba(169, 131, 78, 0.45);
-  background: rgba(169, 131, 78, 0.08);
+  border: 1px solid var(--warn-border);
+  border-radius: var(--r-panel);
+  background: var(--warn-bg);
   padding: 18px 22px;
+  font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.62;
+  line-height: 1.6;
   color: var(--muted-2);
 }
 .evidence-notice--compact {
@@ -556,14 +701,15 @@ button {
   align-items: flex-start;
 }
 .evidence-notice--compact .label-mono {
-  color: var(--accent-2);
+  color: var(--amber);
   white-space: nowrap;
   padding-top: 2px;
 }
 
-/* ── Table / ledger ───────────────────────────────────── */
+/* ── Table / ledger — a record is square ──────────────── */
 .table-wrap {
   border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
   background: #fff;
   overflow-x: auto;
 }
@@ -571,42 +717,43 @@ table.ledger {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
 }
 table.ledger caption {
   text-align: left;
   padding: 16px 20px;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  color: var(--stone);
   border-bottom: 1px solid var(--rule);
 }
 table.ledger th {
   text-align: left;
   padding: 14px 16px;
-  font-size: 10px;
+  font-family: var(--sans);
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted-2);
   border-bottom: 1px solid var(--rule-strong);
   white-space: nowrap;
-  background: var(--paper);
+  background: var(--chalk);
 }
 table.ledger td {
   padding: 15px 16px;
-  border-bottom: 1px solid rgba(23, 19, 15, 0.09);
+  border-bottom: 1px solid var(--rule);
   vertical-align: top;
 }
 table.ledger tbody tr {
   cursor: pointer;
 }
 table.ledger tbody tr:hover {
-  background: var(--paper-card);
+  background: var(--chalk);
 }
 table.ledger tbody tr:focus-within {
-  background: var(--paper-card);
+  background: var(--chalk);
 }
 .num-right {
   text-align: right;
@@ -621,6 +768,7 @@ table.ledger tbody tr:focus-within {
 }
 .ledger-card {
   border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
   background: #fff;
   padding: 16px 18px;
   cursor: pointer;
@@ -637,11 +785,40 @@ table.ledger tbody tr:focus-within {
 /* ── Progress bar (fund page) ─────────────────────────── */
 .progress {
   height: 6px;
-  background: rgba(23, 19, 15, 0.1);
+  background: var(--concrete);
+  border-radius: var(--r-action);
+  overflow: hidden;
 }
 .progress__fill {
   height: 6px;
-  background: var(--accent);
+  background: var(--yellow);
+}
+
+/* ── Cost ledger — Croatia's enforcement expenditure ──── */
+.cost-total {
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  background: #fff;
+  padding: 28px 30px;
+}
+.cost-total__figure {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.cost-pending {
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--r-record);
+  background: rgba(201, 151, 0, 0.06);
+  padding: 14px 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #8a6800;
+  text-transform: uppercase;
 }
 
 /* ── Print ────────────────────────────────────────────── */
@@ -687,4 +864,13 @@ table.ledger tbody tr:focus-within {
 }
 .mt-0 {
   margin-top: 0;
+}
+
+/* ── Narrow screens ───────────────────────────────────── */
+@media (max-width: 760px) {
+  :root {
+    --gutter: 20px;
+    --s-section: 64px;
+    --s-group: 48px;
+  }
 }

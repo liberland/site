@@ -62,6 +62,54 @@ test("formatEUR renders decimal-safe amounts from integer cents", () => {
   assert.equal(Metrics.formatEUR(0), "€0.00");
 });
 
+test("an unsourced cost never contributes to the headline Croatia total", () => {
+  const t = Metrics.computeCostTotals(Data.croatiaCosts);
+  assert.equal(t.sourcedCents, 0, "no official figure is published yet, so the total must be empty");
+  assert.equal(t.hasSourced, false);
+  assert.equal(t.pendingCount, Data.croatiaCosts.length, "every seeded row is awaiting a source");
+
+  // A figure alone is not enough: the basis must also be one that counts.
+  const tampered = Data.croatiaCosts.map((c) => ({ ...c, amountCents: 500000, includeInTotal: true }));
+  const tTampered = Metrics.computeCostTotals(tampered);
+  assert.equal(tTampered.sourcedCents, 0, "needs_source rows must stay out of the total even when given an amount");
+  assert.equal(tTampered.pendingCount, Data.croatiaCosts.length);
+});
+
+test("an estimated cost is reported separately and never merged into sourced expenditure", () => {
+  const costs = [
+    { id: "A", basis: "primary_official", amountCents: 100000, includeInTotal: true },
+    { id: "B", basis: "estimate_methodology", amountCents: 250000, includeInTotal: true },
+    { id: "C", basis: "needs_source", amountCents: null, includeInTotal: false },
+  ];
+  const t = Metrics.computeCostTotals(costs);
+  assert.equal(t.sourcedCents, 100000, "only the officially sourced figure counts");
+  assert.equal(t.estimatedCents, 250000, "the estimate is tracked on its own line");
+  assert.equal(t.sourcedCount, 1);
+  assert.equal(t.estimatedCount, 1);
+  assert.equal(t.pendingCount, 1);
+  assert.notEqual(t.sourcedCents, t.sourcedCents + t.estimatedCents);
+});
+
+test("an official rate times a documented quantity counts toward the total", () => {
+  const costs = [{ id: "A", basis: "official_rate", amountCents: 42000, includeInTotal: true }];
+  assert.equal(Metrics.computeCostTotals(costs).sourcedCents, 42000);
+
+  // includeInTotal is still an explicit opt-in, never inferred from the basis.
+  const optedOut = [{ id: "A", basis: "official_rate", amountCents: 42000, includeInTotal: false }];
+  assert.equal(Metrics.computeCostTotals(optedOut).sourcedCents, 0);
+});
+
+test("the cost CSV marks which rows count and leaves unsourced amounts blank", () => {
+  const csv = Metrics.costsToCsv(Data.croatiaCosts);
+  const lines = csv.split("\n");
+  assert.match(lines[0], /counts_toward_total/);
+  assert.equal(lines.length, Data.croatiaCosts.length + 1);
+  lines.slice(1).forEach((l) => {
+    assert.match(l, /"no"/, "no seeded row may be marked as counting");
+    assert.match(l, /,"",/, "an unsourced row exports an empty amount rather than a zero");
+  });
+});
+
 test("private fields are never present in ledger rows", () => {
   const rows = Metrics.buildLedgerRows(Data.incidents, Data.items);
   const forbidden = ["locationPrivate", "ownerPrivateId", "notesPrivate", "privateOriginalPath"];

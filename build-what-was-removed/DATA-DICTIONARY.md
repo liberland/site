@@ -51,6 +51,51 @@ as needed, not speculatively.)
 `id`, `name`, `desc`, `targetCents`, `receivedCents`, `spentCents`,
 `report` (a report reference string, or `"PENDING"`).
 
+## Croatia cost entry (`croatiaCosts`)
+
+What the enforcement posture costs the Croatian public. Same discipline as
+an incident: a figure enters the headline total only when its basis says it
+may. Full editing procedure in `COSTS-DATA-GUIDE.md`.
+
+| Field | Meaning |
+|---|---|
+| `id` | Public record ID, `CC-01` … |
+| `category` | Cost category, e.g. `Storage and custody` |
+| `title`, `description` | Public title and neutral description of the cost |
+| `period` | Period the cost covers, e.g. `2023–2026`, `Open` |
+| `amountCents` | Integer minor units, or `null` when no figure is sourced |
+| `basis` | One of the cost-basis enum values below |
+| `includeInTotal` | Must be `true` **and** `basis` in `primary_official`/`official_rate` for `amountCents` to enter Sourced Expenditure. Never inferred from the basis alone |
+| `documented` | What this site already evidences about the quantity |
+| `inputsNeeded` | The specific documents or rates required to publish a figure. Not optional — it is what makes an unsourced row useful |
+| `source` | `{ id, title, grade, url }`, or `null` |
+
+## Cost basis enum
+
+| Value | Enters Sourced Expenditure? |
+|---|---|
+| `primary_official` | Yes — a published budget line, ATI response or official statement |
+| `official_rate` | Yes — an official published rate × a quantity documented on this site |
+| `estimate_methodology` | No — accumulated and displayed on a separate line, never merged |
+| `needs_source` | No — the structure is identified, no figure published |
+
+`Metrics.computeCostTotals` enforces the separation; `tests/metrics.test.js`
+fails if an estimate can ever reach the sourced total, or if a
+`needs_source` row can be promoted by setting `includeInTotal`.
+
+## Image entry (`images`)
+
+Documentary photography of the territory. Never used to illustrate an
+incident — evidence imagery follows `EVIDENCE-PUBLICATION-CHECKLIST.md`.
+
+| Field | Meaning |
+|---|---|
+| `src` | Direct image URL, or `null` to render the placeholder instead |
+| `alt` | Accessible description of what the photograph shows |
+| `placeholder` | Text shown when `src` is `null` |
+| `caption` | Short caption, e.g. `The Danube` |
+| `author`, `license`, `sourceUrl` | Attribution, rendered as a visible credit line beneath the image. Required for any entry with a `src` |
+
 ## Fields that must never render publicly (from the handoff document's
 full schema, reserved for when a real backend exists)
 

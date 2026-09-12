@@ -73,7 +73,7 @@ function IncidentDetail({ incidentId }) {
               {inc.questions.map((q, i) => (
                 <div key={i} className="row gap-14" style={{ padding: "15px 0", borderTop: "1px solid var(--rule)", fontSize: 17.5, lineHeight: 1.6, alignItems: "flex-start" }}>
                   <span className="mono" style={{ color: "var(--accent)", fontSize: 11.5, paddingTop: 4 }}>Q{i + 1}</span>
-                  <span style={{ color: "#3C372F" }}>{q}</span>
+                  <span style={{ color: "var(--muted-2)" }}>{q}</span>
                 </div>
               ))}
             </div>
@@ -82,7 +82,7 @@ function IncidentDetail({ incidentId }) {
               <SectionLabel n="06">Item ledger</SectionLabel>
               <div style={{ border: "1px solid var(--rule-strong)", background: "#fff" }}>
                 {inc.items.map((it, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1.6fr .9fr .7fr", gap: 20, padding: "16px 20px", borderBottom: "1px solid rgba(23,19,15,.09)", alignItems: "center" }}>
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1.6fr .9fr .7fr", gap: 20, padding: "16px 20px", borderBottom: "1px solid var(--rule)", alignItems: "center" }}>
                     <div style={{ fontFamily: "var(--sans)", fontSize: 14 }}>{it.name}</div>
                     <div className="mono" style={{ fontSize: 10.5, letterSpacing: ".06em", color: "var(--muted-2)" }}>{it.statusLabel}</div>
                     <div className="mono" style={{ textAlign: "right", fontSize: 13 }}>{it.value}</div>
@@ -128,7 +128,7 @@ function IncidentDetail({ incidentId }) {
               {inc.timeline.map((t, i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: 24, padding: "16px 0", borderTop: "1px solid var(--rule)" }}>
                   <div className="mono" style={{ color: "var(--accent)", fontSize: 11.5 }}>{t.date}</div>
-                  <div style={{ fontSize: 17.5, lineHeight: 1.6, color: "#3C372F" }}>{t.text}</div>
+                  <div style={{ fontSize: 17.5, lineHeight: 1.6, color: "var(--muted-2)" }}>{t.text}</div>
                 </div>
               ))}
             </div>
@@ -160,7 +160,7 @@ function IncidentDetail({ incidentId }) {
             <div style={{ border: "1px solid var(--rule-strong)", background: "var(--paper-card)", padding: "26px 24px", marginBottom: 20 }}>
               <div className="field-label" style={{ marginBottom: 20 }}>Record facts</div>
               {facts.map((f) => (
-                <div key={f.k} style={{ padding: "13px 0", borderTop: "1px solid rgba(23,19,15,.12)" }}>
+                <div key={f.k} style={{ padding: "13px 0", borderTop: "1px solid var(--rule)" }}>
                   <div className="label-mono" style={{ marginBottom: 6, fontSize: 10 }}>{f.k}</div>
                   <div style={{ fontFamily: "var(--sans)", fontSize: 13.5, lineHeight: 1.5 }}>{f.v}</div>
                 </div>
