@@ -1,0 +1,951 @@
+/* ============================================================
+   Gornja Siga Settlement Campaign
+   Liberland State Design Language — V2
+
+   V2 replaces the antique register of V1 (muted heraldic gold
+   #A9834E, Cormorant Garamond, radius forbidden, an invented
+   seal) with the real flag yellow, a high-contrast modern serif
+   and a structural radius scale.
+
+   Legacy V1 token names are kept as aliases pointing at V2
+   values, so inline component styles inherit the new language
+   without a rewrite at every call site.
+   ============================================================ */
+
+/* ── Fonts, self-hosted ──────────────────────────────────
+   Served from this origin rather than fonts.googleapis.com.
+   Three reasons, in order of weight:
+
+   1. The design language IS the typography. A blocked, slow or
+      failed third-party request drops the page to Georgia and
+      Helvetica and none of V2 survives it.
+   2. This site promises no third-party analytics. A Google
+      Fonts request hands every visitor's IP and user-agent to a
+      third party on page load, which is the same promise broken
+      by a different route — and visitors to this site in
+      particular may have reason not to want that.
+   3. It matches the repo convention: React is vendored locally
+      for exactly the same reason.
+
+   Latin subsets only, woff2 only — 156 KB for all three
+   families. Update via @fontsource packages; see README.
+   ──────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/archivo-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/archivo-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/archivo-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+}
+
+:root {
+  /* ── The pair ─────────────────────────────────────────── */
+  --yellow: #ffc800; /* Flag Yellow. The identity. Full fields, primary action. */
+  --void: #0a0a0b; /* Flag black, cooled. Covers, primary text. */
+
+  /* ── Neutrals and the one variant ─────────────────────── */
+  --carbon: #16171a; /* Panels on dark. */
+  --stone: #6e6c66; /* Muted text and labels. */
+  --concrete: #e6e4de; /* Dividers and inset fills. */
+  --chalk: #f6f5f2; /* Default page ground. */
+  --amber: #c99700; /* Yellow made legible on light. Text and rules only. */
+  --on-dark: #e4e2db; /* Body text on dark grounds. */
+
+  /* ── Heraldic palette — documentary use only, never brand ── */
+  --terra: #6b2f1f; /* The chief. Soil and the ground itself. */
+  --rowan: #2f6b33; /* The tree. The only green permitted. */
+  --sun: #dfa01b; /* Heraldic only. Never substituted for Flag Yellow. */
+  --danube: #1379be; /* The river base. Maps, water data, the border question. */
+  --cyan: #0fa3b1; /* The ledger. The one hue not in the arms. */
+
+  /* ── Typography ───────────────────────────────────────── */
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Archivo", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* ── Geometry ─────────────────────────────────────────── */
+  --r-record: 0; /* Decrees, certificates, tables, ledger rows, status tags. */
+  --r-field: 4px;
+  --r-panel: 14px;
+  --r-surface: 28px; /* Image surfaces. */
+  --r-action: 999px;
+
+  --s-inline: 8px;
+  --s-element: 16px;
+  --s-gutter: 24px;
+  --s-block: 48px;
+  --s-group: 80px;
+  --s-section: 100px;
+
+  --maxw: 1240px;
+  --maxw-wide: 1400px;
+  --gutter: 40px; /* Outer margin ≥40 on web. */
+
+  --rule: rgba(10, 10, 11, 0.13); /* Dividers — 1px rgba(void,.13). */
+  --rule-strong: rgba(10, 10, 11, 0.24);
+  --rule-on-dark: rgba(228, 226, 219, 0.18);
+
+  /* ── Status tones, drawn from the documentary palette ─── */
+  --bad-bg: rgba(107, 47, 31, 0.09);
+  --bad-border: rgba(107, 47, 31, 0.42);
+  --bad-fg: var(--terra);
+  --ok-bg: rgba(47, 107, 51, 0.1);
+  --ok-border: rgba(47, 107, 51, 0.4);
+  --ok-fg: var(--rowan);
+  --warn-bg: rgba(201, 151, 0, 0.12);
+  --warn-border: rgba(201, 151, 0, 0.45);
+  --warn-fg: #8a6800;
+
+  /* ── V1 aliases — resolve to V2 values ────────────────── */
+  --ink: var(--void);
+  --ink-2: var(--carbon);
+  --paper: var(--chalk);
+  --paper-card: #ffffff;
+  --paper-warm: var(--concrete);
+  --accent: var(--amber); /* On light: amber. Yellow is never text on white. */
+  --accent-2: var(--yellow); /* On dark: true flag yellow. */
+  --muted: var(--stone);
+  --muted-2: #4a4945;
+  --muted-3: #a6a49c;
+  --muted-dark: #9a978e;
+  --body-on-dark: var(--on-dark);
+  --serif: var(--display);
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--chalk);
+  color: var(--void);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a {
+  color: var(--amber);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--void);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+::selection {
+  background: var(--yellow);
+  color: var(--void);
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ── Accessibility utilities ─────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  background: var(--yellow);
+  color: var(--void);
+  padding: 12px 18px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  z-index: 200;
+  transition: top 160ms ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.container--wide {
+  max-width: var(--maxw-wide);
+}
+
+/* ── Type ─────────────────────────────────────────────── */
+/* Label — Archivo 600 · 10.5–11.5 / .28em */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.eyebrow--accent {
+  color: var(--yellow);
+}
+.mono {
+  font-family: var(--mono);
+}
+/* Record — Plex Mono 400 · 10.5–13 */
+.label-mono {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+/* Display — Playfair 400 · 92–132 / −.015em */
+.h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(46px, 7.4vw, 116px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+/* H1 — Playfair 500 · 44–58 / −.015em */
+.h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(32px, 4.2vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+/* H2 — Playfair 500 · 26–32 / −.005em */
+.h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+/* Lead — Archivo 400 · 20–24 */
+.lede {
+  font-family: var(--sans);
+  font-size: 21px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--on-dark);
+  max-width: 56ch;
+  margin: 0;
+}
+/* Body — Archivo 400 · 16–18.5 */
+.body-text {
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.62;
+  color: var(--muted-2);
+  max-width: 66ch; /* Reading column ≤66ch. */
+}
+.small {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.58;
+  color: var(--muted-2);
+}
+.motto {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px; /* Italic never below 20px. */
+  letter-spacing: -0.005em;
+}
+
+/* ── Buttons — radius 999, one yellow action per view ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-action);
+  color: var(--void);
+  padding: 14px 28px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.btn:hover {
+  background: var(--void);
+  color: var(--chalk);
+  border-color: var(--void);
+}
+/* The one yellow action. */
+.btn--solid {
+  background: var(--yellow);
+  color: var(--void);
+  border-color: var(--yellow);
+}
+.btn--solid:hover {
+  background: var(--void);
+  color: var(--yellow);
+  border-color: var(--void);
+}
+.btn--dark {
+  background: var(--void);
+  color: var(--chalk);
+  border-color: var(--void);
+}
+.btn--dark:hover {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--void);
+}
+.btn--ghost-dark {
+  background: none;
+  color: var(--on-dark);
+  border: 1px solid rgba(228, 226, 219, 0.32);
+}
+.btn--ghost-dark:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+  background: none;
+}
+.btn[disabled] {
+  cursor: not-allowed;
+  background: var(--concrete);
+  color: #8d8b84;
+  border: 1px solid var(--concrete);
+}
+.btn[disabled]:hover {
+  background: var(--concrete);
+  color: #8d8b84;
+  border-color: var(--concrete);
+}
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ── Status tags — square. They belong to the record. ─── */
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 5px 9px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  white-space: nowrap;
+}
+.badge--bad {
+  background: var(--bad-bg);
+  border-color: var(--bad-border);
+  color: var(--bad-fg);
+}
+.badge--ok {
+  background: var(--ok-bg);
+  border-color: var(--ok-border);
+  color: var(--ok-fg);
+}
+.badge--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn-fg);
+}
+.badge--neutral {
+  background: rgba(10, 10, 11, 0.04);
+  border-color: var(--rule-strong);
+  color: var(--muted-2);
+}
+
+/* ── Layout blocks — 8pt scale ────────────────────────── */
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--s-section) var(--gutter);
+}
+.section--tight {
+  padding-top: var(--s-block);
+  padding-bottom: var(--s-section);
+}
+.section-number {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: var(--s-gutter);
+}
+.section-number .rule-short {
+  width: 30px;
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+/* A 2px yellow rule — the sanctioned yellow gesture. */
+.yellow-rule {
+  height: 2px;
+  background: var(--yellow);
+  border: 0;
+  margin: 0;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.card-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.card-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.card-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.card-grid > * {
+  background: var(--paper-card);
+  padding: 40px 32px;
+}
+@media (max-width: 920px) {
+  .card-grid--2,
+  .card-grid--3,
+  .card-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Imagery — the land is the image ──────────────────── */
+/* 28px-radius image surfaces between reading blocks. */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-surface);
+  background: var(--concrete);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Natural light only — no filters, no duotone. */
+}
+.photo--record {
+  border-radius: var(--r-record);
+}
+.photo__credit {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.photo__credit a {
+  color: var(--stone);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.photo__credit a:hover {
+  color: var(--void);
+}
+.photo__credit--on-dark,
+.photo__credit--on-dark a {
+  color: var(--muted-dark);
+}
+.photo__credit--on-dark a:hover {
+  color: var(--yellow);
+}
+
+/* Evidence placeholders stay placeholders — a documentary
+   photograph of the land is never dressed up as evidence of
+   an intervention. */
+.image-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: var(--concrete);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.7;
+  color: var(--stone);
+  letter-spacing: 0.02em;
+}
+.image-slot--withheld {
+  border-style: dashed;
+  background: transparent;
+}
+.image-slot--on-dark {
+  border-color: var(--rule-on-dark);
+  background: rgba(228, 226, 219, 0.04);
+  color: var(--muted-dark);
+}
+
+/* ── Forms — radius 4 ─────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field-label {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--sans);
+  font-size: 15px;
+  padding: 11px 13px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-field);
+  background: #fff;
+  color: var(--void);
+}
+.field textarea {
+  resize: vertical;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+/* ── Nav — sticky utility bar ─────────────────────────── */
+.utility-bar {
+  background: var(--void);
+  padding: 11px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--yellow);
+}
+.utility-bar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+.utility-bar__meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: var(--muted-dark);
+  flex-wrap: wrap;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(246, 245, 242, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.site-nav__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.site-nav__brand {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--void);
+  text-align: left;
+}
+.site-nav__links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.site-nav__link {
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  color: var(--stone);
+}
+.site-nav__link:hover {
+  color: var(--void);
+}
+.site-nav__link[aria-current="page"] {
+  color: var(--void);
+  border-bottom-color: var(--yellow);
+}
+.site-nav__cta {
+  background: var(--void);
+  color: var(--chalk);
+  border: 0;
+  border-radius: var(--r-action);
+  padding: 11px 22px;
+  letter-spacing: 0.16em;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.site-nav__cta:hover {
+  background: var(--yellow);
+  color: var(--void);
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.site-footer {
+  background: var(--void);
+  color: var(--muted-dark);
+}
+.site-footer__grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--s-group) var(--gutter) 40px;
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr 0.6fr 0.6fr;
+  gap: var(--s-block);
+}
+@media (max-width: 820px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.site-footer h4 {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin: 0 0 16px;
+}
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.site-footer__links a {
+  color: var(--muted-dark);
+}
+.site-footer__links a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.site-footer__bottom {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 22px var(--gutter) 44px;
+  border-top: 1px solid var(--rule-on-dark);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: #6b6962;
+}
+
+/* ── Evidence notice ──────────────────────────────────── */
+.evidence-notice {
+  border: 1px solid var(--warn-border);
+  border-radius: var(--r-panel);
+  background: var(--warn-bg);
+  padding: 18px 22px;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+.evidence-notice--compact {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.evidence-notice--compact .label-mono {
+  color: var(--amber);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* ── Table / ledger — a record is square ──────────────── */
+.table-wrap {
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  background: #fff;
+  overflow-x: auto;
+}
+table.ledger {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 13.5px;
+}
+table.ledger caption {
+  text-align: left;
+  padding: 16px 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--stone);
+  border-bottom: 1px solid var(--rule);
+}
+table.ledger th {
+  text-align: left;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  border-bottom: 1px solid var(--rule-strong);
+  white-space: nowrap;
+  background: var(--chalk);
+}
+table.ledger td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.ledger tbody tr {
+  cursor: pointer;
+}
+table.ledger tbody tr:hover {
+  background: var(--chalk);
+}
+table.ledger tbody tr:focus-within {
+  background: var(--chalk);
+}
+.num-right {
+  text-align: right;
+  font-family: var(--mono);
+}
+
+/* ── Ledger card view (mobile) ────────────────────────── */
+.ledger-cards {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+.ledger-card {
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  background: #fff;
+  padding: 16px 18px;
+  cursor: pointer;
+}
+@media (max-width: 860px) {
+  .table-wrap {
+    display: none;
+  }
+  .ledger-cards {
+    display: flex;
+  }
+}
+
+/* ── Progress bar (fund page) ─────────────────────────── */
+.progress {
+  height: 6px;
+  background: var(--concrete);
+  border-radius: var(--r-action);
+  overflow: hidden;
+}
+.progress__fill {
+  height: 6px;
+  background: var(--yellow);
+}
+
+/* ── Cost ledger — Croatia's enforcement expenditure ──── */
+.cost-total {
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-record);
+  background: #fff;
+  padding: 28px 30px;
+}
+.cost-total__figure {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.cost-pending {
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--r-record);
+  background: rgba(201, 151, 0, 0.06);
+  padding: 14px 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #8a6800;
+  text-transform: uppercase;
+}
+
+/* ── Print ────────────────────────────────────────────── */
+@media print {
+  .site-nav,
+  .utility-bar,
+  .site-footer,
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ── Utility ──────────────────────────────────────────── */
+.stack-8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stack-12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gap-8 {
+  gap: 8px;
+}
+.gap-12 {
+  gap: 12px;
+}
+.gap-14 {
+  gap: 14px;
+}
+.gap-24 {
+  gap: 24px;
+}
+.mt-0 {
+  margin-top: 0;
+}
+
+/* ── Narrow screens ───────────────────────────────────── */
+@media (max-width: 760px) {
+  :root {
+    --gutter: 20px;
+    --s-section: 64px;
+    --s-group: 48px;
+  }
+}

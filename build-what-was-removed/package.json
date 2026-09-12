@@ -1,0 +1,11 @@
+{
+  "name": "build-what-was-removed",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/metrics.test.js",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

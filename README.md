@@ -5,10 +5,11 @@ Monorepo containing independent static sites, each deployed as its own Netlify s
 - `liberland-limited/` — Liberland Limited landing page and pitch deck.
 - `new-site/` — placeholder for a second site (rename when its purpose is decided).
 - `votula/` — Votula, Ltd., Liberland's blockchain and crypto branch. Eight pages plus a brand-language reference.
+- `build-what-was-removed/` — the Gornja Siga Settlement Campaign. See its own `README.md` before touching content; it makes attributed allegations against named public authorities under strict editorial and evidence-publication rules.
 
 Each subdirectory is self-contained with its own `netlify.toml`. In Netlify, configure each site with **Base directory** set to the matching subfolder.
 
-The GitHub Pages workflow at `.github/workflows/deploy-pages.yml` deploys `liberland-limited/` at the root, with `new-site/` at `/candidate` and `votula/` at `/votula`.
+The GitHub Pages workflow at `.github/workflows/deploy-pages.yml` deploys `liberland-limited/` at the root, with `new-site/` at `/candidate`, `votula/` at `/votula` and `build-what-was-removed/` at `/fund`. The `/fund` page is served `noindex` while its legal checklist is open — see `build-what-was-removed/DEPLOYMENT.md`.
 
 ## Votula
 
