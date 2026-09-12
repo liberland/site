@@ -32,6 +32,43 @@ If any box above is unchecked, the corresponding record must keep its
 placeholder (`image-slot` / `WITHHELD — REDACTION STATUS NOT APPROVED`)
 rather than display anything. When in doubt, withhold.
 
+## Documentary photographs are not evidence photographs
+
+Two separate systems, deliberately kept apart:
+
+| | Evidence imagery | Documentary imagery |
+|---|---|---|
+| Lives in | `srcDocs` / incident galleries | `Data.images` (`src/data.js`) |
+| Renders via | `EvidenceSlot` — a placeholder until approved | `Photo` — a placeholder until a file exists |
+| Shows | A specific incident, redaction-approved | The land, the river, the floodplain |
+| May illustrate an incident? | Yes, that is its purpose | **Never** |
+
+A documentary photograph of the Danube must never be placed on, beside or
+in the position of an incident record. The moment a general landscape shot
+stands where evidence of an intervention should be, the reader cannot tell
+which images are load-bearing — and every other claim on the site inherits
+that doubt.
+
+### Provenance rule for documentary imagery
+
+No freely-licensed ground-level photograph of the settlement exists. Commons
+holds flags, logos, maps, conference portraits and two NASA satellite frames
+and nothing on the ground; liberland.org states no reuse grant. Therefore:
+
+- Only the satellite frame may be captioned as Gornja Siga.
+- Every other photograph states its actual location and its distance from
+  the site, in the caption, where the reader sees it — not in a source note.
+- Every entry carries `author`, `license`, `licenseUrl` and `sourceUrl`. The
+  credit line is a licence condition, not decoration.
+- CC BY-SA 4.0 is copyleft on the image: reproduce it unmodified and the
+  obligation is attribution only. **If you crop or colour-grade one, the
+  adaptation must itself be released BY-SA 4.0** — so don't, unless you mean
+  to.
+
+To close this gap properly: have a settler photograph the site and upload it
+to Commons under CC BY-SA 4.0. That is the only route to a lawful, genuine
+picture of the settlement — and it fixes the problem permanently.
+
 ## Adding a real source or image (once approved)
 
 1. Place the approved, redacted file only — never the original — under a

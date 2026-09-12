@@ -53,7 +53,10 @@ function Hero() {
             &nbsp;EVERY&nbsp;CONTRIBUTION&nbsp;TRACKED.
           </div>
         </div>
-        <Photo id="hero" aspect="3/4" onDark />
+        {/* Square: the only freely-licensed image that is actually of Gornja
+            Siga is a satellite frame, and it is natively square. Leading with
+            the record rather than a stand-in photograph of somewhere else. */}
+        <Photo id="hero" aspect="1/1" onDark />
       </div>
     </section>
   );
@@ -315,8 +318,15 @@ function TheLand() {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 24 }}>
           <Photo id="land" aspect="16/10" />
-          <Photo id="river" aspect="16/10" />
+          {/* 8/7 so this image's base lines up with the wider one beside it:
+              at columns 1.4fr/1fr, 1.6 × (1 / 1.4) = 8/7 regardless of width. */}
+          <Photo id="river" aspect="8/7" />
         </div>
+        <p className="label-mono" style={{ marginTop: 18, lineHeight: 1.8, maxWidth: "88ch" }}>
+          ON THESE PHOTOGRAPHS — NO FREELY LICENSED PHOTOGRAPH OF THE SETTLEMENT ITSELF EXISTS. THE TWO ABOVE SHOW
+          THE SAME DANUBE FLOODPLAIN AT THE STATED DISTANCE, NOT GORNJA SIGA. ONLY THE SATELLITE FRAME ON THIS PAGE
+          IS THE TERRITORY.
+        </p>
         <div
           style={{
             display: "grid",

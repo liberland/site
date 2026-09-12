@@ -33,10 +33,24 @@ function Photo({ id, aspect, radius, onDark, className, style }) {
       >
         <img src={img.src} alt={img.alt} loading="lazy" decoding="async" width={img.width} height={img.height} />
       </div>
+      {/* CC BY-SA requires the licence to be named and linked alongside the
+          author and the source, so the credit line is not decorative — it is
+          the condition of use. */}
       <figcaption className={"photo__credit" + (onDark ? " photo__credit--on-dark" : "")}>
         {img.caption ? img.caption + " · " : ""}
         {img.author}
-        {img.license ? ", " + img.license : ""}
+        {img.license ? (
+          <>
+            {", "}
+            {img.licenseUrl ? (
+              <a href={img.licenseUrl} target="_blank" rel="noopener noreferrer nofollow">
+                {img.license}
+              </a>
+            ) : (
+              img.license
+            )}
+          </>
+        ) : null}
         {img.sourceUrl ? (
           <>
             {" · "}

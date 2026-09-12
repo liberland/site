@@ -80,11 +80,11 @@ function IncidentDetail({ incidentId }) {
 
             <div style={{ marginBottom: 48 }}>
               <SectionLabel n="06">Item ledger</SectionLabel>
-              <div style={{ border: "1px solid var(--rule-strong)", background: "#fff" }}>
+              <div id="item-ledger" style={{ border: "1px solid var(--rule-strong)", background: "#fff" }}>
                 {inc.items.map((it, i) => (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "1.6fr .9fr .7fr", gap: 20, padding: "16px 20px", borderBottom: "1px solid var(--rule)", alignItems: "center" }}>
                     <div style={{ fontFamily: "var(--sans)", fontSize: 14 }}>{it.name}</div>
-                    <div className="mono" style={{ fontSize: 10.5, letterSpacing: ".06em", color: "var(--muted-2)" }}>{it.statusLabel}</div>
+                    <div className="mono" data-item-status style={{ fontSize: 10.5, letterSpacing: ".06em", color: "var(--muted-2)" }}>{it.statusLabel}</div>
                     <div className="mono" style={{ textAlign: "right", fontSize: 13 }}>{it.value}</div>
                   </div>
                 ))}

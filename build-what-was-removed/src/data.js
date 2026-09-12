@@ -199,33 +199,56 @@
   // NOTE: these are documentary photographs of the territory. They are
   // never used to illustrate an incident — evidence imagery is held to the
   // separate standard in EVIDENCE-PUBLICATION-CHECKLIST.md.
+  // IMPORTANT — provenance. No freely-licensed ground-level photograph of the
+  // Gornja Siga settlement exists. Wikimedia Commons holds only flags, logos,
+  // maps, conference portraits and two NASA satellite frames; a geosearch of
+  // the plot returns nothing on the ground. liberland.org publishes no licence
+  // or press-use grant, so nothing there can lawfully be reused here.
+  //
+  // The consequence is a rule, not an inconvenience: only the satellite frame
+  // may be captioned as Gornja Siga. Every other photograph is the same Danube
+  // floodplain system a stated distance away, and its caption must say so. A
+  // site that demands itemised records from an authority does not get to imply
+  // that a photograph taken 16 km away is its own front garden.
+  //
+  // The gap worth closing: a settler's own photographs, released under
+  // CC BY-SA 4.0 and uploaded to Commons, would fix this permanently.
   const images = {
     hero: {
-      src: null,
-      alt: "The Danube floodplain at Gornja Siga in daylight.",
-      placeholder: "Documentary photograph — Gornja Siga, wide, daylight",
-      caption: "Gornja Siga",
-      author: null,
-      license: null,
-      sourceUrl: null,
+      src: "img/gornja-siga-satellite-2007.jpg",
+      width: 829,
+      height: 829,
+      alt:
+        "Satellite view of the Gornja Siga floodplain on the Danube in 2007, showing the river channel and wooded terrain of the claimed territory.",
+      placeholder: "Satellite record — Gornja Siga, 2007",
+      caption: "Gornja Siga from orbit, 2007",
+      author: "NASA / Earth Science and Remote Sensing Unit, Johnson Space Center",
+      license: "public domain",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Gornja_Siga_in_2007.jpg",
     },
     land: {
-      src: null,
-      alt: "Woodland and open ground on the claimed territory.",
+      src: "img/kopacki-rit-floodplain.jpg",
+      width: 1920,
+      height: 1080,
+      alt: "A single tree standing in flat marshland under a wide sky in the Danube floodplain.",
       placeholder: "Documentary photograph — the floodplain and treeline",
-      caption: "The floodplain",
-      author: null,
-      license: null,
-      sourceUrl: null,
+      caption: "Kopački rit — the same floodplain system, about 16 km from Gornja Siga",
+      author: "Dpetrakovic / Wikimedia Commons",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Kopa%C4%8Dki_rit.jpg",
     },
     river: {
-      src: null,
-      alt: "The Danube at the left bank beside the claimed territory.",
+      src: "img/gornje-podunavlje-danube.jpg",
+      width: 1920,
+      height: 933,
+      alt: "The Danube seen wide across the water, with a low wooded far bank under winter light.",
       placeholder: "Documentary photograph — the Danube at the left bank",
-      caption: "The Danube",
-      author: null,
-      license: null,
-      sourceUrl: null,
+      caption: "The Danube at Gornje Podunavlje, about 10 km downstream of Gornja Siga",
+      author: "Gzanag / Wikimedia Commons",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Specijalni_Rezetvat_Gornje_Podunavlje_02.jpg",
     },
   };
 
