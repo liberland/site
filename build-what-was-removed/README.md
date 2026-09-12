@@ -88,5 +88,5 @@ total.
 See `DEPLOYMENT.md`. In production this folder is meant to be its own
 Netlify site (`netlify.toml` already sets `publish = "."`, no build
 command), matching `liberland-limited/` and `new-site/`. It is currently
-also published read-only at `/build-what-was-removed/` in this repo's
+also published at `/fund/` in this repo's
 GitHub Pages preview for review before a dedicated Netlify site exists.

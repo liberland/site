@@ -44,7 +44,7 @@ chosen deliberately over `history.pushState` with real paths:
   can do this, but GitHub Pages cannot without a 404.html redirect hack).
 - It works identically regardless of where the document is mounted — at a
   domain root (a dedicated Netlify site) or a subpath (a GitHub Pages
-  preview at `/build-what-was-removed/`) — because every asset reference
+  preview at `/fund/`) — because every asset reference
   in `index.html` is relative to the document, not to a route.
 - A user can still deep-link and reload any view
   (`#/incidents/GS-2023-09-21`) and get back to the same place, and ledger
