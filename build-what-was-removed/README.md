@@ -38,6 +38,29 @@ doesn't match how this repository actually ships sites — see
 `ARCHITECTURE.md` for the reasoning and the migration path if this project
 later needs a real backend (submissions, payments, CMS-backed content).
 
+## Fonts
+
+Playfair Display, Archivo and IBM Plex Mono are **self-hosted** in `fonts/`
+(latin woff2 subsets, 156 KB total) and declared with `@font-face` at the
+top of `styles.css`. There is no Google Fonts request.
+
+This is deliberate on three counts: the V2 design language is carried almost
+entirely by its typography, so a blocked or slow third-party request drops
+the whole identity to Georgia and Helvetica; the site promises no
+third-party analytics, and a font-CDN request hands every visitor's IP to a
+third party on page load; and React is already vendored locally for the same
+reason.
+
+To update a weight, pull the file from the matching `@fontsource` package
+and drop it in — the packages are not a runtime dependency:
+
+```
+npm install --no-save @fontsource/playfair-display @fontsource/archivo @fontsource/ibm-plex-mono
+cp node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2 fonts/
+```
+
+Adding a weight means adding its `@font-face` block too.
+
 ## Local development
 
 No build step. Serve the folder statically:

@@ -12,6 +12,81 @@
    without a rewrite at every call site.
    ============================================================ */
 
+/* ── Fonts, self-hosted ──────────────────────────────────
+   Served from this origin rather than fonts.googleapis.com.
+   Three reasons, in order of weight:
+
+   1. The design language IS the typography. A blocked, slow or
+      failed third-party request drops the page to Georgia and
+      Helvetica and none of V2 survives it.
+   2. This site promises no third-party analytics. A Google
+      Fonts request hands every visitor's IP and user-agent to a
+      third party on page load, which is the same promise broken
+      by a different route — and visitors to this site in
+      particular may have reason not to want that.
+   3. It matches the repo convention: React is vendored locally
+      for exactly the same reason.
+
+   Latin subsets only, woff2 only — 156 KB for all three
+   families. Update via @fontsource packages; see README.
+   ──────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/playfair-display-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/archivo-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/archivo-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/archivo-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+}
+
 :root {
   /* ── The pair ─────────────────────────────────────────── */
   --yellow: #ffc800; /* Flag Yellow. The identity. Full fields, primary action. */
