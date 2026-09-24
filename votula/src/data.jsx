@@ -214,13 +214,77 @@ const CHAIN = {
 
 const COMPANY = {
   name:     "Votula, Ltd.",
-  city:     "Victoria, Seychelles",
+  city:     "Mahé, Seychelles",
   parent:   "Liberland",
   parentUrl:"https://liberland.org",
   arkUrl:   "https://ark.ll.land",
   email:    "hello@votula.com",
   domain:   "votula.com",
 };
+
+/* ============================================================
+   LEGAL — the company record, for invoicing and for anyone who
+   has to put us in their supplier system.
+
+   Transcribed from three certificates held on file:
+     · Certificate of Incorporation, Registrar of International
+       Business Companies, 14 November 2014
+     · Certificate of Incumbency, AAA International Services Ltd.
+       (registered agent), 7 February 2025
+     · Certificate of Good Standing, 13 March 2025, apostilled
+       under the Hague Convention of 5 October 1961
+
+   Note the registered office is on Ile du Port, Mahé. Victoria is
+   where the Registrar sits, not where this company is registered —
+   the earlier copy on this site had that wrong.
+
+   Directors, shareholder and their residential addresses appear on
+   the incumbency certificate and are deliberately NOT published
+   here. They are not billing details.
+   ============================================================ */
+const LEGAL = {
+  legalName:    "Votula Ltd",
+  displayName:  "Votula, Ltd.",
+  number:       "156846",
+  numberLong:   "Seychelles IBC No. 156846",
+  incorporated: "14 November 2014",
+  incorporatedISO: "2014-11-14",
+  jurisdiction: "Republic of Seychelles",
+  actIncorporated: "International Business Companies Act, 1994 (Act 24 of 1994)",
+  actCurrent:      "International Business Companies Act, 2016 (Act 15 of 2016)",
+
+  /* Registered office, exactly as the registered agent certifies it. */
+  officeLines: [
+    "House of Francis, Room 303",
+    "Ile du Port",
+    "Mahé",
+    "Seychelles",
+  ],
+  officeOneLine: "House of Francis, Room 303, Ile du Port, Mahé, Seychelles",
+
+  registeredAgent:   "AAA International Services Ltd.",
+  authorisedCapital: "US$100,000 — 100,000 ordinary shares of US$1.00",
+
+  /* No VAT registration: a Seychelles IBC is outside the domestic VAT
+     regime. Counterparties in the EU should apply their own reverse
+     charge or import rules. */
+  vat: "None — Seychelles IBC",
+
+  goodStandingDate: "13 March 2025",
+  apostille:        "No. 2458 of 2025 · Victoria, 13 March 2025",
+};
+
+/* The block a counterparty pastes into their accounts system. Built from
+   LEGAL so there is exactly one place to correct if the record changes. */
+LEGAL.billingBlock = [
+  LEGAL.legalName,
+  ...LEGAL.officeLines,
+  "",
+  `Company No. ${LEGAL.number} (Seychelles IBC)`,
+  `Incorporated ${LEGAL.incorporated}`,
+  `VAT: ${LEGAL.vat}`,
+  COMPANY.email,
+].join("\n");
 
 const NAV_LINKS = [
   { href: "protocol.html", label: "Protocol",  id: "protocol" },
@@ -254,6 +318,7 @@ const FOOTER_COLUMNS = [
     title: "Company",
     links: [
       { href: "company.html", label: "About Votula" },
+      { href: "company.html#billing", label: "Billing details" },
       { href: "company.html#structure", label: "How we are structured" },
       { href: "company.html#compliance", label: "Compliance" },
       { href: "brand.html", label: "Brand language" },
@@ -277,7 +342,8 @@ const MARQUEE = [
 ];
 
 const DISCLAIMER =
-  "Votula, Ltd. is a company registered in Victoria, Seychelles. Nothing on this site is an offer to sell " +
+  "Votula, Ltd. is an International Business Company registered in the Republic of Seychelles, IBC No. 156846, " +
+  "with its registered office at House of Francis, Room 303, Ile du Port, Mahé. Nothing on this site is an offer to sell " +
   "or a solicitation to buy any security, token, or interest in property, and nothing here is investment, " +
   "legal, or tax advice. The Liberland EVM protocol is frozen for external audit and is not approved for " +
   "Ethereum mainnet launch; the internal audit report is engineering evidence, not an independent audit. " +
@@ -285,4 +351,4 @@ const DISCLAIMER =
   "sold when you want to sell it. Offerings are made only to eligible participants under the terms of the " +
   "relevant offering documents, and availability depends on your jurisdiction.";
 
-window.VT_DATA = { PLACEHOLDER, CHAIN, COMPANY, NAV_LINKS, FOOTER_COLUMNS, MARQUEE, DISCLAIMER };
+window.VT_DATA = { PLACEHOLDER, CHAIN, COMPANY, LEGAL, NAV_LINKS, FOOTER_COLUMNS, MARQUEE, DISCLAIMER };

@@ -263,6 +263,65 @@ function LayerCard({ name, note, modules, colour, badge }) {
   );
 }
 
+/* ── Copy block ──────────────────────────────────────────────
+   A block of text somebody needs to paste somewhere else — the
+   billing details, mainly. Mono, selectable, and one button away
+   from the clipboard.
+------------------------------------------------------------- */
+function CopyBlock({ text, tone = "dark" }) {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      // No clipboard API, or no permission in this context: fall back to
+      // a hidden textarea, which works everywhere that matters.
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (_) { /* nothing left to try */ }
+      ta.remove();
+    }
+    setCopied(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), 2200);
+  };
+
+  return (
+    <div className={`copyblock copyblock--${tone}`}>
+      <pre className="copyblock-text">{text}</pre>
+      <button type="button" className="copyblock-btn" onClick={copy} aria-live="polite">
+        {copied ? "Copied ✓" : "Copy"}
+      </button>
+    </div>
+  );
+}
+
+/* ── Record rows ─────────────────────────────────────────────
+   A certified fact and its value. Definition list, because that
+   is what it is.
+------------------------------------------------------------- */
+function RecordList({ rows }) {
+  return (
+    <dl className="record">
+      {rows.map(([k, v]) => (
+        <div key={k} className="record-row">
+          <dt>{k}</dt>
+          <dd>{v}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 /* ── Stat ────────────────────────────────────────────────── */
 function Stat({ label, value, unit, note }) {
   return (
@@ -296,5 +355,5 @@ function useReveal() {
 
 window.VT = {
   Mark, Lockup, WaveRule, ChainStrip, SunsetBackdrop, PageHero, SectionHead, Stat,
-  ParamTable, LayerCard, useReveal, wavePath,
+  ParamTable, LayerCard, CopyBlock, RecordList, useReveal, wavePath,
 };

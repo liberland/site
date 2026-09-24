@@ -11,7 +11,7 @@ const PAGES = [
   { path: '/property.html', page: 'property', heading: 'Deeds, cut into pieces' },
   { path: '/llm.html', page: 'llm', heading: 'Merit is collateral, not currency' },
   { path: '/builders.html', page: 'builders', heading: 'Build the parts we would rather not' },
-  { path: '/company.html', page: 'company', heading: 'Registered in Victoria' },
+  { path: '/company.html', page: 'company', heading: 'Registered in Seychelles since 2014' },
   { path: '/docs.html', page: 'docs', heading: 'Read it before you deploy it' },
   { path: '/brand.html', page: 'brand', heading: 'VOTULA' },
 ];
@@ -115,4 +115,41 @@ test('wide parameter tables scroll inside their own box', async ({ page }) => {
   expect(count).toBeGreaterThan(0);
   const overflows = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(overflows).toBe(false);
+});
+
+test('the billing details are on the company page and copy to the clipboard', async ({ context, page }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/company.html');
+  await page.waitForSelector('#root main');
+
+  const legal = await page.evaluate(() => window.VT_DATA.LEGAL);
+
+  // The registered office is on Ile du Port, Mahe. Victoria is where the
+  // Registrar sits, and an earlier version of this site confused the two.
+  expect(legal.officeOneLine).toContain('Ile du Port');
+  expect(legal.number).toBe('156846');
+
+  const billing = page.locator('#billing');
+  await expect(billing).toBeVisible();
+  for (const fact of [legal.legalName, legal.number, legal.incorporated, legal.officeOneLine]) {
+    await expect(billing.getByText(fact, { exact: false }).first()).toBeVisible();
+  }
+
+  await billing.locator('.copyblock-btn').click();
+  await expect(billing.locator('.copyblock-btn')).toContainText('Copied');
+  const clip = await page.evaluate(() => navigator.clipboard.readText());
+  expect(clip).toBe(legal.billingBlock);
+  expect(clip).toContain('Company No. 156846');
+});
+
+test('every page footer carries the registration record', async ({ page }) => {
+  // Four representative pages rather than all eight: this is shared chrome.
+  test.setTimeout(90000);
+  for (const path of ['/', '/protocol.html', '/company.html', '/docs.html']) {
+    await page.goto(path);
+    await page.waitForSelector('#root main');
+    const footer = page.locator('footer.footer');
+    await expect(footer.getByText('Seychelles IBC No. 156846').first()).toBeVisible();
+    await expect(footer.getByText('House of Francis, Room 303, Ile du Port, Mahe, Seychelles'.replace('Mahe', 'Mah\u00e9')).first()).toBeVisible();
+  }
 });

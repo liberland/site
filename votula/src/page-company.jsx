@@ -1,8 +1,8 @@
 // Company — who Votula is, how it is structured, and how to reach it.
 
 function Company() {
-  const { COMPANY, DISCLAIMER } = window.VT_DATA;
-  const { Mark, WaveRule, PageHero, SectionHead } = window.VT;
+  const { COMPANY, LEGAL, DISCLAIMER } = window.VT_DATA;
+  const { Mark, WaveRule, PageHero, SectionHead, CopyBlock, RecordList } = window.VT;
 
   const tiers = [
     {
@@ -17,7 +17,7 @@ function Company() {
       k: "Operating layer",
       c: "var(--lagoon)",
       name: "Votula, Ltd.",
-      note: `Registered in ${COMPANY.city}. Operates the protocol, structures the vehicles and runs the builder programme. Holds no client assets and no governing power.`,
+      note: `${LEGAL.numberLong}, registered on Mahé. Operates the protocol, structures the vehicles and runs the builder programme. Holds no client assets and no governing power.`,
     },
     {
       k: "Asset layer",
@@ -31,29 +31,106 @@ function Company() {
     <React.Fragment>
       <PageHero
         eyebrow="Company"
-        title="Registered in Victoria"
-        lede="Votula is Liberland's blockchain and crypto branch — a Seychelles operating company, deliberately boring in structure, at work on the Danube."
+        title="Registered in Seychelles since 2014"
+        lede="Votula is Liberland's blockchain and crypto branch — an International Business Company, deliberately boring in structure, at work on the Danube."
         actions={
           <React.Fragment>
-            <a href="#contact" className="btn btn--primary">Talk to us <span className="arrow">→</span></a>
-            <a href="#compliance" className="btn btn--ghost">Compliance</a>
+            <a href="#billing" className="btn btn--primary">Billing details <span className="arrow">→</span></a>
+            <a href="#contact" className="btn btn--ghost">Talk to us</a>
+            <a href="#compliance" className="btn btn--quiet">Compliance</a>
           </React.Fragment>
         }
         aside={
           <div className="card card--warm card--pad stack stack--lg">
-            <div className="eyebrow eyebrow--mute">Registered office</div>
+            <div className="flex" style={{ justifyContent: "space-between" }}>
+              <div className="eyebrow eyebrow--mute">Registered office</div>
+              <div className="data" style={{ color: "var(--lagoon)" }}>● good standing</div>
+            </div>
             <div className="stack stack--sm">
-              <div className="h3">{COMPANY.name}</div>
-              <div className="data">{COMPANY.city}</div>
+              <div className="h3">{LEGAL.legalName}</div>
+              {LEGAL.officeLines.map(l => (
+                <div key={l} className="data" style={{ color: "var(--text-2)" }}>{l}</div>
+              ))}
             </div>
             <WaveRule height={16} opacity={0.5} />
             <div className="flex" style={{ gap: 8 }}>
-              <span className="pill pill--yellow">Sub-brand of Liberland</span>
-              <span className="pill pill--lagoon">Est. 2025</span>
+              <span className="pill pill--yellow">IBC {LEGAL.number}</span>
+              <span className="pill pill--lagoon">Since 2014</span>
             </div>
           </div>
         }
       />
+
+      {/* ── Billing ──────────────────────────────────────────
+          The single most-requested thing on this site: the details a
+          counterparty has to put into their accounts system. It gets
+          the brand's loudest surface and sits above everything else. */}
+      <section
+        id="billing"
+        style={{ background: "var(--yellow)", color: "var(--black)", position: "relative", overflow: "hidden", padding: "clamp(56px, 7vw, 88px) 0" }}
+      >
+        <div className="wrap" style={{ position: "relative" }}>
+          <div className="flex" style={{ justifyContent: "space-between", alignItems: "baseline", gap: 20 }}>
+            <div>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.7 }}>
+                Invoicing
+              </div>
+              <h2 className="h2" style={{ fontWeight: 800, marginBottom: 10 }}>Billing details</h2>
+            </div>
+            <p className="small" style={{ color: "rgba(6,9,14,.72)", maxWidth: "42ch" }}>
+              Everything you need to raise an invoice to us or add us to a supplier system. Copy it whole —
+              the address is the registered office, not a trading address.
+            </p>
+          </div>
+
+          <div className="grid grid--split" style={{ paddingTop: 28, alignItems: "start" }}>
+            <div className="stack stack--lg">
+              <CopyBlock text={LEGAL.billingBlock} tone="onYellow" />
+
+              <p className="small" style={{ color: "rgba(6,9,14,.75)" }}>
+                Incorporated under the {LEGAL.actIncorporated} and continued under the {LEGAL.actCurrent}.
+                Certified copies of the certificates of incorporation, incumbency and good standing are
+                available on request.
+              </p>
+
+              <div className="card card--pad stack stack--sm" style={{ background: "var(--black)", borderColor: "rgba(6,9,14,.25)" }}>
+                <div className="eyebrow eyebrow--sunset">Before you pay anything</div>
+                <p className="small" style={{ color: "var(--text-2)" }}>
+                  Bank and remittance details are issued with each invoice and are deliberately not published on
+                  this page. If account details reached you from anywhere other than an invoice bearing this
+                  registration number, stop and{" "}
+                  <a href={`mailto:${COMPANY.email}?subject=Verify%20payment%20details`}>check with us</a> first.
+                </p>
+              </div>
+
+              <div className="flex" style={{ gap: 8 }}>
+                <span className="pill" style={{ borderColor: "rgba(6,9,14,.3)", color: "rgba(6,9,14,.75)" }}>Good standing {LEGAL.goodStandingDate}</span>
+                <span className="pill" style={{ borderColor: "rgba(6,9,14,.3)", color: "rgba(6,9,14,.75)" }}>Apostilled</span>
+              </div>
+            </div>
+
+            <div style={{ background: "var(--black)", color: "var(--salt)", borderRadius: "var(--r-md)", padding: "8px 26px" }}>
+              <RecordList
+                rows={[
+                  ["Legal name", LEGAL.legalName],
+                  ["Registration", `${LEGAL.number} · International Business Company`],
+                  ["Incorporated", LEGAL.incorporated],
+                  ["Jurisdiction", LEGAL.jurisdiction],
+                  ["Governing act", LEGAL.actCurrent],
+                  ["Registered office", LEGAL.officeOneLine],
+                  ["Registered agent", LEGAL.registeredAgent],
+                  ["Authorised capital", LEGAL.authorisedCapital],
+                  ["VAT", LEGAL.vat],
+                  ["Good standing", `Certified ${LEGAL.goodStandingDate}`],
+                  ["Apostille", LEGAL.apostille],
+                  ["Email", <a key="e" href={`mailto:${COMPANY.email}`} style={{ color: "var(--lagoon)" }}>{COMPANY.email}</a>],
+                ]}
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* ── Who ──────────────────────────────────────────── */}
       <section className="section wrap">
@@ -187,10 +264,12 @@ function Company() {
             <Mark size={44} />
             <div className="stack stack--sm">
               <div className="h4">{COMPANY.name}</div>
-              <div className="data">{COMPANY.city}</div>
+              <div className="data">{LEGAL.officeOneLine}</div>
+              <div className="data" style={{ color: "var(--text-4)" }}>{LEGAL.numberLong} · incorporated {LEGAL.incorporated}</div>
             </div>
           </div>
           <div className="flex" style={{ gap: 12 }}>
+            <a href="#billing" className="btn btn--quiet btn--sm">Billing ↑</a>
             <a href={COMPANY.parentUrl} target="_blank" rel="noopener noreferrer" className="btn btn--quiet btn--sm">liberland.org ↗</a>
             <a href={COMPANY.arkUrl} target="_blank" rel="noopener noreferrer" className="btn btn--quiet btn--sm">ark.ll.land ↗</a>
             <a href="brand.html" className="btn btn--quiet btn--sm">Brand ↗</a>

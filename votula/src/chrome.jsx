@@ -81,7 +81,7 @@ function Nav() {
 }
 
 function Footer() {
-  const { COMPANY, FOOTER_COLUMNS, DISCLAIMER } = window.VT_DATA;
+  const { COMPANY, LEGAL, FOOTER_COLUMNS, DISCLAIMER } = window.VT_DATA;
   const { Lockup, WaveRule } = window.VT;
 
   return (
@@ -114,6 +114,27 @@ function Footer() {
               ))}
             </div>
           ))}
+        </div>
+
+        {/* The registration record, on every page. It is what a counterparty
+            looks for, and it costs one line. */}
+        <div
+          style={{
+            borderTop: "1px solid var(--line-soft)",
+            padding: "20px 0",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px 28px",
+            fontFamily: "var(--mono)",
+            fontSize: 12,
+            color: "var(--text-3)",
+          }}
+        >
+          <span style={{ color: "var(--text-2)" }}>{LEGAL.legalName}</span>
+          <span>{LEGAL.numberLong}</span>
+          <span>Incorporated {LEGAL.incorporated}</span>
+          <span>{LEGAL.officeOneLine}</span>
+          <a href="company.html#billing" style={{ color: "var(--yellow)" }}>Billing details →</a>
         </div>
 
         <p className="small" style={{ maxWidth: "92ch", paddingBottom: 24, color: "var(--text-4)", fontSize: 12.5 }}>
