@@ -260,6 +260,32 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offs
 .faq__a{padding:0 48px var(--space-5) 0;color:var(--ink-muted)}
 .faq__item[open] .faq__a{animation:fade .5s var(--ease)}
 
+/* Why formaldehyde is toxic – ink surface */
+.tox{background:var(--ink);color:var(--on-ink)}
+.tox .eyebrow{color:var(--timber-soft)}
+.tox .lead{color:var(--on-ink);opacity:.82;max-width:64ch}
+.tag--danger{background:var(--danger);color:var(--on-danger)}
+.tox__grid{display:grid;grid-template-columns:1fr;gap:var(--space-5);margin-top:var(--space-7)}
+.tox__card{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-3);padding:var(--space-6);border:1px solid color-mix(in srgb,var(--on-ink) 22%,transparent);border-radius:var(--radius-lg);background:color-mix(in srgb,var(--on-ink) 5%,transparent)}
+.tox__card h3{font:italic 700 clamp(22px,2.4vw,30px)/1.15 var(--font-display);letter-spacing:-.01em}
+.tox__list{list-style:none;padding:0;display:grid;gap:var(--space-3);margin-top:var(--space-2)}
+.tox__list li{position:relative;padding-left:var(--space-5);font-size:15px;line-height:24px;opacity:.9}
+.tox__list li::before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;background:var(--timber);transform:skewX(var(--slant))}
+.tox__list b{font-family:var(--font-display);font-weight:700}
+.tox__tips-title{font:700 clamp(24px,2.6vw,32px)/1.2 var(--font-display);margin-top:var(--space-8)}
+.tox__tips{list-style:none;padding:0;display:grid;grid-template-columns:1fr;gap:var(--space-5);margin-top:var(--space-5)}
+.tox__tips li{border-top:3px solid var(--timber);padding-top:var(--space-4)}
+.tox__tips .n{display:block;font:italic 700 36px/1 var(--font-display);color:var(--timber);letter-spacing:-.02em}
+.tox__tips b{display:block;font:700 18px/26px var(--font-display);margin-top:var(--space-3)}
+.tox__tips p{margin-top:var(--space-2);font-size:15px;line-height:24px;opacity:.82}
+.tox__source{margin-top:var(--space-6);font-size:13px;line-height:20px;opacity:.7}
+.tox__source a{color:var(--on-ink)}
+.tox__cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-5);margin-top:var(--space-7);padding-top:var(--space-6);border-top:1px solid color-mix(in srgb,var(--on-ink) 22%,transparent)}
+.tox__cta p{font:italic 700 clamp(20px,2.2vw,28px)/1.3 var(--font-display);max-width:36ch}
+.tox .btn{background:var(--on-ink);border-color:var(--on-ink);color:var(--ink)}
+.tox .btn::before{background:var(--timber)}
+.tox .btn:hover{border-color:var(--timber);color:var(--on-timber)}
+
 /* Motion. Content is visible without JS; the .js class opts into reveal states. */
 .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .js .reveal.in{opacity:1;transform:none}
@@ -307,6 +333,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offs
   .nav__cta{display:none}
 }
 @media (min-width:640px){
+  .tox__tips{grid-template-columns:repeat(2,1fr)}
   .locs{grid-template-columns:1.2fr 1fr}
   .wrap{padding:0 var(--space-6)}
   .hero__text{padding:var(--space-8) var(--space-6) var(--space-7)}
@@ -324,4 +351,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offs
   .hero__art{height:auto;margin:0 -40% 0 -4%}
   .three{grid-template-columns:repeat(3,1fr)}
   .steps{grid-template-columns:repeat(4,1fr)}
+  .tox__grid{grid-template-columns:1fr 1fr}
+  .tox__tips{grid-template-columns:repeat(4,1fr)}
 }
