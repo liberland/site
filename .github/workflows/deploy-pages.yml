@@ -30,6 +30,7 @@ jobs:
           cp -r new-site _site/candidate
           cp -r votula _site/votula
           cp -r build-what-was-removed _site/fund
+          cp -r fasto _site/fasto
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
