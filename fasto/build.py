@@ -106,6 +106,7 @@ T["cs"] = dict(
     loc_eyebrow="Kde nás najdete", loc_title="Praha a prodejna v Batině",
     loc_lead="Nábytek můžete koupit v naší prodejně v Batině, kousek od Liberlandu. Zakázky v Česku řešíme z Prahy.",
     loc_praha_tag="Česko", loc_praha_name="Praha", loc_praha_addr="Loretánské náměstí 3<br>118 00 Praha 1",
+    loc_batina_alt='Prodejna Fasto v Batině, Trg slobode 2',
     loc_batina_tag="Chorvatsko", loc_batina_name="Prodejna Batina", loc_batina_addr="Trg slobode 2<br>31300 Batina, Chorvatsko",
     loc_map="Ukázat na mapě",
     faq_eyebrow="Časté otázky", faq_title="Na co se nás ptáte",
@@ -206,6 +207,7 @@ T["en"] = dict(
     loc_eyebrow="Find us", loc_title="Prague and our shop in Batina",
     loc_lead="You can buy the furniture in our shop in Batina, a short way from Liberland. Jobs in Czechia are run from Prague.",
     loc_praha_tag="Czechia", loc_praha_name="Prague", loc_praha_addr="Loretánské náměstí 3<br>118 00 Prague 1",
+    loc_batina_alt='The Fasto shop in Batina, Trg slobode 2',
     loc_batina_tag="Croatia", loc_batina_name="Batina shop", loc_batina_addr="Trg slobode 2<br>31300 Batina, Croatia",
     loc_map="Show on map",
     faq_eyebrow="FAQ", faq_title="What people ask us",
@@ -306,6 +308,7 @@ T["hr"] = dict(
     loc_eyebrow="Gdje smo", loc_title="Prag i prodavaonica u Batini",
     loc_lead="Namještaj možete kupiti u našoj prodavaonici u Batini, nedaleko od Liberlanda. Poslove u Češkoj vodimo iz Praga.",
     loc_praha_tag="Češka", loc_praha_name="Prag", loc_praha_addr="Loretánské náměstí 3<br>118 00 Prag 1, Češka",
+    loc_batina_alt='Prodavaonica Fasto u Batini, Trg slobode 2',
     loc_batina_tag="Hrvatska", loc_batina_name="Prodavaonica Batina", loc_batina_addr="Trg slobode 2<br>31300 Batina",
     loc_map="Prikaži na karti",
     faq_eyebrow="Česta pitanja", faq_title="Što nas pitate",
@@ -388,7 +391,7 @@ def json_ld(lang, t, url):
                 "name": "Fasto – " + strip_tags(t["loc_batina_name"]),
                 "brand": {"@type": "Brand", "name": "Fasto"},
                 "url": url + "#prodejna",
-                "image": BASE + "assets/zome-u-rybnika.webp",
+                "image": BASE + "assets/prodejna-batina.webp",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Trg slobode 2",
@@ -702,7 +705,7 @@ def render(lang, path, locale):
   <p class="lead reveal" style="--d:.16s">{t["loc_lead"]}</p>
   <div class="locs">
    <article class="loc loc--main reveal" style="--d:.1s">
-    <div class="loc__bars" aria-hidden="true"></div>
+    <img class="loc__photo" src="{R}assets/prodejna-batina.webp" width="1400" height="646" loading="lazy" alt="{t["loc_batina_alt"]}">
     <span class="tag tag--timber">{t["loc_batina_tag"]}</span>
     <h3 class="loc__name">{t["loc_batina_name"]}</h3>
     <address>{t["loc_batina_addr"]}</address>
