@@ -54,6 +54,21 @@ T["cs"] = dict(
         ("Povrchy", "Oleje, vosky a laky s technickým listem."),
         ("Doklady", "Technické listy jsou přílohou nabídky."),
     ],
+    tox_eyebrow='Proč na tom záleží',
+    tox_title='Proč je formaldehyd toxický',
+    tox_lead='Formaldehyd je součástí močovino-formaldehydových pryskyřic, kterými se lepí dřevotříska a další aglomerované desky. Z nich se postupně uvolňuje do vzduchu jako plyn – nejvíc u nového nábytku a v teplém nebo vlhkém prostředí. Jeho vliv na zdraví závisí na koncentraci ve vzduchu a na délce expozice.',
+    tox_short_tag='Krátkodobé účinky',
+    tox_short_title='Při vyšších koncentracích v místnosti',
+    tox_short=[('Podráždění sliznic', 'pálení, řezání a slzení očí, podráždění nosu a krku.'), ('Respirační potíže', 'kašel, dušnost, sípání nebo tíseň na hrudi.'), ('Kožní reakce', 'u citlivějších lidí alergické dermatitidy a vyrážky.'), ('Neurologické příznaky', 'bolesti hlavy, nevolnost a neobvyklá únava.')],
+    tox_long_tag='Dlouhodobé účinky',
+    tox_long_title='Při dlouhodobém vdechování',
+    tox_long=[('Dýchací cesty', 'i nižší koncentrace mohou vést k rozvoji astmatu nebo zhoršení jeho příznaků, zejména u dětí.'), ('Karcinogenita', 'Mezinárodní agentura pro výzkum rakoviny (IARC) při WHO řadí formaldehyd mezi prokázané karcinogeny pro člověka (skupina 1). Dlouhodobá expozice zvyšuje riziko rakoviny nosohltanu a je spojována s vyšším rizikem leukémie. Týká se to hlavně dlouhodobé profesní expozice v průmyslu, i doma je ale rozumné držet koncentrace co nejníž.')],
+    tox_tips_title='Jak riziko doma snížit',
+    tox_tips=[('Větrejte', 'Nový dřevotřískový nábytek nebo podlahy první týdny intenzivně odvětrávejte.'), ('Sledujte emisní třídy', 'Vybírejte materiály s emisní třídou E1 (evropský standard), ještě lépe E0 nebo bez přidaného formaldehydu.'), ('Hlídejte klima', 'Spíš nižší teplota a mírná vlhkost. Teplo a vlhko uvolňování formaldehydu výrazně urychlují.'), ('Uzavřete povrchy', 'Všechny hrany dřevotřískových desek, i ty skryté na zadní straně skříní, mají být olepené, zalaminované nebo nalakované.')],
+    tox_source='Zdroj klasifikace: <a href="https://monographs.iarc.who.int/list-of-classifications/" rel="noopener">IARC Monographs, seznam klasifikací</a>.',
+    tox_cta_text='Nejjednodušší je formaldehyd domů vůbec nepřinést. Proto naše skříně na míru nemají žádnou dřevotřísku.',
+    tox_cta='Skříně bez dřevotřísky',
+    faq_extra=('Proč je formaldehyd škodlivý?', 'Ve vyšších koncentracích dráždí oči, nos a dýchací cesty a může způsobit bolesti hlavy. Dlouhodobé vdechování souvisí s astmatem a IARC při WHO řadí formaldehyd mezi prokázané karcinogeny pro člověka (skupina 1).'),
     sk_eyebrow="Skříně na míru",
     sk_title="Skříně na míru bez dřevotřísky",
     sk_lead="Dřevotřísková deska drží pohromadě díky pryskyřicím, které často obsahují formaldehyd. Ten se z desky může uvolňovat do vzduchu v místnosti ještě roky. Proto naše skříně na míru dřevotřísku nepoužívají vůbec.",
@@ -139,6 +154,21 @@ T["en"] = dict(
         ("Finishes", "Oils, waxes and lacquers with a technical data sheet."),
         ("Documents", "Technical data sheets are attached to the quote."),
     ],
+    tox_eyebrow='Why it matters',
+    tox_title='Why formaldehyde is toxic',
+    tox_lead='Formaldehyde is part of the urea-formaldehyde resins used to bond chipboard and other composite boards. It is gradually released from them into the air as a gas – most of all from new furniture and in warm or humid rooms. Its effect on health depends on the concentration in the air and how long you are exposed.',
+    tox_short_tag='Short-term effects',
+    tox_short_title='At higher indoor concentrations',
+    tox_short=[('Irritated mucous membranes', 'burning, stinging and watering eyes, irritated nose and throat.'), ('Breathing problems', 'coughing, shortness of breath, wheezing or a tight chest.'), ('Skin reactions', 'allergic dermatitis and rashes in more sensitive people.'), ('Neurological symptoms', 'headaches, nausea and unusual tiredness.')],
+    tox_long_tag='Long-term effects',
+    tox_long_title='With prolonged breathing',
+    tox_long=[('Airways', 'even lower concentrations can lead to asthma or make its symptoms worse, especially in children.'), ('Cancer', 'The WHO’s International Agency for Research on Cancer (IARC) classifies formaldehyde as carcinogenic to humans (Group 1). Long-term exposure raises the risk of nasopharyngeal cancer and is associated with a higher risk of leukaemia. This mainly concerns long-term occupational exposure in industry, but at home it is still sensible to keep concentrations as low as possible.')],
+    tox_tips_title='How to lower the risk at home',
+    tox_tips=[('Ventilate', 'Air out new chipboard furniture or flooring thoroughly for the first few weeks.'), ('Check emission classes', 'Choose materials in emission class E1 (the European standard), or better, E0 or no added formaldehyde.'), ('Mind the climate', 'Keep rooms on the cooler side with moderate humidity. Heat and humidity speed up the release considerably.'), ('Seal the surfaces', 'Every edge of a chipboard panel, including hidden ones at the back of wardrobes, should be edged, laminated or lacquered.')],
+    tox_source='Source of the classification: <a href="https://monographs.iarc.who.int/list-of-classifications/" rel="noopener">IARC Monographs, list of classifications</a>.',
+    tox_cta_text='The simplest way is not to bring formaldehyde home at all. That is why our fitted wardrobes contain no chipboard.',
+    tox_cta='Wardrobes without chipboard',
+    faq_extra=('Why is formaldehyde harmful?', 'At higher concentrations it irritates the eyes, nose and airways and can cause headaches. Long-term inhalation is linked to asthma, and the WHO’s IARC classifies formaldehyde as carcinogenic to humans (Group 1).'),
     sk_eyebrow="Fitted wardrobes",
     sk_title="Fitted wardrobes without chipboard",
     sk_lead="Chipboard is held together by resins that often contain formaldehyde, which can be released into the room’s air for years. That is why our fitted wardrobes use no chipboard at all.",
@@ -224,6 +254,21 @@ T["hr"] = dict(
         ("Površine", "Ulja, voskovi i lakovi s tehničkim listom."),
         ("Dokumenti", "Tehnički listovi prilog su ponudi."),
     ],
+    tox_eyebrow='Zašto je to važno',
+    tox_title='Zašto je formaldehid toksičan',
+    tox_lead='Formaldehid je sastavni dio urea-formaldehidnih smola kojima se lijepe iverica i druge aglomerirane ploče. Iz njih se postupno otpušta u zrak kao plin – najviše iz novog namještaja te u toplim ili vlažnim prostorijama. Njegov utjecaj na zdravlje ovisi o koncentraciji u zraku i trajanju izloženosti.',
+    tox_short_tag='Kratkoročni učinci',
+    tox_short_title='Pri višim koncentracijama u prostoriji',
+    tox_short=[('Nadražena sluznica', 'peckanje, rezanje i suzenje očiju, nadražen nos i grlo.'), ('Tegobe s disanjem', 'kašalj, otežano disanje, piskanje ili stezanje u prsima.'), ('Reakcije kože', 'kod osjetljivijih osoba alergijski dermatitis i osipi.'), ('Neurološki simptomi', 'glavobolja, mučnina i neuobičajen umor.')],
+    tox_long_tag='Dugoročni učinci',
+    tox_long_title='Pri dugotrajnom udisanju',
+    tox_long=[('Dišni putovi', 'i niže koncentracije mogu dovesti do razvoja astme ili pogoršanja njezinih simptoma, osobito kod djece.'), ('Kancerogenost', 'Međunarodna agencija za istraživanje raka (IARC) pri WHO-u svrstava formaldehid među dokazane kancerogene za ljude (skupina 1). Dugotrajna izloženost povećava rizik od raka nazofarinksa i povezuje se s većim rizikom od leukemije. To se ponajprije odnosi na dugotrajnu profesionalnu izloženost u industriji, no i kod kuće je razumno držati koncentracije što nižima.')],
+    tox_tips_title='Kako smanjiti rizik kod kuće',
+    tox_tips=[('Prozračujte', 'Novi namještaj od iverice ili podove prvih nekoliko tjedana temeljito prozračujte.'), ('Pratite emisijske klase', 'Birajte materijale emisijske klase E1 (europski standard), još bolje E0 ili bez dodanog formaldehida.'), ('Pazite na klimu', 'Radije nižu temperaturu i umjerenu vlagu. Toplina i vlaga znatno ubrzavaju otpuštanje formaldehida.'), ('Zatvorite površine', 'Svi rubovi ploča od iverice, i oni skriveni na stražnjoj strani ormara, trebaju biti obrubljeni, laminirani ili lakirani.')],
+    tox_source='Izvor klasifikacije: <a href="https://monographs.iarc.who.int/list-of-classifications/" rel="noopener">IARC Monographs, popis klasifikacija</a>.',
+    tox_cta_text='Najjednostavnije je formaldehid uopće ne unijeti u dom. Zato u našim ormarima po mjeri nema iverice.',
+    tox_cta='Ormari bez iverice',
+    faq_extra=('Zašto je formaldehid štetan?', 'Pri višim koncentracijama nadražuje oči, nos i dišne putove i može uzrokovati glavobolju. Dugotrajno udisanje povezuje se s astmom, a IARC pri WHO-u svrstava formaldehid među dokazane kancerogene za ljude (skupina 1).'),
     sk_eyebrow="Ormari po mjeri",
     sk_title="Ormari po mjeri bez iverice",
     sk_lead="Iverica se drži zajedno smolama koje često sadrže formaldehid, a on se iz ploče može godinama otpuštati u zrak prostorije. Zato u našim ormarima po mjeri iverice uopće nema.",
@@ -283,7 +328,7 @@ T["hr"] = dict(
 )
 
 # Fixed non-breaking spaces after one-letter prepositions and conjunctions (Czech and Croatian typography).
-NBSP_RE = re.compile(r"(?<![\w&;])([ksvzouaiKSVZOUAI]) ")
+NBSP_RE = re.compile(r"(?<![\w&;<])([ksvzouaiKSVZOUAI]) ")
 
 
 def nbsp(value, lang):
@@ -361,7 +406,7 @@ def json_ld(lang, t, url):
                         "name": strip_tags(q),
                         "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)},
                     }
-                    for q, a in t["faq"]
+                    for q, a in [t["faq"][0], t["faq_extra"], *t["faq"][1:]]
                 ],
             },
         ],
@@ -430,17 +475,23 @@ def render(lang, path, locale):
         f'   <li class="step reveal" style="--d:{i * .12:.2f}s"><span class="k">0{i + 1}</span><h3>{a}</h3><p>{b}</p></li>'
         for i, (a, b) in enumerate(t["steps"])
     )
+    faq_items = [t["faq"][0], t["faq_extra"], *t["faq"][1:]]
     faq = "\n".join(
         f'''   <details class="faq__item reveal" style="--d:{i * .06:.2f}s"{" open" if i == 0 else ""}>
     <summary><h3>{q}</h3><span class="faq__icon" aria-hidden="true"></span></summary>
     <div class="faq__a"><p>{a}</p></div>
    </details>'''
-        for i, (q, a) in enumerate(t["faq"])
+        for i, (q, a) in enumerate(faq_items)
     )
     foot_offer_ids = ["nabytek", "skrine", "renovace", "zomes"]
     foot_offer = "\n".join(f'     <li><a href="#{i}">{n}</a></li>' for i, n in zip(foot_offer_ids, t["foot_links"]))
     foot_company_ids = ["postup", "prodejna", "faq"]
     foot_company = "\n".join(f'     <li><a href="#{i}">{n}</a></li>' for i, n in zip(foot_company_ids, t["foot_company_links"]))
+    bullets = lambda items: "\n".join(f"     <li><b>{a}:</b> {b}</li>" for a, b in items)
+    tips = "\n".join(
+        f'   <li class="reveal" style="--d:{i * .08:.2f}s"><span class="n">0{i + 1}</span><b>{a}</b><p>{b}</p></li>'
+        for i, (a, b) in enumerate(t["tox_tips"])
+    )
     phone = PHONE.replace(" ", "&nbsp;")
 
     return f'''<!doctype html>
@@ -545,6 +596,39 @@ def render(lang, path, locale):
   <ol class="list">
 {numbered(t["mat_list"])}
   </ol>
+ </div>
+</section>
+
+<section class="sec tox surface-ink" id="formaldehyd" aria-labelledby="tox-title">
+ <div class="wrap">
+  <span class="eyebrow reveal">{t["tox_eyebrow"]}</span>
+  <h2 class="display-lg reveal" id="tox-title" style="--d:.08s">{t["tox_title"]}</h2>
+  <p class="lead reveal" style="--d:.16s">{t["tox_lead"]}</p>
+  <div class="tox__grid">
+   <article class="tox__card reveal" style="--d:.1s">
+    <span class="tag tag--timber">{t["tox_short_tag"]}</span>
+    <h3>{t["tox_short_title"]}</h3>
+    <ul class="tox__list">
+{bullets(t["tox_short"])}
+    </ul>
+   </article>
+   <article class="tox__card reveal" style="--d:.2s">
+    <span class="tag tag--danger">{t["tox_long_tag"]}</span>
+    <h3>{t["tox_long_title"]}</h3>
+    <ul class="tox__list">
+{bullets(t["tox_long"])}
+    </ul>
+   </article>
+  </div>
+  <h3 class="tox__tips-title reveal">{t["tox_tips_title"]}</h3>
+  <ol class="tox__tips">
+{tips}
+  </ol>
+  <p class="tox__source reveal">{t["tox_source"]}</p>
+  <div class="tox__cta reveal">
+   <p>{t["tox_cta_text"]}</p>
+   <a class="btn" href="#skrine">{t["tox_cta"]} <span class="arr" aria-hidden="true">→</span></a>
+  </div>
  </div>
 </section>
 
