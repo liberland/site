@@ -242,8 +242,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offs
 .loc__name{font:italic 700 clamp(28px,3vw,40px)/1.1 var(--font-display);letter-spacing:-.02em}
 .loc address{font-style:normal;font-size:18px;line-height:30px;color:var(--ink-muted)}
 .loc .btn{margin-top:var(--space-3)}
-.loc--main{background:var(--sand);padding-right:150px}
-.loc__bars{position:absolute;top:0;right:-24px;width:160px;height:100%;background:repeating-linear-gradient(104.5deg,var(--timber) 0 8px,transparent 8px 24px);opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+.loc--main{background:var(--sand)}
+.loc__photo{display:block;width:calc(100% + 2 * var(--space-6));max-width:none;height:auto;aspect-ratio:1400/646;object-fit:cover;margin:calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-3);transition:transform .8s var(--ease)}
+.loc--main:hover .loc__photo{transform:scale(1.03)}
 
 /* FAQ */
 .faq__list{display:grid;gap:0}
