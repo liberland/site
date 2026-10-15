@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Správa novinek – Fasto</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../assets/fasto-stripes-charcoal.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+<header class="header scrolled">
+ <div class="wrap header__in">
+  <a class="logo" href="../" aria-label="Fasto, web">
+   <img class="on-light" src="../assets/fasto-wordmark-charcoal.svg" alt="Fasto" width="116" height="24">
+   <img class="on-dark" src="../assets/fasto-wordmark-white.svg" alt="Fasto" width="116" height="24">
+  </a>
+  <span class="admin__badge">Správa novinek</span>
+  <a class="btn btn--ghost btn--sm" style="margin-left:auto" href="../#novinky" target="_blank" rel="noopener">Zobrazit web ↗</a>
+ </div>
+</header>
+
+<main class="wrap admin__main">
+
+ <section class="panel" id="login">
+  <h1 class="h2" style="margin-top:0">Přihlášení</h1>
+  <p class="muted" id="who">Novinky se ukládají do repozitáře webu na GitHubu. Pro uložení potřebujete přístupový token.</p>
+  <form class="row" id="token-form">
+   <label class="field" style="flex:1">
+    <span>GitHub token</span>
+    <input type="password" id="token" autocomplete="off" placeholder="github_pat_…" required>
+   </label>
+   <button class="btn" type="submit">Přihlásit</button>
+   <button class="btn btn--ghost" type="button" id="logout" hidden>Odhlásit</button>
+  </form>
+  <details class="help">
+   <summary>Jak získat token</summary>
+   <ol>
+    <li>Na GitHubu otevřete <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Settings → Developer settings → Fine-grained tokens → Generate new token</a>.</li>
+    <li><b>Resource owner:</b> liberland. <b>Repository access:</b> Only select repositories → <code>liberland/site</code>.</li>
+    <li><b>Permissions → Repository permissions → Contents:</b> Read and write.</li>
+    <li>Vytvořte token a vložte ho sem. Uloží se jen v tomto prohlížeči a nikam jinam se neposílá.</li>
+   </ol>
+   <p class="muted">Váš GitHub účet musí mít do repozitáře <code>liberland/site</code> právo zápisu. Pokud organizace tokeny schvaluje, počkejte na schválení.</p>
+  </details>
+ </section>
+
+ <section class="panel" id="list-panel" hidden>
+  <div class="row row--between">
+   <h2 class="h2" style="margin-top:0">Novinky</h2>
+   <button class="btn" type="button" id="add">+ Přidat novinku</button>
+  </div>
+  <ul class="items" id="items"></ul>
+ </section>
+
+ <section class="panel" id="editor" hidden>
+  <h2 class="h2" style="margin-top:0" id="editor-title">Nová novinka</h2>
+  <form id="item-form">
+   <div class="grid3">
+    <label class="field"><span>Datum</span><input type="date" id="f-date" required></label>
+    <label class="field"><span>Kategorie</span><select id="f-category"></select></label>
+    <label class="field"><span>Místo (nepovinné)</span><input type="text" id="f-location" placeholder="např. Batina, Praha, Liberland"></label>
+   </div>
+
+   <div class="langs">
+    <fieldset class="lang">
+     <legend><img src="../assets/flags/cz.svg" width="24" height="16" alt=""> Čeština <small>povinné</small></legend>
+     <label class="field"><span>Nadpis</span><input type="text" id="f-title-cs" required></label>
+     <label class="field"><span>Text</span><textarea id="f-text-cs" rows="6" placeholder="Odstavce oddělte prázdným řádkem."></textarea></label>
+    </fieldset>
+    <fieldset class="lang">
+     <legend><img src="../assets/flags/gb.svg" width="24" height="16" alt=""> English <small>nepovinné, jinak se ukáže čeština</small></legend>
+     <label class="field"><span>Title</span><input type="text" id="f-title-en"></label>
+     <label class="field"><span>Text</span><textarea id="f-text-en" rows="6"></textarea></label>
+    </fieldset>
+    <fieldset class="lang">
+     <legend><img src="../assets/flags/hr.svg" width="24" height="16" alt=""> Hrvatski <small>nepovinné, jinak se ukáže čeština</small></legend>
+     <label class="field"><span>Naslov</span><input type="text" id="f-title-hr"></label>
+     <label class="field"><span>Tekst</span><textarea id="f-text-hr" rows="6"></textarea></label>
+    </fieldset>
+   </div>
+
+   <div class="field">
+    <span>Galerie <small class="muted">– první fotka je hlavní. Fotky se před nahráním automaticky zmenší.</small></span>
+    <div class="shots" id="shots"></div>
+    <label class="btn btn--ghost btn--sm upload">+ Přidat fotky<input type="file" id="f-files" accept="image/*" multiple hidden></label>
+   </div>
+
+   <div class="row">
+    <button class="btn" type="submit">Hotovo</button>
+    <button class="btn btn--ghost" type="button" id="cancel">Zrušit</button>
+   </div>
+  </form>
+ </section>
+
+ <div class="savebar" id="savebar" hidden>
+  <span id="dirty">Máte neuložené změny.</span>
+  <button class="btn" type="button" id="publish">Uložit a zveřejnit</button>
+ </div>
+ <p class="status" id="status" role="status" aria-live="polite"></p>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>

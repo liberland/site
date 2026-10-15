@@ -167,6 +167,7 @@
     <li><a class="nav__link" href="#renovace">Renovacije</a></li>
     <li><a class="nav__link" href="#zomes">Zomei</a></li>
     <li><a class="nav__link" href="#prodejna">Prodavaonica</a></li>
+    <li><a class="nav__link" href="#novinky">Novosti</a></li>
    </ul>
    <div class="flags" role="group" aria-label="Jezik"><a class="flag" href="../" hreflang="cs" lang="cs" title="Čeština"><img src="../assets/flags/cz.svg" width="24" height="16" alt="Čeština"></a><a class="flag" href="../en/" hreflang="en" lang="en" title="English"><img src="../assets/flags/gb.svg" width="24" height="16" alt="English"></a><a class="flag" href="../hr/" hreflang="hr" lang="hr" title="Hrvatski" aria-current="true"><img src="../assets/flags/hr.svg" width="24" height="16" alt="Hrvatski"></a></div>
    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Izbornik</button>
@@ -403,7 +404,25 @@
  </div>
 </section>
 
-<section class="sec sand" id="faq" aria-labelledby="faq-title">
+<section class="sec sand" id="novinky" aria-labelledby="novinky-title">
+ <div class="wrap">
+  <span class="eyebrow reveal">Novosti</span>
+  <h2 class="display-lg reveal" id="novinky-title" style="--d:.08s">Što je novo kod nas</h2>
+  <div class="news">
+   <article class="news__item reveal" id="novinka-2026-10-15-nabytek-batina" style="--d:0.00s">
+    <div class="news__gallery" data-count="5"><button class="news__shot news__shot--main" type="button" data-full="../news/2026-10-15-nabytek-batina/1.jpg" data-alt="Namještaj na prodaju u Batini – Fotografija 1"><img src="../news/2026-10-15-nabytek-batina/1.jpg" width="1200" height="1600" loading="lazy" alt="Namještaj na prodaju u Batini – Fotografija 1"></button><button class="news__shot" type="button" data-full="../news/2026-10-15-nabytek-batina/2.jpg" data-alt="Namještaj na prodaju u Batini – Fotografija 2"><img src="../news/2026-10-15-nabytek-batina/2.jpg" width="1200" height="1600" loading="lazy" alt="Namještaj na prodaju u Batini – Fotografija 2"></button><button class="news__shot" type="button" data-full="../news/2026-10-15-nabytek-batina/3.jpg" data-alt="Namještaj na prodaju u Batini – Fotografija 3"><img src="../news/2026-10-15-nabytek-batina/3.jpg" width="1200" height="1600" loading="lazy" alt="Namještaj na prodaju u Batini – Fotografija 3"></button><button class="news__shot" type="button" data-full="../news/2026-10-15-nabytek-batina/4.jpg" data-alt="Namještaj na prodaju u Batini – Fotografija 4"><img src="../news/2026-10-15-nabytek-batina/4.jpg" width="1200" height="1600" loading="lazy" alt="Namještaj na prodaju u Batini – Fotografija 4"></button><button class="news__shot" type="button" data-full="../news/2026-10-15-nabytek-batina/5.jpg" data-alt="Namještaj na prodaju u Batini – Fotografija 5"><img src="../news/2026-10-15-nabytek-batina/5.jpg" width="1200" height="1600" loading="lazy" alt="Namještaj na prodaju u Batini – Fotografija 5"></button></div>
+    <div class="news__body">
+     <div class="news__meta"><span class="tag tag--timber">Prodavaonica</span><time datetime="2026-10-15">15. 10. 2026.</time><span class="news__loc"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Batina</span></div>
+     <h3 class="news__title">Namještaj na prodaju u&nbsp;Batini</h3>
+     <div class="news__text"><p>U&nbsp;našoj prodavaonici u&nbsp;Batini možete kupiti namještaj za stan i&nbsp;kuću: krevete, blagovaonske stolove i&nbsp;stolice, kuhinjske elemente, kauče i&nbsp;regale za dnevni boravak.</p><p>Na fotografijama su primjeri. Za cijene i&nbsp;trenutačnu ponudu nazovite nas.</p></div>
+     <p class="news__count">5 fotografija</p>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="faq-title">
  <div class="wrap two faq">
   <div class="sticky">
    <span class="eyebrow reveal">Česta pitanja</span>
@@ -488,6 +507,13 @@
   <p class="footer__legal">FASTO s.r.o., matični broj (IČO) 252 65 474, sjedište Loretánské náměstí 109/3, Hradčany, 118 00 Prag 1, Češka. Upisano u&nbsp;trgovački registar Gradskog suda u&nbsp;Pragu, odjel C, uložak 353965.</p>
  </div>
 </footer>
+
+<dialog class="lightbox" aria-label="Otvori galeriju">
+ <button class="lightbox__close" type="button" aria-label="Zatvori">×</button>
+ <button class="lightbox__nav lightbox__prev" type="button" aria-label="Prethodna fotografija">←</button>
+ <figure class="lightbox__fig"><img alt=""><figcaption></figcaption></figure>
+ <button class="lightbox__nav lightbox__next" type="button" aria-label="Sljedeća fotografija">→</button>
+</dialog>
 
 <script src="../site.js"></script>
 </body>
