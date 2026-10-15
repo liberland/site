@@ -31,7 +31,9 @@ T["cs"] = dict(
     title="Nábytek, který není toxický, a skříně na míru bez dřevotřísky – Fasto",
     description="Nábytek bez přidaného formaldehydu a skříně na míru bez dřevotřísky. Renovace a stavba zomes v Česku, Chorvatsku i v Liberlandu. Prodejna v Batině.",
     skip="Přeskočit na obsah", home="Fasto, úvod", menu="Menu", nav_label="Hlavní", lang_label="Jazyk",
-    nav=["Nábytek", "Skříně", "Renovace", "Zomes", "Prodejna"],
+    nav=["Nábytek", "Skříně", "Renovace", "Zomes", "Prodejna", "Novinky"],
+    news_eyebrow="Novinky", news_title="Co je u nás nového", news_photos="fotek", news_open="Otevřít galerii", news_photo="Fotka",
+    lb_close="Zavřít", lb_prev="Předchozí fotka", lb_next="Další fotka",
     cta_short="Poptat",
     eyebrow="Nábytek · Skříně na míru · Renovace · Zomes",
     h1=["Nábytek,", "který není", "toxický."],
@@ -132,7 +134,9 @@ T["en"] = dict(
     title="Non-toxic furniture and fitted wardrobes without chipboard – Fasto",
     description="Furniture with no added formaldehyde and fitted wardrobes without chipboard. Renovations and zome construction in Czechia, Croatia and Liberland. Shop in Batina.",
     skip="Skip to content", home="Fasto, home", menu="Menu", nav_label="Main", lang_label="Language",
-    nav=["Furniture", "Wardrobes", "Renovation", "Zomes", "Shop"],
+    nav=["Furniture", "Wardrobes", "Renovation", "Zomes", "Shop", "News"],
+    news_eyebrow="News", news_title="What’s new", news_photos="photos", news_open="Open gallery", news_photo="Photo",
+    lb_close="Close", lb_prev="Previous photo", lb_next="Next photo",
     cta_short="Enquire",
     eyebrow="Furniture · Fitted wardrobes · Renovation · Zomes",
     h1=["Furniture", "that isn’t", "toxic."],
@@ -233,7 +237,9 @@ T["hr"] = dict(
     title="Namještaj koji nije toksičan i ormari po mjeri bez iverice – Fasto",
     description="Namještaj bez dodanog formaldehida i ormari po mjeri bez iverice. Renovacije i gradnja zomea u Češkoj, Hrvatskoj i Liberlandu. Prodavaonica u Batini.",
     skip="Preskoči na sadržaj", home="Fasto, početna", menu="Izbornik", nav_label="Glavni", lang_label="Jezik",
-    nav=["Namještaj", "Ormari", "Renovacije", "Zomei", "Prodavaonica"],
+    nav=["Namještaj", "Ormari", "Renovacije", "Zomei", "Prodavaonica", "Novosti"],
+    news_eyebrow="Novosti", news_title="Što je novo kod nas", news_photos="fotografija", news_open="Otvori galeriju", news_photo="Fotografija",
+    lb_close="Zatvori", lb_prev="Prethodna fotografija", lb_next="Sljedeća fotografija",
     cta_short="Upit",
     eyebrow="Namještaj · Ormari po mjeri · Renovacije · Zomei",
     h1=["Namještaj", "koji nije", "toksičan."],
@@ -417,6 +423,82 @@ def json_ld(lang, t, url):
     return json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/")
 
 
+NEWS = json.loads((HERE / "news" / "news.json").read_text(encoding="utf-8"))
+CATEGORIES = json.loads((HERE / "news" / "categories.json").read_text(encoding="utf-8"))
+MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July",
+             "August", "September", "October", "November", "December"]
+PIN = ('<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" '
+       'd="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>')
+
+
+def fmt_date(iso, lang):
+    y, m, d = (int(x) for x in iso.split("-"))
+    if lang == "en":
+        return f"{d} {MONTHS_EN[m - 1]} {y}"
+    return f"{d}. {m}. {y}" + ("." if lang == "hr" else "")
+
+
+def pick(field, lang):
+    """A translated field, falling back to Czech when a translation is empty."""
+    return (field.get(lang) or field.get("cs") or "").strip()
+
+
+def render_news(lang, t, R):
+    items = sorted(NEWS.get("items", []), key=lambda i: i.get("date", ""), reverse=True)
+    if not items:
+        return ""
+    cards = []
+    for n, it in enumerate(items):
+        title = html.escape(pick(it["title"], lang))
+        paras = [html.escape(p.strip()) for p in pick(it.get("text", {}), lang).split("\n\n") if p.strip()]
+        text = "".join(f"<p>{nbsp(p.replace(chr(10), '<br>'), lang)}</p>" for p in paras)
+        cat = CATEGORIES.get(it.get("category"), CATEGORIES["obecne"])
+        loc = html.escape(it.get("location", "").strip())
+        imgs = it.get("images", [])
+        gallery = ""
+        if imgs:
+            shown = imgs[:5]
+            thumbs = []
+            for k, im in enumerate(shown):
+                alt = html.escape(im.get("alt", {}).get(lang) or f'{pick(it["title"], lang)} – {t["news_photo"]} {k + 1}')
+                more = len(imgs) - len(shown)
+                extra = f'<span class="news__more">+{more}</span>' if k == len(shown) - 1 and more > 0 else ""
+                thumbs.append(
+                    f'<button class="news__shot{" news__shot--main" if k == 0 else ""}" type="button" data-full="{R}{im["src"]}" data-alt="{alt}">'
+                    f'<img src="{R}{im["src"]}" width="{im.get("w", 1200)}" height="{im.get("h", 900)}" loading="lazy" alt="{alt}">{extra}</button>'
+                )
+            hidden = "".join(
+                f'<button class="news__shot" type="button" hidden data-full="{R}{im["src"]}" '
+                f'data-alt="{html.escape(pick(it["title"], lang))} – {t["news_photo"]} {k + 6}"></button>'
+                for k, im in enumerate(imgs[5:])
+            )
+            gallery = f'<div class="news__gallery" data-count="{len(shown)}">{"".join(thumbs)}{hidden}</div>'
+        meta = (f'<span class="tag tag--{cat["color"]}">{html.escape(cat[lang])}</span>'
+                f'<time datetime="{it["date"]}">{fmt_date(it["date"], lang)}</time>'
+                + (f'<span class="news__loc">{PIN}{loc}</span>' if loc else ""))
+        count = f'<p class="news__count">{len(imgs)} {t["news_photos"]}</p>' if len(imgs) > 1 else ""
+        cards.append(f'''   <article class="news__item reveal" id="novinka-{html.escape(it["id"])}" style="--d:{min(n, 3) * .08:.2f}s">
+    {gallery}
+    <div class="news__body">
+     <div class="news__meta">{meta}</div>
+     <h3 class="news__title">{nbsp(title, lang)}</h3>
+     <div class="news__text">{text}</div>
+     {count}
+    </div>
+   </article>''')
+    body = "\n".join(cards)
+    return f'''<section class="sec sand" id="novinky" aria-labelledby="novinky-title">
+ <div class="wrap">
+  <span class="eyebrow reveal">{t["news_eyebrow"]}</span>
+  <h2 class="display-lg reveal" id="novinky-title" style="--d:.08s">{t["news_title"]}</h2>
+  <div class="news">
+{body}
+  </div>
+ </div>
+</section>
+'''
+
+
 def render(lang, path, locale):
     t = {k: nbsp(v, lang) for k, v in T[lang].items()}
     R = "../" * path.count("/")  # relative prefix back to /fasto/
@@ -437,7 +519,7 @@ def render(lang, path, locale):
                 f'<img src="{R}assets/flags/{flagfile}.svg" width="24" height="16" alt="{label}"></a>')
 
     flags = "".join(flag(c, p, f, lbl) for c, p, _, f, lbl in LANGS)
-    nav_ids = ["nabytek", "skrine", "renovace", "zomes", "prodejna"]
+    nav_ids = ["nabytek", "skrine", "renovace", "zomes", "prodejna", "novinky"]
     nav = "\n".join(
         f'    <li><a class="nav__link" href="#{i}">{n}</a></li>' for i, n in zip(nav_ids, t["nav"])
     )
@@ -721,7 +803,8 @@ def render(lang, path, locale):
  </div>
 </section>
 
-<section class="sec sand" id="faq" aria-labelledby="faq-title">
+{render_news(lang, t, R)}
+<section class="sec" id="faq" aria-labelledby="faq-title">
  <div class="wrap two faq">
   <div class="sticky">
    <span class="eyebrow reveal">{t["faq_eyebrow"]}</span>
@@ -778,6 +861,13 @@ def render(lang, path, locale):
   <p class="footer__legal">{t["legal"]}</p>
  </div>
 </footer>
+
+<dialog class="lightbox" aria-label="{t["news_open"]}">
+ <button class="lightbox__close" type="button" aria-label="{t["lb_close"]}">×</button>
+ <button class="lightbox__nav lightbox__prev" type="button" aria-label="{t["lb_prev"]}">←</button>
+ <figure class="lightbox__fig"><img alt=""><figcaption></figcaption></figure>
+ <button class="lightbox__nav lightbox__next" type="button" aria-label="{t["lb_next"]}">→</button>
+</dialog>
 
 <script src="{R}site.js"></script>
 </body>

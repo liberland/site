@@ -23,6 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Generate Fasto pages (news are edited in /fasto/admin/)
+        run: python3 fasto/build.py
       - name: Assemble site
         run: |
           mkdir -p _site

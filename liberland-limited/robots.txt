@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /fasto/admin/
 
 Sitemap: https://liberlandlimited.com/sitemap.xml

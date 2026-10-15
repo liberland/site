@@ -167,6 +167,7 @@
     <li><a class="nav__link" href="#renovace">Renovace</a></li>
     <li><a class="nav__link" href="#zomes">Zomes</a></li>
     <li><a class="nav__link" href="#prodejna">Prodejna</a></li>
+    <li><a class="nav__link" href="#novinky">Novinky</a></li>
    </ul>
    <div class="flags" role="group" aria-label="Jazyk"><a class="flag" href="./" hreflang="cs" lang="cs" title="Čeština" aria-current="true"><img src="assets/flags/cz.svg" width="24" height="16" alt="Čeština"></a><a class="flag" href="en/" hreflang="en" lang="en" title="English"><img src="assets/flags/gb.svg" width="24" height="16" alt="English"></a><a class="flag" href="hr/" hreflang="hr" lang="hr" title="Hrvatski"><img src="assets/flags/hr.svg" width="24" height="16" alt="Hrvatski"></a></div>
    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -403,7 +404,25 @@
  </div>
 </section>
 
-<section class="sec sand" id="faq" aria-labelledby="faq-title">
+<section class="sec sand" id="novinky" aria-labelledby="novinky-title">
+ <div class="wrap">
+  <span class="eyebrow reveal">Novinky</span>
+  <h2 class="display-lg reveal" id="novinky-title" style="--d:.08s">Co je u&nbsp;nás nového</h2>
+  <div class="news">
+   <article class="news__item reveal" id="novinka-2026-10-15-nabytek-batina" style="--d:0.00s">
+    <div class="news__gallery" data-count="5"><button class="news__shot news__shot--main" type="button" data-full="news/2026-10-15-nabytek-batina/1.jpg" data-alt="Nábytek k prodeji v Batině – Fotka 1"><img src="news/2026-10-15-nabytek-batina/1.jpg" width="1200" height="1600" loading="lazy" alt="Nábytek k prodeji v Batině – Fotka 1"></button><button class="news__shot" type="button" data-full="news/2026-10-15-nabytek-batina/2.jpg" data-alt="Nábytek k prodeji v Batině – Fotka 2"><img src="news/2026-10-15-nabytek-batina/2.jpg" width="1200" height="1600" loading="lazy" alt="Nábytek k prodeji v Batině – Fotka 2"></button><button class="news__shot" type="button" data-full="news/2026-10-15-nabytek-batina/3.jpg" data-alt="Nábytek k prodeji v Batině – Fotka 3"><img src="news/2026-10-15-nabytek-batina/3.jpg" width="1200" height="1600" loading="lazy" alt="Nábytek k prodeji v Batině – Fotka 3"></button><button class="news__shot" type="button" data-full="news/2026-10-15-nabytek-batina/4.jpg" data-alt="Nábytek k prodeji v Batině – Fotka 4"><img src="news/2026-10-15-nabytek-batina/4.jpg" width="1200" height="1600" loading="lazy" alt="Nábytek k prodeji v Batině – Fotka 4"></button><button class="news__shot" type="button" data-full="news/2026-10-15-nabytek-batina/5.jpg" data-alt="Nábytek k prodeji v Batině – Fotka 5"><img src="news/2026-10-15-nabytek-batina/5.jpg" width="1200" height="1600" loading="lazy" alt="Nábytek k prodeji v Batině – Fotka 5"></button></div>
+    <div class="news__body">
+     <div class="news__meta"><span class="tag tag--timber">Prodejna</span><time datetime="2026-10-15">15. 10. 2026</time><span class="news__loc"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Batina</span></div>
+     <h3 class="news__title">Nábytek k&nbsp;prodeji v&nbsp;Batině</h3>
+     <div class="news__text"><p>V&nbsp;prodejně v&nbsp;Batině si můžete koupit nábytek do bytu i&nbsp;domu: postele, jídelní stoly a&nbsp;židle, kuchyňské skříňky, sedačky a&nbsp;obývací stěny.</p><p>Na fotkách jsou příklady. Na ceny a&nbsp;aktuální nabídku se zeptejte po telefonu.</p></div>
+     <p class="news__count">5 fotek</p>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="faq-title">
  <div class="wrap two faq">
   <div class="sticky">
    <span class="eyebrow reveal">Časté otázky</span>
@@ -488,6 +507,13 @@
   <p class="footer__legal">FASTO s.r.o., IČO 252 65 474, sídlo Loretánské náměstí 109/3, Hradčany, 118 00 Praha 1. Zapsána v&nbsp;obchodním rejstříku vedeném Městským soudem v&nbsp;Praze, oddíl C, vložka 353965.</p>
  </div>
 </footer>
+
+<dialog class="lightbox" aria-label="Otevřít galerii">
+ <button class="lightbox__close" type="button" aria-label="Zavřít">×</button>
+ <button class="lightbox__nav lightbox__prev" type="button" aria-label="Předchozí fotka">←</button>
+ <figure class="lightbox__fig"><img alt=""><figcaption></figcaption></figure>
+ <button class="lightbox__nav lightbox__next" type="button" aria-label="Další fotka">→</button>
+</dialog>
 
 <script src="site.js"></script>
 </body>
