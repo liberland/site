@@ -1,0 +1,56 @@
+/* eKLUB — one-page layout (w-*) */
+.w-hero { padding: var(--space-8) 0 var(--space-9); position: relative; overflow: hidden; }
+.w-hero__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: var(--space-7); align-items: center; }
+.w-hero__copy { display: grid; gap: var(--space-5); }
+.w-hero__ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-2); }
+.w-hero__art { position: relative; margin-right: -40px; }
+.w-hero__art .ek-bubble { position: absolute; font: 600 25px/1.15 var(--font-display); letter-spacing: -0.01em; }
+.w-b1 { top: 0; left: 0; right: 14%; padding: var(--space-6); }
+.w-b2 { top: 170px; right: 0; left: 16%; padding: var(--space-6); }
+.w-b3 { top: 330px; left: 6%; right: 34%; padding: var(--space-4) var(--space-5); font-size: 19px !important; }
+.w-hero__art .ek-sticker { position: absolute; left: -10px; bottom: 2%; }
+.w-hero__art .ek-echo::before { content: ""; }
+.w-ticker { background: var(--inverse); color: var(--on-inverse); overflow: hidden; border-block: 2px solid var(--line); }
+.w-ticker__row { display: flex; gap: var(--space-6); width: max-content; padding: 18px 0; font: 800 28px/1 var(--font-display); letter-spacing: -0.02em; white-space: nowrap; animation: w-tick 38s linear infinite; }
+.w-ticker__row i { font-style: normal; color: var(--tomato); }
+@keyframes w-tick { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .w-ticker__row { animation: none; } }
+.w-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+.w-stats .ek-stat { padding-top: var(--space-4); border-top: 2px solid var(--line); }
+.w-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+.w-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start; }
+.w-courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.w-courses--2 { grid-template-columns: 1fr 1fr; }
+.w-course { padding: var(--space-5); border: 2px solid var(--line); background: var(--surface-raised); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-tail); display: grid; gap: var(--space-3); align-content: start; }
+.w-course p { color: var(--ink-muted); font-size: 15px; line-height: 1.5; }
+.w-biz { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-8); align-items: center; }
+.w-biz .ek-bubble { font-size: 18px; }
+.w-duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.w-duo .ek-card { padding: var(--space-7) var(--space-6); }
+.w-contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: var(--space-8); }
+.w-form { display: grid; gap: var(--space-4); padding: var(--space-6); background: var(--surface-raised); border: 2px solid var(--line); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-tail); box-shadow: var(--shadow-pop-lg); }
+.w-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+.w-info { display: grid; gap: var(--space-4); align-content: start; }
+.w-info a, .w-info div { display: flex; gap: var(--space-3); align-items: center; font-size: 19px; text-decoration: none; font-weight: 500; }
+.w-info [data-ek-icon] { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 2px solid var(--line); border-radius: var(--radius-sm) var(--radius-sm) var(--radius-sm) var(--radius-tail); }
+.w-cta { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: space-between; }
+@media (max-width: 1020px) {
+  .w-hero__grid, .w-split, .w-biz, .w-contact { grid-template-columns: 1fr; }
+  .w-cards { grid-template-columns: 1fr 1fr; }
+  .w-courses { grid-template-columns: 1fr 1fr; }
+  .w-hero__art { max-width: 640px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .w-cards, .w-courses, .w-courses--2, .w-duo, .w-form__row { grid-template-columns: 1fr; }
+  .w-stats { grid-template-columns: 1fr 1fr; }
+  .w-hero__art { margin: 0 -8px; }
+  .w-hero__art .ek-sticker { width: 112px; font-size: 22px; padding: 22px; left: -4px; bottom: -14px; }
+}
+
+/* ---------- Mobile menu (the design's "Menu" button opens the nav) ---------- */
+@media (max-width: 960px) {
+  .ek-header.is-open .ek-nav { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; gap: var(--space-1); padding: var(--space-3) var(--space-4) var(--space-4); background: var(--surface); border-bottom: 2px solid var(--line); }
+  .ek-header.is-open .ek-nav a { padding: 12px; font-size: 17px; }
+  .ek-header.is-open .ek-burger { background: var(--surface-sunken); }
+}
+.w-form__done { font-weight: 700; color: var(--success); }
