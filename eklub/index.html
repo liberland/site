@@ -15,7 +15,13 @@
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/page.css">
+<link rel="stylesheet" href="assets/css/motion.css">
 <script src="assets/js/eklub.js"></script>
+<script>/* switch the motion layer on before first paint; give up if motion.js never arrives */
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('ek-motion');
+  setTimeout(function () { if (!window.EklubMotion) document.documentElement.classList.remove('ek-motion'); }, 3000);
+}</script>
 </head>
 <body>
 <div class="ek">
@@ -216,5 +222,6 @@
 </footer>
 </div>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/motion.js"></script>
 </body>
 </html>

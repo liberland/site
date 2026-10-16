@@ -12,8 +12,10 @@ assets/css/fonts.css       @font-face, fonty jsou self-hostované (žádné Goog
 assets/css/tokens.css      barvy, světlý + tmavý motiv (design tokens)
 assets/css/components.css  komponenty ek-* (tlačítka, bubliny, karty, formulář…)
 assets/css/page.css        rozložení stránky w-* + mobilní menu
+assets/css/motion.css      animace (nájezdy při scrollu, hover efekty)
 assets/js/eklub.js         ikony, logo, „ručně kreslené“ obrysy (z designu)
 assets/js/main.js          mobilní menu, kontaktní formulář
+assets/js/motion.js        animace při scrollu, počítadla, zvýraznění sekce v menu
 assets/fonts/              Bricolage Grotesque, DM Sans, DM Mono, Caveat (woff2, SIL OFL)
 assets/img/                ilustrace (SVG), favicon
 build.py                   sbalí web do jednoho souboru dist/eklub.html
@@ -48,6 +50,24 @@ by web nefungoval:
 - Odkazy „Jazykový audit zdarma“, „Ukázková hodina“ a „Nezávazná cenová nabídka“ ve formuláři
   předvolí téma („Pro firmu“ / „Překlad“).
 - Doplněny meta značky pro sdílení (Open Graph).
+
+## Animace
+
+Animace z designu (běžící pás, pohupující se nálepka a ilustrace, hover tlačítek a karet) zůstaly.
+Navíc, ve stejném „pop“ stylu (`--ease-pop`):
+
+- obsah při scrollu postupně najíždí (karty, kurzy, důvody, klienti, formulář), hero při načtení
+  stránky, nálepka „1. hodina zdarma“ doskočí jako poslední;
+- chatové bubliny se objevují postupně jako v konverzaci;
+- čísla se dopočítají (20, 13), cena první hodiny spadne na 0 Kč a pak se dopíše „fakt!“;
+- žlutý zvýrazňovač se „natře“, vlnka Labe pod slovy proteče;
+- ilustrace v hero se vznáší, řetěz postaviček se pohupuje;
+- v menu se podtržení přesouvá podle sekce, kterou čtete; hlavička dostane při scrollu stín;
+- hover: šipky se posunou, ilustrace na kartách se natočí, kurzy a pole formuláře „vyskočí“;
+  běžící pás se pod myší zastaví.
+
+Kdo má v systému zapnuté „omezit pohyb“, nebo nemá JavaScript, uvidí statický web přesně podle
+designu.
 
 ## K doplnění od klienta
 

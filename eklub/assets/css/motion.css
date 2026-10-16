@@ -1,0 +1,67 @@
+/* eKLUB — motion layer. Everything here is additive: without JS, or with
+   "reduce motion" switched on, the page looks exactly like the static design.
+   Uses the individual translate/scale/rotate properties so it never fights
+   the transforms the design already sets (stickers, hand notes, hovers). */
+
+/* ---------- Always-on micro-interactions (hover / focus) ---------- */
+.ek-btn [data-ek-icon] svg, .ek-card__more [data-ek-icon] svg { transition: translate var(--duration-quick) var(--ease-pop); }
+.ek-btn:hover [data-ek-icon] svg, a.ek-card:hover .ek-card__more svg, .ek-card__more:hover svg { translate: 4px 0; }
+.ek-card__art img { transition: rotate .35s var(--ease-pop), scale .35s var(--ease-pop); }
+a.ek-card:hover .ek-card__art img { rotate: -3deg; scale: 1.05; }
+.w-course { transition: translate var(--duration-quick), box-shadow var(--duration-quick); }
+.w-course:hover { translate: -3px -3px; box-shadow: var(--shadow-pop); }
+.ek-input, .ek-textarea { transition: box-shadow var(--duration-quick), translate var(--duration-quick); }
+.ek-input:focus, .ek-textarea:focus { outline: none; box-shadow: var(--shadow-pop); translate: -2px -2px; }
+.ek-segment label { transition: background var(--duration-quick), color var(--duration-quick); }
+.ek-nav a { transition: background var(--duration-quick), box-shadow .25s var(--ease-pop); }
+.w-ticker:hover .w-ticker__row { animation-play-state: paused; }
+.ek-stat b { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---------- Scroll reveal (JS marks elements with data-reveal) ---------- */
+  .ek-motion [data-reveal] { opacity: 0; translate: 0 28px; transition: opacity .6s ease, translate .8s var(--ease-pop), scale .8s var(--ease-pop); transition-delay: calc(var(--i, 0) * 90ms); }
+  .ek-motion [data-reveal="pop"] { translate: 0 12px; scale: .82; }
+  .ek-motion [data-reveal="left"] { translate: -36px 0; }
+  .ek-motion [data-reveal="bubble"] { translate: 0 10px; scale: .6; transform-origin: 0% 100%; transition-delay: calc(var(--i, 0) * 450ms + 150ms); }
+  .ek-motion .ek-bubble--reply[data-reveal="bubble"] { transform-origin: 100% 100%; }
+  .ek-motion [data-reveal].is-in { opacity: 1; translate: 0 0; scale: 1; }
+  /* above the fold: hidden from the first paint, before motion.js has marked anything */
+  .ek-motion .w-hero__copy > :not(.is-in), .ek-motion .w-hero__art > :not(.is-in) { opacity: 0; }
+  .ek-motion-init [data-reveal] { transition: none !important; }
+
+  /* the butter highlight is painted in, left to right */
+  .ek-motion .ek-mark { background: linear-gradient(var(--butter), var(--butter)) no-repeat 0 0 / 0% 100%; transition: background-size .9s cubic-bezier(.65,0,.35,1) .5s; }
+  .ek-motion .is-in .ek-mark, .ek-motion .ek-mark.is-in { background-size: 100% 100%; }
+
+  /* the Labe wave flows under its word once it comes into view */
+  .ek-motion .is-in .ek-wave, .ek-motion .ek-wave.is-in { animation: ek-flow 3.2s cubic-bezier(.2,.7,.3,1) .3s both; }
+  @keyframes ek-flow { from { background-position: -160px 100%; } to { background-position: 0 100%; } }
+
+  /* hero: the circle of tutors floats, the sticker drops in after it */
+  .w-hero__art .ek-ill { animation: ek-float 7s ease-in-out 1.4s infinite; }
+  @keyframes ek-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+  .ek-motion .w-hero__art .ek-sticker[data-reveal] { scale: 0; translate: 0 0; transition-duration: .3s, .7s, .7s; }
+  .ek-motion .w-hero__art .ek-sticker.is-in { scale: 1; }
+
+  /* the "fakt!" note is scribbled on after the counter lands */
+  .ek-motion .ek-stat .ek-hand { opacity: 0; scale: .4; transition: opacity .3s, scale .5s var(--ease-pop); }
+  .ek-motion .ek-stat .ek-hand.is-in { opacity: 1; scale: 1; }
+
+  /* the chain of characters sways like it's dancing */
+  .ek-chain { animation: ek-sway 4s ease-in-out infinite; transform-origin: 50% 100%; }
+  @keyframes ek-sway { 0%, 100% { rotate: -.8deg; } 50% { rotate: .8deg; } }
+  .ek-chainband .ek-hand { animation: ek-nudge 2.8s var(--ease-pop) 1s infinite; }
+  @keyframes ek-nudge { 0%, 70%, 100% { rotate: 0deg; } 78% { rotate: -4deg; } 86% { rotate: 3deg; } 94% { rotate: -1.5deg; } }
+
+  /* header lifts off the page once you scroll */
+  .ek-header { transition: box-shadow .25s; }
+  .ek-header.is-scrolled { box-shadow: 0 6px 0 -2px rgba(26, 24, 48, .08); }
+
+  /* mobile menu items drop in */
+  .ek-header.is-open .ek-nav a { animation: ek-drop .35s var(--ease-pop) both; }
+  .ek-header.is-open .ek-nav a:nth-child(2) { animation-delay: 40ms; }
+  .ek-header.is-open .ek-nav a:nth-child(3) { animation-delay: 80ms; }
+  .ek-header.is-open .ek-nav a:nth-child(4) { animation-delay: 120ms; }
+  .ek-header.is-open .ek-nav a:nth-child(5) { animation-delay: 160ms; }
+  @keyframes ek-drop { from { opacity: 0; translate: 0 -10px; } }
+}
