@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
-BASE = "https://liberlandlimited.com/fasto/"
+BASE = "https://fasto.ll.land/"
 PHONE = "+420 608 131 130"
 PHONE_HREF = "tel:+420608131130"
 REGISTRY = "https://or.justice.cz/ias/ui/rejstrik-firma.vysledky?subjektId=119037&amp;typ=UPLNY"
@@ -505,8 +505,8 @@ def lang_redirect(lang, R):
     Czech time zone -> Czech, Croatian time zone -> Croatian, anywhere else -> English.
     A language picked with the flags is remembered and wins. Crawlers and navigation
     inside the site are never redirected, so every language stays indexable.
-    Paths are relative, so the same files work at liberlandlimited.com/fasto/ and at
-    the fasto.ll.land mirror, which serves this folder from the domain root.
+    Paths are relative, so the same files work at fasto.ll.land (domain root) and in
+    a subfolder such as a local preview at /fasto/.
     """
     root = R or "./"
     return (
