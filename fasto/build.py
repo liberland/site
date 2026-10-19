@@ -499,6 +499,26 @@ def render_news(lang, t, R):
 '''
 
 
+def lang_redirect(lang):
+    """Inline script: send first-time visitors to their language.
+
+    Czech time zone -> Czech, Croatian time zone -> Croatian, anywhere else -> English.
+    A language picked with the flags is remembered and wins. Crawlers and navigation
+    inside the site are never redirected, so every language stays indexable.
+    """
+    return (
+        "(function(){try{"
+        f"var cur='{lang}',P={{cs:'/fasto/',en:'/fasto/en/',hr:'/fasto/hr/'}};"
+        "if(/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent))return;"
+        "var r=document.referrer;if(r&&r.indexOf(location.origin+'/fasto/')===0)return;"
+        "var want=null;try{want=localStorage.getItem('fasto-lang')}catch(e){}"
+        "if(!P[want]){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';"
+        "want=tz==='Europe/Prague'?'cs':tz==='Europe/Zagreb'?'hr':'en'}"
+        "if(want!==cur)location.replace(P[want]+location.search+location.hash)"
+        "}catch(e){}})();"
+    )
+
+
 def render(lang, path, locale):
     t = {k: nbsp(v, lang) for k, v in T[lang].items()}
     R = "../" * path.count("/")  # relative prefix back to /fasto/
@@ -507,7 +527,7 @@ def render(lang, path, locale):
 
     alternates = "\n".join(
         f'<link rel="alternate" hreflang="{c}" href="{BASE + p}">' for c, p, *_ in LANGS
-    ) + f'\n<link rel="alternate" hreflang="x-default" href="{BASE}">'
+    ) + f'\n<link rel="alternate" hreflang="x-default" href="{BASE}en/">'
     og_alt = "\n".join(
         f'<meta property="og:locale:alternate" content="{loc}">' for c, p, loc, *_ in LANGS if c != lang
     )
@@ -605,6 +625,7 @@ def render(lang, path, locale):
 <link rel="preload" href="{R}assets/zome-u-rybnika.webp" as="image">
 <link rel="stylesheet" href="{R}styles.css">
 <script>document.documentElement.classList.add('js')</script>
+<script>{lang_redirect(lang)}</script>
 <script type="application/ld+json">
 {json_ld(lang, T[lang], url)}
 </script>

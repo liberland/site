@@ -1,4 +1,10 @@
 (function(){
+  // Remember a language picked with the flags; it overrides the time-zone guess
+  document.addEventListener('click',function(e){
+    var f=e.target.closest('.flag[hreflang]');
+    if(f)try{localStorage.setItem('fasto-lang',f.getAttribute('hreflang'));}catch(err){}
+  });
+
   // Mobile menu
   var btn=document.querySelector('.menu-btn'),menu=document.getElementById('menu');
   function set(open){menu.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open));}
