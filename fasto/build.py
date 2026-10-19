@@ -499,22 +499,25 @@ def render_news(lang, t, R):
 '''
 
 
-def lang_redirect(lang):
+def lang_redirect(lang, R):
     """Inline script: send first-time visitors to their language.
 
     Czech time zone -> Czech, Croatian time zone -> Croatian, anywhere else -> English.
     A language picked with the flags is remembered and wins. Crawlers and navigation
     inside the site are never redirected, so every language stays indexable.
+    Paths are relative, so the same files work at liberlandlimited.com/fasto/ and at
+    the fasto.ll.land mirror, which serves this folder from the domain root.
     """
+    root = R or "./"
     return (
         "(function(){try{"
-        f"var cur='{lang}',P={{cs:'/fasto/',en:'/fasto/en/',hr:'/fasto/hr/'}};"
+        f"var cur='{lang}',P={{cs:'{root}',en:'{R}en/',hr:'{R}hr/'}};"
         "if(/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent))return;"
-        "var r=document.referrer;if(r&&r.indexOf(location.origin+'/fasto/')===0)return;"
+        "var base=new URL(P.cs,location.href).href,r=document.referrer;if(r&&r.indexOf(base)===0)return;"
         "var want=null;try{want=localStorage.getItem('fasto-lang')}catch(e){}"
         "if(!P[want]){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';"
         "want=tz==='Europe/Prague'?'cs':tz==='Europe/Zagreb'?'hr':'en'}"
-        "if(want!==cur)location.replace(P[want]+location.search+location.hash)"
+        "if(want!==cur)location.replace(new URL(P[want],location.href).href.split('#')[0].split('?')[0]+location.search+location.hash)"
         "}catch(e){}})();"
     )
 
@@ -625,7 +628,7 @@ def render(lang, path, locale):
 <link rel="preload" href="{R}assets/zome-u-rybnika.webp" as="image">
 <link rel="stylesheet" href="{R}styles.css">
 <script>document.documentElement.classList.add('js')</script>
-<script>{lang_redirect(lang)}</script>
+<script>{lang_redirect(lang, R)}</script>
 <script type="application/ld+json">
 {json_ld(lang, T[lang], url)}
 </script>
