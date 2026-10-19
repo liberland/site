@@ -33,6 +33,18 @@ jobs:
           cp -r votula _site/votula
           cp -r build-what-was-removed _site/fund
           cp -r fasto _site/fasto
+          # Fasto lives at https://fasto.ll.land (mirrored from fasto/ by michalptacnik/fasto).
+          # Keep the files here, but turn the pages into redirects to the same path there.
+          for p in "" en/ hr/ admin/; do
+            url="https://fasto.ll.land/$p"
+            cat > "_site/fasto/${p}index.html" <<EOF
+          <!doctype html><html lang="cs"><head><meta charset="utf-8"><title>Fasto</title>
+          <meta name="robots" content="noindex"><link rel="canonical" href="$url">
+          <script>location.replace("$url"+location.search+location.hash)</script>
+          <meta http-equiv="refresh" content="0; url=$url"></head>
+          <body><a href="$url">fasto.ll.land</a></body></html>
+          EOF
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

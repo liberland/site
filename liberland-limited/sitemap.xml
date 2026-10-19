@@ -5,28 +5,4 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://liberlandlimited.com/fasto/</loc>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://liberlandlimited.com/fasto/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/fasto/en/"/>
-    <xhtml:link rel="alternate" hreflang="hr" href="https://liberlandlimited.com/fasto/hr/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://liberlandlimited.com/fasto/en/</loc>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://liberlandlimited.com/fasto/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/fasto/en/"/>
-    <xhtml:link rel="alternate" hreflang="hr" href="https://liberlandlimited.com/fasto/hr/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://liberlandlimited.com/fasto/hr/</loc>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://liberlandlimited.com/fasto/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/fasto/en/"/>
-    <xhtml:link rel="alternate" hreflang="hr" href="https://liberlandlimited.com/fasto/hr/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
