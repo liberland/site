@@ -36,6 +36,7 @@ window.LL_I18N.zh = {
 
   hero: {
     eyebrow: "现实中的利伯兰社区",
+    eyebrowRight: "Liberland Limited · 香港",
     title: [
       { text: "结识社区成员。" },
       { text: "探访多瑙河。" },
@@ -50,9 +51,8 @@ window.LL_I18N.zh = {
       { label: "访客据点", value: "Ark Village，塞尔维亚阿帕廷" },
     ],
     figure: {
-      alt: "塞尔维亚阿帕廷多瑙河支流旁、掩映在树林中的 Ark Village 鸟瞰图",
-      place: "Ark Village · 塞尔维亚阿帕廷",
-      credit: "图片：Ark Village",
+      alt: "多瑙河在林木葱郁的岛屿和沙洲之间蜿蜒流过的鸟瞰图",
+      place: "多瑙河",
     },
   },
 
@@ -154,6 +154,7 @@ window.LL_I18N.zh = {
     title: ["探访", { em: "多瑙河地区。" }],
     intro: "Ark Village 位于塞尔维亚阿帕廷，靠近多瑙河，为有意探访利伯兰相关地区的人士提供住宿、活动和体验。",
     locationLabel: "地点",
+    locationAlt: "塞尔维亚阿帕廷多瑙河支流旁、掩映在树林中的 Ark Village 鸟瞰图",
     location: ["Ark Village", "Mirni Dunav 3", "Apatin, Serbia（塞尔维亚阿帕廷）"],
     map: "在 OpenStreetMap 上查看",
     cards: [

@@ -43,10 +43,12 @@ const EVENTS = [
   { id: "winterAlchemy", start: "2026-12-12", end: "2026-12-13", url: "https://ark.ll.land/events/winter-alchemy-retreat", image: "assets/photos/winter-alchemy-retreat.webp" },
 ];
 
-// Photos and event artwork published by Ark Village on ark.ll.land (October 2026), stored
-// here so they cannot break when that site changes again. Credited as "Photo: Ark Village".
+// Stored here so they cannot break when another site changes. The hero is an aerial view
+// of the Danube supplied by the owner; the rest are Ark Village photos and event artwork
+// published on ark.ll.land (October 2026), credited as "Photo: Ark Village".
 const PHOTOS = {
-  hero: "assets/photos/ark-village-aerial.webp",
+  hero: "assets/photos/danube-aerial.webp",
+  arkAerial: "assets/photos/ark-village-aerial.webp",
   experience: "assets/photos/danube-beach.webp",
   contact: "assets/photos/ark-village-paddleboard.webp",
 };

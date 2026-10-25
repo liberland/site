@@ -168,8 +168,8 @@ test.describe('Quality', () => {
   test('every photo loads and is credited', async ({ page }) => {
     await page.clock.setFixedTime(new Date('2026-10-25T12:00:00'));
     await open(page);
-    await expect(page.locator('#hero figure img')).toBeVisible();
-    await expect(page.locator('#hero figcaption')).toContainText('Photo: Ark Village');
+    await expect(page.locator('#hero .hero-bg img')).toBeVisible();
+    await expect(page.locator('#visit figcaption').first()).toContainText('Photo: Ark Village');
     const imgs = page.locator('main img');
     for (let i = 0; i < await imgs.count(); i++) {
       const img = imgs.nth(i);
