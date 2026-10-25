@@ -21,6 +21,35 @@ function ThemeToggle() {
   );
 }
 
+// English lives at the site root, Simplified Chinese under zh/. An explicit choice is
+// remembered, and the root page only auto-redirects visitors who have not chosen yet.
+const LANGS = [
+  { code: "en", hreflang: "en", label: "EN", name: "English", flag: "gb.svg", path: "" },
+  { code: "zh", hreflang: "zh-Hans", label: "中文", name: "简体中文", flag: "cn.svg", path: "zh/" },
+];
+
+function LangSwitch() {
+  function choose(e, code, href) {
+    try { localStorage.setItem("ll-lang", code); } catch (err) {}
+    e.currentTarget.href = href + location.hash; // stay on the same section
+  }
+  return (
+    <div className="lang-switch" role="group" aria-label="Language · 语言">
+      {LANGS.map(l => {
+        const href = window.LL_ROOT + l.path || "./";
+        return (
+          <a key={l.code} href={href} hrefLang={l.hreflang} lang={l.hreflang} title={l.name}
+             aria-current={l.code === window.LL_LANG ? "true" : undefined}
+             onClick={e => choose(e, l.code, href)}>
+            <img src={`${window.LL_ROOT}assets/flags/${l.flag}`} alt="" width="18" height="12" />
+            <span className="lang-label">{l.label}</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
 function Nav() {
   const t = window.LL_T.nav;
   const [scrolled, setScrolled] = useState(false);
@@ -60,8 +89,8 @@ function Nav() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          {window.LL_LangSwitch && <window.LL_LangSwitch />}
-          <ThemeToggle />
+          <LangSwitch />
+          <span className="nav-theme"><ThemeToggle /></span>
           <a href="#membership" className="btn btn--solid btn--sm nav-cta">{t.cta}</a>
           <button className="mob-toggle" aria-label={t.menu} aria-expanded={open} aria-controls="mobile-menu"
                   onClick={() => setOpen(!open)}>
@@ -76,6 +105,10 @@ function Nav() {
             {t.links.map(l => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
             ))}
+            <div className="mob-theme">
+              <span className="small">{t.theme}</span>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}
@@ -87,13 +120,16 @@ function Nav() {
         .mob-toggle span { display: block; width: 16px; height: 1px; background: var(--ink); margin: auto; box-shadow: 0 5px 0 var(--ink), 0 -5px 0 var(--ink); }
         .mob-menu { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0; background: var(--paper); margin-top: 12px; }
         .mob-menu a { padding: 12px 0; border-bottom: 1px solid var(--rule); }
-        .mob-menu a:last-child { border-bottom: 0; }
+        .nav-theme { display: inline-flex; }
+        .mob-theme { display: none; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0 4px; }
         @media (max-width: 1080px) {
           .nav-links { display: none !important; }
           .mob-toggle { display: inline-flex; align-items: center; justify-content: center; }
         }
         @media (max-width: 640px) {
-          .nav-cta { display: none !important; }
+          .nav-cta, .nav-theme { display: none !important; }
+          .mob-theme { display: flex; }
+          nav .brand .label { letter-spacing: 0.08em; }
         }
       `}</style>
     </nav>

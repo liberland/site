@@ -117,6 +117,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Chinese: no negative tracking, looser leading, no faux-italic emphasis */
 :lang(zh) .display, :lang(zh) .h1, :lang(zh) .h2, :lang(zh) .h3 { letter-spacing: 0; line-height: 1.22; }
 :lang(zh) .display em { font-style: normal; }
+:lang(zh) .h1 { font-size: clamp(36px, 5vw, 72px); }
+:lang(zh) h1.hero .word { white-space: nowrap; }
+:lang(zh) .h2 { font-size: clamp(28px, 3.6vw, 52px); }
 :lang(zh) .lede, :lang(zh) .body { line-height: 1.75; }
 :lang(zh) .label { letter-spacing: 0.08em; }
 
@@ -191,7 +194,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-eyebrow .dot {
   width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex: none;
 }
-.hero h1 .word {
+h1.hero .word {
   display: inline-block;
   opacity: 0; transform: translateY(28px);
   animation: rise 900ms cubic-bezier(.2,.7,.2,1) forwards;
@@ -353,7 +356,13 @@ html[data-theme="dark"] .toggle::after { transform: translateX(22px); background
 }
 .lang-switch a[aria-current="true"] { background: var(--ink); color: var(--paper); }
 .lang-switch a:not([aria-current="true"]):hover { color: var(--ink); }
-.lang-switch svg { width: 18px; height: 12px; border-radius: 2px; display: block; box-shadow: 0 0 0 1px rgba(0,0,0,0.12); }
+.lang-switch img { width: 18px; height: 12px; object-fit: cover; border-radius: 2px; display: block; box-shadow: 0 0 0 1px rgba(0,0,0,0.12); }
+@media (max-width: 640px) {
+  .lang-switch a { padding: 6px 7px; }
+  .lang-switch .lang-label {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap;
+  }
+}
 
 /* ── Reveal-on-scroll ──────────────── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1); }
@@ -362,7 +371,7 @@ html[data-theme="dark"] .toggle::after { transform: translateX(22px); background
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; }
-  .hero h1 .word { animation: none; opacity: 1; transform: none; }
+  h1.hero .word { animation: none; opacity: 1; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 

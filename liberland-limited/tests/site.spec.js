@@ -2,6 +2,9 @@ const { test, expect } = require('@playwright/test');
 
 const MEMBERSHIP_MAIL = 'mailto:info@liberland.org?subject=Liberland%20Limited%20membership%20enquiry';
 
+// An English browser outside China, so the language redirect never kicks in here.
+test.use({ locale: 'en-GB', timezoneId: 'Europe/Prague' });
+
 async function open(page, path = '/') {
   await page.goto(path);
   await page.waitForSelector('#faq');

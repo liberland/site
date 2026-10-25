@@ -6,6 +6,9 @@
 <title>Privacy Notice | Liberland Limited</title>
 <meta name="description" content="How Liberland Limited, a Hong Kong-registered company (BRN 64816138), handles information from visitors and enquiries.">
 <link rel="canonical" href="https://liberlandlimited.com/privacy/">
+<link rel="alternate" hreflang="en" href="https://liberlandlimited.com/privacy/">
+<link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/privacy/">
 <link rel="icon" href="../assets/liberland-limited-logo.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/site.css">
@@ -23,6 +26,10 @@
         <a class="text-link small" href="../">Home page</a>
         <a class="text-link small" href="../terms/">Terms</a>
       </nav>
+        <div class="lang-switch" role="group" aria-label="Language · 语言">
+          <a href="./" hreflang="en" lang="en" title="English" data-lang="en" aria-current="true"><img src="../assets/flags/gb.svg" alt="" width="18" height="12"><span class="lang-label">EN</span></a>
+          <a href="../zh/privacy/" hreflang="zh-Hans" lang="zh-Hans" title="简体中文" data-lang="zh"><img src="../assets/flags/cn.svg" alt="" width="18" height="12"><span class="lang-label">中文</span></a>
+        </div>
     </div>
   </header>
 
@@ -45,7 +52,7 @@
     <p>The website's fonts and scripts are served from this website itself. Links to other websites, such as ark.ll.land, liberland.org or the Hong Kong Companies Registry, take you to services operated by others, whose own privacy notices apply.</p>
 
     <h2>Cookies and preferences</h2>
-    <p>This website does not set cookies and does not use analytics, advertising or tracking tools. It remembers your display preferences (light or dark mode, and your language choice) in your browser's local storage. These preferences stay on your device and are not sent to us. You can remove them at any time by clearing this site's data in your browser.</p>
+    <p>This website does not set cookies and does not use analytics, advertising or tracking tools. It remembers your display preferences (light or dark mode, and your language choice) in your browser's local storage. These preferences stay on your device and are not sent to us. To choose a language on your first visit, the home page checks your browser's language and time-zone settings on your device; that check also happens only in your browser. You can remove these preferences at any time by clearing this site's data in your browser.</p>
 
     <h2>Marketing, retention and your choices</h2>
     <p>Contacting us does not automatically subscribe you to marketing communications.</p>
@@ -63,5 +70,10 @@
       <span><a href="../">Home page</a> · <a href="../terms/">Terms</a></span>
     </div>
   </footer>
+  <script>
+    document.querySelectorAll("[data-lang]").forEach(function (a) {
+      a.addEventListener("click", function () { try { localStorage.setItem("ll-lang", a.dataset.lang); } catch (e) {} });
+    });
+  </script>
 </body>
 </html>

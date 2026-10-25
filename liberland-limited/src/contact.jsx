@@ -20,7 +20,6 @@ function Facts({ rows }) {
 function Company() {
   const t = window.LL_T.company;
   const { Link, Rich, SectionHead } = window.LL_UI;
-  const { LINKS } = window.LL_DATA;
 
   return (
     <section id="company" className="section" data-screen-label="Company">
@@ -34,7 +33,7 @@ function Company() {
           </div>
 
           <div className="stack-4" style={{ gap: 20 }}>
-            <Link href={LINKS.registryInfo} className="btn btn--solid" style={{ alignSelf: "flex-start", whiteSpace: "normal" }}>
+            <Link href={window.LL_T.registry} className="btn btn--solid" style={{ alignSelf: "flex-start", whiteSpace: "normal" }}>
               {t.verify}
             </Link>
             <p className="body" style={{ margin: 0 }}><Rich value={t.verifyHint} /></p>

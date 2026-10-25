@@ -17,7 +17,10 @@ function DoveSilhouette() {
   );
 }
 
-// Words rise in one after another; a phrase without spaces (Chinese) rises as one piece.
+// Words rise in one after another; a phrase without spaces (Chinese) rises as one piece
+// and is not followed by a space.
+const CJK = /[　-鿿＀-￯]/;
+
 function HeroTitle({ phrases }) {
   const ref = useRefHero(null);
   useEffectHero(() => {
@@ -30,7 +33,7 @@ function HeroTitle({ phrases }) {
       {phrases.map((p, i) => {
         const words = p.text.split(" ").map((w, j) => (
           <React.Fragment key={j}>
-            <span className="word">{w}</span>{" "}
+            <span className="word">{w}</span>{CJK.test(w) ? "" : " "}
           </React.Fragment>
         ));
         return p.em ? <em key={i}>{words}</em> : <React.Fragment key={i}>{words}</React.Fragment>;
@@ -42,7 +45,6 @@ function HeroTitle({ phrases }) {
 function Hero() {
   const t = window.LL_T.hero;
   const { Link } = window.LL_UI;
-  const { LINKS } = window.LL_DATA;
 
   return (
     <section id="hero" data-screen-label="Hero">
@@ -90,7 +92,7 @@ function Hero() {
                 </React.Fragment>
               ))}
             </dl>
-            <Link href={LINKS.registryInfo} className="btn btn--ghost btn--sm" style={{ marginTop: 20, whiteSpace: "normal" }}>
+            <Link href={window.LL_T.registry} className="btn btn--ghost btn--sm" style={{ marginTop: 20, whiteSpace: "normal" }}>
               {t.card.verify}
             </Link>
           </aside>

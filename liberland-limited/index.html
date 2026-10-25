@@ -8,7 +8,30 @@
 <link rel="icon" href="assets/liberland-limited-logo.png">
 
 <link rel="canonical" href="https://liberlandlimited.com/">
+<link rel="alternate" hreflang="en" href="https://liberlandlimited.com/">
+<link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- Visitors in mainland China see the Chinese version. GitHub Pages cannot look up a
+     visitor's location, so this uses what the browser already knows: a Simplified
+     Chinese browser language or a mainland China time zone. No request leaves the page.
+     A language picked with the flag switch is remembered and always wins. -->
+<script>
+(function () {
+  var pref = null;
+  try { pref = localStorage.getItem("ll-lang"); } catch (e) {}
+  if (pref === "en") return;
+  var zh = pref === "zh";
+  if (!zh) {
+    var lang = ((navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+    var tz = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    zh = /^zh(-cn|-sg|-hans(-.*)?)?$/.test(lang) || /^Asia\/(Shanghai|Chongqing|Chungking|Harbin|Urumqi|Kashgar)$/.test(tz);
+  }
+  if (zh) location.replace("zh/" + location.search + location.hash);
+})();
+</script>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">

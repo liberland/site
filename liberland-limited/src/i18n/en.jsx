@@ -6,6 +6,7 @@ const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July
 window.LL_I18N = window.LL_I18N || {};
 window.LL_I18N.en = {
   lang: "en",
+  registry: L_EN.registryInfo,
 
   // "21–22 November 2026"; spans across months or years are spelled out in full.
   formatRange(start, end) {
