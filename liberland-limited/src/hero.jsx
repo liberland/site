@@ -52,15 +52,16 @@ function Hero() {
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div className="hero-eyebrow">
           <span className="dot" />
-          <span className="label label--ink">{t.eyebrow}</span>
+          <span className="label">{t.eyebrow}</span>
           <span style={{ flex: 1, height: 1, background: "var(--rule)" }} />
+          <span className="label eyebrow-right" style={{ color: "var(--ink-mute)" }}>{t.eyebrowRight}</span>
         </div>
 
         <div className="hero-grid">
           <div>
             <HeroTitle phrases={t.title} />
 
-            <p className="lede" style={{ maxWidth: 600, margin: 0 }}>{t.lede}</p>
+            <p className="lede" style={{ maxWidth: 560, margin: 0 }}>{t.lede}</p>
 
             <div className="hero-actions">
               <a href="#membership" className="btn btn--solid">

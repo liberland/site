@@ -34,6 +34,7 @@ window.LL_I18N.en = {
 
   hero: {
     eyebrow: "The real-world Liberland community",
+    eyebrowRight: "Liberland Limited · Hong Kong",
     title: [
       { text: "Meet the people." },
       { text: "Visit the Danube." },
@@ -49,7 +50,7 @@ window.LL_I18N.en = {
     ],
     figure: {
       alt: "Aerial view of Ark Village among the trees beside a Danube backwater in Apatin, Serbia",
-      place: "Ark Village · Apatin, Serbia",
+      place: "Ark Village · Apatin",
       credit: "Photo: Ark Village",
     },
   },

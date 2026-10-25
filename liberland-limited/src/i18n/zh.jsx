@@ -36,6 +36,7 @@ window.LL_I18N.zh = {
 
   hero: {
     eyebrow: "现实中的利伯兰社区",
+    eyebrowRight: "Liberland Limited · 香港",
     title: [
       { text: "结识社区成员。" },
       { text: "探访多瑙河。" },
@@ -51,7 +52,7 @@ window.LL_I18N.zh = {
     ],
     figure: {
       alt: "塞尔维亚阿帕廷多瑙河支流旁、掩映在树林中的 Ark Village 鸟瞰图",
-      place: "Ark Village · 塞尔维亚阿帕廷",
+      place: "Ark Village · 阿帕廷",
       credit: "图片：Ark Village",
     },
   },
