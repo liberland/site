@@ -1,4 +1,4 @@
-// Hero — full-bleed Swiss layout with split serif/sans, subtle dove silhouette and figure
+// Hero — split serif/sans layout, subtle dove silhouette and the company identity card
 const { useEffect: useEffectHero, useRef: useRefHero } = React;
 
 function DoveSilhouette() {
@@ -17,15 +17,34 @@ function DoveSilhouette() {
   );
 }
 
-function Hero() {
-  const titleRef = useRefHero(null);
+// Words rise in one after another; a phrase without spaces (Chinese) rises as one piece
+// and is not followed by a space.
+const CJK = /[　-鿿＀-￯]/;
 
+function HeroTitle({ phrases }) {
+  const ref = useRefHero(null);
   useEffectHero(() => {
-    const words = titleRef.current?.querySelectorAll(".word") || [];
+    const words = ref.current?.querySelectorAll(".word") || [];
     words.forEach((w, i) => { w.style.animationDelay = `${i * 80}ms`; });
   }, []);
 
-  const title = "A members' house for the Liberland community.";
+  return (
+    <h1 ref={ref} className="display h1 hero" style={{ margin: "0 0 36px" }}>
+      {phrases.map((p, i) => {
+        const words = p.text.split(" ").map((w, j) => (
+          <React.Fragment key={j}>
+            <span className="word">{w}</span>{CJK.test(w) ? "" : " "}
+          </React.Fragment>
+        ));
+        return p.em ? <em key={i}>{words}</em> : <React.Fragment key={i}>{words}</React.Fragment>;
+      })}
+    </h1>
+  );
+}
+
+function Hero() {
+  const t = window.LL_T.hero;
+  const { Link } = window.LL_UI;
 
   return (
     <section id="hero" data-screen-label="Hero">
@@ -33,64 +52,50 @@ function Hero() {
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div className="hero-eyebrow">
           <span className="dot" />
-          <span className="label">Liberland Limited · Hong Kong</span>
+          <span className="label label--ink">{t.eyebrow}</span>
           <span style={{ flex: 1, height: 1, background: "var(--rule)" }} />
-          <span className="label" style={{ color: "var(--ink-mute)" }}>Est. MMXXIV</span>
         </div>
 
         <div className="hero-grid">
           <div>
-            <h1 ref={titleRef} className="display h1 hero" style={{ marginBottom: 36 }}>
-              {title.split(" ").map((w, i) => (
-                <React.Fragment key={i}>
-                  <span className="word">{w}</span>
-                  <span> </span>
-                </React.Fragment>
-              ))}
-            </h1>
+            <HeroTitle phrases={t.title} />
 
-            <p className="lede" style={{ maxWidth: 560, margin: 0 }}>
-              We provide membership services, host community gatherings, and broker
-              residences at <em>Ark Village</em> on the Danube. One door. One office.
-              One members' register.
-            </p>
+            <p className="lede" style={{ maxWidth: 600, margin: 0 }}>{t.lede}</p>
 
             <div className="hero-actions">
               <a href="#membership" className="btn btn--solid">
-                Become a member <span className="arrow">→</span>
+                {t.primary} <span className="arrow">→</span>
               </a>
-              <a href="#events" className="btn">
-                Upcoming gatherings
-              </a>
+              <a href="#visit" className="btn">{t.secondary}</a>
             </div>
 
             <div className="hero-meta">
-              <div>
-                <div className="label">Members</div>
-                <div className="v num">1,240+</div>
-              </div>
-              <div>
-                <div className="label">Gatherings / yr</div>
-                <div className="v num">6 — 8</div>
-              </div>
-              <div>
-                <div className="label">Residences brokered</div>
-                <div className="v num">38</div>
-              </div>
+              {t.meta.map(m => (
+                <div key={m.label}>
+                  <div className="label">{m.label}</div>
+                  <div className="v">{m.value}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          <figure className="hero-figure" style={{ margin: 0 }}>
-            <img
-              src="https://ark.ll.land/wp-content/uploads/2022/05/20210814_210647-1024x768.jpg"
-              alt="Ark Village on the Danube"
-              loading="lazy"
-            />
-            <figcaption className="caption">
-              <span>Ark Village · Apatin</span>
-              <span>45.689° N · 18.945° E</span>
-            </figcaption>
-          </figure>
+          <aside className="id-card" aria-label={t.card.label}>
+            <div className="id-head">
+              <img src={`${window.LL_ROOT}assets/liberland-limited-logo.png`} alt="" />
+              <div className="label label--teal">{t.card.label}</div>
+            </div>
+            <dl className="facts">
+              {t.card.rows.map(([k, v]) => (
+                <React.Fragment key={k}>
+                  <dt className="label">{k}</dt>
+                  <dd>{v}</dd>
+                </React.Fragment>
+              ))}
+            </dl>
+            <Link href={window.LL_T.registry} className="btn btn--ghost btn--sm" style={{ marginTop: 20, whiteSpace: "normal" }}>
+              {t.card.verify}
+            </Link>
+          </aside>
         </div>
       </div>
     </section>
