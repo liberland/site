@@ -13,6 +13,10 @@ function Visit() {
 
         <div className="visit-grid">
           <div className="stack-4">
+            <figure className="card-photo visit-aerial" style={{ margin: 0 }}>
+              <img src={window.LL_ROOT + PHOTOS.arkAerial} alt={t.locationAlt} loading="lazy" width="1200" height="800" />
+              <figcaption className="photo-caption photo-caption--sm">{t.credit}</figcaption>
+            </figure>
             <div className="label">{t.locationLabel}</div>
             <address style={{ fontStyle: "normal" }}>
               {t.location.map((line, i) => (

@@ -71,7 +71,7 @@ function Nav() {
   };
 
   return (
-    <nav style={navStyle} aria-label="Main">
+    <nav style={navStyle} aria-label="Main" className={!scrolled && !open ? "over-photo" : ""}>
       <a className="skip-link" href="#main">{t.skip}</a>
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
         <a href="#hero" className="brand">
@@ -120,6 +120,19 @@ function Nav() {
         .mob-toggle span { display: block; width: 16px; height: 1px; background: var(--ink); margin: auto; box-shadow: 0 5px 0 var(--ink), 0 -5px 0 var(--ink); }
         .mob-menu { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0; background: var(--paper); margin-top: 12px; }
         .mob-menu a { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+        /* Light text while the nav sits on the hero photo */
+        nav.over-photo .brand .name, nav.over-photo .nav-link { color: #f6f1e8; }
+        nav.over-photo .nav-link:hover { color: #fff; }
+        nav.over-photo .brand .label { color: rgba(246,241,232,0.75); }
+        nav.over-photo .nav-cta { background: #f6f1e8; border-color: #f6f1e8; color: #14181a; }
+        nav.over-photo .toggle { border-color: rgba(246,241,232,0.55); }
+        nav.over-photo .toggle::after { background: #f6f1e8; }
+        nav.over-photo .lang-switch { border-color: rgba(246,241,232,0.5); }
+        nav.over-photo .lang-switch a { color: rgba(246,241,232,0.8); }
+        nav.over-photo .lang-switch a[aria-current="true"] { background: #f6f1e8; color: #14181a; }
+        nav.over-photo .mob-toggle { border-color: rgba(246,241,232,0.55); }
+        nav.over-photo .mob-toggle span { background: #f6f1e8; box-shadow: 0 5px 0 #f6f1e8, 0 -5px 0 #f6f1e8; }
+        nav.over-photo .brand img { background: #f6f1e8; border-radius: 50%; padding: 2px; }
         .nav-theme { display: inline-flex; }
         .mob-theme { display: none; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0 4px; }
         @media (max-width: 1080px) {

@@ -49,9 +49,8 @@ window.LL_I18N.en = {
       { label: "Visitor base", value: "Ark Village, Apatin, Serbia" },
     ],
     figure: {
-      alt: "Aerial view of Ark Village among the trees beside a Danube backwater in Apatin, Serbia",
-      place: "Ark Village · Apatin",
-      credit: "Photo: Ark Village",
+      alt: "Aerial view of the Danube winding between wooded islands and sandbanks",
+      place: "The Danube",
     },
   },
 
@@ -153,6 +152,7 @@ window.LL_I18N.en = {
     title: ["Visit the ", { em: "Danube region." }],
     intro: "Ark Village is located in Apatin, Serbia, near the Danube. It offers accommodation, activities and experiences for people interested in visiting the region associated with Liberland.",
     locationLabel: "Location",
+    locationAlt: "Aerial view of Ark Village among the trees beside a Danube backwater in Apatin, Serbia",
     location: ["Ark Village", "Mirni Dunav 3", "Apatin, Serbia"],
     map: "View on OpenStreetMap",
     cards: [
