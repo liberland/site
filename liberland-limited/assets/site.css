@@ -219,16 +219,40 @@ h1.hero .word {
 
 .hero-actions { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
 
-/* Identity card on the right of the hero */
-.id-card {
+.hero-figure {
   position: relative;
+  aspect-ratio: 4/5;
+  margin: 0;
   background: var(--paper-card);
-  border: 1px solid var(--rule-strong);
-  padding: clamp(24px, 3vw, 36px);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--rule);
+  overflow: hidden;
 }
-.id-card .id-head { display: flex; align-items: center; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
-.id-card .id-head img { width: 44px; height: 44px; object-fit: contain; }
+.hero-figure img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: saturate(0.92) contrast(1.02);
+}
+@media (max-width: 920px) { .hero-figure { aspect-ratio: 4/3; } }
+
+/* Caption laid over a photo: place on the left, photo credit on the right */
+.photo-caption {
+  position: absolute; left: 16px; bottom: 16px; right: 16px;
+  color: #f3eee5;
+  background: rgba(13,15,16,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.photo-caption--sm { left: 10px; bottom: 10px; right: auto; padding: 6px 10px; font-size: 10px; }
+
+.card-photo { position: relative; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); transition: transform 600ms ease; }
+.card:hover .card-photo img { transform: scale(1.03); }
+.card-photo--poster { aspect-ratio: 3/2; }
+.offer.has-photo { padding: 0; }
+.offer.has-photo .offer-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 
 /* Definition lists for company particulars */
 .facts { margin: 0; display: grid; grid-template-columns: minmax(120px, 0.42fr) 1fr; }

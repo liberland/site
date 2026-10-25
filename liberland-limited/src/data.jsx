@@ -39,9 +39,17 @@ const LINKS = {
 // Ark Village organises and sells these; Liberland Limited does not. Each one disappears
 // from the page the day after it ends; when none are left, only the calendar link remains.
 const EVENTS = [
-  { id: "longevity", start: "2026-11-21", end: "2026-11-22", url: "https://ark.ll.land/events/longevity-retreat" },
-  { id: "winterAlchemy", start: "2026-12-12", end: "2026-12-13", url: "https://ark.ll.land/events/winter-alchemy-retreat" },
+  { id: "longevity", start: "2026-11-21", end: "2026-11-22", url: "https://ark.ll.land/events/longevity-retreat", image: "assets/photos/longevity-ark-retreat.webp" },
+  { id: "winterAlchemy", start: "2026-12-12", end: "2026-12-13", url: "https://ark.ll.land/events/winter-alchemy-retreat", image: "assets/photos/winter-alchemy-retreat.webp" },
 ];
+
+// Photos and event artwork published by Ark Village on ark.ll.land (October 2026), stored
+// here so they cannot break when that site changes again. Credited as "Photo: Ark Village".
+const PHOTOS = {
+  hero: "assets/photos/ark-village-aerial.webp",
+  experience: "assets/photos/danube-beach.webp",
+  contact: "assets/photos/ark-village-paddleboard.webp",
+};
 
 function todayISO(now = new Date()) {
   const p = n => String(n).padStart(2, "0");
@@ -53,4 +61,4 @@ function upcomingEvents(now) {
   return EVENTS.filter(e => e.end >= today);
 }
 
-window.LL_DATA = { COMPANY, MAIL, LINKS, EVENTS, upcomingEvents };
+window.LL_DATA = { COMPANY, MAIL, LINKS, EVENTS, PHOTOS, upcomingEvents };

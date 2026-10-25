@@ -6,17 +6,23 @@ function EventCard({ event }) {
   const copy = t.items[event.id];
 
   return (
-    <article className="card offer" style={{ padding: "32px 28px 28px" }}>
-      <div className="label label--teal">{t.organiser}</div>
-      <h3 className="h3" style={{ margin: 0 }}>{copy.title}</h3>
-      <dl className="facts" style={{ marginTop: 4 }}>
-        <dt className="label">{t.whenLabel}</dt>
-        <dd><time dateTime={event.start}>{window.LL_T.formatRange(event.start, event.end)}</time></dd>
-        <dt className="label">{t.whereLabel}</dt>
-        <dd>{copy.where}</dd>
-      </dl>
-      <p className="body" style={{ margin: 0 }}>{copy.text}</p>
-      <Link href={event.url} className="btn btn--sm" style={{ marginTop: "auto" }}>{t.details}</Link>
+    <article className="card offer has-photo">
+      <figure className="card-photo card-photo--poster" style={{ margin: 0 }}>
+        <img src={window.LL_ROOT + event.image} alt={copy.alt} loading="lazy" width="1200" height="800" />
+        <figcaption className="photo-caption photo-caption--sm">{t.artCredit}</figcaption>
+      </figure>
+      <div className="offer-body" style={{ padding: "28px 28px 28px" }}>
+        <div className="label label--teal">{t.organiser}</div>
+        <h3 className="h3" style={{ margin: 0 }}>{copy.title}</h3>
+        <dl className="facts" style={{ marginTop: 4 }}>
+          <dt className="label">{t.whenLabel}</dt>
+          <dd><time dateTime={event.start}>{window.LL_T.formatRange(event.start, event.end)}</time></dd>
+          <dt className="label">{t.whereLabel}</dt>
+          <dd>{copy.where}</dd>
+        </dl>
+        <p className="body" style={{ margin: 0 }}>{copy.text}</p>
+        <Link href={event.url} className="btn btn--sm" style={{ marginTop: "auto", alignSelf: "flex-start" }}>{t.details}</Link>
+      </div>
     </article>
   );
 }
