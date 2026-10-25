@@ -3,7 +3,8 @@
 function Visit() {
   const t = window.LL_T.visit;
   const { Link, SectionHead } = window.LL_UI;
-  const { LINKS } = window.LL_DATA;
+  const { LINKS, PHOTOS } = window.LL_DATA;
+  const photos = [PHOTOS.experience, PHOTOS.contact];
 
   return (
     <section id="visit" className="section section--warm" data-screen-label="Visit">
@@ -21,12 +22,18 @@ function Visit() {
             <Link href={LINKS.arkMap} className="text-link small">{t.map}</Link>
           </div>
 
-          {t.cards.map(c => (
-            <article key={c.title} className="card offer">
-              <h3 className="h3" style={{ margin: 0 }}>{c.title}</h3>
-              <p className="body" style={{ margin: 0 }}>{c.text}</p>
-              <Link href={c.href} className="btn btn--sm">{c.button}</Link>
-              <div className="provider small">{t.operator}</div>
+          {t.cards.map((c, i) => (
+            <article key={c.title} className="card offer has-photo">
+              <figure className="card-photo" style={{ margin: 0 }}>
+                <img src={window.LL_ROOT + photos[i]} alt={c.alt} loading="lazy" width="1200" height="800" />
+                <figcaption className="photo-caption photo-caption--sm">{t.credit}</figcaption>
+              </figure>
+              <div className="offer-body">
+                <h3 className="h3" style={{ margin: 0 }}>{c.title}</h3>
+                <p className="body" style={{ margin: 0 }}>{c.text}</p>
+                <Link href={c.href} className="btn btn--sm" style={{ alignSelf: "flex-start" }}>{c.button}</Link>
+                <div className="provider small">{t.operator}</div>
+              </div>
             </article>
           ))}
         </div>

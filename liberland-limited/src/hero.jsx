@@ -1,4 +1,4 @@
-// Hero — split serif/sans layout, subtle dove silhouette and the company identity card
+// Hero — split serif/sans layout, subtle dove silhouette and a credited photo of Ark Village
 const { useEffect: useEffectHero, useRef: useRefHero } = React;
 
 function DoveSilhouette() {
@@ -44,7 +44,7 @@ function HeroTitle({ phrases }) {
 
 function Hero() {
   const t = window.LL_T.hero;
-  const { Link } = window.LL_UI;
+  const { PHOTOS } = window.LL_DATA;
 
   return (
     <section id="hero" data-screen-label="Hero">
@@ -79,23 +79,13 @@ function Hero() {
             </div>
           </div>
 
-          <aside className="id-card" aria-label={t.card.label}>
-            <div className="id-head">
-              <img src={`${window.LL_ROOT}assets/liberland-limited-logo.png`} alt="" />
-              <div className="label label--teal">{t.card.label}</div>
-            </div>
-            <dl className="facts">
-              {t.card.rows.map(([k, v]) => (
-                <React.Fragment key={k}>
-                  <dt className="label">{k}</dt>
-                  <dd>{v}</dd>
-                </React.Fragment>
-              ))}
-            </dl>
-            <Link href={window.LL_T.registry} className="btn btn--ghost btn--sm" style={{ marginTop: 20, whiteSpace: "normal" }}>
-              {t.card.verify}
-            </Link>
-          </aside>
+          <figure className="hero-figure">
+            <img src={window.LL_ROOT + PHOTOS.hero} alt={t.figure.alt} width="1200" height="800" />
+            <figcaption className="photo-caption">
+              <span>{t.figure.place}</span>
+              <span>{t.figure.credit}</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

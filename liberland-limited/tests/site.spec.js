@@ -165,6 +165,20 @@ test.describe('Quality', () => {
     expect(errors).toEqual([]);
   });
 
+  test('every photo loads and is credited', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-10-25T12:00:00'));
+    await open(page);
+    await expect(page.locator('#hero figure img')).toBeVisible();
+    await expect(page.locator('#hero figcaption')).toContainText('Photo: Ark Village');
+    const imgs = page.locator('main img');
+    for (let i = 0; i < await imgs.count(); i++) {
+      const img = imgs.nth(i);
+      await img.scrollIntoViewIfNeeded();
+      await expect.poll(() => img.evaluate(el => el.complete && el.naturalWidth), { message: await img.getAttribute('src') }).toBeGreaterThan(0);
+      expect(await img.getAttribute('alt')).not.toBe(null);
+    }
+  });
+
   test('FAQ answers open with the keyboard', async ({ page }) => {
     await open(page);
     const first = page.locator('#faq summary').first();

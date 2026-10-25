@@ -46,17 +46,13 @@ window.LL_I18N.zh = {
     secondary: "探访多瑙河",
     meta: [
       { label: "运营方", value: "Liberland Limited（香港）" },
+      { label: "商业登记号码", value: C_ZH.brn },
       { label: "访客据点", value: "Ark Village，塞尔维亚阿帕廷" },
-      { label: "咨询", value: C_ZH.email },
     ],
-    card: {
-      label: "本网站运营方",
-      rows: [
-        ["注册名称", C_ZH.name],
-        ["司法管辖区", "香港"],
-        ["商业登记号码", C_ZH.brn],
-      ],
-      verify: "核实我们的公司注册信息",
+    figure: {
+      alt: "塞尔维亚阿帕廷多瑙河支流旁、掩映在树林中的 Ark Village 鸟瞰图",
+      place: "Ark Village · 塞尔维亚阿帕廷",
+      credit: "图片：Ark Village",
     },
   },
 
@@ -130,17 +126,20 @@ window.LL_I18N.zh = {
     title: ["相聚", { em: "多瑙河畔。" }],
     intro: "活动和聚会是结识对利伯兰感兴趣人士的实用方式。以下是本地区已公开宣布的活动。请务必向活动组织方确认日期、名额及预订条件。组织方网站为英文页面。",
     organiser: "由 Ark Village 组织",
+    artCredit: "海报：Ark Village",
     details: "活动详情",
     whenLabel: "日期",
     whereLabel: "地点",
     items: {
       longevity: {
         title: "Longevity Ark Retreat（长寿主题静修周末）",
+        alt: "Ark Village 发布的 Longevity Ark Retreat 活动海报（11月21日至22日）",
         where: "塞尔维亚阿帕廷 Ark Village",
         text: "一个探索健康、长寿、运动、恢复与自然的周末，汇聚乐于学习、共享体验的访客。",
       },
       winterAlchemy: {
         title: "Winter Alchemy Retreat（冬季静修周末）",
+        alt: "Ark Village 发布的 Winter Alchemy Retreat 活动海报，画面为雪中的村落",
         where: "塞尔维亚阿帕廷 Ark Village",
         text: "一场以地方饮食传统、户外烹饪、自然以及多瑙河畔共同活动为主题的冬季聚会。",
       },
@@ -163,15 +162,18 @@ window.LL_I18N.zh = {
         text: "通过 Ark Village 的专属体验页面，了解探访方案、当地活动和住宿选择。",
         button: "浏览体验项目",
         href: L_ZH.arkExperience,
+        alt: "访客在多瑙河沙滩上举着利伯兰旗帜",
       },
       {
         title: "联系 Ark Village",
+        alt: "一位访客在 Ark Village 平静的水面上玩桨板",
         text: "直接向当地运营方咨询住宿、名额、团体预订及访客安排。",
         button: "联系 Ark Village",
         href: L_ZH.arkContact,
       },
     ],
     operator: "由 Ark Village 运营",
+    credit: "图片：Ark Village",
     noteLabel: "Ark Village 的位置",
     note: "Ark Village 位于塞尔维亚境内，与利伯兰所主张的领土并不相同。预订住宿或购买会员资格，均不提供跨越边境或进入该领土的任何特殊权利。访客须自行遵守适用的旅行和入境要求。",
   },

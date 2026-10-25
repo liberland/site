@@ -44,17 +44,13 @@ window.LL_I18N.en = {
     secondary: "Visit the Danube",
     meta: [
       { label: "Operated by", value: "Liberland Limited, Hong Kong" },
+      { label: "Business Registration No.", value: C_EN.brn },
       { label: "Visitor base", value: "Ark Village, Apatin, Serbia" },
-      { label: "Enquiries", value: C_EN.email },
     ],
-    card: {
-      label: "Who runs this website",
-      rows: [
-        ["Registered name", C_EN.name],
-        ["Jurisdiction", "Hong Kong"],
-        ["Business Registration No.", C_EN.brn],
-      ],
-      verify: "Verify our company registration",
+    figure: {
+      alt: "Aerial view of Ark Village among the trees beside a Danube backwater in Apatin, Serbia",
+      place: "Ark Village · Apatin, Serbia",
+      credit: "Photo: Ark Village",
     },
   },
 
@@ -128,17 +124,20 @@ window.LL_I18N.en = {
     title: ["Meet around ", { em: "the Danube." }],
     intro: "Events and gatherings are a practical way to connect with people interested in Liberland. Below are publicly announced events in the region. Always confirm dates, availability and booking conditions with the event organiser.",
     organiser: "Organised by Ark Village",
+    artCredit: "Artwork: Ark Village",
     details: "Event Details",
     whenLabel: "Dates",
     whereLabel: "Location",
     items: {
       longevity: {
         title: "Longevity Ark Retreat",
+        alt: "Ark Village's poster for the Longevity Ark Retreat, 21–22 November",
         where: "Ark Village, Apatin, Serbia",
         text: "A weekend exploring health, longevity, movement, recovery and nature, bringing together visitors interested in learning and shared experiences.",
       },
       winterAlchemy: {
         title: "Winter Alchemy Retreat",
+        alt: "Ark Village's poster for the Winter Alchemy Retreat, showing the village under snow",
         where: "Ark Village, Apatin, Serbia",
         text: "A winter gathering focused on regional food traditions, outdoor cooking, nature and shared activities near the Danube.",
       },
@@ -161,15 +160,18 @@ window.LL_I18N.en = {
         text: "Explore options for a visit, local activities and accommodation through Ark Village's dedicated experience page.",
         button: "Explore Experiences",
         href: L_EN.arkExperience,
+        alt: "Visitors with the Liberland flag on a sandy Danube beach",
       },
       {
         title: "Contact Ark Village",
+        alt: "A visitor on a paddleboard on the calm water at Ark Village",
         text: "Ask the local operator directly about accommodation, availability, group bookings and visitor arrangements.",
         button: "Contact Ark Village",
         href: L_EN.arkContact,
       },
     ],
     operator: "Operated by Ark Village",
+    credit: "Photo: Ark Village",
     noteLabel: "Where Ark Village is",
     note: "Ark Village is in Serbia. It is distinct from the territory claimed by Liberland. Booking accommodation or purchasing membership does not provide any special right to cross borders or enter that territory. Visitors remain responsible for applicable travel and entry requirements.",
   },
