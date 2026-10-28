@@ -214,7 +214,7 @@ function Brand() {
           </div>
           <div className="card card--pad stack stack--lg" style={{ padding: 28 }} data-reveal>
             <div className="eyebrow" style={{ letterSpacing: "0.18em" }}>Body · Space Grotesk 400/500/700</div>
-            <div style={{ fontSize: 22, lineHeight: 1.4 }}>Registered in Victoria. Settled on-chain. Reviewed by people who read the whole footnote.</div>
+            <div style={{ fontSize: 22, lineHeight: 1.4 }}>Registered on Mahé. Settled on-chain. Reviewed by people who read the whole footnote.</div>
             <p className="small">16px base, 1.55 line height, 68ch max measure.</p>
           </div>
           <div className="card card--pad stack stack--lg" style={{ padding: 28 }} data-reveal>
@@ -300,7 +300,7 @@ function Brand() {
             <div style={{ background: "var(--black)", color: "var(--salt)", borderRadius: 18, padding: 24 }} className="stack">
               <div className="eyebrow" style={{ letterSpacing: "0.16em" }}>Say</div>
               {[
-                "“Custody in Victoria. Settlement on-chain. Both audited, neither optional.”",
+                "“Custody on Mahé. Settlement on-chain. Both audited, neither optional.”",
                 "“Yes, there is paperwork. It is short.”",
                 "“A treasury the size of a sandbar and the discipline of a bank.”",
               ].map(s => <div key={s} style={{ fontSize: 18, lineHeight: 1.35 }}>{s}</div>)}

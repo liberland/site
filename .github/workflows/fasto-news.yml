@@ -1,0 +1,79 @@
+name: Fasto news from issues
+
+# One open issue labelled "novinka" = one news item on fasto.ll.land.
+# Editing the issue updates the item, closing it takes the item down.
+on:
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled, deleted]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: fasto-news
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # Only issues created from the "novinka" form (or labelled by hand), and manual runs.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'novinka') ||
+      github.event.label.name == 'novinka'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Install Pillow
+        run: pip install --quiet pillow
+      - name: Sync news from issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 fasto/news_sync.py
+      - name: Regenerate pages
+        run: python3 fasto/build.py
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fasto/news fasto/index.html fasto/en/index.html fasto/hr/index.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Fasto: novinky z issue #${{ github.event.issue.number || 'sync' }}"
+            git push origin HEAD:master
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy
+        # Pushes made with GITHUB_TOKEN do not start other workflows, so start the deploy explicitly.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-pages.yml --ref master --repo "$GITHUB_REPOSITORY"
+      - name: Reply on the issue
+        if: github.event_name == 'issues' && contains(fromJSON('["opened","reopened","closed"]'), github.event.action)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          ACTION: ${{ github.event.action }}
+          AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          perm=$(gh api "repos/$GITHUB_REPOSITORY/collaborators/$AUTHOR/permission" --jq .permission 2>/dev/null || echo none)
+          case "$perm" in admin|maintain|write) ;; *) exit 0 ;; esac
+          url="https://fasto.ll.land/#novinka-issue-$NUMBER"
+          errors="$RUNNER_TEMP/news-errors.json"
+          if [ -s "$errors" ] && grep -q "\[$NUMBER," "$errors"; then
+            msg="⚠️ Novinku se nepodařilo zveřejnit, protože se nepodařilo stáhnout fotky. Zkuste fotky v issue nahrát znovu (upravte issue)."
+          elif [ "$ACTION" = "closed" ]; then
+            msg="Novinka je stažená z webu. Když issue znovu otevřete, vrátí se."
+          else
+            msg="✅ Novinka bude do deseti minut na webu: $url
+
+          Úpravou tohoto issue novinku upravíte, zavřením ji z webu stáhnete."
+          fi
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "$msg"

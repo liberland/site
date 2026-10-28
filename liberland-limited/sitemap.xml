@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://liberlandlimited.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://liberlandlimited.com/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://liberlandlimited.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/privacy/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://liberlandlimited.com/zh/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/privacy/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://liberlandlimited.com/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/terms/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://liberlandlimited.com/zh/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liberlandlimited.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://liberlandlimited.com/zh/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liberlandlimited.com/terms/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

@@ -1,96 +1,90 @@
-// Hero — full-bleed Swiss layout with split serif/sans, subtle dove silhouette and figure
+// Hero — full-bleed aerial photo of the Danube with a slow drift, serif headline on top
 const { useEffect: useEffectHero, useRef: useRefHero } = React;
 
-function DoveSilhouette() {
-  // a gentle silhouette behind the hero — derived from the logo dove direction
+// Words rise in one after another; a phrase without spaces (Chinese) rises as one piece
+// and is not followed by a space.
+const CJK = /[　-鿿＀-￯]/;
+
+function HeroTitle({ phrases }) {
+  const ref = useRefHero(null);
+  useEffectHero(() => {
+    const words = ref.current?.querySelectorAll(".word") || [];
+    words.forEach((w, i) => { w.style.animationDelay = `${300 + i * 80}ms`; });
+  }, []);
+
   return (
-    <div className="dove-bg" aria-hidden="true">
-      <svg viewBox="0 0 600 600" fill="none">
-        <circle cx="300" cy="300" r="280" fill="var(--teal)" opacity="0.18"/>
-        <path
-          d="M170 320 C 220 270, 280 250, 340 270 C 360 240, 400 230, 440 250 C 410 260, 400 290, 410 310 C 380 305, 360 320, 350 350 C 340 330, 320 325, 300 335 C 270 320, 220 330, 170 320 Z"
-          fill="var(--teal)"
-          opacity="0.7"
-        />
-      </svg>
-    </div>
+    <h1 ref={ref} className="display h1 hero" style={{ margin: "0 0 32px" }}>
+      {phrases.map((p, i) => {
+        const words = p.text.split(" ").map((w, j) => (
+          <React.Fragment key={j}>
+            <span className="word">{w}</span>{CJK.test(w) ? "" : " "}
+          </React.Fragment>
+        ));
+        return p.em ? <em key={i}>{words}</em> : <React.Fragment key={i}>{words}</React.Fragment>;
+      })}
+    </h1>
   );
 }
 
-function Hero() {
-  const titleRef = useRefHero(null);
-
+// The photo drifts slower than the page while the hero is on screen.
+function useParallax(ref) {
   useEffectHero(() => {
-    const words = titleRef.current?.querySelectorAll(".word") || [];
-    words.forEach((w, i) => { w.style.animationDelay = `${i * 80}ms`; });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const y = Math.min(window.scrollY, window.innerHeight * 1.2);
+        if (ref.current) ref.current.style.transform = `translate3d(0, ${y * 0.28}px, 0)`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => { window.removeEventListener("scroll", onScroll); cancelAnimationFrame(frame); };
   }, []);
+}
 
-  const title = "A members' house for the Liberland community.";
+function Hero() {
+  const t = window.LL_T.hero;
+  const { PHOTOS } = window.LL_DATA;
+  const bg = useRefHero(null);
+  useParallax(bg);
 
   return (
-    <section id="hero" data-screen-label="Hero">
-      <DoveSilhouette />
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+    <section id="hero" className="hero--photo" data-screen-label="Hero">
+      <div className="hero-bg" ref={bg}>
+        <img src={window.LL_ROOT + PHOTOS.hero} alt={t.figure.alt} width="1500" height="890" fetchpriority="high" />
+      </div>
+      <div className="hero-shade" aria-hidden="true" />
+
+      <div className="container hero-inner">
         <div className="hero-eyebrow">
           <span className="dot" />
-          <span className="label">Liberland Limited · Hong Kong</span>
-          <span style={{ flex: 1, height: 1, background: "var(--rule)" }} />
-          <span className="label" style={{ color: "var(--ink-mute)" }}>Est. MMXXIV</span>
+          <span className="label">{t.eyebrow}</span>
+          <span className="rule" />
+          <span className="label eyebrow-right">{t.eyebrowRight}</span>
         </div>
 
-        <div className="hero-grid">
-          <div>
-            <h1 ref={titleRef} className="display h1 hero" style={{ marginBottom: 36 }}>
-              {title.split(" ").map((w, i) => (
-                <React.Fragment key={i}>
-                  <span className="word">{w}</span>
-                  <span> </span>
-                </React.Fragment>
-              ))}
-            </h1>
+        <HeroTitle phrases={t.title} />
 
-            <p className="lede" style={{ maxWidth: 560, margin: 0 }}>
-              We provide membership services, host community gatherings, and broker
-              residences at <em>Ark Village</em> on the Danube. One door. One office.
-              One members' register.
-            </p>
+        <p className="lede hero-lede">{t.lede}</p>
 
-            <div className="hero-actions">
-              <a href="#membership" className="btn btn--solid">
-                Become a member <span className="arrow">→</span>
-              </a>
-              <a href="#events" className="btn">
-                Upcoming gatherings
-              </a>
-            </div>
+        <div className="hero-actions">
+          <a href="#membership" className="btn btn--solid">
+            {t.primary} <span className="arrow">→</span>
+          </a>
+          <a href="#visit" className="btn">{t.secondary}</a>
+        </div>
 
-            <div className="hero-meta">
-              <div>
-                <div className="label">Members</div>
-                <div className="v num">1,240+</div>
+        <div className="hero-foot">
+          <div className="hero-meta">
+            {t.meta.map(m => (
+              <div key={m.label}>
+                <div className="label">{m.label}</div>
+                <div className="v">{m.value}</div>
               </div>
-              <div>
-                <div className="label">Gatherings / yr</div>
-                <div className="v num">6 — 8</div>
-              </div>
-              <div>
-                <div className="label">Residences brokered</div>
-                <div className="v num">38</div>
-              </div>
-            </div>
+            ))}
           </div>
-
-          <figure className="hero-figure" style={{ margin: 0 }}>
-            <img
-              src="https://ark.ll.land/wp-content/uploads/2022/05/20210814_210647-1024x768.jpg"
-              alt="Ark Village on the Danube"
-              loading="lazy"
-            />
-            <figcaption className="caption">
-              <span>Ark Village · Apatin</span>
-              <span>45.689° N · 18.945° E</span>
-            </figcaption>
-          </figure>
+          <p className="hero-credit" aria-hidden="true">{t.figure.place}</p>
         </div>
       </div>
     </section>

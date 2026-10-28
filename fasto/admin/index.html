@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Správa novinek – Fasto</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../assets/fasto-stripes-charcoal.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+<header class="header scrolled">
+ <div class="wrap header__in">
+  <a class="logo" href="../" aria-label="Fasto, web">
+   <img class="on-light" src="../assets/fasto-wordmark-charcoal.svg" alt="Fasto" width="116" height="24">
+   <img class="on-dark" src="../assets/fasto-wordmark-white.svg" alt="Fasto" width="116" height="24">
+  </a>
+  <span class="admin__badge">Správa novinek</span>
+  <a class="btn btn--ghost btn--sm" style="margin-left:auto" href="../#novinky">Zobrazit web</a>
+ </div>
+</header>
+
+<main class="wrap admin__main">
+ <section class="panel">
+  <h1 class="display-lg" style="margin-top:0">Novinky</h1>
+  <p class="lead">Novinky se píšou přes GitHub, stačí být přihlášený svým účtem. Žádný token ani heslo navíc.</p>
+  <div class="row" style="margin-top:32px">
+   <a class="btn" href="https://github.com/liberland/site/issues/new?template=novinka.yml" target="_blank" rel="noopener">+ Přidat novinku <span class="arr" aria-hidden="true">→</span></a>
+   <a class="btn btn--ghost" href="https://github.com/liberland/site/issues?q=is%3Aissue+label%3Anovinka" target="_blank" rel="noopener">Upravit nebo smazat novinky</a>
+  </div>
+ </section>
+
+ <section class="panel">
+  <h2 class="h2" style="margin-top:0">Jak to funguje</h2>
+  <ol class="steps-admin">
+   <li><b>Přidat:</b> klikněte na „Přidat novinku“. Nadpis napište do pole <i>Title</i>, vyberte kategorii, napište text a přetáhněte fotky do pole <i>Fotky</i>. Pak <i>Create</i>.</li>
+   <li><b>Zveřejnění:</b> do dvou minut je novinka na webu ve všech třech jazycích. Pod issue se objeví komentář s odkazem.</li>
+   <li><b>Úprava:</b> otevřete novinku v seznamu, u textu klikněte na <i>…</i> → <i>Edit</i>, změňte a uložte. Web se aktualizuje sám.</li>
+   <li><b>Smazání:</b> klikněte na <i>Close issue</i>. Novinka z webu zmizí. <i>Reopen</i> ji vrátí.</li>
+  </ol>
+  <p class="muted">Angličtinu a chorvatštinu vyplňovat nemusíte, chybějící překlad se na webu ukáže česky. Novinky může přidávat jen někdo s právem zápisu do repozitáře <code>liberland/site</code>; issues od ostatních se ignorují. Funguje to i v mobilní aplikaci GitHub.</p>
+ </section>
+</main>
+</body>
+</html>

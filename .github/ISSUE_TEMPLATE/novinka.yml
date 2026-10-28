@@ -1,0 +1,65 @@
+name: Fasto – nová novinka
+description: Novinka na web fasto.ll.land (galerie, nadpis, kategorie, text, místo)
+title: ""
+labels: ["novinka"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Nadpis novinky napište do pole Title nahoře.** Po odeslání se novinka do dvou minut objeví na webu.
+        Úpravou tohoto issue novinku upravíte, zavřením ji z webu stáhnete.
+  - type: dropdown
+    id: kategorie
+    attributes:
+      label: Kategorie
+      options:
+        - Novinka
+        - Nábytek
+        - Skříně na míru
+        - Renovace
+        - Zomes
+        - Prodejna
+        - Liberland
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: misto
+    attributes:
+      label: Místo
+      description: Nepovinné, např. Batina, Praha, Liberland.
+  - type: input
+    id: datum
+    attributes:
+      label: Datum
+      description: Nepovinné, ve tvaru 2026-10-15. Když ho nevyplníte, použije se dnešní datum.
+  - type: textarea
+    id: text-cs
+    attributes:
+      label: Text (česky)
+      description: Odstavce oddělte prázdným řádkem.
+    validations:
+      required: true
+  - type: textarea
+    id: fotky
+    attributes:
+      label: Fotky
+      description: Přetáhněte sem fotky (nebo je vložte přes ikonu sponky). První fotka je hlavní. Zmenší se automaticky.
+  - type: input
+    id: title-en
+    attributes:
+      label: Title (English)
+      description: Nepovinné. Když chybí, na anglické verzi se ukáže čeština.
+  - type: textarea
+    id: text-en
+    attributes:
+      label: Text (English)
+  - type: input
+    id: title-hr
+    attributes:
+      label: Naslov (hrvatski)
+      description: Nepovinné. Když chybí, na chorvatské verzi se ukáže čeština.
+  - type: textarea
+    id: text-hr
+    attributes:
+      label: Tekst (hrvatski)

@@ -1,0 +1,9 @@
+{
+ "nabytek": {"color": "timber", "cs": "Nábytek", "en": "Furniture", "hr": "Namještaj"},
+ "skrine": {"color": "timber", "cs": "Skříně na míru", "en": "Fitted wardrobes", "hr": "Ormari po mjeri"},
+ "renovace": {"color": "pond", "cs": "Renovace", "en": "Renovation", "hr": "Renovacije"},
+ "zomes": {"color": "leaf", "cs": "Zomes", "en": "Zomes", "hr": "Zomei"},
+ "prodejna": {"color": "timber", "cs": "Prodejna", "en": "Shop", "hr": "Prodavaonica"},
+ "liberland": {"color": "leaf", "cs": "Liberland", "en": "Liberland", "hr": "Liberland"},
+ "obecne": {"color": "pond", "cs": "Novinka", "en": "News", "hr": "Novost"}
+}

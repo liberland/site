@@ -1,0 +1,49 @@
+{
+ "items": [
+  {
+   "id": "issue-45",
+   "date": "2026-10-15",
+   "category": "prodejna",
+   "location": "Batina",
+   "title": {
+    "cs": "Nábytek k prodeji v Batině",
+    "en": "Furniture for sale in Batina",
+    "hr": "Namještaj na prodaju u Batini"
+   },
+   "text": {
+    "cs": "V prodejně v Batině si můžete koupit nábytek do bytu i domu: postele, jídelní stoly a židle, kuchyňské skříňky, sedačky a obývací stěny.\n\nNa fotkách jsou příklady. Na ceny a aktuální nabídku se zeptejte po telefonu.",
+    "en": "In our shop in Batina you can buy furniture for flats and houses: beds, dining tables and chairs, kitchen cabinets, sofas and living-room units.\n\nThe photos show examples. Call us for prices and what is currently available.",
+    "hr": "U našoj prodavaonici u Batini možete kupiti namještaj za stan i kuću: krevete, blagovaonske stolove i stolice, kuhinjske elemente, kauče i regale za dnevni boravak.\n\nNa fotografijama su primjeri. Za cijene i trenutačnu ponudu nazovite nas."
+   },
+   "images": [
+    {
+     "src": "news/issue-45/1.jpg",
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "src": "news/issue-45/2.jpg",
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "src": "news/issue-45/3.jpg",
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "src": "news/issue-45/4.jpg",
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "src": "news/issue-45/5.jpg",
+     "w": 1200,
+     "h": 1600
+    }
+   ],
+   "issue": 45,
+   "updated_at": "2026-10-15T10:43:43Z"
+  }
+ ]
+}

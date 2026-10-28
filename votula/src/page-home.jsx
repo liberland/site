@@ -52,7 +52,7 @@ function Home() {
             <p className="body" style={{ margin: "18px auto 0", maxWidth: "62ch", color: "var(--text-2)" }}>
               Votula is Liberland's blockchain and crypto branch. We operate Liberland EVM — constitution-aligned
               contracts covering identity, elections, treasury, a land cadastre and a company registry — and we build
-              the property and merit rails on top of it. Registered in Victoria. Frozen for audit on {CHAIN.frozen}.
+              the property and merit rails on top of it. Seychelles IBC 156846 since 2014. Frozen for audit on {CHAIN.frozen}.
             </p>
 
             <div className="flex" style={{ justifyContent: "center", gap: 12, marginTop: 34 }}>
