@@ -59,6 +59,63 @@ test.describe('Documentary imagery', () => {
   });
 });
 
+test.describe('Claims register', () => {
+  test('lists every claim on record, grouped by incident', async ({ page }) => {
+    await page.goto('/#/claims');
+    await expect(page.locator('h1')).toHaveText('Everything that was taken');
+    await expect(page.locator('.claim')).toHaveCount(12);
+    await expect(page.locator('.claims-group')).toHaveCount(4);
+    // Newest incident first, so the register reads as a chronology.
+    await expect(page.locator('.claims-group').first()).toContainText('GS-2026-07-02');
+  });
+
+  test('a claim without a photograph says so and names where to attach one', async ({ page }) => {
+    await page.goto('/#/claims');
+    const slot = page.locator('.claim .image-slot').first();
+    await expect(slot).toBeVisible();
+    await expect(slot).toContainText('NO PHOTOGRAPH ON RECORD');
+    await expect(slot).toContainText(/CL-\d{4}-\d{2}-\d{2}-\d{2}/);
+  });
+
+  test('a claim inside an incident aggregate is never shown as its own value', async ({ page }) => {
+    await page.goto('/#/claims');
+    const claim = page.locator('.claim', { hasText: 'Hand and power tools' });
+    await expect(claim).toContainText('Inside the incident total');
+    await expect(claim).toContainText('NOT YET ITEMISED');
+    // It must not present a euro figure of its own — that would double count
+    // against the €54,486.22 the complaint already carries.
+    await expect(claim.locator('.claim__value')).toHaveCount(0);
+  });
+
+  test('the register declares its own gaps', async ({ page }) => {
+    await page.goto('/#/claims');
+    const summary = page.locator('.claims-summary');
+    await expect(summary).toContainText('ENTRIES ON RECORD');
+    await expect(summary).toContainText('HAVE A PHOTOGRAPH');
+    await expect(summary).toContainText('NOT YET ITEMISED');
+  });
+
+  test('search and category filters narrow the register', async ({ page }) => {
+    await page.goto('/#/claims');
+    await page.getByPlaceholder('Item, owner, reference…').fill('generator');
+    await expect(page.locator('.claim')).toHaveCount(1);
+    await expect(page.locator('.claim')).toContainText('Generator');
+  });
+
+  test('the home page advertises the register', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: /Everything that was taken, one entry at a time/ })).toBeVisible();
+    await page.getByRole('button', { name: 'Open the full register' }).click();
+    await expect(page).toHaveURL(/#\/claims/);
+  });
+
+  test('"Damages" is in the primary navigation', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Damages', exact: true }).click();
+    await expect(page).toHaveURL(/#\/claims/);
+  });
+});
+
 test.describe('State marks', () => {
   test('the arms appear once, full colour, above the silhouette threshold', async ({ page }) => {
     await page.goto('/');

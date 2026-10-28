@@ -4,8 +4,9 @@ The Gornja Siga Settlement Campaign — a public, evidence-based
 fundraising and accountability site for the existing, permanent Gornja Siga
 settlement. See `ARCHITECTURE.md`,
 `CONTENT-GUIDE.md`, `EVIDENCE-PUBLICATION-CHECKLIST.md`,
-`DATA-DICTIONARY.md`, `COSTS-DATA-GUIDE.md`, `LEGAL-REVIEW-CHECKLIST.md` and
-`DEPLOYMENT.md` before changing content or publishing evidence.
+`DATA-DICTIONARY.md`, `CLAIMS-REGISTER-GUIDE.md`, `COSTS-DATA-GUIDE.md`,
+`LEGAL-REVIEW-CHECKLIST.md` and `DEPLOYMENT.md` before changing content or
+publishing evidence.
 
 **No live payment method is enabled.** See `LEGAL-REVIEW-CHECKLIST.md` for
 what must happen before this site is used for real fundraising.

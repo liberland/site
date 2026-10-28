@@ -370,6 +370,47 @@ function TheLand() {
   );
 }
 
+// The damages themselves, advertised rather than buried in a data table.
+// A strip of what is on record, leading into the full register.
+function DamagesTeaser() {
+  const go = window.BWWR_goTo;
+  const items = window.Data.items;
+  const s = window.Metrics.claimsSummary(items);
+  const preview = items.slice(0, 4);
+
+  return (
+    <section className="section">
+      <div className="section-number">
+        <span className="mono" style={{ color: "var(--amber)", fontSize: 12 }}>
+          02
+        </span>
+        <span className="rule-short" />
+        <span className="eyebrow">The damages</span>
+      </div>
+      <div className="row-wrap gap-24" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 44 }}>
+        <h2 className="h2" style={{ maxWidth: "20ch" }}>
+          Everything that was taken, one entry at a time
+        </h2>
+        <p className="small" style={{ maxWidth: "44ch", fontSize: 17 }}>
+          {s.total} entries on record. {s.valued} carry a value, {s.photographed} have a photograph, and{" "}
+          {s.itemisationPending} are still a category rather than a thing. The register says which is which.
+        </p>
+      </div>
+
+      <div className="claims-grid" style={{ marginBottom: 36 }}>
+        {preview.map((c) => {
+          const inc = window.Data.incidents.find((i) => i.id === c.incidentId);
+          return <window.BWWR_ClaimCard key={c.id} claim={c} inc={inc} />;
+        })}
+      </div>
+
+      <button className="btn" onClick={go("claims")}>
+        Open the full register
+      </button>
+    </section>
+  );
+}
+
 function KeyIncident() {
   const go = window.BWWR_goTo;
   const inc = window.Data.incidents[0];
@@ -525,6 +566,7 @@ function Home() {
       <Hero />
       <MetricBand />
       <CostsTeaser />
+      <DamagesTeaser />
       <PositionSection />
       <TheLand />
       <KeyIncident />

@@ -170,12 +170,185 @@
     },
   ];
 
+  // ── The claims register ─────────────────────────────────────────────
+  // Every piece of property on record, one entry per thing, rendered one
+  // after another at #/claims. This is the list a reader scrolls to see
+  // what was actually taken or destroyed.
+  //
+  // TO ADD A CLAIM: append an entry. `id` is a stable public reference,
+  // `imageId` points at a key in `images` (null renders a slot asking for
+  // the photograph), and `cents` is integer minor units or null.
+  //
+  // `informational: true` means the item belongs to an incident whose
+  // valuation scope is the incident aggregate — its value is already
+  // inside that total, so it is shown for the record but never summed and
+  // never emitted as a ledger row. That is what stops the €54,486.22
+  // complaint total being counted twice, once whole and once in pieces.
+  //
+  // `itemisationPending: true` marks a line that is still a category
+  // rather than a thing ("Hand and power tools"). The register renders it
+  // as an open gap, because an item-by-item reconciliation of the 2023
+  // complaint is still outstanding — see LEGAL-REVIEW-CHECKLIST.md.
   const items = [
-    { incidentId: "GS-2026-07-02", name: "Sleeping bag", category: "Camping equipment", owner: "Resident A", cents: 3000 },
-    { incidentId: "GS-2026-07-02", name: "Pillow", category: "Camping equipment", owner: "Resident A", cents: 1000 },
-    { incidentId: "GS-2026-07-02", name: "Inflatable mattress", category: "Camping equipment", owner: "Resident A", cents: 1000 },
-    { incidentId: "GS-2026-07-02", name: "Black case with green mat", category: "Camping equipment", owner: "Resident A", cents: 2000 },
-    { incidentId: "GS-2026-07-02", name: "Blue bag with green pillow and folding mat", category: "Camping equipment", owner: "Resident A", cents: 5000 },
+    // GS-2023-09-21 — valuationScope: incident_total. The complaint's
+    // €54,486.22 is the counted figure; these lines are the breakdown as
+    // it stands today, which is category-level and not yet itemised.
+    {
+      id: "CL-2023-09-21-01",
+      incidentId: "GS-2023-09-21",
+      name: "Dwelling structure and fittings",
+      description:
+        "The residential structure and its fixed fittings, reported dismantled during the operation.",
+      category: "Shelter",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+    {
+      id: "CL-2023-09-21-02",
+      incidentId: "GS-2023-09-21",
+      name: "Hand and power tools",
+      description: "Tools reported removed from the site. Individual tools are not yet listed separately.",
+      category: "Tools",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+    {
+      id: "CL-2023-09-21-03",
+      incidentId: "GS-2023-09-21",
+      name: "Communications equipment",
+      description:
+        "Communications hardware reported removed. The criminal complaint refers to this category; individual units are not yet listed.",
+      category: "Communications",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+    {
+      id: "CL-2023-09-21-04",
+      incidentId: "GS-2023-09-21",
+      name: "Generator",
+      description: "Power generation equipment reported removed from the site.",
+      category: "Power",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+    {
+      id: "CL-2023-09-21-05",
+      incidentId: "GS-2023-09-21",
+      name: "Personal belongings and documents",
+      description:
+        "Personal property and papers reported removed. Not itemised; some contents may be subject to privacy redaction before any listing is published.",
+      category: "Personal property",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+
+    // GS-2024-02-16 — no valuation published, evidence grade unverified.
+    {
+      id: "CL-2024-02-16-01",
+      incidentId: "GS-2024-02-16",
+      name: "Swan houseboat",
+      description:
+        "The houseboat Swan. Campaign records report its removal; the operative legal basis, its present location and a supported valuation are all outstanding.",
+      category: "Vessel",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: false,
+    },
+
+    // GS-2024-05-18 — no valuation published, evidence grade unverified.
+    {
+      id: "CL-2024-05-18-01",
+      incidentId: "GS-2024-05-18",
+      name: "Construction materials and works",
+      description:
+        "Materials and work in progress affected by the intervention. No inventory of what was removed is published on this record.",
+      category: "Construction",
+      owner: "Settlement residents",
+      cents: null,
+      imageId: null,
+      informational: true,
+      itemisationPending: true,
+    },
+
+    // GS-2026-07-02 — valuationScope: item_total. These are the counted
+    // values; the certificate itemises them, so nothing here is pending.
+    {
+      id: "CL-2026-07-02-01",
+      incidentId: "GS-2026-07-02",
+      name: "Sleeping bag",
+      description: "Listed as item 1 on the temporary-seizure certificate of 2 July 2026.",
+      category: "Camping equipment",
+      owner: "Resident A",
+      cents: 3000,
+      imageId: null,
+      informational: false,
+      itemisationPending: false,
+    },
+    {
+      id: "CL-2026-07-02-02",
+      incidentId: "GS-2026-07-02",
+      name: "Pillow",
+      description: "Listed as item 2 on the temporary-seizure certificate of 2 July 2026.",
+      category: "Camping equipment",
+      owner: "Resident A",
+      cents: 1000,
+      imageId: null,
+      informational: false,
+      itemisationPending: false,
+    },
+    {
+      id: "CL-2026-07-02-03",
+      incidentId: "GS-2026-07-02",
+      name: "Inflatable mattress",
+      description: "Listed as item 3 on the temporary-seizure certificate of 2 July 2026.",
+      category: "Camping equipment",
+      owner: "Resident A",
+      cents: 1000,
+      imageId: null,
+      informational: false,
+      itemisationPending: false,
+    },
+    {
+      id: "CL-2026-07-02-04",
+      incidentId: "GS-2026-07-02",
+      name: "Black case with green mat",
+      description: "Listed as item 4 on the temporary-seizure certificate of 2 July 2026.",
+      category: "Camping equipment",
+      owner: "Resident A",
+      cents: 2000,
+      imageId: null,
+      informational: false,
+      itemisationPending: false,
+    },
+    {
+      id: "CL-2026-07-02-05",
+      incidentId: "GS-2026-07-02",
+      name: "Blue bag with green pillow and folding mat",
+      description: "Listed as item 5 on the temporary-seizure certificate of 2 July 2026.",
+      category: "Camping equipment",
+      owner: "Resident A",
+      cents: 5000,
+      imageId: null,
+      informational: false,
+      itemisationPending: false,
+    },
   ];
 
   const budget = [

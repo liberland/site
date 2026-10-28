@@ -923,6 +923,166 @@ table.ledger tbody tr:focus-within {
   text-transform: uppercase;
 }
 
+/* ── Claims register ──────────────────────────────────── */
+/* A claim is a record, so it is square and takes no shadow. */
+.claims-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule-on-dark);
+  border: 1px solid var(--rule-on-dark);
+}
+.claims-summary > div {
+  background: var(--carbon);
+  padding: 24px 24px 22px;
+}
+.claims-summary__n {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--chalk);
+  margin-bottom: 10px;
+}
+.claims-summary__n--warn {
+  color: var(--yellow);
+}
+@media (max-width: 760px) {
+  .claims-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.claims-filter {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-card);
+  padding: 22px 24px;
+  margin-bottom: var(--s-block);
+}
+
+.claims-group {
+  margin-bottom: var(--s-group);
+}
+.claims-group__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.claims-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1000px) {
+  .claims-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .claims-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.claim {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule-strong);
+  background: #fff;
+}
+.claim__figure {
+  border-bottom: 1px solid var(--rule);
+}
+.claim__body {
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.claim__ref {
+  margin-bottom: 10px;
+}
+.claim__name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 0 0 10px;
+}
+.claim__desc {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted-2);
+  margin: 0 0 18px;
+}
+.claim__facts {
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.claim__facts > div {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding-top: 9px;
+  border-top: 1px solid var(--rule);
+}
+.claim__facts dt {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.claim__facts dd {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--void);
+}
+.claim__value {
+  font-family: var(--mono) !important;
+  font-size: 15px !important;
+}
+.claim__value--muted {
+  font-family: var(--sans) !important;
+  font-size: 13.5px !important;
+  color: var(--stone) !important;
+}
+.claim__tags {
+  margin-bottom: 16px;
+}
+.claim__link {
+  margin-top: auto;
+  background: none;
+  border: 0;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--rule);
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+.claim__link:hover {
+  color: var(--void);
+}
+
 /* ── Print ────────────────────────────────────────────── */
 @media print {
   .site-nav,

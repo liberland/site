@@ -59,8 +59,9 @@
         if (i.status === "temporary_administrative_seizure") {
           if (i.valuationScope === "item_total") {
             items
-              .filter((x) => x.incidentId === i.id)
+              .filter((x) => x.incidentId === i.id && !x.informational)
               .forEach((x) => {
+                if (x.cents == null) return;
                 temp += x.cents;
                 hasTemp = true;
               });
@@ -100,6 +101,10 @@
       }
     });
     items.forEach((it) => {
+      // An informational item's value already sits inside its incident's
+      // aggregate. Emitting a row for it here would put the same loss in
+      // the ledger twice — once whole, once in pieces.
+      if (it.informational) return;
       const inc = incidents.find((x) => x.id === it.incidentId);
       if (!inc) return;
       rows.push({
@@ -215,6 +220,34 @@
     return lines.join("\n");
   }
 
+  // ── The claims register ───────────────────────────────────────────
+  // What is on record, and what is still missing from it. The counts are
+  // deliberately blunt: a register that cannot say how much of itself is
+  // incomplete is not a register, it is a selection.
+  function claimsSummary(items) {
+    const all = items || [];
+    return {
+      total: all.length,
+      photographed: all.filter((i) => i.imageId).length,
+      valued: all.filter((i) => i.cents != null).length,
+      itemisationPending: all.filter((i) => i.itemisationPending).length,
+      countedSeparately: all.filter((i) => !i.informational).length,
+    };
+  }
+
+  // Claims grouped by incident, newest incident first, so the register
+  // reads one incident after another rather than as a flat pile.
+  function claimsByIncident(incidents, items) {
+    return (incidents || [])
+      .slice()
+      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .map((inc) => ({
+        incident: inc,
+        claims: (items || []).filter((it) => it.incidentId === inc.id),
+      }))
+      .filter((g) => g.claims.length > 0);
+  }
+
   return {
     isEligibleGrade,
     formatEUR,
@@ -225,5 +258,7 @@
     isCountingBasis,
     computeCostTotals,
     costsToCsv,
+    claimsSummary,
+    claimsByIncident,
   };
 });
