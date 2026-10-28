@@ -110,6 +110,55 @@ test("the cost CSV marks which rows count and leaves unsourced amounts blank", (
   });
 });
 
+test("an informational claim never reaches the ledger or a total", () => {
+  // The 2023 complaint is counted once, as its own aggregate. Its breakdown
+  // lines exist for the register but must never be summed or emitted as
+  // ledger rows, or the same loss appears twice — once whole, once in pieces.
+  const informational = Data.items.filter((i) => i.informational);
+  assert.ok(informational.length >= 5, "fixture should carry informational claims");
+
+  const rows = Metrics.buildLedgerRows(Data.incidents, Data.items);
+  informational.forEach((i) => {
+    assert.ok(!rows.some((r) => r.item === i.name), i.id + " must not appear as a ledger row");
+  });
+  assert.equal(rows.length, 8, "adding register entries must not change the ledger's row count");
+
+  const m = Metrics.computeMetrics(Data.incidents, Data.items);
+  assert.equal(m.loss, 5448622, "the 2023 total is the aggregate, not the aggregate plus its parts");
+  assert.equal(m.temp, 12000, "the seizure total is still only the five certificated items");
+
+  // Even if someone later gives an informational line a value, it stays out.
+  const tampered = Data.items.map((i) => (i.informational ? { ...i, cents: 999999 } : i));
+  assert.equal(Metrics.computeMetrics(Data.incidents, tampered).temp, 12000);
+  assert.equal(Metrics.buildLedgerRows(Data.incidents, tampered).length, 8);
+});
+
+test("the claims register reports how incomplete it is", () => {
+  const s = Metrics.claimsSummary(Data.items);
+  assert.equal(s.total, Data.items.length);
+  assert.equal(s.valued, Data.items.filter((i) => i.cents != null).length);
+  assert.equal(s.photographed, Data.items.filter((i) => i.imageId).length);
+  // The counts must be able to express "nothing here yet" rather than
+  // quietly reporting a complete-looking register.
+  assert.ok(s.itemisationPending > 0, "the 2023 breakdown is still category-level and should say so");
+  assert.ok(s.total > s.countedSeparately, "some entries are inside an incident aggregate");
+});
+
+test("every claim carries the fields the register renders", () => {
+  Data.items.forEach((i) => {
+    for (const f of ["id", "incidentId", "name", "description", "category", "owner"]) {
+      assert.ok(i[f], `${i.id || "claim"} is missing ${f}`);
+    }
+    assert.ok(
+      Data.incidents.some((inc) => inc.id === i.incidentId),
+      i.id + " points at an incident that does not exist"
+    );
+    assert.ok("cents" in i && "imageId" in i, i.id + " must declare cents and imageId, even as null");
+  });
+  const ids = Data.items.map((i) => i.id);
+  assert.equal(new Set(ids).size, ids.length, "claim references must be unique");
+});
+
 test("private fields are never present in ledger rows", () => {
   const rows = Metrics.buildLedgerRows(Data.incidents, Data.items);
   const forbidden = ["locationPrivate", "ownerPrivateId", "notesPrivate", "privateOriginalPath"];

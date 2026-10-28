@@ -1,5 +1,6 @@
 const BWWR_NAV_ITEMS = [
   { view: "home", label: "Home" },
+  { view: "claims", label: "Damages" },
   { view: "ledger", label: "Ledger" },
   { view: "costs", label: "Croatia's Costs" },
   { view: "case", label: "The Case" },

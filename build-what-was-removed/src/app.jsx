@@ -26,6 +26,9 @@ function App() {
     case "incident":
       page = <window.BWWR_IncidentDetail incidentId={route.incidentId} />;
       break;
+    case "claims":
+      page = <window.BWWR_ClaimsPage />;
+      break;
     case "costs":
       page = <window.BWWR_CostsPage />;
       break;
