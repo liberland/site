@@ -151,8 +151,11 @@ function CostsPage() {
             <div className="eyebrow" style={{ marginBottom: 18 }}>
               Sourced expenditure
             </div>
-            <p className="cost-total__figure" style={{ marginBottom: 14 }}>
-              {t.hasSourced ? eur(t.sourcedCents) : "—"}
+            <p
+              className={"cost-total__figure" + (t.hasSourced ? "" : " cost-total__figure--empty")}
+              style={{ marginBottom: 14 }}
+            >
+              {t.hasSourced ? eur(t.sourcedCents) : "Not published"}
             </p>
             <div className="label-mono" style={{ lineHeight: 1.7 }}>
               {t.hasSourced
@@ -164,8 +167,11 @@ function CostsPage() {
             <div className="eyebrow" style={{ marginBottom: 18 }}>
               Estimated, shown separately
             </div>
-            <p className="cost-total__figure" style={{ marginBottom: 14, color: "var(--amber)" }}>
-              {t.hasEstimated ? eur(t.estimatedCents) : "—"}
+            <p
+              className={"cost-total__figure" + (t.hasEstimated ? "" : " cost-total__figure--empty")}
+              style={{ marginBottom: 14, color: t.hasEstimated ? "var(--amber)" : undefined }}
+            >
+              {t.hasEstimated ? eur(t.estimatedCents) : "None published"}
             </p>
             <div className="label-mono" style={{ lineHeight: 1.7 }}>
               CALCULATED FROM A STATED METHOD. NEVER ADDED TO SOURCED EXPENDITURE.
