@@ -17,6 +17,11 @@ function SiteFooter() {
             >
               Foster What We Built
             </span>
+            {/* Italic carries the motto and nothing else, and never below
+                20px — the one place this typeface is set in italic. */}
+            <p className="motto" style={{ color: "var(--muted-dark)", margin: "10px 0 0" }}>
+              To live and let live.
+            </p>
           </div>
           <p className="small" style={{ color: "var(--muted-dark)", maxWidth: "52ch", marginBottom: 20 }}>
             The Gornja Siga Settlement Campaign. An evidence-based effort to defend and foster our existing,

@@ -216,8 +216,17 @@ function CostsTeaser() {
             <div className="eyebrow" style={{ color: "rgba(10,10,11,.62)", marginBottom: 16 }}>
               Sourced expenditure
             </div>
-            <div style={{ fontFamily: "var(--display)", fontWeight: 400, fontSize: 46, lineHeight: 1, letterSpacing: "-0.015em" }}>
-              {t.hasSourced ? eur(t.sourcedCents) : "—"}
+            <div
+              style={{
+                fontFamily: "var(--display)",
+                fontWeight: 400,
+                fontSize: t.hasSourced ? 46 : 28,
+                lineHeight: t.hasSourced ? 1 : 1.6,
+                letterSpacing: "-0.015em",
+                color: t.hasSourced ? undefined : "rgba(10,10,11,.6)",
+              }}
+            >
+              {t.hasSourced ? eur(t.sourcedCents) : "Not published"}
             </div>
           </div>
           <div style={{ background: "var(--yellow)", padding: "30px 28px" }}>

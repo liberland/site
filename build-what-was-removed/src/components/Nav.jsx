@@ -18,14 +18,23 @@ function goTo(view, opts) {
 function UtilityBar() {
   return (
     <div className="utility-bar">
-      {/* No mark. The state owns three pieces of artwork — flag, escutcheon,
-          achievement — and a vector redraw of the arms is still open. V1's
-          invented seal was the wrong trade; where no real mark applies, the
-          design language says use none. The 2px yellow rule below this bar
-          carries the flag instead. */}
+      {/* The escutcheon, full colour, once per surface — the mark of office in
+          the letterhead position the design language describes: arms and office
+          lockup top-left over a 2px yellow rule, on void (the preferred
+          ground). It appears exactly here and nowhere else on the page.
+          Sized by width because the minimum is 22px wide and full colour needs
+          24px+; below that the rowan berries and water lines turn to mud and
+          the silhouette is used instead — which is what the favicon is. */}
       <div className="utility-bar__brand">
+        <img
+          className="arms"
+          src="assets/liberland-arms.png"
+          width="28"
+          height="39"
+          alt="Coat of arms of Liberland: a rowan tree on the chief, a dove and the sun on argent, the Danube in base."
+        />
         <span>Liberland</span>
-        <span style={{ width: 1, height: 12, background: "var(--rule-on-dark)" }} />
+        <span className="utility-bar__tick" />
         <span className="label-mono" style={{ color: "var(--muted-dark)" }}>
           SETTLEMENT&nbsp;CAMPAIGN
         </span>

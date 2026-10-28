@@ -10,7 +10,10 @@ module.exports = defineConfig({
   use: {
     baseURL: 'http://localhost:3738',
     launchOptions: {
-      executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+      // The stable symlink, not a pinned build directory. The container image
+      // bumps its Chromium periodically (1194 -> 1243 ...), and a pinned path
+      // fails every test at launch the first time that happens.
+      executablePath: '/opt/pw-browsers/chromium',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     },
   },

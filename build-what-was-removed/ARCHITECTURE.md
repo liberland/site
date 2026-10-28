@@ -109,16 +109,35 @@ Rules carried into the CSS and enforced by convention:
 - **The land is the image.** Documentary photography of the Danube and the
   floodplain in natural light; no renders, no filters, no posed crowds.
 
-### On the absence of a mark
+### The marks
 
 V2 names three pieces of state artwork — the flag, the escutcheon and the
-great arms — and records that a vector redraw of the arms is *still open*.
-V1's invented seal is called out as "the wrong trade". Since no authentic
-escutcheon artwork is available to this repo, the site follows the
-document's own fallback: *"If none of those apply, use no mark at all."*
-The 2px yellow rule beneath the utility bar carries the flag instead. The
-former invented seal has been removed from the utility bar and the footer.
+great arms — and is explicit about which goes where: the flag for anything
+flown or planted, the escutcheon for anything that signs or appears on a
+screen, the achievement for ceremony only.
 
-Do not add a hand-drawn coat of arms to this site. If official artwork
-becomes available, it belongs in the utility bar at ≥22px, never recoloured,
-never on a photograph.
+This site carries the **escutcheon**, in `assets/liberland-arms.png`, in the
+utility bar. That is the letterhead lockup the document describes: arms and
+office lockup top-left over a 2px yellow rule, on void — the preferred
+ground. The rules it is held to, all of which are testable and some of which
+`tests/site.spec.js` does test:
+
+- **Once per surface.** Full colour appears exactly once on the page, as the
+  mark of office. Do not add a second instance in the footer or the hero.
+- **Clear space of one third of the shield's width**, with nothing crossing
+  the outline — not a rule, not type. That is what the margin on
+  `.utility-bar__brand .arms` reserves; tightening it breaks the rule.
+- **22px minimum width, and full colour only at 24px and up.** Below that
+  the rowan berries and the water lines turn to mud, and the single-colour
+  silhouette is used instead — which is exactly what `assets/favicon-32.png`
+  and `assets/apple-touch-icon.png` are. Both are derived mechanically from
+  the artwork's own alpha channel, not redrawn.
+- **Never recoloured, stretched, rotated, shadowed, or placed on a
+  photograph.** The Open Graph card is the satellite frame alone for this
+  reason.
+
+Earlier versions of this file told maintainers not to draw a coat of arms,
+because none was available and V1's invented seal was the wrong trade. That
+condition is now met: this is the real artwork, supplied by the project. The
+instruction that remains is narrower — do not *invent* or redraw it, and do
+not use the flag or the full achievement in software.

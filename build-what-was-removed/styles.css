@@ -605,7 +605,7 @@ button {
 /* ── Nav — sticky utility bar ─────────────────────────── */
 .utility-bar {
   background: var(--void);
-  padding: 11px var(--gutter);
+  padding: 10px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -623,6 +623,24 @@ button {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--chalk);
+}
+/* The arms carry clear space of one third of the shield's width on every
+   side, and nothing crosses the outline — not a rule, not type. The margin
+   is what reserves it; don't collapse it to tighten the lockup. */
+.utility-bar__brand .arms {
+  display: block;
+  width: 28px;
+  height: auto;
+  margin-right: 9px;
+  flex: none;
+}
+/* The divider sits outside the arms' clear space, between the wordmark and
+   the office line — never against the shield. */
+.utility-bar__tick {
+  width: 1px;
+  height: 12px;
+  background: var(--rule-on-dark);
+  flex: none;
 }
 .utility-bar__meta {
   display: flex;
@@ -883,6 +901,15 @@ table.ledger tbody tr:focus-within {
   line-height: 1;
   letter-spacing: -0.015em;
   margin: 0;
+}
+/* An unpublished figure is an empty slot, not a value. At display size a
+   full-strength em dash reads as a drawn rule competing with the real
+   numbers beside it, so the placeholder is set smaller and muted — present,
+   clearly blank, and not mistakable for a zero. */
+.cost-total__figure--empty {
+  font-size: clamp(26px, 3vw, 34px);
+  color: var(--stone);
+  line-height: 1.7;
 }
 .cost-pending {
   border: 1px dashed var(--rule-strong);

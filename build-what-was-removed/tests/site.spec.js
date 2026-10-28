@@ -59,6 +59,31 @@ test.describe('Documentary imagery', () => {
   });
 });
 
+test.describe('State marks', () => {
+  test('the arms appear once, full colour, above the silhouette threshold', async ({ page }) => {
+    await page.goto('/');
+    const arms = page.locator('img.arms');
+    // Full colour appears once per surface, as the mark of office.
+    await expect(arms).toHaveCount(1);
+    await expect(arms).toBeVisible();
+    const box = await arms.boundingBox();
+    // Minimum 22px wide; below 24px the silhouette is used instead.
+    expect(box.width).toBeGreaterThanOrEqual(24);
+    // Never stretched: the rendered box keeps the artwork's own ratio.
+    const nat = await arms.evaluate((el) => el.naturalWidth / el.naturalHeight);
+    expect(Math.abs(box.width / box.height - nat)).toBeLessThan(0.02);
+    await expect(arms).toHaveAttribute('alt', /rowan|dove|arms/i);
+  });
+
+  test('the favicon and touch icon resolve', async ({ page }) => {
+    for (const href of ['assets/favicon-32.png', 'assets/apple-touch-icon.png']) {
+      const res = await page.request.get(href);
+      expect(res.status(), href).toBe(200);
+      expect(res.headers()['content-type']).toContain('image');
+    }
+  });
+});
+
 test.describe("Croatia's costs", () => {
   test('the home page surfaces the cost-of-enforcement section', async ({ page }) => {
     await page.goto('/');
@@ -85,7 +110,11 @@ test.describe("Croatia's costs", () => {
     const sourced = page
       .locator('.card-grid > div')
       .filter({ has: page.getByText('Sourced expenditure', { exact: true }) });
-    await expect(sourced.locator('.cost-total__figure')).toHaveText('—');
+    await expect(sourced.locator('.cost-total__figure')).toHaveText('Not published');
+    // The empty state must never render as a currency amount — a zero here
+    // would read as "Croatia spent nothing", which is not what an absent
+    // source means.
+    await expect(sourced.locator('.cost-total__figure')).not.toContainText('€');
     await expect(sourced).toContainText('NO OFFICIAL FIGURE PUBLISHED YET');
     await expect(page.getByText('NEEDS SOURCE').first()).toBeVisible();
     await expect(page.getByText(/6 of 6 rows are awaiting an official figure/i)).toBeVisible();

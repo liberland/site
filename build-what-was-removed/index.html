@@ -17,8 +17,11 @@
      Note that /fund/robots.txt is NOT consulted by crawlers — only the robots
      file at the domain root is — so this meta tag is what actually governs
      indexing for this site at a subpath.
-     TO GO LIVE: replace the line below with
-       <meta name="robots" content="index, follow, max-image-preview:large"> -->
+     TO GO LIVE: change the content attribute below to
+     "index, follow, max-image-preview:large". Deliberately spelled out
+     rather than shown as a ready-made tag — a complete robots meta sitting
+     in a comment on the one page that must not be indexed is too easy to
+     uncomment by accident. -->
 <meta name="robots" content="noindex, nofollow">
 
 <!-- Open Graph -->
@@ -27,9 +30,17 @@
 <meta property="og:url" content="https://liberlandlimited.com/fund/">
 <meta property="og:title" content="Foster What We Built | Gornja Siga Settlement">
 <meta property="og:description" content="An evidence-based campaign to defend and foster the existing, permanent settlement at Gornja Siga: document disputed property removals, pursue lawful recovery of what was taken, and sustain a peaceful, environmentally responsible community.">
+<!-- The card image is the NASA satellite frame — the territory itself, and
+     public domain. The arms are never placed on a photograph, so they are
+     not used here. -->
+<meta property="og:image" content="https://liberlandlimited.com/fund/assets/og-gornja-siga.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Satellite view of the Gornja Siga floodplain on the Danube.">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://liberlandlimited.com/fund/assets/og-gornja-siga.jpg">
 <meta name="twitter:title" content="Foster What We Built | Gornja Siga Settlement">
 <meta name="twitter:description" content="An evidence-based campaign to defend and foster the existing, permanent settlement at Gornja Siga: document disputed property removals, pursue lawful recovery of what was taken, and sustain a peaceful, environmentally responsible community.">
 
@@ -42,6 +53,13 @@
   "url": "https://liberlandlimited.com/fund/#/ledger"
 }
 </script>
+
+<!-- The escutcheon's silhouette, not the full arms: the design language says
+     use the single-colour silhouette below 24px, and a favicon is 16-32px.
+     Derived from the artwork's own outline. The flag is never a favicon. -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0B">
 
 <!-- Fonts are self-hosted in fonts/ and declared in styles.css — no
      third-party font request, so the typography cannot fail to arrive
