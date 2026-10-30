@@ -43,7 +43,6 @@ export function Hero() {
         />
       </div>
       <div className="hero-shade" aria-hidden="true" />
-      {event.atmosphere.snow && <div className="snow" aria-hidden="true" />}
       <Garland kind="swag" className="hero-garland" eager />
 
       <div className="wrap hero-inner">

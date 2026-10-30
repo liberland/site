@@ -10,7 +10,7 @@ const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, dev
 await page.goto('http://localhost:4180/christmas/', { waitUntil: 'networkidle' });
 await page.addStyleTag({
   content: `*{animation:none!important;transition:none!important}
-  .nav,.hero-ctas,.hero-credit,.snow,.skip-link,.ref-tag,.hero-pending,.twinkles{display:none!important}
+  .nav,.hero-ctas,.hero-credit,.snowfall,.skip-link,.ref-tag,.hero-pending,.twinkles{display:none!important}
   .hero{min-height:630px!important;height:630px}
   .hero .hero-garland{top:-8px!important}
   .hero-shade{opacity:.55}

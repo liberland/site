@@ -146,7 +146,7 @@ try {
     if (SHOTS) {
       await mkdir('tests/screenshots', { recursive: true });
       await scrollThrough(p);
-      await p.addStyleTag({ content: '*{animation:none!important;transition:none!important}.snow,.twinkles{display:none}.reveal{opacity:1!important;transform:none!important}' });
+      await p.addStyleTag({ content: '*{animation:none!important;transition:none!important}.snowfall,.twinkles{display:none}.reveal{opacity:1!important;transform:none!important}' });
       await p.screenshot({ path: `tests/screenshots/${w}.png`, fullPage: true });
     }
     await p.close();
@@ -158,7 +158,7 @@ try {
     await p.goto(url, { waitUntil: 'networkidle' });
     const anim = await p.evaluate(() => getComputedStyle(document.querySelector('.hero-grand em')).animationName);
     check(anim === 'none', 'reduced motion stops the gold shimmer');
-    check(!(await p.locator('.snow').isVisible()), 'reduced motion removes snow');
+    check(!(await p.locator('.snowfall').isVisible()), 'reduced motion removes the snowfall');
     const reveal = await p.evaluate(() => getComputedStyle(document.querySelector('.reveal')).opacity);
     check(reveal === '1', 'reduced motion shows content without reveal animation');
     await p.close();
