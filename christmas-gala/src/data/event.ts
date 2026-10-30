@@ -143,14 +143,15 @@ export const event = {
     } as Photo,
     /** Arched photograph beside the introduction. */
     portalPhoto: {
-      id: 'entrance-canopy',
-      title: 'The entrance',
-      caption: 'The wrought-iron canopy and gilded cartouche above the hotel entrance.',
-      alt: 'Ornate wrought-iron entrance canopy of Le Palais with a gilded cartouche',
-      cleared: false,
+      id: 'facade-dusk',
+      title: 'Le Palais at dusk',
+      caption: 'The hotel’s illuminated Belle Époque façade on U Zvonařky.',
+      alt: 'The illuminated Belle Époque façade of Le Palais Art Hotel Prague at dusk, with its arched entrance',
+      /** Supplied by the organisers (30 Oct 2026). */
+      cleared: true,
       credit: HOTEL,
-      source: 'lepalaishotel.eu/gallery — le_palais_art_gallery_hotel_05.jpg',
-      focus: '50% 50%',
+      source: 'Supplied by the organisers; lepalaishotel.eu/gallery — le_palais_art_gallery_hotel_03.jpg',
+      focus: '38% 50%',
     } as Photo,
     /** The photographic gallery, in display order (the first is shown largest). */
     gallery: [
