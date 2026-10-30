@@ -1,0 +1,29 @@
+{
+  "name": "liberland-christmas-gala",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Liberland Grand Christmas Gala 2026 — event landing page",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc -b",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "test": "node tests/site.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "5.2.8",
+    "@fontsource/cormorant-garamond": "5.2.8",
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.5.2",
+    "typescript": "5.8.3",
+    "vite": "6.4.5"
+  }
+}
