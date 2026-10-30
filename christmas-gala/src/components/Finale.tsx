@@ -1,47 +1,41 @@
 import { event } from '../data/event';
-import { registrationCta, externalLinkProps } from '../lib/event-helpers';
-import { Arrow } from './Arrow';
-import { FinaleRings } from './Art';
-import escutcheonPng from '../assets/liberland-escutcheon-128.png';
-import escutcheonWebp from '../assets/liberland-escutcheon-128.webp';
+import { dateDayMonthYear, registrationCta, externalLinkProps } from '../lib/event-helpers';
+import { Garland, Star, Wreath } from './Ornaments';
+import crestPng from '../assets/liberland-escutcheon-128.png';
+import crestWebp from '../assets/liberland-escutcheon-128.webp';
 
 export function Finale() {
   const f = event.editorial.finale;
   const cta = registrationCta();
   return (
-    <section className="finale" id="finale" aria-labelledby="finale-title">
-      <div className="finale-rings" aria-hidden="true">
-        <FinaleRings />
-      </div>
-      <div className="wrap">
-        <span className="label reveal">
-          {event.city} · {event.date.monthLabel}
-        </span>
-        <h2 id="finale-title" className="reveal">
-          {f.line1}
-          <br />
-          <em>{f.line2}</em>
-        </h2>
-        <p className="lead reveal">{f.lead}</p>
-        <a className="btn btn-gold reveal" href={cta.href} {...(cta.external ? externalLinkProps : {})}>
-          {f.cta} <Arrow />
-        </a>
-        <div className="finale-mark">
-          <picture>
-            <source srcSet={escutcheonWebp} type="image/webp" />
-            <img
-              src={escutcheonPng}
-              width={64}
-              height={89}
-              alt="Coat of arms of the Free Republic of Liberland"
-              decoding="async"
-            />
-          </picture>
-          <div className="rule-orn" style={{ width: 220 }}>
-            <i />
-          </div>
-          <span className="motto">{f.motto}</span>
+    <section className="finale" id="invitation" aria-labelledby="finale-title">
+      <Garland kind="swag" className="finale-garland" />
+      <div className="finale-stage">
+        <Wreath className="finale-wreath" />
+        <div className="finale-copy reveal">
+          <p className="eyebrow">
+            {event.city} <Star /> {dateDayMonthYear()}
+          </p>
+          <h2 id="finale-title" className="display">
+            {f.title}
+          </h2>
+          <p className="finale-lead">{f.lead}</p>
         </div>
+      </div>
+      <div className="wrap finale-ctas">
+        <a className="btn btn-gold" href={cta.href} {...(cta.external ? externalLinkProps : {})}>
+          {cta.label}
+        </a>
+        <a className="btn btn-ivory" href="#programme">
+          View Programme
+        </a>
+      </div>
+      <div className="finale-mark">
+        <picture>
+          <source srcSet={crestWebp} type="image/webp" />
+          <img src={crestPng} width={52} height={72} alt="Coat of arms of the Free Republic of Liberland" decoding="async" />
+        </picture>
+        <span className="motto">{f.motto}</span>
       </div>
     </section>
   );

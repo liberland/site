@@ -8,13 +8,15 @@
     "dev": "vite",
     "typecheck": "tsc -b",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "dev:reference": "VITE_REFERENCE_IMAGES=1 vite",
+    "build:reference": "VITE_REFERENCE_IMAGES=1 npm run build",
     "preview": "vite preview",
     "test": "node tests/site.test.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/archivo": "5.2.8",
+    "@fontsource-variable/cinzel": "5.3.0",
+    "@fontsource-variable/source-serif-4": "5.3.1",
     "@fontsource/cormorant-garamond": "5.2.8",
-    "@fontsource/ibm-plex-mono": "5.2.7",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

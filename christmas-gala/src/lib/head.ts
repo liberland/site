@@ -1,5 +1,5 @@
 import { event } from '../data/event';
-import { dateConfirmed, venueAddressLine } from './event-helpers';
+import { dateConfirmed } from './event-helpers';
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -11,7 +11,7 @@ const esc = (s: string) =>
  */
 export function headTags() {
   const s = event.site;
-  const title = `${event.name} · ${event.city}`;
+  const title = `${event.name} · Christmas at Le Palais, ${event.city}`;
   const image = new URL(s.socialImage, s.url).href;
   const tags = [
     `<title>${esc(title)}</title>`,
@@ -79,15 +79,16 @@ export function validateEvent() {
   if (!['coming-soon', 'open', 'closed'].includes(r.status)) errors.push("registration.status must be 'coming-soon', 'open' or 'closed'");
   if (r.status === 'open' && !r.url) errors.push("registration.status is 'open' but registration.url is empty");
   if (r.url && !/^https:\/\//.test(r.url)) errors.push('registration.url must start with https://');
-  for (const g of event.guests.featured) {
-    if (!['anticipated', 'confirmed'].includes(g.status)) errors.push(`guest ${g.name}: status must be 'anticipated' or 'confirmed'`);
-    if (g.portrait && !g.portraitCredit) errors.push(`guest ${g.name}: portraitCredit is required when a portrait is set`);
+  for (const p of event.faces.people) {
+    if (!['featured', 'programme', 'anticipated', 'confirmed'].includes(p.attendance))
+      errors.push(`${p.name}: attendance must be 'featured', 'programme', 'anticipated' or 'confirmed'`);
+    if (p.portrait && !p.credit) errors.push(`${p.name}: credit is required when a portrait is set`);
   }
-  for (const p of event.venue.photos) {
-    if (p.src && !p.credit) errors.push(`venue photo ${p.title}: credit is required when a photograph is set`);
-    if (p.src && !p.alt) errors.push(`venue photo ${p.title}: alt text is required`);
+  const v = event.venue;
+  for (const ph of [v.heroPhoto, v.portalPhoto, v.christmasPhoto, ...v.gallery]) {
+    if (!ph.alt) errors.push(`photo ${ph.id}: alt text is required`);
+    if (!ph.credit) errors.push(`photo ${ph.id}: credit is required`);
   }
   if (!/^https:\/\/.+\/$/.test(event.site.url)) errors.push('site.url must be https://… and end with /');
   if (errors.length) throw new Error('src/data/event.ts has problems:\n  - ' + errors.join('\n  - '));
-  return venueAddressLine;
 }

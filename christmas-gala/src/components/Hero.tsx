@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { event } from '../data/event';
-import { dateConfirmed, dateMono, registrationCta, externalLinkProps } from '../lib/event-helpers';
-import { Arrow } from './Arrow';
-import { HeroFacade } from './Art';
+import { dateConfirmed, dateDayMonthYear, dateLong, resolvePhoto } from '../lib/event-helpers';
+import { Photo } from './Photo';
+import { Flourish, Garland, Star, Wreath } from './Ornaments';
 
-/** Very light parallax on the hero drawing; skipped for reduced-motion users. */
+/** Slow drift of the photograph while scrolling; skipped for reduced-motion users. */
 function useParallax(ref: React.RefObject<HTMLElement>) {
   useEffect(() => {
     const el = ref.current;
@@ -13,7 +13,7 @@ function useParallax(ref: React.RefObject<HTMLElement>) {
     const update = () => {
       frame = 0;
       const y = Math.min(window.scrollY, el.offsetHeight);
-      el.style.setProperty('--py', `${(y * 0.14).toFixed(1)}px`);
+      el.style.setProperty('--py', `${(y * 0.18).toFixed(1)}px`);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -29,72 +29,56 @@ function useParallax(ref: React.RefObject<HTMLElement>) {
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   useParallax(ref);
-  const cta = registrationCta();
-  const ext = cta.external ? externalLinkProps : {};
+  const v = event.venue;
 
   return (
     <section className="hero" id="top" aria-labelledby="hero-title" ref={ref}>
-      <div className="hero-art" aria-hidden="true">
-        <HeroFacade />
+      <div className="hero-media">
+        <Photo
+          photo={v.heroPhoto}
+          sizes="100vw"
+          eager
+          className="hero-photo"
+          fallback={<Wreath className="hero-wreath" />}
+        />
       </div>
-      <div className="hero-vignette" aria-hidden="true" />
+      <div className="hero-shade" aria-hidden="true" />
       {event.atmosphere.snow && <div className="snow" aria-hidden="true" />}
+      <Garland kind="swag" className="hero-garland" eager />
 
-      <div className="wrap">
-        <div className="hero-copy">
-          <p className="hero-kicker label" style={{ margin: 0 }}>
-            {event.city} · {event.date.monthLabel} · {event.venue.shortName}
-          </p>
-          <h1 id="hero-title">
-            <span className="pre">Liberland</span>
-            <span className="big">
-              Grand
-              <br />
-              <em>Christmas</em>
-              <br />
-              Gala
-            </span>
-            <span className="sr-only"> 2026</span>
-          </h1>
-          <p className="sub">{event.tagline}</p>
-          <dl className="hero-meta" style={{ marginBottom: 0 }}>
-            <div>
-              <dt className="label">City</dt>
-              <dd>
-                {event.city.toUpperCase()}, {event.countryCode}
-              </dd>
-            </div>
-            <div>
-              <dt className="label">Date</dt>
-              <dd>
-                {dateMono()}
-                {!dateConfirmed && <small>Proposed · not yet confirmed</small>}
-              </dd>
-            </div>
-            <div>
-              <dt className="label">Venue</dt>
-              <dd>{event.venue.shortName.toUpperCase()}</dd>
-            </div>
-          </dl>
-          <div className="hero-ctas">
-            <a className="btn btn-gold" href={cta.href} {...ext}>
-              {cta.label} <Arrow />
-            </a>
-            <a className="btn btn-ghost" href="#programme">
-              Discover the Programme
-            </a>
-          </div>
+      <div className="wrap hero-inner">
+        <p className="eyebrow hero-eyebrow">
+          {event.city} <Star /> {dateConfirmed ? dateDayMonthYear() : `${dateDayMonthYear()} · proposed`}
+        </p>
+        <h1 id="hero-title" className="hero-title">
+          <span className="hero-liberland">Liberland</span>
+          <span className="hero-grand">
+            Grand <em>Christmas</em> Gala
+          </span>
+          <span className="sr-only"> 2026</span>
+        </h1>
+        <Flourish className="hero-flourish" />
+        <p className="hero-sub">{event.tagline}</p>
+        <p className="hero-details">
+          <span>{dateLong()}</span>
+          <Star />
+          <span>{v.name}</span>
+        </p>
+        {!dateConfirmed && <p className="hero-pending">Proposed date · not yet confirmed</p>}
+        <div className="hero-ctas">
+          <a className="btn btn-gold" href="#celebration">
+            Discover the Gala
+          </a>
+          <a className="btn btn-ivory" href="#programme">
+            View Programme
+          </a>
         </div>
       </div>
-      <div className="wrap hero-foot">
-        <a className="scroll-cue label" href="#introduction">
-          <i aria-hidden="true" />
-          Scroll
-        </a>
-        <p className="art-credit" style={{ margin: 0 }}>
-          {event.editorial.heroArtCredit}
+      {resolvePhoto(v.heroPhoto) && (
+        <p className="hero-credit">
+          {v.heroPhoto.title} · {v.street}, {v.district}
         </p>
-      </div>
+      )}
     </section>
   );
 }

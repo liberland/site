@@ -2,3 +2,4 @@ node_modules/
 dist/
 dist-ssr/
 tests/screenshots/
+public/_reference/

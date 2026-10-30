@@ -1,129 +1,131 @@
-# Liberland Grand Christmas Gala 2026
+# Liberland Grand Christmas Gala 2026 — "Christmas at Le Palais"
 
-Landing page for the Liberland Grand Christmas Gala 2026, built from the approved Claude Design
-("Palace & Ledger", developer handoff v1, 30 Oct 2026).
+Landing page for the Liberland Grand Christmas Gala, Friday 18 December 2026, Le Palais Art Hotel Prague.
 
-- **Test preview:** https://liberlandlimited.com/christmas/ (served `noindex` until launch)
-- **Stack:** Vite + React 18 + TypeScript. The page is prerendered to static HTML at build time and
-  hydrated in the browser, so the content, headings and links are there without JavaScript.
-- **Styling:** `src/styles/gala.css` is a direct port of the design's stylesheet (container queries
-  on `.gala`, tokens on `.gala`). `src/styles/additions.css` holds production additions and fixes.
-  Tailwind was not used: re-expressing the approved stylesheet as utilities would only add room
-  for drift from the design.
-- **Motion:** CSS only (hero entrance, scroll-linked reveals, turning rings, two-layer snow) plus a
-  few lines of JS for the hero parallax and the nav scroll-spy. No animation library or WebGL.
-  `prefers-reduced-motion` switches all of it off.
-- **Fonts:** Cormorant Garamond, Archivo and IBM Plex Mono, self-hosted from `@fontsource`
-  (SIL OFL 1.1). The page makes no third-party requests.
+- **Preview:** https://liberlandlimited.com/christmas/ (served `noindex` until launch). Merging to `master` deploys it.
+- **Stack:** Vite + React 18 + TypeScript, prerendered to static HTML and hydrated. No third-party requests,
+  no analytics, no forms.
+- **Design:** a Belle Époque Christmas invitation. Evergreen, burgundy, champagne gold and warm ivory.
+  Cormorant Garamond for display type, Cinzel for engraved small capitals, Source Serif 4 for reading.
+  The fonts are self-hosted (SIL OFL). All styling is in `src/styles/gala.css`.
+- **Christmas ornamentation:** fir garlands, a wreath, baubles, holly and a velvet bow, drawn procedurally
+  needle by needle by `scripts/ornaments/` and committed as WebP. This is original artwork with no
+  third-party rights.
 
-## Everything editable is in one file
+## Page sequence
 
-**`src/data/event.ts`** contains every date, name, status, link and paragraph on the page. It is
-commented for non-programmers. After an edit, run `npm run build` (or push to `master`; the deploy
-workflow builds the page). If a value is mistyped, the build stops with a plain-English message.
+1. The grand invitation (hero) is the Le Palais façade at dusk under a lit garland.
+2. The Celebration is the editorial introduction, with an arched photograph of the hotel entrance.
+3. The Programme is the planned 15:00 / 17:00 / evening schedule and the three themes.
+4. Faces of the Evening shows medallion portraits. Attendance is shown only as configured.
+5. Le Palais is a photographic mosaic with a lightbox (a swipeable carousel on phones).
+6. The Christmas Evening shows the hotel's own Christmas photograph with hanging baubles.
+7. Practical information is the information table and the registration card.
+8. The final invitation is the wreath and closing call to action.
 
-### Confirm the date
+## Everything editable is in `src/data/event.ts`
 
-```ts
-date: {
-  iso: '2026-12-19',          // YYYY-MM-DD
-  status: 'confirmed',        // was 'tentative'
-  startTime: '18:00',         // optional, 24 h Prague time, or null
-  endTime: null,
+The file is commented for non-programmers. After an edit, run `npm run build`, or merge to `master`.
+A mistyped value stops the build with a plain-English message.
+
+- **Date.** `date.iso` sets the day; the weekday is worked out automatically. Set `date.status` to
+  `'confirmed'` or `'tentative'`. Confirmed publishes `schema.org/Event` data. Tentative shows "proposed"
+  markers everywhere and withholds the structured data. It is currently `'confirmed'`, for Friday
+  18 December 2026 at 15:00, as instructed.
+- **Programme.** `programme.schedule` holds the times and items, and `programme.themes` the three
+  themes. The page always says the schedule is planned until you change `programme.note`.
+- **Faces.** `faces.people` sets each person's `attendance`:
+  - `'featured'` makes no attendance claim.
+  - `'programme'` means named in the planned programme.
+  - `'anticipated'` means participation is to be confirmed.
+  - `'confirmed'` must only be used after written confirmation.
+
+  Each portrait needs a `credit`, which is shown in the footer.
+- **Registration.** There is deliberately no form. Set `registration.url` to an authorised registration
+  page and `registration.status` to `'open'`. Every call to action then points there.
+- **Launch.** Set `site.indexable: true`.
+
+## Hotel photography: what is published, and how to clear it
+
+The design is built around Le Palais's own photography: the façade, entrance canopy, lobby, Marold
+salon, corridor, library, Artista, staircase, and the hotel's own Christmas lobby photograph. These are
+**© Le Palais Art Hotel Prague** and are **not yet cleared**. In `event.ts` every photo has
+`cleared: false`.
+
+- **Production build** (`npm run build`, the deployed page) contains **no hotel photographs**. Each
+  slot shows a designed fallback instead: the wreath in the hero, a crest arch, a "photographs to
+  follow" panel linking to the hotel's own gallery, and a festive evening scene.
+- **Local reference build:** this shows the real photographs, each visibly tagged
+  *"Reference image · not cleared for publication"*. It is for design review only.
+
+  ```bash
+  python3 scripts/reference-images.py   # downloads into public/_reference/ (git-ignored)
+  ```
+  ```bash
+  npm run dev:reference                 # or: npm run build:reference && npm run preview
+  ```
+
+  The prerender step deletes `dist/_reference` from every non-reference build, and `npm test`
+  fails if it is ever present.
+- **When Le Palais grants written permission:** put each approved file in
+  `public/images/venue/<id>.webp`, plus `<id>-800.webp` at 800px wide. Then set `cleared: true` for
+  that photo. The ids and source files are listed in `ASSETS.md` and `scripts/reference-images.py`.
+  Ask the hotel for larger originals if possible: the façade on its website is only 1200px wide.
+
+## Portraits
+
+`python3 scripts/portraits/build.py` downloads each portrait from its documented source, crops it,
+applies the same warm grade, and writes `public/images/faces/*.webp` (560×560). To add a person,
+add an entry there and in `faces.people`.
+
+## Ornaments
+
+```bash
+python3 scripts/ornaments/generate.py   # SVG, deterministic seeds
 ```
-
-While `status` is `'tentative'`, every place that shows the date also says "Proposed · not yet
-confirmed", and no Event structured data is published. Once it is `'confirmed'`, the markers go
-away, the introduction's closing paragraph changes, and `schema.org/Event` JSON-LD is added to
-the page head automatically. The weekday is worked out from the date.
-
-### Add, change or confirm a guest
-
-Guests are in `guests.featured`. To confirm a guest, change `status: 'anticipated'` to
-`status: 'confirmed'`, but **only after written confirmation and approval of the wording**.
-Until then the card shows "Anticipated · subject to confirmation".
-
-Portraits are optional. Put a rights-cleared 4:5 image (at least 800 × 1000, ideally `.webp`) in
-`public/images/` and set `portrait: 'images/your-file.webp'`. You also have to set
-`portraitCredit`, or the build refuses. With no portrait, the designed monogram placeholder is shown.
-
-To add a guest, copy the `{ … }` block of an existing guest and edit it. The dashed
-"to be announced" tiles are `guests.slots`; remove them as the line-up fills.
-
-### Open registration
-
-There is deliberately **no form** on the page: nothing collects personal data. When an authorised
-registration system exists (ticketing provider, organiser's own page):
-
-```ts
-registration: {
-  status: 'open',                                  // was 'coming-soon'
-  url: 'https://tickets.example.org/liberland-gala', // the official page, https only
-  openLabel: 'Register now',
+```bash
+node scripts/ornaments/render.mjs       # PNG (Playwright + Chromium)
 ```
-
-Every call to action on the page (nav, hero, mobile menu, finale) then goes straight to that URL,
-and the registration card and information table say that registration is open. Set
-`status: 'closed'` afterwards. If the organisers want an interest list hosted on this site
-instead, that needs a backend, a published privacy notice and double opt-in first (see the
-design's handoff notes). Do not add a form without those.
-
-### Venue photographs
-
-`venue.photos` holds three slots: exterior, interior and Artista. They show designed
-"Photograph pending" sketches until a licensed image is supplied. Add a file to `public/images/`,
-then set `src`, `alt` and `credit`. **Do not use hotel photography without Le Palais's written
-permission**, and never substitute generated "interiors".
-
-### Launch checklist
-
-1. Set `site.indexable: true` (removes `noindex`) and check `site.url`.
-2. Replace the introduction copy with the official announcement text if it differs
-   (`editorial.introParagraphs`).
-3. Fill `practical.dressCode` and `practical.contact` (shown as "pending" while `null`).
-4. Regenerate the social image if the hero changed: `npm run build && node scripts/og-image.mjs`,
-   then build again.
+```bash
+python3 scripts/ornaments/encode.py     # WebP + light positions → src/assets/ornaments/
+```
 
 ## Commands
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173/christmas/
-npm run build        # typecheck + client build + prerender → dist/
-npm run preview      # serve dist/ at http://localhost:4173/christmas/
-npm test             # end-to-end checks against dist/ (needs Playwright + Chromium)
-npm test -- --shots  # also writes full-page screenshots to tests/screenshots/
+```
+```bash
+npm run dev            # http://localhost:5173/christmas/
+```
+```bash
+npm run build          # typecheck + build + prerender → dist/ (production: no hotel photos)
+```
+```bash
+npm test               # end-to-end checks against dist/ (needs Playwright + Chromium)
+```
+```bash
+npm test -- --shots    # also writes full-page screenshots to tests/screenshots/
+```
+```bash
+node scripts/og-image.mjs   # regenerate the 1200×630 social image (after a production build)
 ```
 
-`npm test` checks: no horizontal overflow or clipped labels at 320–2560 px; header and hero fit;
-one `h1` and no skipped heading levels; every anchor has a target; no broken images, failed or
-third-party requests; no console errors; skip link and mobile menu (Escape closes it); reduced
-motion; and the integrity rules (tentative date marked, no Event JSON-LD, no confirmed guest, no
-form, `noindex`).
+`npm test` covers the following:
+- **Layout:** no horizontal overflow or clipped labels from 320 to 2560px, the hero title and header fit, and touch targets are large enough.
+- **Structure:** a single `h1`, no skipped heading levels, every anchor has a target, and every image has `alt` text and loads.
+- **Network and errors:** no third-party requests and no console errors.
+- **Interaction:** the skip link, the mobile menu (Escape closes it), and reduced motion.
+- **Content integrity:** the new date everywhere and no trace of 19 December, Event JSON-LD present, the programme marked as planned, the V2 wording, the four faces with Roger Ver as anticipated and none marked confirmed, no form, no reference images, and `noindex`.
 
-The build uses base path `/christmas/`. For another location: `BASE_PATH=/ npm run build`.
+## Motion
 
-## Deployment
+- Gold shimmer on "Christmas".
+- Twinkling garland lights.
+- A light sweep across gold buttons.
+- Swaying baubles.
+- Fine snow, moved with a compositor-only transform.
+- Fade-up reveals.
+- A slow settle and parallax on the hero photograph.
 
-`.github/workflows/deploy-pages.yml` builds this folder and publishes `dist/` at
-`liberlandlimited.com/christmas/` with the rest of the site. Nothing else is deployed, and no
-payment, analytics or data collection is active.
-
-## Assets
-
-See [`ASSETS.md`](ASSETS.md) for provenance, licences and what is still missing.
-
-## Unconfirmed content (as of 30 Oct 2026)
-
-| Item | State on the page |
-| --- | --- |
-| Date, Saturday 19 December 2026 | "Proposed · not yet confirmed" everywhere |
-| Roger Ver | "Anticipated · subject to confirmation"; bio needs his approval; no portrait |
-| Other speakers, hosts, panellists | Dashed "to be announced" slots |
-| Programme formats, running order, times | "To be announced" |
-| Liberland Blockchain V2 | Described as *planned*, presentation *anticipated*, release timing not announced. Technical team to review the wording |
-| LLM copy | Technical team to review |
-| Registration, admission, tickets | "Registration details coming soon"; no form |
-| Dress code, event contact, travel guidance, room block | Marked pending |
-| Introduction copy | Drafted from the brief. The announcement article was not supplied, so replace it if the official text differs |
-| Venue facts (five-star, 72 rooms, Marold ceilings, Artista, spa/sauna/fitness, phone) | Checked against lepalaishotel.eu on 30 Oct 2026 |
+`prefers-reduced-motion` turns all of it off. There is no audio.

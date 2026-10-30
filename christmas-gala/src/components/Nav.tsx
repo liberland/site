@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { event } from '../data/event';
 import { registrationCta, externalLinkProps } from '../lib/event-helpers';
-import { Arrow } from './Arrow';
-import escutcheonPng from '../assets/liberland-escutcheon-52.png';
-import escutcheonWebp from '../assets/liberland-escutcheon-52.webp';
+import crestPng from '../assets/liberland-escutcheon-128.png';
+import crestWebp from '../assets/liberland-escutcheon-128.webp';
 
 export const SECTIONS = [
+  { id: 'celebration', label: 'The Celebration' },
   { id: 'programme', label: 'Programme' },
-  { id: 'guests', label: 'Guests' },
-  { id: 'venue', label: 'Venue' },
-  { id: 'evening', label: 'The evening' },
+  { id: 'faces', label: 'Faces' },
+  { id: 'venue', label: 'Le Palais' },
+  { id: 'evening', label: 'The Evening' },
   { id: 'information', label: 'Information' },
 ] as const;
 
@@ -19,13 +19,10 @@ function useCurrentSection() {
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return;
     const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) setCurrent(e.target.id);
-      },
+      (entries) => entries.forEach((e) => e.isIntersecting && setCurrent(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
     );
-    const watched = ['top', 'introduction', ...SECTIONS.map((s) => s.id), 'finale'];
-    watched.forEach((id) => {
+    ['top', ...SECTIONS.map((s) => s.id), 'invitation'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
@@ -34,9 +31,21 @@ function useCurrentSection() {
   return current;
 }
 
+function useScrolled(threshold = 40) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > threshold);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, [threshold]);
+  return scrolled;
+}
+
 export function Nav() {
   const [open, setOpen] = useState(false);
   const current = useCurrentSection();
+  const scrolled = useScrolled();
   const btnRef = useRef<HTMLButtonElement>(null);
   const cta = registrationCta();
   const ext = cta.external ? externalLinkProps : {};
@@ -53,12 +62,10 @@ export function Nav() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  const close = () => setOpen(false);
-
   /** Close the menu first, then scroll — otherwise the collapsing menu shifts the target. */
   const go = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const hash = e.currentTarget.getAttribute('href');
-    if (!hash?.startsWith('#')) return close();
+    if (!hash?.startsWith('#')) return setOpen(false);
     e.preventDefault();
     setOpen(false);
     requestAnimationFrame(() => {
@@ -71,35 +78,31 @@ export function Nav() {
   };
 
   return (
-    <header className="nav">
+    <header className={`nav${scrolled || open ? ' is-solid' : ''}${open ? ' is-open' : ''}`}>
       <div className="wrap nav-inner">
         <a className="brand" href="#top" aria-label={`${event.name} — back to top`}>
           <picture>
-            <source srcSet={escutcheonWebp} type="image/webp" />
-            <img src={escutcheonPng} width={26} height={36} alt="" />
+            <source srcSet={crestWebp} type="image/webp" />
+            <img src={crestPng} width={24} height={33} alt="" />
           </picture>
-          <div>
+          <span>
             <b>Liberland</b>
-            <span>{event.shortName}</span>
-          </div>
+            <i>{event.shortName}</i>
+          </span>
         </a>
         <nav className="nav-primary" aria-label="Sections">
-          <ul className="nav-links">
+          <ul>
             {SECTIONS.map((s) => (
               <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  className={current === s.id ? 'is-current' : undefined}
-                  aria-current={current === s.id ? 'location' : undefined}
-                >
+                <a href={`#${s.id}`} className={current === s.id ? 'is-current' : undefined} aria-current={current === s.id ? 'location' : undefined}>
                   {s.label}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
-        <a className="btn btn-gold btn-sm nav-cta" href={cta.href} {...ext}>
-          {cta.navLabel}
+        <a className="btn btn-outline btn-sm nav-cta" href={cta.href} {...ext}>
+          {cta.external ? cta.label : 'Registration'}
         </a>
         <button
           ref={btnRef}
@@ -110,15 +113,9 @@ export function Nav() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M4 8h16M4 16h16" />
-            </svg>
-          )}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}
+          </svg>
         </button>
       </div>
       {open && (
@@ -129,7 +126,7 @@ export function Nav() {
             </a>
           ))}
           <a className="btn btn-gold" href={cta.href} onClick={go} {...ext}>
-            {cta.label} <Arrow />
+            {cta.label}
           </a>
         </nav>
       )}
