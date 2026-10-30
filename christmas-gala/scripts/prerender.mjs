@@ -13,7 +13,7 @@ if (!html.includes('<!--app-html-->')) throw new Error('dist/index.html has no <
 // Preload the faces used above the fold (hero headline, labels) to avoid a late font swap.
 const assets = await readdir(resolve(root, 'dist/assets'));
 const base = html.match(/src="([^"]*)assets\/index-/)?.[1] ?? '/';
-const critical = [/^archivo-latin-wght-normal-.*\.woff2$/, /^cormorant-garamond-latin-300-normal-.*\.woff2$/, /^cormorant-garamond-latin-300-italic-.*\.woff2$/];
+const critical = [/^cormorant-garamond-latin-300-normal-.*\.woff2$/, /^cormorant-garamond-latin-400-italic-.*\.woff2$/, /^cinzel-latin-wght-normal-.*\.woff2$/];
 const preload = critical
   .map((re) => assets.find((f) => re.test(f)))
   .filter(Boolean)
@@ -21,4 +21,6 @@ const preload = critical
   .join('\n    ');
 await writeFile(file, html.replace('<!--app-html-->', render()).replace('</title>', `</title>\n    ${preload}`));
 await rm(resolve(root, 'dist-ssr'), { recursive: true, force: true });
+// Uncleared hotel photographs (local design reference) never leave this machine in a production build.
+if (process.env.VITE_REFERENCE_IMAGES !== '1') await rm(resolve(root, 'dist/_reference'), { recursive: true, force: true });
 console.log('prerendered dist/index.html');
