@@ -49,8 +49,8 @@ ob_start(); run( 'wp_head' ); $head = ob_get_clean();
 check( isset( $GLOBALS['rz_styles']['reformy-o-spolku'] ), 'o-spolku: CSS zařazeno' );
 check( in_array( 'the_content:wpautop', $GLOBALS['rz_removed'], true ), 'o-spolku: wpautop vypnuto' );
 check( in_array( 'rz-o-spolku', run( 'body_class', array( 'page' ) ), true ), 'o-spolku: třída rz-o-spolku' );
-check( 'O spolku – Reformy.cz z.s.' === run( 'wp_title', 'O spolku | Reformy.cz' ), 'o-spolku: titulek (wp_title)' );
-check( 'O spolku – Reformy.cz z.s.' === run( 'pre_get_document_title', '' ), 'o-spolku: titulek (title-tag)' );
+check( 'About the association – Reformy.cz z.s.' === run( 'wp_title', 'O spolku | Reformy.cz' ), 'o-spolku: titulek (wp_title)' );
+check( 'About the association – Reformy.cz z.s.' === run( 'pre_get_document_title', '' ), 'o-spolku: titulek (title-tag)' );
 check( 1 === substr_count( $head, '<meta name="description"' ), 'o-spolku: jedna meta description' );
 preg_match( '#<script type="application/ld\+json">(.*?)</script>#s', $head, $m );
 $ld = isset( $m[1] ) ? json_decode( $m[1], true ) : null;
@@ -60,6 +60,6 @@ check( 'NGO' === $org['@type'] && 'Reformy.cz z.s.' === $org['legalName'], 'JSON
 check( '22874046' === $org['identifier']['value'], 'JSON-LD: IČO' );
 check( 'Loretánské náměstí 109/3' === $org['address']['streetAddress'] && '118 00' === $org['address']['postalCode'], 'JSON-LD: adresa' );
 check( false === strpos( $m[1], 'gov.ll.land' ), 'JSON-LD: žádné tvrzení o gov.ll.land' );
-check( false !== strpos( $m[1], 'náměstí' ), 'JSON-LD: čeština bez \\u escapování' );
+check( false !== strpos( $m[1], 'náměstí' ), 'JSON-LD: diakritika bez \\u escapování' );
 echo $fail ? "\n$fail selhalo\n" : "\nVše prošlo\n";
 exit( $fail ? 1 : 0 );

@@ -20,9 +20,9 @@ function rz_spolek_is_page() {
 	return is_page( RZ_SPOLEK_SLUG );
 }
 
-/** Popis pro vyhledávače; stejný text jako v návrhu. */
+/** Popis pro vyhledávače. Stránka je celá v angličtině. */
 function rz_spolek_description() {
-	return 'Reformy.cz z.s. je český neziskový spolek pro ekonomické vzdělávání a šíření myšlenek svobody a tržního hospodářství. IČO 22874046, sídlo Loretánské náměstí 109/3, Praha 1.';
+	return 'Reformy.cz z.s. is an independent Czech nonprofit association for education in economics and the ideas of freedom and the market economy. Reg. no. (IČO) 22874046, Loretánské náměstí 109/3, Prague 1.';
 }
 
 add_action( 'wp_enqueue_scripts', function () {
@@ -53,11 +53,11 @@ add_action( 'wp', function () {
 } );
 
 /*
- * Titulek: „O spolku – Reformy.cz z.s.“ (šablona jinak tvoří „O spolku | Reformy.cz“).
+ * Titulek: „About the association – Reformy.cz z.s.“ (šablona jinak tvoří „O spolku | Reformy.cz“).
  * Newspaper 10 vypisuje <title> přes wp_title(); novější šablony přes title-tag. Pokrýváme obojí.
  */
 function rz_spolek_title( $title ) {
-	return rz_spolek_is_page() ? 'O spolku – Reformy.cz z.s.' : $title;
+	return rz_spolek_is_page() ? 'About the association – Reformy.cz z.s.' : $title;
 }
 add_filter( 'pre_get_document_title', 'rz_spolek_title', 20 );
 add_filter( 'wp_title', 'rz_spolek_title', PHP_INT_MAX );
@@ -97,7 +97,7 @@ add_action( 'wp_head', function () {
 					'postalCode'      => '118 00',
 					'addressCountry'  => 'CZ',
 				),
-				'description'  => 'Účelem spolku je vzdělávání v oblasti ekonomie a šíření myšlenek svobody a tržního hospodářství.',
+				'description'  => 'The purpose of the association is education in the field of economics and the dissemination of the ideas of freedom and the market economy.',
 				'sameAs'       => array(
 					'https://or.justice.cz/ias/ui/rejstrik-$firma?ico=22874046',
 				),
@@ -106,9 +106,9 @@ add_action( 'wp_head', function () {
 				'@type'       => 'AboutPage',
 				'@id'         => 'https://reformy.cz/o-spolku/#webpage',
 				'url'         => 'https://reformy.cz/o-spolku/',
-				'name'        => 'O spolku – Reformy.cz z.s.',
+				'name'        => 'About the association – Reformy.cz z.s.',
 				'description' => rz_spolek_description(),
-				'inLanguage'  => array( 'cs', 'en' ),
+				'inLanguage'  => 'en',
 				'about'       => array( '@id' => $org_id ),
 				'publisher'   => array( '@id' => $org_id ),
 			),

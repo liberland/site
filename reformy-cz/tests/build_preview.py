@@ -46,15 +46,15 @@ def main():
     live = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8")
     out = pathlib.Path(sys.argv[2])
     out.mkdir(parents=True, exist_ok=True)
-    desc = ("Reformy.cz z.s. je český neziskový spolek pro ekonomické vzdělávání a šíření myšlenek svobody "
-            "a tržního hospodářství. IČO 22874046, sídlo Loretánské náměstí 109/3, Praha 1.")
+    desc = ("Reformy.cz z.s. is an independent Czech nonprofit association for education in economics and the ideas "
+            "of freedom and the market economy. Reg. no. (IČO) 22874046, Loretánské náměstí 109/3, Prague 1.")
     ld = {"@context": "https://schema.org", "@type": "NGO", "legalName": "Reformy.cz z.s.",
           "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": "22874046"}}
     head = ('<meta name="description" content="%s">\n'
             '<script type="application/ld+json">%s</script>\n'
             '<link rel="stylesheet" href="%s">\n') % (desc, json.dumps(ld, ensure_ascii=False), PLUGIN_URL + "o-spolku.css")
     page = build(live, (ROOT / "content" / "o-spolku.html").read_text(encoding="utf-8"),
-                 "O spolku – Reformy.cz z.s.", "O spolku", head, "rz-o-spolku")
+                 "About the association – Reformy.cz z.s.", "O spolku", head, "rz-o-spolku")
     (out / "preview-o-spolku.html").write_text(page, encoding="utf-8")
     about = build(live, (ROOT / "content" / "about-upraveny-obsah.html").read_text(encoding="utf-8"),
                   "O nás | Reformy.cz", "O nás")

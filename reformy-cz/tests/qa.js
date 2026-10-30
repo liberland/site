@@ -95,7 +95,7 @@ function luminance(rgb) {
     });
     return { text, h1, skip, anchors, dupIds, links: [...new Set(links)], noName, small, samples, title: document.title,
       desc: document.querySelector('meta[name=description]')?.content, scripts: root.querySelectorAll('script').length,
-      lang: document.documentElement.lang, enLang: document.getElementById('en')?.lang, fonts: [...document.fonts].filter(f => f.family.startsWith('"RZ') || f.family.startsWith('RZ')).map(f => f.family + ' ' + f.weight + ' ' + f.status) };
+      lang: document.getElementById('rz-spolek').lang, csSpans: [...root.querySelectorAll('[lang=cs]')].length, fonts: [...document.fonts].filter(f => f.family.startsWith('"RZ') || f.family.startsWith('RZ')).map(f => f.family + ' ' + f.weight + ' ' + f.status) };
   });
   check(r.h1.length === 1 && r.h1[0] === 'Reformy.cz z.s.', `jediný viditelný H1 = „Reformy.cz z.s.“ (${JSON.stringify(r.h1)})`);
   check(!r.skip, 'nadpisy bez přeskočené úrovně');
@@ -104,11 +104,11 @@ function luminance(rgb) {
   check(r.noName === 0, 'každý odkaz má text');
   check(r.small.length === 0, `samostatné odkazy mají cíl ≥ 24 px ${JSON.stringify(r.small)}`);
   check(r.scripts === 0, 'obsah stránky neobsahuje žádný <script>');
-  check(r.lang === 'cs' && r.enLang === 'en', 'jazyk: stránka cs, anglická sekce en');
-  for (const s of ['Reformy.cz z.s.', '22874046', 'Loretánské náměstí 109/3', '118 00 Praha 1', 'Městský soud v Praze', 'L 21391', 'gov.ll.land', 'liberland.org', 'About Reformy.cz z.s.']) {
+  check(r.lang === 'en' && r.csSpans > 0, 'jazyk: obsah lang="en", české názvy označené lang="cs"');
+  for (const s of ['Reformy.cz z.s.', '22874046', 'Loretánské náměstí 109/3', '118 00 Praha 1', 'Městský soud v Praze', 'L 21391', 'gov.ll.land', 'liberland.org', 'Municipal Court in Prague', 'Details from the public register']) {
     check(r.text.includes(s), `text obsahuje „${s}“`);
   }
-  for (const s of ['Lorem', 'k ověření', 'to verify', 'TODO', 'placeholder', 'spravuje Reformy.cz', 'administered by Reformy.cz']) {
+  for (const s of ['Lorem', 'k ověření', 'to verify', 'TODO', 'placeholder', 'spravuje Reformy.cz', 'administered by Reformy.cz', 'Kdo jsme', 'Naše poslání']) {
     check(!r.text.toLowerCase().includes(s.toLowerCase()), `text neobsahuje „${s}“`);
   }
   const bad = r.samples.filter(s => {
