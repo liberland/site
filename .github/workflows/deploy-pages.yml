@@ -33,6 +33,8 @@ jobs:
           cp -r votula _site/votula
           cp -r build-what-was-removed _site/fund
           cp -r fasto _site/fasto
+          # Test preview of the reformy.cz /o-spolku/ page (noindex; production is reformy.cz).
+          python3 reformy-cz/build_test_page.py _site/reformy
           # Fasto lives at https://fasto.ll.land (mirrored from fasto/ by michalptacnik/fasto).
           # Keep the files here, but turn the pages into redirects to the same path there.
           for p in "" en/ hr/ admin/; do
