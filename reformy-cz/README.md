@@ -213,3 +213,11 @@ node reformy-cz/tests/qa.js /tmp/rz-preview
 `qa.js` potřebuje Playwright s Chromiem. Náhled se servíruje na skutečné adrese `https://reformy.cz/o-spolku/`
 (požadavek se obslouží lokálně), takže CSS a JS šablony Newspaper běží jako v produkci. Spamový odkaz
 z produkce se v náhledu odstraní a jeho načtení je zablokované.
+
+## Testovací náhled
+
+Při každém deployi GitHub Pages se staví testovací kopie stránky na
+**https://liberlandlimited.com/reformy/** (a upravené `/about/` na `/reformy/about/`).
+Používá stejný obsah a stejné CSS pluginu, ale bez šablony reformy.cz. Má `noindex` a canonical
+na budoucí adresu na reformy.cz, aby kopie nesoutěžila ve vyhledávačích s ostrou stránkou.
+Sestavuje ji `reformy-cz/build_test_page.py` (krok v `.github/workflows/deploy-pages.yml`).
