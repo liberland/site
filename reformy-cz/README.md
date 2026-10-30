@@ -3,6 +3,11 @@
 Balíček k nasazení nové stránky **https://reformy.cz/o-spolku/** na stávající web reformy.cz
 podle návrhu `reformy-spolek-design.html`, plus sjednocení právních údajů na `/about/`.
 
+**Stránka je celá v angličtině** (rozhodnutí z 30. 10. 2026). Návrh měl českou verzi a anglickou
+sekci; česká verze byla vypuštěna a celý obsah přeložen do angličtiny. České názvy z rejstříku
+(adresa, soud, „spolek“, původní znění účelu) zůstávají v originále a jsou označené `lang="cs"`.
+Barevné pásy jdou přes celou šířku okna, text je ve sloupci max. 1 240 px.
+
 Web reformy.cz **není v tomto repozitáři**. Běží na WordPressu u SiteGround, mimo tento repozitář.
 Tady je jen připravený balíček a návod. Nic z toho zatím není nasazeno.
 
@@ -52,9 +57,10 @@ reformy-cz/
 ### Co plugin dělá (jen na `/o-spolku/`)
 
 - načte `o-spolku.css` a lokální fonty: žádné externí služby, žádné trackery, **žádný JavaScript**;
-- `<title>O spolku – Reformy.cz z.s.</title>` a `<meta name="description">` podle návrhu;
+- `<title>About the association – Reformy.cz z.s.</title>` a anglický `<meta name="description">`;
 - JSON-LD `NGO` (název, IČO, sídlo, datum vzniku podle rejstříku, e-mail, odkaz na rejstřík) a `AboutPage`;
-- přidá `body.rz-o-spolku`, aby se skryl duplicitní nadpis šablony (stránka má vlastní H1) a sidebar;
+- přidá `body.rz-o-spolku`, aby se skryl duplicitní nadpis šablony (stránka má vlastní H1) a sidebar
+  a aby šly barevné pásy přes celou šířku okna (`width:100vw`, vodorovný přesah se ořízne);
 - vypne automatické odstavce (`wpautop`) pro tuto stránku, aby WordPress nevkládal `<p>`/`<br>` do HTML.
 
 Stránka je obyčejné serverově vykreslené HTML, celý text je ve zdrojovém kódu. Nic se nedokresluje
@@ -70,16 +76,15 @@ JavaScriptem a nic není skryto před vyhledávači (žádné `noindex`).
 | karta gov.ll.land: „Kdo: viz poznámka níže / Web: bez veřejného webu“ | „Účel: pracovní nástroje pro spolupráci / Web: bez vlastního obsahu, adresa přesměrovává na liberland.org“ | poznámka byla vynechána; gov.ll.land ve skutečnosti přesměrovává na liberland.org (ověřeno 30. 10. 2026) |
 | Google Fonts | stejné fonty, hostované lokálně (s češtinou) | žádné neověřené třetí strany |
 | JavaScript: animace, běžící pás, tlačítko „Kopírovat IČO“, menu | žádný JavaScript; pás údajů je statický | zbytečný JS; IČO jde označit a zkopírovat |
-| `hreflang` na `#en` | vypuštěno, anglická sekce má `lang="en"` | `hreflang` s kotvou vyhledávače ignorují |
+| česká verze + anglická sekce | jen angličtina, celý obsah přeložen; obal obsahu má `lang="en"` | rozhodnutí zadavatele |
+| `hreflang` na `#en` | vypuštěno | stránka je jednojazyčná |
 | nadpisy domén `h3` uvnitř `h3` | `h4` | správná hierarchie nadpisů |
 | odkaz menu `/category/ekonomika/` | (menu je z webu) | na webu je `/tema/ekonomika/` |
-| texty | beze změny | jen přidány odkazy na existující stránky Klubu, Vzdělávání, Filmy, Citáty, Knihy, Přednášky |
+| texty | přeloženy do angličtiny bez změny smyslu (anglické pasáže z návrhu převzaty doslova) | přidány odkazy na existující stránky Klubu, Vzdělávání, Filmy, Citáty, Knihy, Přednášky |
 
-Volitelná věta o Google Workspace, až bude doložena (vložit do `content/o-spolku.html` za blok `.why`;
-anglickou verzi za odstavec „Each domain serves a different purpose…“):
+Volitelná věta o Google Workspace, až bude doložena (vložit do `content/o-spolku.html` do bloku `.why`):
 
 ```html
-<p>Pracovní prostředí Google Workspace na doméně gov.ll.land spravuje Reformy.cz z.s. a používá jej pro svou neziskovou činnost a pro spolupráci popsanou na této stránce.</p>
 <p>The Google Workspace environment on gov.ll.land is administered by Reformy.cz z.s. and used for its nonprofit activities and for the cooperation described on this page.</p>
 ```
 
