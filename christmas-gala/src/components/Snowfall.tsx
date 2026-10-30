@@ -47,6 +47,8 @@ export function Snowfall() {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       ctx.clearRect(0, 0, w, h);
+      // set every frame: resizing the canvas resets the context state (fill would turn black)
+      ctx.fillStyle = '#fffaf0';
       for (const f of flakes) {
         f.phase += dt * 0.6;
         f.y += f.vy * dt;
@@ -71,7 +73,6 @@ export function Snowfall() {
     };
 
     resize();
-    ctx.fillStyle = '#fffaf0';
     window.addEventListener('resize', resize);
     document.addEventListener('visibilitychange', onVisibility);
     frame = requestAnimationFrame(tick);

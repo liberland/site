@@ -152,6 +152,23 @@ try {
     await p.close();
   }
 
+  /* ---------- snowfall stays white after a resize (phones resize while scrolling) ---------- */
+  {
+    const p = await browser.newPage({ viewport: { width: 1200, height: 800 } });
+    await p.goto(url, { waitUntil: 'networkidle' });
+    await p.setViewportSize({ width: 390, height: 844 });
+    await p.waitForTimeout(700);
+    const snow = await p.evaluate(() => {
+      const c = document.querySelector('.snowfall');
+      const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+      let painted = 0, dark = 0;
+      for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 40) { painted++; if (d[i] < 128) dark++; }
+      return { painted, dark };
+    });
+    check(snow.painted > 0 && snow.dark === 0, `snowflakes stay white after a resize (${snow.painted} px drawn, ${snow.dark} dark)`);
+    await p.close();
+  }
+
   /* ---------- reduced motion ---------- */
   {
     const p = await browser.newPage({ reducedMotion: 'reduce' });
