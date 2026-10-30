@@ -160,9 +160,10 @@ p { margin: 0; }
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
     linear-gradient(180deg, rgba(11, 29, 23, 0.55) 0%, rgba(11, 29, 23, 0) 26%),
-    linear-gradient(0deg, rgba(11, 29, 23, 0.95) 0%, rgba(11, 29, 23, 0.82) 34%, rgba(11, 29, 23, 0.45) 52%, rgba(11, 29, 23, 0.08) 68%, rgba(11, 29, 23, 0) 76%),
+    linear-gradient(0deg, rgba(11, 29, 23, 0.95) 0%, rgba(11, 29, 23, 0.86) 34%, rgba(11, 29, 23, 0.6) 52%, rgba(11, 29, 23, 0.22) 68%, rgba(11, 29, 23, 0) 80%),
     radial-gradient(120% 80% at 50% 100%, rgba(118, 43, 54, 0.35), transparent 60%),
-    radial-gradient(44% 30% at 50% 46%, rgba(11, 29, 23, 0.62), transparent 78%);
+    radial-gradient(50% 34% at 50% 46%, rgba(11, 29, 23, 0.7), transparent 78%),
+    linear-gradient(rgba(11, 29, 23, 0.3), rgba(11, 29, 23, 0.3));
 }
 .hero .hero-wreath { position: absolute; left: 50%; top: 46%; width: min(760px, 92vw); transform: translate(-50%, -50%); opacity: 0.9; }
 .hero .hero-garland { position: absolute; left: 0; right: 0; top: 54px; z-index: 1; }
@@ -179,8 +180,9 @@ p { margin: 0; }
 .hero-grand { display: block; margin-top: 14px; font: 300 clamp(58px, 9.4vw, 148px)/0.92 var(--f-display); letter-spacing: -0.015em; }
 .hero-grand em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(100deg, #e9cd8c 0%, #fff1c9 22%, #d8b36a 44%, #b8924f 60%, #f6dfa6 80%, #d8b36a 100%);
+  background: linear-gradient(100deg, #ecd294 0%, #fff1c9 22%, #e3c37f 44%, #d6b46c 60%, #f6dfa6 80%, #e3c37f 100%);
   background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55)) drop-shadow(0 6px 24px rgba(0, 0, 0, 0.45));
   animation: shimmer 9s ease-in-out infinite;
   padding: 0 0.04em;
 }
@@ -559,7 +561,7 @@ p { margin: 0; }
 
   .hero { min-height: max(100svh, 760px); }
   .hero .hero-garland { top: 50px; }
-  .hero-inner { padding-top: 200px; padding-bottom: 56px; }
+  .hero-inner { padding-top: 250px; padding-bottom: 56px; }
   .hero-eyebrow { font-size: 12.5px; letter-spacing: 0.22em; }
   .hero-liberland { letter-spacing: 0.5em; margin-right: -0.5em; }
   .hero-grand { font-size: clamp(54px, 15.5vw, 76px); line-height: 0.95; }
@@ -567,7 +569,7 @@ p { margin: 0; }
   .hero-details { flex-direction: column; gap: 6px; font-size: 12.5px; letter-spacing: 0.1em; }
   .hero-details .star { display: none; }
   .hero-ctas { flex-direction: column; width: 100%; max-width: 360px; }
-  .hero-shade { background: linear-gradient(180deg, rgba(11, 29, 23, 0.55) 0%, rgba(11, 29, 23, 0) 22%), linear-gradient(0deg, rgba(11, 29, 23, 0.96) 0%, rgba(11, 29, 23, 0.84) 44%, rgba(11, 29, 23, 0.2) 70%, rgba(11, 29, 23, 0) 80%); }
+  .hero-shade { background: linear-gradient(180deg, rgba(11, 29, 23, 0.55) 0%, rgba(11, 29, 23, 0) 22%), linear-gradient(0deg, rgba(11, 29, 23, 0.96) 0%, rgba(11, 29, 23, 0.84) 44%, rgba(11, 29, 23, 0.2) 70%, rgba(11, 29, 23, 0) 80%), linear-gradient(rgba(11, 29, 23, 0.3), rgba(11, 29, 23, 0.3)); }
   .hero-credit { display: none; }
   .hero .ref-tag { left: 20px; right: 20px; bottom: auto; top: 262px; text-align: center; }
 
