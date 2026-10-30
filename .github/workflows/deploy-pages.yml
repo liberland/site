@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/build-liberland-webpage-K3j1g, claude/build-what-was-removed-rrbeth, claude/magical-brown-ufdxki]
+    branches: [master, claude/build-liberland-webpage-K3j1g, claude/build-what-was-removed-rrbeth]
   workflow_dispatch:
 
 permissions:
