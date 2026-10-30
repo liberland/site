@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/build-liberland-webpage-K3j1g, claude/build-what-was-removed-rrbeth]
+    branches: [master, claude/build-liberland-webpage-K3j1g, claude/build-what-was-removed-rrbeth, claude/magical-brown-ufdxki]
   workflow_dispatch:
 
 permissions:
@@ -25,6 +25,12 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Generate Fasto pages (news are edited in /fasto/admin/)
         run: python3 fasto/build.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the Christmas Gala page (Vite + React, prerendered)
+        working-directory: christmas-gala
+        run: npm install --no-audit --no-fund && npm run build
       - name: Assemble site
         run: |
           mkdir -p _site
@@ -33,6 +39,8 @@ jobs:
           cp -r votula _site/votula
           cp -r build-what-was-removed _site/fund
           cp -r fasto _site/fasto
+          # Liberland Grand Christmas Gala 2026 (noindex test preview until launch; see christmas-gala/README.md).
+          cp -r christmas-gala/dist _site/christmas
           # Test preview of the reformy.cz /o-spolku/ page (noindex; production is reformy.cz).
           python3 reformy-cz/build_test_page.py _site/reformy
           # Fasto lives at https://fasto.ll.land (mirrored from fasto/ by michalptacnik/fasto).
