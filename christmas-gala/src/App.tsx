@@ -9,6 +9,8 @@ import { Evening } from './components/Evening';
 import { Practical } from './components/Practical';
 import { Finale } from './components/Finale';
 import { Footer } from './components/Footer';
+import { Snowfall } from './components/Snowfall';
+import { event } from './data/event';
 
 /** Fade-and-rise reveals as sections enter the viewport (content is visible without JS). */
 function useReveals() {
@@ -52,6 +54,7 @@ export function App() {
         <Finale />
       </main>
       <Footer />
+      {event.atmosphere.snow && <Snowfall />}
     </div>
   );
 }

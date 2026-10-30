@@ -131,14 +131,15 @@ export const event = {
     ],
     /** Large photograph behind the opening screen. */
     heroPhoto: {
-      id: 'facade-dusk',
-      title: 'Le Palais at dusk',
-      caption: 'The hotel’s Belle Époque façade on U Zvonařky.',
-      alt: 'The illuminated Belle Époque façade of Le Palais Art Hotel Prague at dusk',
-      cleared: false,
+      id: 'corridor-hero',
+      title: 'The gallery corridor',
+      caption: 'Painted vaults, Venetian chandeliers and mosaic floors inside Le Palais.',
+      alt: 'The Belle Époque gallery corridor of Le Palais Art Hotel Prague, with painted vaulted ceilings, crystal chandeliers and a mosaic floor',
+      /** Supplied by the organisers for the opening screen (30 Oct 2026). */
+      cleared: true,
       credit: HOTEL,
-      source: 'lepalaishotel.eu/gallery — le_palais_art_gallery_hotel_03.jpg',
-      focus: '46% 34%',
+      source: 'Supplied by the organisers; same view as lepalaishotel.eu le_palais_slide_06.jpg',
+      focus: '50% 42%',
     } as Photo,
     /** Arched photograph beside the introduction. */
     portalPhoto: {
@@ -391,7 +392,7 @@ export const event = {
     organiser: { name: 'Free Republic of Liberland', url: 'https://liberland.org/' },
   },
 
-  /** Very light falling snow in the opening screen. Off automatically for reduced-motion users. */
+  /** Gentle snowfall over the whole page. Off automatically for reduced-motion users. */
   atmosphere: { snow: true },
 };
 

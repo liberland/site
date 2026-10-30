@@ -24,7 +24,7 @@ Each one needs **written permission from the hotel** before its `cleared` flag i
 
 | id (event.ts) | Used for | Source file on lepalaishotel.eu |
 | --- | --- | --- |
-| `facade-dusk` | Hero: the façade at dusk | `2025/02/le_palais_art_gallery_hotel_03.jpg` (1200 px; ask for a larger original) |
+| `facade-dusk` | (previous hero) the façade at dusk | `2025/02/le_palais_art_gallery_hotel_03.jpg` (1200 px; ask for a larger original) |
 | `entrance-canopy` | Arched photo in "The Celebration" | `2025/02/le_palais_art_gallery_hotel_05.jpg` |
 | `christmas-lobby` | Background of "The Christmas Evening" (the hotel's own Christmas photograph) | `2026/10/LePalais-Vanocni-foceni-11.jpg` |
 | `golden-lobby` | Gallery | `2025/02/le_palais_slide_01.jpg` |
