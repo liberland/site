@@ -143,6 +143,45 @@ body{margin:0;background:var(--ivory)}
 .cine figcaption{position:absolute;right:0;bottom:-28px}
 .sec-paper .cine-card{background:var(--ivory)}
 
+
+/* C · Tickets — an invitation, not a pricing page */
+.btn-lg{min-height:54px;padding:0 30px;font-size:16px}
+.tix-sec{background:linear-gradient(180deg,var(--ivory) 0%,var(--spring) 100%)}
+.invite{position:relative;max-width:880px;margin:0 auto;background:var(--ivory);text-align:center;padding:64px clamp(24px,6vw,80px) 44px;border:1px solid var(--gold);box-shadow:inset 0 0 0 6px var(--ivory),inset 0 0 0 7px rgba(201,163,74,.55),0 30px 60px -40px rgba(28,39,36,.35);border-radius:4px}
+.invite::before,.invite::after{content:"";position:absolute;width:44px;height:44px;border-color:var(--gold);border-style:solid;pointer-events:none}
+.invite::before{top:16px;left:16px;border-width:2px 0 0 2px}
+.invite::after{bottom:16px;right:16px;border-width:0 2px 2px 0}
+.invite-mark{display:block;width:34px;height:auto;margin:0 auto 18px}
+.invite .h2{margin-top:10px}
+.invite-sub{margin:14px auto 0;max-width:40ch}
+.invite-when{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:26px;font-family:var(--f-display);font-size:clamp(22px,2vw,27px);color:var(--ink)}
+.invite-when span[aria-hidden]{color:var(--gold)}
+.invite-prov{margin-top:12px}
+.invite-state{font-family:var(--f-display);font-style:italic;font-size:clamp(24px,2.2vw,30px);color:var(--gold-text);margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+.invite-text{color:var(--soft);max-width:54ch;margin:10px auto 0}
+.invite-cta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 24px;margin-top:28px}
+.invite-note{font-size:14.5px;color:var(--mute);margin-top:16px}
+.invite-legal{font-size:13.5px;color:var(--mute);max-width:60ch;margin:22px auto 0;line-height:1.55}
+.invite-foot{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+.tix{margin-top:34px;text-align:left;border-top:1px solid var(--line)}
+.tix-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--line)}
+.tix-row.feat{background:linear-gradient(90deg,rgba(201,163,74,.08),transparent)}
+.tix-name{font-family:var(--f-display);font-weight:400;font-size:24px;line-height:1.2}
+.tix-inc{margin-top:8px;display:flex;flex-wrap:wrap;gap:2px 0;font-size:15px;color:var(--soft)}
+.tix-inc li:not(:last-child)::after{content:"·";margin:0 9px;color:var(--gold)}
+.tix-cond{font-size:13.5px;color:var(--mute);margin-top:6px}
+.tix-buy{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}
+.tix-price{font-family:var(--f-display);font-size:26px;line-height:1}
+.tix-avail{font-size:13px;color:var(--gold-text)}
+.nav .nav-tix{min-height:42px}
+.nav-tix-m{display:none}
+/* Sticky ticket bar (phones and tablets, only while tickets are on sale) */
+.sticky-tix{position:fixed;left:12px;right:12px;bottom:12px;z-index:45;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;background:rgba(28,39,36,.96);color:var(--ivory);border-radius:999px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transform:translateY(140%);transition:transform .25s ease}
+.sticky-tix.on{transform:none}
+.sticky-tix p{display:flex;flex-direction:column;line-height:1.25;font-size:13px;color:rgba(251,248,239,.7)}
+.sticky-tix strong{color:var(--ivory);font-size:14.5px;font-weight:600}
+.sticky-tix .btn{min-height:44px}
+
 /* D · Programme */
 .prog-meta{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:22px}
@@ -313,7 +352,11 @@ body{margin:0;background:var(--ivory)}
 /* ---------- Tablet ≤ 1100 ---------- */
 @media (max-width: 1100px){
   :root{--gutter:28px;--sec:84px}
-  .nav-links,.nav .btn{display:none}
+  .nav-links,.nav .nav-tix{display:none}
+  .nav .nav-tix-m{display:inline-flex;margin-left:auto;min-height:40px;padding:0 16px;font-size:14px}
+  .nav-tix-m+.menu-btn{margin-left:0}
+  .sticky-tix{display:flex}
+  html.has-sticky .foot{padding-bottom:110px}
   .menu-btn{display:inline-flex;align-items:center}
   .mnav.open{display:block;padding:0 28px 16px}
   .hero{padding-block:32px 64px}
@@ -401,6 +444,16 @@ body{margin:0;background:var(--ivory)}
   .info{grid-template-columns:1fr;gap:28px}
   .reg-txt{padding:52px 20px 56px}
   .reg-btns .btn{flex:1 1 auto}
+  .invite{padding:48px 20px 32px}
+  .invite-when{flex-direction:column;gap:0}
+  .invite-when span[aria-hidden]{display:none}
+  .invite::before,.invite::after{width:28px;height:28px}
+  .tix-row{grid-template-columns:1fr;gap:14px}
+  .tix-inc{flex-direction:column}
+  .tix-inc li::after{display:none}
+  .tix-buy{flex-direction:row;align-items:center;justify-content:space-between;text-align:left}
+  .invite-cta .btn{flex:1 1 100%}
+  .nav .nav-tix-m{padding:0 14px}
   .foot-g{grid-template-columns:1fr}
 }
 @media (forced-colors: active){.btn,.chip,.day,.faq-q{border:1px solid ButtonText}}

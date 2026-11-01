@@ -10,6 +10,8 @@ import { Nav } from './components/Nav';
 import { People } from './components/People';
 import { Programme } from './components/Programme';
 import { Register } from './components/Register';
+import { StickyTickets } from './components/StickyTickets';
+import { Tickets } from './components/Tickets';
 import { Visit } from './components/Visit';
 
 export function App() {
@@ -21,6 +23,7 @@ export function App() {
         <span id="main" tabIndex={-1} />
         <Hero />
         <About />
+        <Tickets />
         <Celebration />
         <Programme />
         <People />
@@ -31,6 +34,7 @@ export function App() {
         <Register />
       </main>
       <Footer />
+      <StickyTickets />
     </div>
   );
 }

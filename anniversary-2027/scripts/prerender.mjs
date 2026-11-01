@@ -30,4 +30,9 @@ await writeFile(file, html.replace('<!--app-html-->', body).replace('</title>', 
 await rm(resolve(root, 'dist-ssr'), { recursive: true, force: true });
 // Uncleared photographs (local design reference) never leave this machine in a production build.
 if (process.env.VITE_REFERENCE_IMAGES !== '1') await rm(resolve(root, 'dist/_reference'), { recursive: true, force: true });
+if (process.env.TICKETING_FIXTURE === '1') {
+  // Fake ticket data: mark the build so it can never pass for a real one.
+  const f = resolve(root, 'dist/index.html');
+  await writeFile(f, (await readFile(f, 'utf8')).replace('<head>', '<head><meta name="ticketing-fixture" content="TEST BUILD — fake ticket data, never deploy">'));
+}
 console.log('prerendered dist/index.html');

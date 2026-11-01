@@ -47,7 +47,7 @@ try {
     check((await p.locator('h1').count()) === 1, 'prerendered HTML has exactly one h1 without JavaScript');
     const t = await p.locator('body').textContent();
     check(t.includes('9–12 April 2027') && t.includes('Mirni Dunav 3'), 'dates and venue are in the static HTML');
-    check((await p.locator('h2').count()) === 9, 'all nine section headings are in the static HTML');
+    check((await p.locator('h2').count()) === 10, 'all ten section headings are in the static HTML');
     await ctx.close();
   }
 
@@ -94,7 +94,7 @@ try {
   check(sectionsLabelled, 'every section is labelled by its heading');
   const anchors = await page.$$eval('a[href^="#"]', (as) => as.map((a) => a.getAttribute('href')).filter((h) => h.length > 1 && !document.getElementById(h.slice(1))));
   check(anchors.length === 0, `every in-page link has a target (${anchors.join(', ')})`);
-  for (const id of ['about', 'experience', 'programme', 'faces', 'ark', 'gala', 'story', 'visit', 'register'])
+  for (const id of ['about', 'tickets', 'experience', 'programme', 'faces', 'ark', 'gala', 'story', 'visit', 'register'])
     check((await page.locator(`#${id}`).count()) === 1, `section #${id} exists`);
   const imgs = await page.$$eval('img', (is) => is.map((i) => ({ src: i.currentSrc || i.src, alt: i.getAttribute('alt'), ok: i.complete && i.naturalWidth > 0 })));
   check(imgs.every((i) => i.alt !== null), 'every image has an alt attribute');
@@ -113,10 +113,13 @@ try {
   check(text.includes('Mirni Dunav 3, 25260 Apatin, Serbia'), 'venue address correct');
   check((await page.locator('a[href="mailto:anniversary@liberland.org"]').count()) > 0, 'contact e-mail link present');
   check((await page.locator('a[href="https://ark.ll.land/"]').count()) >= 2, 'Ark Village links to ark.ll.land');
-  check(text.includes('Registration details coming soon.'), 'registration shows "Registration details coming soon."');
-  const reg = page.locator('#register button', { hasText: 'Register' });
-  check((await reg.count()) === 1 && (await reg.isDisabled()), 'Register button is disabled while registration is not open');
-  check((await page.locator('a[href*="luma.com"]').count()) === 0, 'no link to the 2026 Luma registration');
+  // Ticketing, State B (not activated): no checkout, no prices, no third-party script, every CTA leads to #tickets.
+  check(text.includes('Tickets on sale soon'), 'ticket section says "Tickets on sale soon"');
+  check(text.includes('Join the Celebration') && text.includes('Celebrate twelve years of Liberland at Ark Village on the Danube.'), 'ticket section headline and subheading');
+  check((await page.locator('[data-luma-action], script[src*="lu.ma"], script[src*="luma.com"]').count()) === 0, 'no checkout widget or Luma script while ticketing is not activated');
+  check((await page.locator('.nav .nav-tix').getAttribute('href')) === '#tickets', 'navigation ticket button leads to the ticket section');
+  check((await page.locator('a[href*="luma.com"], a[href*="lu.ma"]').count()) === 0, 'no link to the 2026 (or any) Luma event');
+  check((await page.locator('#tickets .tix-row').count()) === 0, 'no ticket categories shown before they are configured');
   check(!/[€$£]\s?\d|\d\s?(EUR|USD|RSD)\b/.test(text), 'no ticket prices');
   check(!/sold out|only \d+ (left|seats)|hurry|limited (seats|places)/i.test(text), 'no scarcity or countdown messaging');
   const personText = await page.locator('.person').allInnerTexts();
