@@ -4,6 +4,8 @@
 payment script and sells nothing. The complete Luma checkout integration is built and tested; switching it on is
 a configuration change in `src/config/ticketing.ts`, once the items below exist.
 
+Developer handoff with the backend options (Luma only, optional integration service, liberland.org checkout): [BACKEND.md](BACKEND.md).
+
 ## What was found (1 Nov 2026)
 
 | Checked | Result |
