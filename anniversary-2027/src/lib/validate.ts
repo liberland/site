@@ -51,18 +51,21 @@ export function validate(root: string) {
     if (t.url && !/^https:\/\//.test(t.url)) e.push(`tier "${t.name}": url must start with https://`);
   }
 
-  const allPhotos: Photo[] = [...Object.values(photos), ...people.map((p) => p.portrait)];
+  const allPhotos = [...Object.values(photos), ...people.map((p) => p.portrait)].filter((p): p is Photo => !!p);
   for (const ph of allPhotos) {
-    if (!ph.alt) e.push(`photo ${ph.id}: alt text is required`);
+    if (!ph.alt) e.push(`photo ${ph.file}: alt text is required`);
+    if (!ph.source) e.push(`photo ${ph.file}: source URL is required (see ASSETS.md)`);
     if (ph.cleared) {
-      if (!ph.file) e.push(`photo ${ph.id}: cleared but no file is set`);
-      else for (const w of ph.widths ?? [ph.width ?? 1600]) {
-        const f = resolve(root, 'public/images', `${ph.file}-${w}.webp`);
-        if (!existsSync(f)) e.push(`photo ${ph.id}: cleared, but public/images/${ph.file}-${w}.webp is missing (run: python3 scripts/photos.py --publish ${ph.file})`);
+      for (const w of ph.widths) {
+        if (!existsSync(resolve(root, 'public/images', `${ph.file}-${w}.webp`)))
+          e.push(`photo ${ph.file}: public/images/${ph.file}-${w}.webp is missing (run: python3 scripts/photos.py --publish ${ph.file})`);
       }
-      if (!ph.credit) e.push(`photo ${ph.id}: a credit is required for published photographs`);
+      if (!ph.credit) e.push(`photo ${ph.file}: a credit is required for published photographs`);
     }
   }
+  const files = allPhotos.map((p) => p.file);
+  const dup = files.filter((x, i) => files.indexOf(x) !== i);
+  if (dup.length) e.push(`the same photograph is used twice: ${[...new Set(dup)].join(', ')}`);
   if (!faq.length) e.push('faq is empty');
   if (!/^https:\/\/.+\/$/.test(site.url)) e.push('site.url must be https://… and end with /');
   if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(event.contact.email)) e.push('event.contact.email does not look like an email address');

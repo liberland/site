@@ -4,7 +4,7 @@
 
 | Where | What | Status |
 | --- | --- | --- |
-| **https://liberlandlimited.com/anniversary/** | Test preview, built by `.github/workflows/deploy-pages.yml` on every push to `master` (`BASE_PATH=/anniversary/`, `SITE_URL=https://liberlandlimited.com/anniversary/`) | `noindex, nofollow`. Production build (no uncleared photographs) |
+| **https://liberlandlimited.com/anniversary/** | Test preview, built by `.github/workflows/deploy-pages.yml` on every push to `master` (`BASE_PATH=/anniversary/`, `SITE_URL=https://liberlandlimited.com/anniversary/`) | `noindex, nofollow`. Production build |
 | **https://anniversary.ll.land/** | The historical **2026** site, on separate SiteGround hosting (nginx, 35.214.195.209), **not in this repository** | **Untouched.** Nothing in this repository deploys there |
 
 ## Before production at anniversary.ll.land (needs explicit authorisation)
@@ -14,7 +14,7 @@
    afterwards, for example `2026.anniversary.ll.land` or `anniversary.ll.land/2026/`.
 2. **Confirm the facts** in `src/data/anniversary.ts`: dates (`event.dates.status: 'confirmed'`), programme, people,
    registration URL and prices.
-3. **Clear the photographs** (see `ASSETS.md`), or set `site.showAssetLabels: false` to launch with clean fallback panels.
+3. **Confirm photo reuse** where ASSETS.md flags it (Ark Village operators; Drive photographer).
 4. Set `site.indexable: true`, rebuild, run `node scripts/og-image.mjs`, rebuild again, and run `npm test`.
 
 ## Production options

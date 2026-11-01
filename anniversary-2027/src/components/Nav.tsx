@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import escutcheon from '../assets/escutcheon-128.webp';
+import shield from '../assets/shield-64.webp';
 import { event, registration } from '../data/anniversary';
 import { galaWeekday } from '../lib/event';
 import { range } from '../lib/dates';
 
 const LINKS = [
-  ['#about', 'Twelve years'],
+  ['#experience', 'Celebration'],
   ['#programme', 'Programme'],
-  ['#faces', 'Faces'],
+  ['#faces', 'People'],
   ['#ark', 'Ark Village'],
   ['#gala', 'Gala'],
   ['#visit', 'Visit'],
@@ -16,17 +16,17 @@ const LINKS = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
-  const days = range(event.dates.start, event.dates.end, 'short').replace(/ \d{4}$/, '').toUpperCase(); // 9–12 APR
-  const regLabel = registration.status === 'open' ? 'OPEN' : registration.status === 'closed' ? 'CLOSED' : 'SOON';
+  const days = range(event.dates.start, event.dates.end, 'short').replace(/ \d{4}$/, ''); // 9–12 Apr
+  const regLabel = registration.status === 'open' ? 'Open' : registration.status === 'closed' ? 'Closed' : 'Coming soon';
   const MOBILE: [string, string, string][] = [
-    ['#about', 'Twelve years', 'B'],
-    ['#experience', 'The experience', 'C'],
+    ['#about', 'Twelve years', '2015'],
+    ['#experience', 'The celebration', ''],
     ['#programme', 'Programme', days],
-    ['#faces', 'Featured faces', 'E'],
-    ['#ark', 'Ark Village', event.venue.city.toUpperCase()],
-    ['#gala', 'The gala', galaWeekday.slice(0, 3).toUpperCase()],
-    ['#story', 'The story so far', `2015–${event.year}`],
-    ['#visit', 'Plan your visit', 'I'],
+    ['#faces', 'The people', ''],
+    ['#ark', 'Ark Village', event.venue.city],
+    ['#gala', 'The gala', galaWeekday],
+    ['#story', 'History', `2015–${event.year}`],
+    ['#visit', 'Practical information', ''],
     ['#register', 'Registration', regLabel],
   ];
 
@@ -47,14 +47,14 @@ export function Nav() {
     <header className="nav">
       <div className="wrap nav-in">
         <a className="brand" href="#top" aria-label={`${event.name}, back to top`}>
-          <img src={escutcheon} width="24" height="33" alt="" />
-          <span className="lbl">Liberland</span>
+          <img src={shield} width="26" height="36" alt="" />
+          <span className="brand-t">Liberland</span>
           <span className="brand-xii" aria-hidden="true">{event.numeral}</span>
         </a>
         <nav className="nav-links" aria-label="Sections">
           {LINKS.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-        <a className="btn btn-y" href="#register">Registration</a>
+        <a className="btn btn-primary" href="#register">Registration</a>
         <button
           ref={btn}
           className="menu-btn"
@@ -69,7 +69,7 @@ export function Nav() {
       <nav id="mnav" className={open ? 'mnav open' : 'mnav'} aria-label="Sections, mobile">
         {MOBILE.map(([href, label, code]) => (
           <a key={href} href={href} onClick={() => setOpen(false)}>
-            {label} <span>{code}</span>
+            {label} {code && <span>{code}</span>}
           </a>
         ))}
       </nav>

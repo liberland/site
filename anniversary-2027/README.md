@@ -3,28 +3,34 @@
 Event website for the Liberland 12th Anniversary, planned for **9–12 April 2027** (provisional) at **Ark Village,
 Mirni Dunav 3, 25260 Apatin, Serbia**. Intended address: **https://anniversary.ll.land/**.
 
-- **Design:** the approved Claude Design prototype "The Spring Republic". This is the Liberland Design System
-  (State Design Language v2) with a spring-on-the-Danube event palette. Class names and CSS are ported from the
-  prototype with the handoff's one change: container queries become media queries at the same thresholds
-  (≤1100px tablet, ≤640px mobile). All styling is in `src/styles/anniversary.css`.
+- **Design:** "Liberland XII — a celebration on the Danube". The layout is light and warm and led by real photography: the
+  2026 anniversary, the Liberland press kit and Ark Village's own pictures. The palette is ivory, spring green,
+  evergreen and ceremonial gold, with an evening section for the gala. Playfair Display is used for headings and
+  Archivo for reading. All styling is in `src/styles/anniversary.css` (breakpoints ≤1100px and ≤640px).
 - **Stack:** Vite + React 18 + TypeScript, prerendered to static HTML and hydrated. No forms, no analytics,
   no cookies, no third-party requests. Fonts are self-hosted.
 - **Not deployed.** See [DEPLOYMENT.md](DEPLOYMENT.md).
 
-## Page sequence (as designed)
+## Page sequence
 
-1. **Hero:** the "Liberland / 12th Anniversary" invitation with the XII medallion, the dates, the venue and
-   the founding date.
-2. **Twelve years:** the founding on 13 April 2015, with a fact strip.
-3. **The experience:** celebration, ideas, people and the Danube.
-4. **The programme:** four days as accessible tabs (arrow keys, Home, End). Every item shows "Time TBC" and "Provisional".
-5. **Featured faces:** filter chips by participation status. Nobody is shown as confirmed.
-6. **Ark Village:** a photo mosaic, facilities, and the address strip.
-7. **The gala:** Saturday evening, provisional.
-8. **The story so far:** a timeline from 2015 to 2027, with its source and the disputed-status note.
-9. **Plan your visit:** address, directions, accommodation, travel, the Serbia/Gornja Siga notice, and the FAQ.
-10. **Registration:** "Registration details coming soon." with a disabled Register button and categories in preparation.
-11. **Final invitation** and **footer**.
+1. **Hero:** a compact 43/57 composition. On the left are the shield, "Liberland / 12th Anniversary" (62px), the
+   tagline, the dates and venue, the provisional note and one call to action. On the right is the 2026 anniversary
+   group photograph with the small XII seal.
+2. **Twelve years of Liberland:** the founding on 13 April 2015 beside a photograph of the President with guests.
+3. **The celebration:** three editorial features:
+   - ideas and conversation (talk with the flag),
+   - friends old and new (community dinner),
+   - a wide Danube image (boat with the flag).
+4. **The programme:** four day tabs (arrow keys, Home, End) and one schedule panel. Every item shows "Time TBC" and
+   "Provisional".
+5. **The people:** official round portraits of Vít Jedlička, Balázs Magyar and Jan Schlüter as featured community
+   figures, then faces from the 2026 anniversary.
+6. **Ark Village:** five photographs of the actual venue, the facilities, and the address bar.
+7. **The anniversary gala:** an evening section with the 2026 Order of Merit ceremony photographs.
+8. **Twelve years of history:** a compact timeline with the official badge. No invented archive photographs.
+9. **Practical information:** address, directions, the Serbia/Gornja Siga notice, accommodation, travel and the FAQ.
+10. **Registration and invitation:** the flag-on-the-beach photograph beside the registration state and categories.
+11. **Footer:** with photo credits.
 
 ## Everything editable is in `src/data/anniversary.ts`
 
@@ -39,31 +45,25 @@ stops with a plain-English message (`src/lib/validate.ts`).
 | Confirm a session | `status: 'confirmed'`. `'cancelled'` hides it |
 | Name a speaker on a session | Add the person's id to `speakerIds`. Their status must be `'speaker'`, or the build refuses |
 | Confirm a person | `status: 'speaker'` or `'guest'`, **only with written confirmation for 2027** |
-| Add a person | Add an entry to `people` with a `portrait` (use `file: null` until a cleared portrait exists) |
+| Add a person | Add an entry to `people`. With `portrait: null` the person is shown as a typographic profile (never an empty frame) |
 | Open registration | `registration.status: 'open'` and `registration.url: 'https://…'` (the authorised booking page) |
 | Publish prices | Each tier's `price` (e.g. `'€120'`), only once approved |
-| Publish a photograph | See [ASSETS.md](ASSETS.md): `python3 scripts/photos.py --publish <name>`, then `cleared: true` |
-| Hide the slot labels | `site.showAssetLabels: false` (photo slots still waiting for an image become clean panels) |
+| Add or swap a photograph | Add its source to `scripts/photos.py`, run `python3 scripts/photos.py --publish <name>`, then reference it in `photos` (see [ASSETS.md](ASSETS.md)) |
+| Withdraw a photograph | Set its `cleared: false`. It disappears and the layout closes up around it |
 | Allow search indexing | `site.indexable: true` (at launch) |
 
 The historical founding date (`event.founding.date`, 13 April 2015) is a separate fact from the event dates, and
 the build refuses any change to it.
 
-## Photographs: what is published
+## Photographs
 
-| Build | Photos shown |
-| --- | --- |
-| **Production** (`npm run build`) | Only cleared photographs: currently the CC BY-SA portrait of Vít Jedlička. Every other slot shows the design's labelled, art-directed fallback |
-| **Reference** (`npm run build:reference`) | The Ark Village photographs identified on ark.ll.land, and the two Congress portrait crops. Each is tagged "Reference image · not cleared for publication". For design review on your own machine only |
+All 19 photographs are real, local and credited. Sources and reuse status are in [ASSETS.md](ASSETS.md).
 
-```bash
-python3 scripts/photos.py        # downloads and optimises reference photos → public/_reference/ (git-ignored)
-```
-```bash
-npm run dev:reference            # or: npm run build:reference && npm run preview
-```
-
-The prerender step deletes `dist/_reference` from every non-reference build.
+- **No placeholder state.** A photo component renders nothing when its photo is not cleared, and its section
+  recomposes around the photos that remain.
+- **Build checks.** The build refuses a missing file, a missing source or credit, and the same photograph used twice.
+- **Test checks.** `npm test` audits the rendered page for placeholder wording, empty frames, broken images and
+  repeated photos.
 
 ## Commands
 
@@ -94,23 +94,13 @@ node scripts/og-image.mjs   # regenerate public/og-image.jpg after changing date
 - **Keyboard:** programme tabs (arrows, Home, End, roving tabindex), the FAQ accordion, faces filter chips, the skip link, and the yellow focus ring.
 - **Reduced motion:** every animation stops.
 - **Content integrity:** founding 13 April 2015 versus event 9–12 April 2027, Tuesday 13 April 2027, the address, the Serbia/Gornja Siga notice, "Registration details coming soon.", a disabled Register button, no prices, scarcity or forms, nobody marked as a confirmed speaker or guest, no `Event` structured data while dates are provisional, and the venue in `RS`.
+- **Zero placeholders:** no IMG-/P- codes or placeholder wording, no empty frames, at least 18 distinct photographs, none repeated, and captions present.
+- **Hero size:** headline ≤64px at 1440px and 34–42px at 375px, and the hero fits within 85% of a 900px viewport.
 
 ## Motion
 
-Taken from the design, and all off under `prefers-reduced-motion` or with `site.motion: false`:
-- The medallion text ring and the gala ring field each turn once per 260 s.
-- The hero sun glow breathes over 14 s (illustration only).
+- The XII seal's text ring turns once per 240 s.
 - Scroll reveals use a CSS-only `animation-timeline: view()`.
-- In the gallery, the caption lifts and the image scales 1.02 on hover.
-- The programme panel and FAQ answers fade in over 120 ms.
+- The programme panel and FAQ answers fade in.
 
-There is no audio and no autoplay.
-
-## Deviations from the prototype (deliberate, minimal)
-
-- **Mosaic rows can grow.** The "At Ark Village" list overflowed its fixed 260px grid row in the prototype.
-- **Venue strip side bars removed.** Its 1px gap colour bled into the wrapper padding as olive bars.
-- **Hero caption narrowed on phones.** The "photograph pending" caption ran under the medallion at 375px.
-- **Extra accessibility markup.** A skip link, visually hidden "(opens in a new tab)" hints, FAQ headings and regions,
-  and `aria-describedby` on the disabled Register button.
-- **Page credits.** A photo credits line in the footer, shown only when a published photograph needs attribution.
+All of it stops under `prefers-reduced-motion` or with `site.motion: false`. There is no audio.

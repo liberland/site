@@ -1,9 +1,9 @@
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { event, people, programme, type Session } from '../data/anniversary';
-import { dayNum, parts, short } from '../lib/dates';
+import { parts, short } from '../lib/dates';
 import { anniversaryDay, anniversaryDayLong, dateRange, datesConfirmed, foundingLong } from '../lib/event';
 import { visibleDays } from '../lib/event';
-import { Tag } from './Tag';
+import { Pill } from './Tag';
 
 function time(s: Session) {
   if (!s.start) return 'Time TBC';
@@ -44,21 +44,22 @@ export function Programme() {
   const relation = anniversaryDay > end ? 'in the days before it' : anniversaryDay < event.dates.start ? 'in the days after it' : 'around it';
 
   return (
-    <section id="programme" className="sec s-prog" aria-labelledby="prog-title">
+    <section id="programme" className="sec" aria-labelledby="prog-title">
       <div className="wrap">
-        <div className="prog-head rv">
+        <div className="sec-head rv">
           <div>
-            <p className="kick lbl">{dateRange}</p>
-            <h2 id="prog-title" className="d2">The programme</h2>
+            <p className="eyebrow">{dateRange}</p>
+            <h2 id="prog-title" className="h2" style={{ marginTop: 10 }}>The programme</h2>
           </div>
-          <div className="prog-note">
-            {programme.status === 'provisional' && <Tag prov>Provisional programme</Tag>}
-            <p>{programme.note}</p>
+          <div className="prog-meta">
+            {programme.status === 'provisional' && <Pill prov>Provisional programme</Pill>}
+            <p className="body">{programme.note}</p>
           </div>
         </div>
-        <div className="prog">
-          <div className="days" role="tablist" aria-label="Programme days" onKeyDown={onKey}>
-            {visibleDays.map((d, i) => (
+        <div className="days" role="tablist" aria-label="Programme days" onKeyDown={onKey}>
+          {visibleDays.map((d, i) => {
+            const p = parts(d.date);
+            return (
               <button
                 key={d.date}
                 ref={(el) => { tabs.current[i] = el; }}
@@ -71,43 +72,42 @@ export function Programme() {
                 className={i === cur ? 'day on' : 'day'}
                 onClick={() => setCur(i)}
               >
-                <span className="day-n">{dayNum(d.date)}</span>
-                <span>
-                  <span className="day-dow lbl">{parts(d.date).weekday} · {parts(d.date).month}</span>
-                  <span className="day-t">{d.title}</span>
-                </span>
+                <span className="day-d">{p.weekday.slice(0, 3)} {p.d} {p.month.slice(0, 3)}</span>
+                <span className="day-t">{d.title}</span>
               </button>
-            ))}
-          </div>
-          <div key={cur} id="day-panel" className="day-panel fade-in" role="tabpanel" aria-labelledby={`day-tab-${cur}`} tabIndex={0}>
-            <span className="rec">{short(day.date)}{datesConfirmed ? '' : ' · Provisional'}</span>
-            <h3>{day.title}</h3>
-            <p className="body">{day.lead}</p>
-            <ul className="day-items">
-              {day.sessions.map((s) => {
-                const m = meta(s);
-                return (
-                  <li key={s.title}>
-                    <span className="tm">{time(s)}</span>
-                    <span className="it">
-                      {s.title}
-                      {s.description && <span className="ds">{s.description}</span>}
-                      {m && <span className="meta">{m}</span>}
-                    </span>
-                    {s.status === 'confirmed' ? <Tag>Confirmed</Tag> : <Tag prov>Provisional</Tag>}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+            );
+          })}
         </div>
-        <div className="prog-foot rv">
-          <span className="rec">{short(anniversaryDay)}</span>
-          <p>
+        <div key={cur} id="day-panel" className="day-panel fade-in" role="tabpanel" aria-labelledby={`day-tab-${cur}`} tabIndex={0}>
+          <div className="panel-head">
+            <h3 className="h3">{day.title}</h3>
+            <span className="eyebrow">{short(day.date)}{datesConfirmed ? '' : ' · Provisional'}</span>
+          </div>
+          <p className="body">{day.lead}</p>
+          <ul className="sessions">
+            {day.sessions.map((s) => {
+              const m = meta(s);
+              return (
+                <li key={s.title}>
+                  <span className="s-time">{time(s)}</span>
+                  <span className="s-title">
+                    {s.title}
+                    {s.description && <span className="s-desc">{s.description}</span>}
+                    {m && <span className="s-meta">{m}</span>}
+                  </span>
+                  {s.status === 'confirmed' ? <Pill ok>Confirmed</Pill> : <Pill prov>Provisional</Pill>}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <p className="prog-foot rv">
+          <strong>{short(anniversaryDay)}</strong>
+          <span>
             The founding anniversary itself falls on {anniversaryDayLong}, twelve years after the proclamation of {foundingLong}.
             The anniversary gathering takes place {relation}.
-          </p>
-        </div>
+          </span>
+        </p>
       </div>
     </section>
   );

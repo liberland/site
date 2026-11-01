@@ -1,37 +1,34 @@
 import { site } from './data/anniversary';
 import { About } from './components/About';
 import { Ark } from './components/Ark';
-import { Experience } from './components/Experience';
-import { Faces } from './components/Faces';
-import { Final } from './components/Final';
+import { Celebration } from './components/Celebration';
 import { Footer } from './components/Footer';
 import { Gala } from './components/Gala';
 import { Hero } from './components/Hero';
+import { History } from './components/History';
 import { Nav } from './components/Nav';
+import { People } from './components/People';
 import { Programme } from './components/Programme';
-import { Registration } from './components/Registration';
-import { Story } from './components/Story';
+import { Register } from './components/Register';
 import { Visit } from './components/Visit';
 
 export function App() {
-  const cls = ['lla', site.showAssetLabels ? '' : 'nolabel', site.motion ? '' : 'still'].filter(Boolean).join(' ');
   return (
-    <div className={cls}>
+    <div className={site.motion ? 'lla' : 'lla still'}>
       <a className="skip" href="#main">Skip to content</a>
       <Nav />
       <main id="top">
         <span id="main" tabIndex={-1} />
         <Hero />
         <About />
-        <Experience />
+        <Celebration />
         <Programme />
-        <Faces />
+        <People />
         <Ark />
         <Gala />
-        <Story />
+        <History />
         <Visit />
-        <Registration />
-        <Final />
+        <Register />
       </main>
       <Footer />
     </div>
