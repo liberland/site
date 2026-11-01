@@ -1,0 +1,30 @@
+{
+  "name": "liberland-anniversary-2027",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Liberland 12th Anniversary 2027 — event website (anniversary.ll.land)",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc -b",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "dev:reference": "VITE_REFERENCE_IMAGES=1 vite",
+    "build:reference": "VITE_REFERENCE_IMAGES=1 npm run build",
+    "preview": "vite preview",
+    "test": "node tests/site.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/playfair-display": "5.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.5.2",
+    "typescript": "5.8.3",
+    "vite": "6.4.5"
+  }
+}
