@@ -2,7 +2,8 @@
    Runs from vite.config.ts (Node), never in the browser. */
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { event, faq, gala, people, photos, programme, registration, site, tiers, type Photo } from '../data/anniversary';
+import { event, faq, gala, people, photos, programme, site, type Photo } from '../data/anniversary';
+import { validateTicketing } from '../config/ticketing';
 
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
@@ -42,14 +43,7 @@ export function validate(root: string) {
     if (!['speaker', 'guest', 'featured', 'pending'].includes(p.status)) e.push(`${p.name}: status must be 'speaker', 'guest', 'featured' or 'pending'`);
   }
 
-  const r = registration;
-  if (!['coming-soon', 'open', 'closed'].includes(r.status)) e.push("registration.status must be 'coming-soon', 'open' or 'closed'");
-  if (r.status === 'open' && !r.url) e.push("registration.status is 'open' but registration.url is empty");
-  if (r.url && !/^https:\/\//.test(r.url)) e.push('registration.url must start with https://');
-  for (const t of tiers) {
-    if (t.status === 'open' && !t.url && !r.url) e.push(`tier "${t.name}" is open but has no url (and registration.url is empty)`);
-    if (t.url && !/^https:\/\//.test(t.url)) e.push(`tier "${t.name}": url must start with https://`);
-  }
+  e.push(...validateTicketing());
 
   const allPhotos = [...Object.values(photos), ...people.map((p) => p.portrait)].filter((p): p is Photo => !!p);
   for (const ph of allPhotos) {

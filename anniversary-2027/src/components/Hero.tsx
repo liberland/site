@@ -5,6 +5,8 @@ import { event } from '../data/anniversary';
 import { Figure } from './Photo';
 import { Seal } from './Seal';
 import { Arrow } from './Tag';
+import { TicketButton } from './TicketButton';
+import { ticketing, ticketsLive } from '../config/ticketing';
 
 /** A · Photographic hero — a compact 43/57 editorial composition. */
 export function Hero() {
@@ -27,8 +29,17 @@ export function Hero() {
           </dl>
           {!datesConfirmed && <p className="hero-note">Provisional dates — subject to confirmation</p>}
           <div className="hero-cta">
-            <a className="btn btn-primary" href="#experience">Explore the celebration <Arrow /></a>
-            <a className="tlink" href="#programme">See the programme</a>
+            {ticketsLive ? (
+              <>
+                <TicketButton className="btn btn-gold btn-lg">Get tickets <Arrow /></TicketButton>
+                <a className="tlink" href="#experience">Explore the celebration</a>
+              </>
+            ) : (
+              <>
+                <a className="btn btn-primary" href="#experience">Explore the celebration <Arrow /></a>
+                <a className="tlink" href="#tickets">Tickets · {ticketing.soon.title.replace(/^Tickets /, '')}</a>
+              </>
+            )}
           </div>
         </div>
         <Figure photo={photos.heroGroup} className="hero-fig" sizes="(max-width: 1100px) 100vw, 700px" eager>

@@ -11,7 +11,8 @@
     "dev:reference": "VITE_REFERENCE_IMAGES=1 vite",
     "build:reference": "VITE_REFERENCE_IMAGES=1 npm run build",
     "preview": "vite preview",
-    "test": "node tests/site.test.mjs"
+    "test": "node tests/site.test.mjs",
+    "test:tickets": "TICKETING_FIXTURE=1 npm run build && node tests/tickets.test.mjs; status=$?; npm run build > /dev/null; exit $status"
   },
   "dependencies": {
     "@fontsource/playfair-display": "5.3.0",

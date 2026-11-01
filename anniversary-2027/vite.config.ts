@@ -5,6 +5,8 @@ import { headTags } from './src/lib/head';
 import { validate } from './src/lib/validate';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
+/** TICKETING_FIXTURE=1 swaps in tests/fixtures/ticketing.ts (fake live-sales data) — for `npm run test:tickets` only. */
+const FIXTURE = process.env.TICKETING_FIXTURE === '1';
 
 /** Validates src/data/anniversary.ts and injects title, description, social and structured-data tags. */
 function eventHead(): Plugin {
@@ -22,5 +24,6 @@ function eventHead(): Plugin {
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   plugins: [react(), eventHead()],
+  resolve: FIXTURE ? { alias: [{ find: /^(\.\.?\/)+config\/ticketing$/, replacement: fileURLToPath(new URL('./tests/fixtures/ticketing.ts', import.meta.url)) }] } : {},
   build: { target: 'es2020', cssCodeSplit: false },
 });

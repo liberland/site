@@ -1,5 +1,6 @@
 /* <head> tags generated at build time from src/data/anniversary.ts. */
-import { event, people, registration, site } from '../data/anniversary';
+import { event, people, site } from '../data/anniversary';
+import { ticketing, ticketsLive } from '../config/ticketing';
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -69,8 +70,12 @@ export function headTags() {
       location: place,
       organizer: { '@type': 'Organization', name: site.organiser.name, url: site.organiser.url },
       ...(performers.length ? { performer: performers } : {}),
-      // Only a link to the authorised booking page; no price or availability is invented.
-      ...(registration.status === 'open' && registration.url ? { offers: { '@type': 'Offer', url: registration.url } } : {}),
+      // Only a link to the authorised booking page; prices appear only as configured from the Luma event.
+      ...(ticketsLive
+        ? { offers: ticketing.ticketTypes.length
+            ? ticketing.ticketTypes.filter((t) => t.price).map((t) => ({ '@type': 'Offer', name: t.name, url: ticketing.eventUrl, price: t.price!.amount, priceCurrency: t.price!.currency }))
+            : { '@type': 'Offer', url: ticketing.eventUrl } }
+        : {}),
     });
   }
   for (const x of ld) tags.push(`<script type="application/ld+json">${JSON.stringify(x).replace(/</g, '\\u003c')}</script>`);

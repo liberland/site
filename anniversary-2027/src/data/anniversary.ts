@@ -78,19 +78,6 @@ export type Person = {
   portrait: Photo | null;
 };
 
-export type Tier = {
-  label: string;
-  name: string;
-  description: string;
-  /** e.g. "€120" — leave null until the organisers approve prices. */
-  price: string | null;
-  /** Shown instead of a price while price is null. */
-  priceNote: string;
-  /** preparation = not on sale · open = on sale (needs url) · soldout */
-  status: 'preparation' | 'open' | 'soldout';
-  url: string | null;
-  featured?: boolean;
-};
 
 /* ==========================================================================
    1 · SITE & META
@@ -158,34 +145,8 @@ export const event = {
 };
 
 /* ==========================================================================
-   3 · REGISTRATION
-   --------------------------------------------------------------------------
-   There is deliberately no form and no checkout on this site.
-   To open registration: set `status: 'open'` AND `url` to the authorised
-   booking page (https://…). Every Register button then links there.
-   (2026 used Luma: https://luma.com/liberland_anniversary — do not reuse it
-   for 2027 unless the organisers create a 2027 event there.)
+   3 · TICKETS — see src/config/ticketing.ts (the single ticketing workflow).
    ========================================================================== */
-
-export const registration = {
-  status: 'coming-soon' as 'coming-soon' | 'open' | 'closed',
-  url: null as string | null,
-  /** Name of the booking provider, shown next to the button when open (e.g. "Luma"). */
-  provider: null as string | null,
-  message: 'Registration details coming soon.',
-  detail:
-    'This section will carry the working registration link when it is available. Until then, questions go to the organisers.',
-  closedMessage: 'Registration is closed.',
-  intro:
-    'Citizens, supporters and interested visitors are welcome. Participation categories, prices and inclusions for 2027 will be published once the organisers approve them.',
-};
-
-export const tiers: Tier[] = [
-  { label: 'Category · in preparation', name: 'General admission', description: 'Access to the anniversary programme. Inclusions to be confirmed.', price: null, priceNote: 'Price — to be announced', status: 'preparation', url: null },
-  { label: 'Category · in preparation', name: 'VIP', description: 'An extended format of participation. Inclusions to be confirmed.', price: null, priceNote: 'Price — to be announced', status: 'preparation', url: null, featured: true },
-  { label: 'Category · in preparation', name: 'Online participation', description: 'Remote access to selected sessions. Scope to be confirmed.', price: null, priceNote: 'Price — to be announced', status: 'preparation', url: null },
-  { label: 'Optional · subject to approval', name: 'Additional packages', description: 'Optional additions, offered only if approved by the organisers.', price: null, priceNote: 'Not yet offered', status: 'preparation', url: null },
-];
 
 /* ==========================================================================
    4 · PROGRAMME — provisional outline from the approved design.
@@ -347,7 +308,7 @@ export const faq: { q: string; a: string }[] = [
   { q: 'Does attending include a visit to Liberland?', a: 'No visit to Gornja Siga is confirmed for 2027. Access to that area is a separate matter, subject to the authorities who control it, and is not part of an ordinary visit to Ark Village.' },
   { q: 'Do I need to cross into Croatia?', a: 'No. Ark Village is in Serbia, and reaching it does not require crossing the Croatian border, unless your own route passes through Croatia.' },
   { q: 'Do I need a visa?', a: 'Entry requirements depend on your nationality. Check the official requirements for entering Serbia before you travel.' },
-  { q: 'Is accommodation or transport included?', a: 'Not determined for 2027. Inclusions from previous years do not carry over; details will be published with the registration categories.' },
+  { q: 'Is accommodation or transport included?', a: 'Not determined for 2027. Inclusions from previous years do not carry over; details will be published with the ticket categories.' },
   { q: 'Who do I contact?', a: 'Write to anniversary@liberland.org for questions about the programme, participation and accommodation.' },
 ];
 

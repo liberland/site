@@ -17,20 +17,22 @@ Mirni Dunav 3, 25260 Apatin, Serbia**. Intended address: **https://anniversary.l
    tagline, the dates and venue, the provisional note and one call to action. On the right is the 2026 anniversary
    group photograph with the small XII seal.
 2. **Twelve years of Liberland:** the founding on 13 April 2015 beside a photograph of the President with guests.
-3. **The celebration:** three editorial features:
+3. **Join the Celebration (tickets):** an invitation card with the dates. It shows "Tickets on sale soon" until the
+   Luma checkout is activated ([TICKETING.md](TICKETING.md)).
+4. **The celebration:** three editorial features:
    - ideas and conversation (talk with the flag),
    - friends old and new (community dinner),
    - a wide Danube image (boat with the flag).
-4. **The programme:** four day tabs (arrow keys, Home, End) and one schedule panel. Every item shows "Time TBC" and
+5. **The programme:** four day tabs (arrow keys, Home, End) and one schedule panel. Every item shows "Time TBC" and
    "Provisional".
-5. **The people:** official round portraits of Vít Jedlička, Balázs Magyar and Jan Schlüter as featured community
+6. **The people:** official round portraits of Vít Jedlička, Balázs Magyar and Jan Schlüter as featured community
    figures, then faces from the 2026 anniversary.
-6. **Ark Village:** five photographs of the actual venue, the facilities, and the address bar.
-7. **The anniversary gala:** an evening section with the 2026 Order of Merit ceremony photographs.
-8. **Twelve years of history:** a compact timeline with the official badge. No invented archive photographs.
-9. **Practical information:** address, directions, the Serbia/Gornja Siga notice, accommodation, travel and the FAQ.
-10. **Registration and invitation:** the flag-on-the-beach photograph beside the registration state and categories.
-11. **Footer:** with photo credits.
+7. **Ark Village:** five photographs of the actual venue, the facilities, and the address bar.
+8. **The anniversary gala:** an evening section with the 2026 Order of Merit ceremony photographs.
+9. **Twelve years of history:** a compact timeline with the official badge. No invented archive photographs.
+10. **Practical information:** address, directions, the Serbia/Gornja Siga notice, accommodation, travel and the FAQ.
+11. **Final invitation:** the flag-on-the-beach photograph with the second ticket call-to-action.
+12. **Footer:** with photo credits.
 
 ## Everything editable is in `src/data/anniversary.ts`
 
@@ -46,8 +48,7 @@ stops with a plain-English message (`src/lib/validate.ts`).
 | Name a speaker on a session | Add the person's id to `speakerIds`. Their status must be `'speaker'`, or the build refuses |
 | Confirm a person | `status: 'speaker'` or `'guest'`, **only with written confirmation for 2027** |
 | Add a person | Add an entry to `people`. With `portrait: null` the person is shown as a typographic profile (never an empty frame) |
-| Open registration | `registration.status: 'open'` and `registration.url: 'https://…'` (the authorised booking page) |
-| Publish prices | Each tier's `price` (e.g. `'€120'`), only once approved |
+| Open ticket sales | `src/config/ticketing.ts`: the 2027 Luma event, ticket types, seller, policy links and approvals. See [TICKETING.md](TICKETING.md) |
 | Add or swap a photograph | Add its source to `scripts/photos.py`, run `python3 scripts/photos.py --publish <name>`, then reference it in `photos` (see [ASSETS.md](ASSETS.md)) |
 | Withdraw a photograph | Set its `cleared: false`. It disappears and the layout closes up around it |
 | Allow search indexing | `site.indexable: true` (at launch) |
@@ -80,6 +81,9 @@ npm run build          # typecheck + validate data + build + prerender → dist/
 npm test               # end-to-end checks against dist/ (Playwright + Chromium)
 ```
 ```bash
+npm run test:tickets   # live-sales mechanics with a fake fixture event (see TICKETING.md)
+```
+```bash
 npm test -- --shots    # also writes full-page screenshots (375/768/1440) to tests/screenshots/
 ```
 ```bash
@@ -93,7 +97,7 @@ node scripts/og-image.mjs   # regenerate public/og-image.jpg after changing date
 - **Network:** no console errors, no failed requests, no third-party requests.
 - **Keyboard:** programme tabs (arrows, Home, End, roving tabindex), the FAQ accordion, faces filter chips, the skip link, and the yellow focus ring.
 - **Reduced motion:** every animation stops.
-- **Content integrity:** founding 13 April 2015 versus event 9–12 April 2027, Tuesday 13 April 2027, the address, the Serbia/Gornja Siga notice, "Registration details coming soon.", a disabled Register button, no prices, scarcity or forms, nobody marked as a confirmed speaker or guest, no `Event` structured data while dates are provisional, and the venue in `RS`.
+- **Content integrity:** founding 13 April 2015 versus event 9–12 April 2027, Tuesday 13 April 2027, the address, the Serbia/Gornja Siga notice, "Tickets on sale soon" with no checkout widget or Luma script, no prices, scarcity or forms, nobody marked as a confirmed speaker or guest, no `Event` structured data while dates are provisional, and the venue in `RS`.
 - **Zero placeholders:** no IMG-/P- codes or placeholder wording, no empty frames, at least 18 distinct photographs, none repeated, and captions present.
 - **Hero size:** headline ≤64px at 1440px and 34–42px at 375px, and the hero fits within 85% of a 900px viewport.
 

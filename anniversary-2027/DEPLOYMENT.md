@@ -12,8 +12,8 @@
 1. **Preserve the 2026 site.** Take a full static archive of the current anniversary.ll.land (files and database
    export from SiteGround, plus a crawl, e.g. `wget --mirror --page-requisites --convert-links`). Decide where it lives
    afterwards, for example `2026.anniversary.ll.land` or `anniversary.ll.land/2026/`.
-2. **Confirm the facts** in `src/data/anniversary.ts`: dates (`event.dates.status: 'confirmed'`), programme, people,
-   registration URL and prices.
+2. **Confirm the facts** in `src/data/anniversary.ts`: dates (`event.dates.status: 'confirmed'`), programme and people.
+   Ticket sales are activated separately, in `src/config/ticketing.ts`; see [TICKETING.md](TICKETING.md).
 3. **Confirm photo reuse** where ASSETS.md flags it (Ark Village operators; Drive photographer).
 4. Set `site.indexable: true`, rebuild, run `node scripts/og-image.mjs`, rebuild again, and run `npm test`.
 
@@ -46,6 +46,7 @@ works (`michalptacnik/fasto`).
 
 ## Recommended response headers (any host)
 
-`Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; frame-ancestors 'none'`.
+`Content-Security-Policy: default-src 'self'; img-src 'self' data: https://luma.com https://embed.lu.ma; style-src 'self' 'unsafe-inline' https://embed.lu.ma; script-src 'self' https://embed.lu.ma; frame-src https://luma.com; font-src 'self'; frame-ancestors 'none'`.
+The Luma entries are needed only once ticket sales are live.
 Inline `style` attributes are used for a few layout tweaks, and the JSON-LD is a non-executing data block.
 Add long-lived caching for `/assets/*` (the file names are content-hashed).

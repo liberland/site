@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import shield from '../assets/shield-64.webp';
-import { event, registration } from '../data/anniversary';
+import { event } from '../data/anniversary';
+import { ticketLabel, ticketsLive } from '../config/ticketing';
+import { TicketButton } from './TicketButton';
 import { galaWeekday } from '../lib/event';
 import { range } from '../lib/dates';
 
@@ -17,7 +19,6 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
   const days = range(event.dates.start, event.dates.end, 'short').replace(/ \d{4}$/, ''); // 9–12 Apr
-  const regLabel = registration.status === 'open' ? 'Open' : registration.status === 'closed' ? 'Closed' : 'Coming soon';
   const MOBILE: [string, string, string][] = [
     ['#about', 'Twelve years', '2015'],
     ['#experience', 'The celebration', ''],
@@ -27,7 +28,7 @@ export function Nav() {
     ['#gala', 'The gala', galaWeekday],
     ['#story', 'History', `2015–${event.year}`],
     ['#visit', 'Practical information', ''],
-    ['#register', 'Registration', regLabel],
+    ['#tickets', 'Tickets', ticketsLive ? 'On sale' : 'Soon'],
   ];
 
   useEffect(() => {
@@ -54,7 +55,8 @@ export function Nav() {
         <nav className="nav-links" aria-label="Sections">
           {LINKS.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-        <a className="btn btn-primary" href="#register">Registration</a>
+        <TicketButton className="btn btn-gold nav-tix">{ticketLabel}</TicketButton>
+        <TicketButton className="btn btn-gold nav-tix-m">{ticketLabel}</TicketButton>
         <button
           ref={btn}
           className="menu-btn"

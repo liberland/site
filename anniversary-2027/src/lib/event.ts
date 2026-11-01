@@ -1,5 +1,5 @@
 /* Derived values used across the page, computed once from src/data/anniversary.ts. */
-import { event, programme, registration, gala } from '../data/anniversary';
+import { event, programme, gala } from '../data/anniversary';
 import { anniversaryIn, parts, range, withWeekday, shortNoDay } from './dates';
 
 export const datesConfirmed = event.dates.status === 'confirmed';
@@ -19,6 +19,5 @@ export const visibleDays = programme.days.map((d) => ({ ...d, sessions: d.sessio
 export const galaDay = withWeekday(gala.date);
 export const galaWeekday = parts(gala.date).weekday;
 
-export const registrationOpen = registration.status === 'open' && !!registration.url;
 export const mailto = (subject?: string) =>
   `mailto:${event.contact.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
