@@ -1,46 +1,44 @@
 import { useState } from 'react';
 import { event, faq, visit } from '../data/anniversary';
 import { mailto } from '../lib/event';
-import { Arrow, Linkify } from './Tag';
+import { Arrow, Linkify, NewTab } from './Tag';
 
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-const NEW_TAB = <span className="vh"> (opens in a new tab)</span>;
+const NEW_TAB = <NewTab />;
 
 /** I · Plan your visit — address, practical information and the travel FAQ. */
 export function Visit() {
   const [open, setOpen] = useState(0);
   const v = event.venue;
   return (
-    <section id="visit" className="sec s-visit" aria-labelledby="visit-title">
-      <div className="wrap grid">
-        <div className="visit-l rv">
-          <p className="kick lbl">Plan your visit</p>
-          <h2 id="visit-title" className="d2">Getting to {v.name}</h2>
-          <div className="addr">
-            <div><span className="rec">Venue</span><span className="v">{v.name}</span></div>
-            <div><span className="rec">Address</span><address className="v" style={{ fontStyle: 'normal' }}>{v.street}<br />{v.postcode} {v.city}<br />{v.country}</address></div>
-            <div><span className="rec">Event contact</span><span className="v"><a href={mailto()}>{event.contact.email}</a></span></div>
-            <div><span className="rec">Venue site</span><span className="v"><a href={v.url} target="_blank" rel="noopener">{host(v.url)}{NEW_TAB}</a></span></div>
-          </div>
+    <section id="visit" className="sec sec-spring" aria-labelledby="visit-title">
+      <div className="wrap visit-grid">
+        <div className="rv">
+          <h2 id="visit-title" className="h2">Practical information</h2>
+          <dl className="addr">
+            <div><dt>Venue</dt><dd>{v.name}</dd></div>
+            <div><dt>Address</dt><dd><address>{v.street}<br />{v.postcode} {v.city}<br />{v.country}</address></dd></div>
+            <div><dt>Contact</dt><dd><a href={mailto()}>{event.contact.email}</a></dd></div>
+            <div><dt>Venue site</dt><dd><a href={v.url} target="_blank" rel="noopener">{host(v.url)}{NEW_TAB}</a></dd></div>
+          </dl>
           <div className="visit-btns">
-            <a className="btn btn-v" href={v.mapsUrl} target="_blank" rel="noopener">Get directions <Arrow c="↗" />{NEW_TAB}</a>
-            <a className="btn btn-ov" href={v.url} target="_blank" rel="noopener">{v.name} website{NEW_TAB}</a>
+            <a className="btn btn-primary" href={v.mapsUrl} target="_blank" rel="noopener">Get directions <Arrow c="↗" />{NEW_TAB}</a>
+            <a className="btn btn-line" href={v.url} target="_blank" rel="noopener">{v.name} website{NEW_TAB}</a>
           </div>
-          <div className="notice">
-            <span className="rec">The venue is in {v.country}</span>
-            {visit.notice}
-          </div>
+          <p className="notice"><strong>The venue is in {v.country}</strong>{visit.notice}</p>
         </div>
-        <div className="visit-r">
-          <div className="info-blk rv">
-            <h3>Accommodation</h3>
-            <p className="body">{visit.accommodation} <a href={mailto()}>{event.contact.email}</a>.</p>
+        <div className="rv">
+          <div className="info">
+            <div>
+              <h3>Accommodation</h3>
+              <p className="body">{visit.accommodation} <a href={mailto()}>{event.contact.email}</a>.</p>
+            </div>
+            <div>
+              <h3>Travel</h3>
+              <p className="body">{visit.travel}</p>
+            </div>
           </div>
-          <div className="info-blk rv">
-            <h3>Travel</h3>
-            <p className="body">{visit.travel}</p>
-          </div>
-          <h3 className="d3 rv" style={{ marginBottom: 18 }}>Travel questions</h3>
+          <h3 className="faq-h">Questions</h3>
           <div className="faq">
             {faq.map((f, i) => (
               <div key={f.q}>

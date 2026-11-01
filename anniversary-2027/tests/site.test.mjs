@@ -47,7 +47,7 @@ try {
     check((await p.locator('h1').count()) === 1, 'prerendered HTML has exactly one h1 without JavaScript');
     const t = await p.locator('body').textContent();
     check(t.includes('9–12 April 2027') && t.includes('Mirni Dunav 3'), 'dates and venue are in the static HTML');
-    check((await p.locator('h2').count()) >= 10, 'all section headings are in the static HTML');
+    check((await p.locator('h2').count()) === 9, 'all nine section headings are in the static HTML');
     await ctx.close();
   }
 
@@ -109,7 +109,7 @@ try {
   check(/9–12 April 2027/i.test(text), 'event dates 9–12 April 2027 shown'); // innerText applies text-transform
   check(text.includes('Tuesday 13 April 2027'), 'founding anniversary day computed as Tuesday 13 April 2027');
   check(!/Founded 12 April|proclaimed on 12 April|12 April 2015/i.test(text), 'no claim that the founding was on 12 April');
-  check(/PROVISIONAL DATES/i.test(text), 'dates are marked provisional');
+  check(text.includes('Provisional dates — subject to confirmation'), 'dates are marked provisional in the hero');
   check(text.includes('Mirni Dunav 3, 25260 Apatin, Serbia'), 'venue address correct');
   check((await page.locator('a[href="mailto:anniversary@liberland.org"]').count()) > 0, 'contact e-mail link present');
   check((await page.locator('a[href="https://ark.ll.land/"]').count()) >= 2, 'Ark Village links to ark.ll.land');
@@ -119,8 +119,10 @@ try {
   check((await page.locator('a[href*="luma.com"]').count()) === 0, 'no link to the 2026 Luma registration');
   check(!/[€$£]\s?\d|\d\s?(EUR|USD|RSD)\b/.test(text), 'no ticket prices');
   check(!/sold out|only \d+ (left|seats)|hurry|limited (seats|places)/i.test(text), 'no scarcity or countdown messaging');
-  check((await page.locator('.st-speaker, .st-guest').count()) === 0, 'nobody is shown as a confirmed speaker or guest');
-  check((await page.locator('.st-featured').count()) === 3, 'the three people are shown as featured community figures');
+  const personText = await page.locator('.person').allInnerTexts();
+  check(personText.length === 3 && personText.every((t) => /featured community figure/i.test(t)), 'the three people are shown as featured community figures');
+  check(!personText.some((t) => /confirmed (speaker|guest)/i.test(t)), 'nobody is shown as a confirmed speaker or guest');
+  check((await page.locator('.person-ph img').count()) === 3, 'all three people have real portraits');
   for (const n of ['Vít Jedlička', 'Balázs Magyar', 'Jan Schlüter']) check(text.includes(n), `${n} listed`);
   check(text.includes('Attending at Ark Village does not involve entering Liberland'), 'venue/Gornja Siga distinction stated');
   check(/not been recognised as a state by any UN member state/.test(text), 'no implied recognition (timeline source note)');
@@ -131,10 +133,10 @@ try {
   check((await page.locator('[role=tab][aria-selected=true]').textContent()).includes('Conference & gala'), 'Saturday is selected initially');
   for (let i = 0; i < 4; i++) {
     await tabs.nth(i).click();
-    const items = page.locator('#day-panel .day-items li');
+    const items = page.locator('#day-panel .sessions li');
     const n = await items.count();
-    const tbc = await page.locator('#day-panel .tm', { hasText: 'Time TBC' }).count();
-    const prov = await page.locator('#day-panel .tag-prov', { hasText: 'Provisional' }).count();
+    const tbc = await page.locator('#day-panel .s-time', { hasText: 'Time TBC' }).count();
+    const prov = await page.locator('#day-panel .pill-prov', { hasText: 'Provisional' }).count();
     check(n > 0 && tbc === n && prov === n, `day ${i + 1}: every session shows Time TBC and Provisional`);
   }
   await tabs.nth(0).click();
@@ -147,12 +149,21 @@ try {
   check((await page.$$eval('[role=tab]', (t) => t.filter((x) => x.tabIndex === 0).length)) === 1, 'roving tabindex: one tab in the tab order');
   check((await page.locator('#day-panel').getAttribute('aria-labelledby')) === 'day-tab-0', 'panel is labelled by the selected tab');
 
-  /* ---------- faces filter ---------- */
-  await page.locator('.chip', { hasText: 'Confirmed speaker' }).click();
-  check((await page.locator('.empty').textContent()).includes('No speakers are confirmed for 2027 yet'), 'speaker filter shows the empty state');
-  check((await page.locator('.chip.on').getAttribute('aria-pressed')) === 'true', 'active chip has aria-pressed=true');
-  await page.locator('.chip', { hasText: 'All' }).click();
-  check((await page.locator('.face').count()) === 4, 'All shows three faces plus "To be announced"');
+  /* ---------- people ---------- */
+  check((await page.locator('.chip').count()) === 0, 'no filter chips while every person has the same status');
+
+  /* ---------- zero-placeholder audit ---------- */
+  const visible = await page.locator('body').innerText();
+  const banned = /IMG-\d\d|\bP-0\d\b|photograph pending|image required|photo coming soon|illustrative fallback|replace image|placeholder|lorem ipsum|unsplash|reference image|not cleared/i;
+  check(!banned.test(visible), `no placeholder or development wording visible (${(visible.match(banned) || [])[0] ?? ''})`);
+  check((await page.locator('.ph-in, .ph:not(:has(img)), .face-tba, .ref-tag').count()) === 0, 'no empty photo frames, placeholder panels or reference tags');
+  const srcs = await page.$$eval('img', (is) => is.map((i) => i.getAttribute('src') || ''));
+  check(srcs.every((x) => x.length > 0), 'no image without a source');
+  const stems = (await page.$$eval('main img[srcset]', (is) => is.map((i) => i.currentSrc || i.src))).map((u) => u.replace(/-\d+\.webp$/, ''));
+  check(stems.length >= 18, `the page shows at least 18 real photographs (${stems.length})`);
+  check(new Set(stems).size === stems.length, 'no photograph is used twice');
+  const caps = await page.$$eval('figure figcaption', (f) => f.map((x) => x.textContent.trim()));
+  check(caps.every((c) => c.length > 0) && caps.length >= 15, `every captioned photo has a caption (${caps.length})`);
 
   /* ---------- FAQ ---------- */
   const q = page.locator('.faq-q');
@@ -173,7 +184,7 @@ try {
     const s = getComputedStyle(document.activeElement);
     return `${s.outlineStyle} ${s.outlineWidth} ${s.outlineColor}`;
   });
-  check(ring === 'solid 2px rgb(255, 200, 0)', `keyboard focus shows the 2px yellow ring (${ring})`);
+  check(ring === 'solid 2px rgb(201, 163, 74)', `keyboard focus shows the 2px gold ring (${ring})`);
   await page.close();
 
   /* ---------- layout at every width ---------- */
@@ -183,7 +194,16 @@ try {
     await scrollThrough(p);
     const overflow = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     check(overflow <= 0, `${w}px: no horizontal overflow (${overflow}px)`);
-    const h1 = await p.$eval('.h-ll', (e) => e.getBoundingClientRect().right <= window.innerWidth);
+    if (w === 1440) {
+      const hero = await p.evaluate(() => ({ fs: parseFloat(getComputedStyle(document.querySelector('.h1-a')).fontSize), bottom: document.querySelector('.hero').getBoundingClientRect().bottom }));
+      check(hero.fs <= 64, `1440px: hero headline is at most 64px (${hero.fs}px)`);
+      check(hero.bottom <= 900 * 0.85, `1440px: hero incl. navigation fits within 85% of a 900px viewport (${Math.round(hero.bottom)}px)`);
+    }
+    if (w === 375) {
+      const fs = await p.$eval('.h1-a', (e) => parseFloat(getComputedStyle(e).fontSize));
+      check(fs >= 34 && fs <= 42, `375px: hero headline 34–42px (${fs}px)`);
+    }
+    const h1 = await p.$eval('.h1-a', (e) => e.getBoundingClientRect().right <= window.innerWidth);
     check(h1, `${w}px: hero title fits`);
     const small = await p.$$eval('a.btn, button, .nav-links a, .menu-btn', (els) =>
       els.filter((e) => e.offsetParent !== null && !e.closest('.skip')).map((e) => ({ t: e.textContent.trim().slice(0, 20), h: e.getBoundingClientRect().height })).filter((x) => x.h < 36));
@@ -216,7 +236,7 @@ try {
     const ctx = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1440, height: 900 } });
     const p = await ctx.newPage();
     await p.goto(url, { waitUntil: 'networkidle' });
-    const anim = await p.$$eval('.med-rot, .rings svg, .sunglow, .rv', (els) => els.map((e) => getComputedStyle(e).animationName));
+    const anim = await p.$$eval('.seal-rot, .rv', (els) => els.map((e) => getComputedStyle(e).animationName));
     check(anim.every((a) => a === 'none'), 'reduced motion stops every animation');
     const op = await p.$$eval('.rv', (els) => els.every((e) => getComputedStyle(e).opacity === '1'));
     check(op, 'reduced motion: all content visible without reveals');

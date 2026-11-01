@@ -1,9 +1,9 @@
 """
 Builds every photograph used by the page from its documented source.
 
-    python3 scripts/photos.py                     # all photos → public/_reference/   (local design review, git-ignored)
-    python3 scripts/photos.py --publish NAME ...  # named photos → public/images/     (published; ONLY with written permission)
-    python3 scripts/photos.py --publish --cleared # every photo whose `cleared` is true in src/data/anniversary.ts
+    python3 scripts/photos.py --publish --cleared # every photo marked `cleared: true` in src/data/anniversary.ts → public/images/
+    python3 scripts/photos.py --publish NAME ...  # named photos → public/images/ (published)
+    python3 scripts/photos.py NAME ...            # → public/_reference/ (local review only, git-ignored)
 
 Then set `cleared: true` for the photo in src/data/anniversary.ts and rebuild.
 
@@ -26,40 +26,50 @@ ROOT = os.path.dirname(HERE)
 CACHE = os.path.join(HERE, ".cache")
 UA = "LiberlandAnniversarySite/1.0 (https://anniversary.ll.land/; anniversary@liberland.org)"
 ARK = "https://ark.ll.land/api/images/"
+DOCS = "https://raw.githubusercontent.com/liberland/docs/master/media/"
+FORUM = "https://liberland-forum-uploads.s3.dualstack.eu-central-1.amazonaws.com/original/1X/"
+# Sources that cannot be downloaded anonymously: put the original in scripts/.cache/<name> first.
+LOCAL = "local:"
 
 # name → source. crop = (left, top, width, height) in source pixels, applied before resizing.
 PHOTOS = {
-    # --- Ark Village (© Ark Village, ark.ll.land gallery) — NOT cleared ---
-    "ark-pier-reflection":    {"url": ARK + "abba1a49-6255-46bd-b4a5-aec6e1feabd7", "widths": [800, 1400, 2048]},  # IMG-01 hero
-    "ark-flag-beach":         {"url": ARK + "649e5d97-0598-4d39-a576-05dc75243f49", "widths": [800, 1600]},        # IMG-02
-    "ark-tables-under-trees": {"url": ARK + "d2928a34-89e3-461c-a399-fc2220a73b7c", "widths": [800, 1400, 2000]},  # IMG-04
-    "ark-canoe":              {"url": ARK + "d654840e-1a90-4b73-af71-0796622accb2", "widths": [800, 1400, 2000]},  # IMG-05
-    "ark-a-frames":           {"url": ARK + "e2d15220-e0ae-4b22-b6ee-e25d5061302c", "widths": [800, 1400, 2000]},  # IMG-06
-    "ark-lodge-dusk":         {"url": ARK + "d434dd57-8bcb-4812-918c-1b7df3d7b5a1", "widths": [800, 1400, 2048]},  # IMG-07
-    "ark-beach":              {"url": ARK + "c87f3878-1708-4c2d-be66-3b0ae5e7cd51", "widths": [800, 1600]},        # IMG-08
-    "ark-fire-circle":        {"url": ARK + "f9970078-b8e8-4950-a2af-5c8388c11899", "widths": [800, 1400, 2000]},  # IMG-09
-    "ark-paddleboard":        {"url": ARK + "4dcddb24-d31d-4074-afe9-1b7fb98aa95e", "widths": [800, 1366]},        # IMG-10
-    # --- Portraits, 4:5 ---
-    # Wikimedia Commons, Gage Skidmore, CC BY-SA 3.0 — cleared (attribution in the footer).
-    "vit-jedlicka": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Vit_Jedlicka_by_Gage_Skidmore.jpg/960px-Vit_Jedlicka_by_Gage_Skidmore.jpg",
-        "crop": (77, 20, 800, 1000), "widths": [400, 800],
-    },
-    # Official "8th Liberland Congress elected" graphic (Office of the President, 27 Sept 2026) — NOT cleared,
-    # and only ~280 px wide: reference only. Ask for proper portraits (see ASSETS.md).
-    "balazs-magyar": {
-        "url": "https://cdn.liberland.org/files/raw/19a9d2728f32df479c61419c06169f82548ba3aa/17907051933440.8125678538108698-congress-all-2026.9..jpg",
-        "crop": (936, 1601, 280, 350), "widths": [400, 800],
-    },
-    "jan-schluter": {
-        "url": "https://cdn.liberland.org/files/raw/19a9d2728f32df479c61419c06169f82548ba3aa/17907051933440.8125678538108698-congress-all-2026.9..jpg",
-        "crop": (2078, 1597, 280, 350), "widths": [400, 800],
-    },
+    # --- 11th anniversary, April 2026 (Liberland forum report on the Order of Merit ceremony) ---
+    "a26-group":     {"url": FORUM + "a664c7743311d06a3c20b376ae6129015573d642.jpeg", "widths": [600, 900]},
+    "a26-honoured":  {"url": FORUM + "4c246496562745a25dc3143da8e354028099d0f0.jpeg", "widths": [600, 900]},
+    "a26-awards":    {"url": FORUM + "af091dad5c8ac00fa0855b6191fe7f605c3600cc.jpeg", "widths": [400, 600]},
+    "a26-formal":    {"url": FORUM + "dba98d36ba9248f3e1fe714fc0cd9ad24125dac3.jpeg", "widths": [400]},
+    "a26-federico":  {"url": FORUM + "2921ba70e234ad066fcdb946e541b62c147931f4.jpeg", "widths": [600, 900]},
+    "a26-recipient": {"url": FORUM + "18601085627985a864d2c8e07addf695ea482d57.jpeg", "widths": [400, 600]},
+    "a26-speaker":   {"url": FORUM + "45bea2c5fa8f4ef42d4953a3cab403f2a053dec3.jpeg", "widths": [400]},
+    # --- Liberland press kit (github.com/liberland/docs/media), Ark Village ---
+    "ark-conference": {"url": DOCS + "IMG_4008.jpeg", "widths": [800, 1400, 2000]},
+    "ark-dinner":     {"url": DOCS + "IMG_3938.jpeg", "widths": [800, 1400, 2000]},
+    "ark-lounge":     {"url": DOCS + "IMG_3897.jpeg", "widths": [800, 1400, 2000]},
+    "ark-lawn":       {"url": DOCS + "IMG_3902.jpeg", "widths": [800, 1400, 2000]},
+    # --- Ark Village's own website (ark.ll.land) ---
+    "danube-boat":     {"url": "https://ark.ll.land/hero-poster.webp", "widths": [800, 1280]},
+    "ark-lodge-dusk":  {"url": ARK + "d434dd57-8bcb-4812-918c-1b7df3d7b5a1", "widths": [800, 1400, 2048]},
+    "ark-a-frames":    {"url": ARK + "e2d15220-e0ae-4b22-b6ee-e25d5061302c", "widths": [800, 1400, 2000]},
+    "ark-flag-beach":  {"url": ARK + "649e5d97-0598-4d39-a576-05dc75243f49", "widths": [800, 1600]},
+    # --- Project Google Drive, file "ark.jpg" (id 17SV5VN86VKr123abTeIKtYwO1TnwLXDY) ---
+    "ark-boardwalk":   {"url": LOCAL + "drive-ark.jpg", "widths": [800, 1600]},
+    # --- Portraits (round crops) ---
+    "vit-jedlicka":  {"url": DOCS + "vit-jedlicka.png", "crop": (162, 30, 560, 560), "widths": [200, 400]},
+    # Official "6th Liberland Congress elected" graphic (30 March 2026), x.com/Liberland_org/status/2038994526539317653
+    "balazs-magyar": {"url": "https://pbs.twimg.com/media/HEv2KxdasAADi39.jpg?name=orig", "crop": (1857, 1444, 386, 386), "widths": [200, 400]},
+    # Official "8th Liberland Congress elected" graphic, liberland.org/news/801-official-announcement-congressional-election-results
+    "jan-schluter":  {"url": "https://cdn.liberland.org/files/raw/19a9d2728f32df479c61419c06169f82548ba3aa/17907051933440.8125678538108698-congress-all-2026.9..jpg",
+                      "crop": (2014, 1565, 412, 412), "widths": [200, 400]},
 }
 
 
 def fetch(url):
     os.makedirs(CACHE, exist_ok=True)
+    if url.startswith(LOCAL):
+        path = os.path.join(CACHE, url[len(LOCAL):])
+        if not os.path.exists(path):
+            raise SystemExit(f"{url}: place the original file at {os.path.relpath(path, ROOT)} (see ASSETS.md)")
+        return path
     path = os.path.join(CACHE, re.sub(r"[^A-Za-z0-9._-]", "_", url)[-120:])
     if not os.path.exists(path):
         for attempt in range(5):

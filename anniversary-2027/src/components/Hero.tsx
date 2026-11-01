@@ -1,68 +1,40 @@
-import { event, photos } from '../data/anniversary';
-import { dateRange, datesConfirmed, foundingDayMonth, foundingLong, foundingYear, venueLine } from '../lib/event';
-import { resolve } from '../lib/photo';
-import { Landscape } from './Landscape';
-import { Medallion } from './Medallion';
-import { Arrow, Tag } from './Tag';
+import shield from '../assets/shield-160.webp';
+import { photos, site } from '../data/anniversary';
+import { dateRange, datesConfirmed, foundingLong } from '../lib/event';
+import { event } from '../data/anniversary';
+import { Figure } from './Photo';
+import { Seal } from './Seal';
+import { Arrow } from './Tag';
 
-/** A · The grand invitation */
+/** A · Photographic hero — a compact 43/57 editorial composition. */
 export function Hero() {
-  const hero = resolve(photos.hero);
   return (
     <section className="hero" aria-labelledby="hero-title">
-      {hero ? (
-        <>
-          <img
-            className="hero-photo"
-            src={hero.src}
-            srcSet={hero.srcSet}
-            sizes="100vw"
-            alt={photos.hero.alt}
-            width={photos.hero.width}
-            height={photos.hero.height}
-            decoding="async"
-            {...{ fetchpriority: 'high' }}
-            style={photos.hero.focus ? { objectPosition: photos.hero.focus } : undefined}
-          />
-          {hero.reference && <span className="ref-tag">Reference image · not cleared for publication</span>}
-        </>
-      ) : (
-        <Landscape />
-      )}
-      <div className="hero-shade" />
-      <div className="wrap grid hero-in">
-        <div className="hero-med">
-          <Medallion />
-        </div>
-        <div className="hero-copy">
-          <p className="kick lbl">Free Republic of Liberland · Founded {foundingLong}</p>
-          <h1 id="hero-title" className="d1">
-            <span className="h-ll">Liberland</span>
-            <span className="h-12">{event.number}th Anniversary</span>
+      <div className="wrap hero-grid">
+        <div className="hero-text">
+          <div className="hero-mark">
+            <img src={shield} width="38" height="53" alt="" />
+            <span>{site.organiser.name} · since {foundingLong}</span>
+          </div>
+          <h1 id="hero-title">
+            <span className="h1-a">Liberland</span>
+            <span className="h1-b">{event.number}th Anniversary</span>
           </h1>
-          <p className="h-sub">Twelve years of freedom, community &amp; the future</p>
-          <div className="h-meta">
-            <div>
-              <span className="rec">Dates</span>
-              <p className="v">{dateRange}</p>
-              {!datesConfirmed && <Tag prov>Provisional dates</Tag>}
-            </div>
-            <div>
-              <span className="rec">Venue</span>
-              <p className="v">{venueLine}</p>
-            </div>
-            <div>
-              <span className="rec">Founding anniversary</span>
-              <p className="v">{foundingDayMonth} · since {foundingYear}</p>
-            </div>
-          </div>
-          <div className="h-cta">
-            <a className="btn btn-y" href="#experience">Discover the celebration <Arrow /></a>
-            <a className="btn btn-ow" href="#ark">Explore Ark Village</a>
+          <p className="hero-tag">Twelve Years of Freedom, Community &amp; the Future</p>
+          <dl className="hero-facts">
+            <div><dt>Dates</dt><dd>{dateRange}</dd></div>
+            <div><dt>Venue</dt><dd>{event.venue.name} · {event.venue.city}, {event.venue.country}</dd></div>
+          </dl>
+          {!datesConfirmed && <p className="hero-note">Provisional dates — subject to confirmation</p>}
+          <div className="hero-cta">
+            <a className="btn btn-primary" href="#experience">Explore the celebration <Arrow /></a>
+            <a className="tlink" href="#programme">See the programme</a>
           </div>
         </div>
+        <Figure photo={photos.heroGroup} className="hero-fig" sizes="(max-width: 1100px) 100vw, 700px" eager>
+          <Seal />
+        </Figure>
       </div>
-      {!hero && <p className="h-cap rec">{photos.hero.id} · Hero photograph pending · Illustrative fallback</p>}
     </section>
   );
 }

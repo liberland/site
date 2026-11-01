@@ -14,7 +14,7 @@ const body = render();
 // Preload the faces used above the fold (hero headline, labels, record type) to avoid a late font swap.
 const assets = await readdir(resolve(root, 'dist/assets'));
 const base = html.match(/src="([^"]*)assets\/index-/)?.[1] ?? '/';
-const critical = [/^playfair-display-latin-400-normal-.*\.woff2$/, /^archivo-latin-wght-.*\.woff2$/, /^ibm-plex-mono-latin-400-normal-.*\.woff2$/];
+const critical = [/^playfair-display-latin-400-normal-.*\.woff2$/, /^archivo-latin-wght-.*\.woff2$/, /^playfair-display-latin-400-italic-.*\.woff2$/];
 const links = critical
   .map((re) => assets.find((f) => re.test(f)))
   .filter(Boolean)
