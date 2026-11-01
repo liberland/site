@@ -149,14 +149,14 @@ body{margin:0;background:var(--ivory)}
 .btn-sm{min-height:38px;padding:0 16px;font-size:14px}
 #about{padding-bottom:64px}
 .tix-sec{padding-block:0 72px}
-.band{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:24px 64px;align-items:center;padding:36px 44px;background:var(--spring);border-radius:var(--r-lg);border-top:3px solid var(--gold)}
-.band .h2{font-size:clamp(28px,2.6vw,36px)}
-.band-sub{color:var(--soft);margin-top:6px}
-.band-when{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:14px;font-weight:600}
-.band-r{padding-left:40px;border-left:1px solid rgba(37,43,42,.16)}
-.band-state{font-family:var(--f-display);font-style:italic;font-size:24px;line-height:1.2;color:var(--gold-text)}
-.band-text{color:var(--soft);font-size:15.5px;margin-top:6px}
-.band-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:16px}
+.band{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:28px 72px;align-items:center;padding:64px 64px;background:var(--spring);border-radius:var(--r-lg);border-top:3px solid var(--gold)}
+.band .h2{font-size:clamp(30px,3vw,42px)}
+.band-sub{color:var(--soft);font-size:clamp(17px,1.35vw,19px);margin-top:10px}
+.band-when{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:22px;font-weight:600;font-size:17.5px}
+.band-r{padding:8px 0 8px 48px;border-left:1px solid rgba(37,43,42,.16)}
+.band-state{font-family:var(--f-display);font-style:italic;font-size:28px;line-height:1.2;color:var(--gold-text)}
+.band-text{color:var(--soft);font-size:16px;margin-top:10px}
+.band-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:22px}
 .band-note{font-size:13.5px;color:var(--mute);margin-top:12px}
 .band-legal{display:flex;gap:16px;font-size:13.5px;margin-top:8px}
 .tix{border-top:1px solid rgba(37,43,42,.16)}
@@ -347,8 +347,8 @@ body{margin:0;background:var(--ivory)}
   .nav .nav-tix-m{display:inline-flex;margin-left:auto;min-height:40px;padding:0 16px;font-size:14px}
   .nav-tix-m+.menu-btn{margin-left:0}
   .sticky-tix{display:flex}
-  .band{grid-template-columns:1fr;padding:32px}
-  .band-r{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid rgba(37,43,42,.16)}
+  .band{grid-template-columns:1fr;padding:48px 40px}
+  .band-r{padding:24px 0 0;border-left:0;border-top:1px solid rgba(37,43,42,.16)}
   .band-r .tix{border-top:0}
   .band-r .tix-row:first-child{padding-top:0}
   html.has-sticky .foot{padding-bottom:110px}
@@ -441,7 +441,7 @@ body{margin:0;background:var(--ivory)}
   .reg-btns .btn{flex:1 1 auto}
   .nav .nav-tix-m{padding:0 14px}
   .tix-sec{padding-block:0 52px}
-  .band{padding:26px 20px}
+  .band{padding:36px 22px}
   .tix-row{grid-template-columns:minmax(0,1fr) auto;row-gap:10px}
   .tix-row>div{grid-column:1 / -1}
   .tix-row .btn{justify-self:end}
