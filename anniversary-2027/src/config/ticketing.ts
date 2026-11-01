@@ -71,7 +71,7 @@ export const ticketing: TicketingConfig = {
   /** Copy for STATE B. */
   soon: {
     title: 'Tickets on sale soon',
-    text: 'Ticket categories, prices and secure checkout will open here as soon as the organisers confirm them. Nothing is sold through this page until then.',
+    text: 'Categories, prices and secure checkout open here once the organisers confirm them.',
   },
 };
 

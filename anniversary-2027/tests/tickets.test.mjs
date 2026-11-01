@@ -58,15 +58,15 @@ try {
     check(await p.locator('.hero .btn', { hasText: 'Get tickets' }).isVisible(), 'hero shows Get tickets as the primary CTA');
     check(await p.locator('#register .btn', { hasText: 'Get tickets' }).isVisible(), 'final invitation repeats Get tickets');
     const rows = await p.locator('.tix-row').allInnerTexts();
-    check(rows.length === 2 && /Test ticket A/.test(rows[0]) && /€100/.test(rows[0]) && /€250\.50/.test(rows[1]), 'configured ticket types and prices are shown exactly');
-    check((await p.locator('.invite-legal').innerText()).includes('Test Seller (fixture)'), 'the legal seller is named next to checkout');
-    for (const l of ['Terms & conditions', 'Refund & cancellation policy', 'Privacy policy'])
-      check((await p.locator('.invite-foot a', { hasText: l }).count()) === 1, `${l} link shown`);
-    check((await p.locator(`a[href="${URL_}"][target=_blank]`, { hasText: 'Open the checkout on Luma' }).count()) === 1, 'direct Luma link (Apple Pay / full page) is offered');
+    check(rows.length === 2 && /Test ticket A/.test(rows[0]) && /€100/.test(rows[0]) && /€250\.50/.test(rows[1]) && /Fixture condition text/.test(rows[1]), 'configured ticket types, prices and conditions are shown exactly');
+    check((await p.locator('#tickets .band-note').last().innerText()).includes('Test Seller (fixture)'), 'the legal seller is named next to checkout');
+    for (const l of ['Terms', 'Refunds', 'Privacy'])
+      check((await p.locator('.band-legal a', { hasText: l }).count()) === 1, `${l} link shown`);
+    check((await p.locator(`a[href="${URL_}"][target=_blank]`, { hasText: 'Open on Luma' }).count()) === 1, 'direct Luma link (Apple Pay / full page) is offered');
     check((await p.locator('form, input').count()) === 0, 'the site itself has no form or card field');
 
     // Main CTA → Luma overlay
-    const main = p.locator('.invite-cta .btn', { hasText: 'Get tickets' });
+    const main = p.locator('.band-cta .btn', { hasText: 'Get tickets' });
     await main.click();
     const overlay = p.locator('.luma-checkout--overlay');
     await overlay.waitFor({ timeout: 5000 });
@@ -103,9 +103,9 @@ try {
     await ctx.route('https://embed.lu.ma/**', (r) => r.abort());
     const p = await ctx.newPage();
     await p.goto(url, { waitUntil: 'networkidle' });
-    await p.locator('.invite-note[role=status]').waitFor({ timeout: 12000 });
+    await p.locator('.band-note[role=status]').waitFor({ timeout: 12000 });
     check(true, 'blocked script: the page explains that checkout opens on Luma instead');
-    const btn = p.locator('.invite-cta .btn', { hasText: 'Get tickets' });
+    const btn = p.locator('.band-cta .btn', { hasText: 'Get tickets' });
     check((await btn.getAttribute('href')) === URL_ && (await btn.getAttribute('target')) === '_blank', 'blocked script: Get tickets becomes a direct link to the Luma event');
     const [popup] = await Promise.all([p.waitForEvent('popup'), btn.click()]);
     await popup.waitForLoadState();
