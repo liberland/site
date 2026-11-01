@@ -17,7 +17,7 @@ Mirni Dunav 3, 25260 Apatin, Serbia**. Intended address: **https://anniversary.l
    tagline, the dates and venue, the provisional note and one call to action. On the right is the 2026 anniversary
    group photograph with the small XII seal.
 2. **Twelve years of Liberland:** the founding on 13 April 2015 beside a photograph of the President with guests.
-3. **Join the Celebration (tickets):** an invitation card with the dates. It shows "Tickets on sale soon" until the
+3. **Join the Celebration (tickets):** a compact band with the dates and the ticket status. It shows "Tickets on sale soon" until the
    Luma checkout is activated ([TICKETING.md](TICKETING.md)).
 4. **The celebration:** three editorial features:
    - ideas and conversation (talk with the flag),
