@@ -116,7 +116,7 @@ node scripts/og-image.mjs   # regenerate the 1200×630 social image (after a pro
 - **Structure:** a single `h1`, no skipped heading levels, every anchor has a target, and every image has `alt` text and loads.
 - **Network and errors:** no third-party requests and no console errors.
 - **Interaction:** the skip link, the mobile menu (Escape closes it), and reduced motion.
-- **Content integrity:** the new date everywhere and no trace of 19 December, Event JSON-LD present, the programme marked as planned, the V2 wording, the four faces with Roger Ver as anticipated and none marked confirmed, no form, no reference images, and `noindex`.
+- **Content integrity:** the new date everywhere and no trace of 19 December, Event JSON-LD present, the programme marked as planned, the V2 wording, the three faces with none marked confirmed, no form, no reference images, and `noindex`.
 
 ## Motion
 

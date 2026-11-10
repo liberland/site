@@ -316,15 +316,6 @@ export const event = {
         initials: 'JS',
         credit: 'Jan Schlüter — official Liberland media, liberland.org (27 Sept 2026)',
       },
-      {
-        name: 'Roger Ver',
-        role: 'Early Bitcoin investor and cryptocurrency advocate',
-        attendance: 'anticipated',
-        note: null,
-        portrait: 'images/faces/roger-ver.webp',
-        initials: 'RV',
-        credit: 'Roger Ver — photo by Roger Ver, CC BY-SA 4.0, via Wikimedia Commons (cropped, colour-graded)',
-      },
     ] as Person[],
   },
 
