@@ -14,14 +14,15 @@ Landing page for the Liberland Grand Christmas Gala, Friday 18 December 2026, Le
 
 ## Page sequence
 
-1. The grand invitation (hero) is the Le Palais façade at dusk under a lit garland.
-2. The Celebration is the editorial introduction, with an arched photograph of the hotel entrance.
-3. The Programme is the planned 15:00 / 17:00 / evening schedule and the three themes.
-4. Faces of the Evening shows medallion portraits. Attendance is shown only as configured.
-5. Le Palais is a photographic mosaic with a lightbox (a swipeable carousel on phones).
-6. The Christmas Evening shows the hotel's own Christmas photograph with hanging baubles.
-7. Practical information is the information table and the registration card.
-8. The final invitation is the wreath and closing call to action.
+1. The grand invitation (hero) is the Le Palais gallery corridor under a lit garland.
+2. The Celebration is the editorial introduction, with an arched photograph of the hotel at dusk.
+3. Last Christmas at Le Palais: the film of the 2025 gala in a gilded frame, six stills and four highlights.
+4. The Programme is the planned 15:00 / 17:00 / evening schedule and the three themes.
+5. Faces of the Evening shows medallion portraits. Attendance is shown only as configured.
+6. Le Palais is a photographic mosaic with a lightbox (a swipeable carousel on phones).
+7. The Christmas Evening shows the hotel's own Christmas photograph with hanging baubles.
+8. Practical information is the information table and the registration card.
+9. The final invitation is the wreath and closing call to action.
 
 ## Everything editable is in `src/data/event.ts`
 
@@ -41,6 +42,7 @@ A mistyped value stops the build with a plain-English message.
   - `'confirmed'` must only be used after written confirmation.
 
   Each portrait needs a `credit`, which is shown in the footer.
+- **Last Christmas (2025).** `lastYear` holds the film, its poster, the six stills and the four highlights (all taken from the film's own subtitles). The film loads only when someone presses play.
 - **Tickets & registration.** `registration.tickets` holds the prices (`0` shows as "Free") and `registration.email` the RSVP address (rsvp@liberland.org). The card's button opens a pre-filled e-mail asking for name, status (citizen / e-resident / public) and number of guests. There is deliberately no form. To use an online registration page instead, set `registration.url` and clear `email`; `status: 'closed'` ends registration.
   page and `registration.status` to `'open'`. Every call to action then points there.
 - **Launch.** Set `site.indexable: true`.
@@ -49,12 +51,13 @@ A mistyped value stops the build with a plain-English message.
 
 The design is built around Le Palais's own photography: the façade, entrance canopy, lobby, Marold
 salon, corridor, library, Artista, staircase, and the hotel's own Christmas lobby photograph. These are
-**© Le Palais Art Hotel Prague** and are **not yet cleared**. In `event.ts` every photo has
-`cleared: false`.
+**© Le Palais Art Hotel Prague**. Two of them were supplied by the organisers and are published
+(`cleared: true`): the gallery corridor (hero) and the façade at dusk (the arch in "The Celebration").
+All others are `cleared: false`.
 
-- **Production build** (`npm run build`, the deployed page) contains **no hotel photographs**. Each
-  slot shows a designed fallback instead: the wreath in the hero, a crest arch, a "photographs to
-  follow" panel linking to the hotel's own gallery, and a festive evening scene.
+- **Production build** (`npm run build`, the deployed page) contains only the cleared photographs.
+  Every other slot shows a designed fallback: a "photographs to follow" panel linking to the hotel's
+  own gallery, and a festive evening scene.
 - **Local reference build:** this shows the real photographs, each visibly tagged
   *"Reference image · not cleared for publication"*. It is for design review only.
 

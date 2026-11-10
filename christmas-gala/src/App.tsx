@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Celebration } from './components/Celebration';
+import { LastChristmas } from './components/LastChristmas';
 import { Programme } from './components/Programme';
 import { Faces } from './components/Faces';
 import { Venue } from './components/Venue';
@@ -46,6 +47,7 @@ export function App() {
       <main id="main" tabIndex={-1}>
         <Hero />
         <Celebration />
+        <LastChristmas />
         <Programme />
         <Faces />
         <Venue />
