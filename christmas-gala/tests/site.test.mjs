@@ -92,6 +92,9 @@ try {
   check(ev?.offers?.length === 3 && ev.offers.map((o) => o.price).join() === '0,50,100', 'Event structured data lists the three ticket prices');
   check(!text.includes('Reference image'), 'production build shows no reference-image tags');
 
+  const galleryLink = await page.locator('.venue-tour a[href="https://www.lepalaishotel.eu/gallery/"]').count();
+  check(galleryLink === 1 && !/Photographs of Le Palais to follow/.test(text), 'venue invites visitors into the hotel’s own gallery');
+
   /* ---------- links, images, headings ---------- */
   const anchors = await page.$$eval('a[href^="#"]', (as) => as.map((a) => a.getAttribute('href')));
   for (const h of new Set(anchors)) check((await page.locator(h).count()) === 1, `anchor ${h} has a target`);

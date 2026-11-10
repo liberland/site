@@ -119,6 +119,15 @@ export const event = {
     country: 'Czech Republic',
     url: 'https://www.lepalaishotel.eu/',
     galleryUrl: 'https://www.lepalaishotel.eu/gallery/',
+    artUrl: 'https://www.lepalaishotel.eu/art/',
+    /** Rooms named in the "Step inside" invitation (shown while the gallery photos are not cleared). */
+    rooms: [
+      'The golden lobby, under crystal chandeliers',
+      'The Marold salon and its original painted ceilings',
+      'The library lounge, all leather and lamplight',
+      'Artista, the fine-dining restaurant with its view of Prague',
+      'The Belle Époque corridor of stucco and mosaic',
+    ],
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Le+Palais+Art+Hotel+Prague',
     telephone: '+420 234 634 111',
     /** Checked against lepalaishotel.eu on 30 Oct 2026. */
