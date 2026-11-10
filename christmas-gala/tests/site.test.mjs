@@ -71,7 +71,7 @@ try {
 
   const text = await page.locator('body').textContent();
   const html = await page.content();
-  check(!/19 Dec|Saturday|2026-12-19/i.test(html), 'no trace of the old date (19 December / Saturday)');
+  check(!/19 Dec(ember)? 2026|Saturday|2026-12-19/i.test(html), 'no trace of the old date (19 December 2026 / Saturday)');
   check(/Friday, 18 December 2026/.test(text), 'Friday, 18 December 2026 is shown');
   for (const t of ['15:00', '17:00', 'Constitutional Convention', 'Press Conference', 'Grand Christmas Gala'])
     check(text.includes(t), `programme includes "${t}"`);
@@ -117,6 +117,17 @@ try {
   /* ---------- keyboard ---------- */
   await page.keyboard.press('Tab');
   check((await page.evaluate(() => document.activeElement?.className)) === 'skip-link', 'first Tab reaches the skip link');
+
+  /* ---------- last year's film ---------- */
+  check((await page.locator('#last-christmas video').count()) === 0, 'the 2025 film is not loaded until someone presses play');
+  check(!requested.some((u) => u.endsWith('.mp4')), 'no video bytes are requested on page load');
+  const film = await page.request.head(url + 'media/gala-2025/film.mp4');
+  check(film.ok() && /video\/mp4/.test(film.headers()['content-type'] ?? ''), `film.mp4 is served as video/mp4 (${film.status()})`);
+  await page.locator('#last-christmas .cinema-play').click();
+  await page.waitForTimeout(2500);
+  const playback = await page.$eval('#last-christmas video', (v) => ({ t: v.currentTime, paused: v.paused, controls: v.controls }));
+  check(playback.t > 0.5 && !playback.paused && playback.controls, `pressing play starts the film with controls (t=${playback.t.toFixed(1)}s)`);
+  check(/Hans-Hermann Hoppe/.test(text) && /19 December 2025/.test(text), 'last year’s highlights are shown');
 
   /* ---------- responsive ---------- */
   for (const w of WIDTHS) {

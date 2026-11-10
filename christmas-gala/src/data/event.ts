@@ -319,6 +319,34 @@ export const event = {
     ] as Person[],
   },
 
+  /* ---- last year: Christmas 2025 at Le Palais (facts from the film's own subtitles) ---- */
+  lastYear: {
+    eyebrow: 'Christmas 2025 · Le Palais',
+    lead: 'On Friday, 19 December 2025, the Liberland community filled Le Palais for the Liberland Christmas Party and Constitutional Reading, marking the tenth anniversary of Liberland. This is how it felt.',
+    film: {
+      src: 'media/gala-2025/film.mp4',
+      poster: 'media/gala-2025/poster.webp',
+      title: 'Christmas 2025 at Le Palais',
+      duration: '1:48',
+      note: 'With sound and English subtitles',
+    },
+    stills: [
+      { src: 'media/gala-2025/chandelier.webp', alt: 'A gilded chandelier hung with Christmas baubles at Le Palais' },
+      { src: 'media/gala-2025/conference.webp', alt: 'President Vít Jedlička speaking at the conference, a slide reading “Evolving democracy to meritocracy” behind him' },
+      { src: 'media/gala-2025/audience.webp', alt: 'A full room of guests in red armchairs applauding' },
+      { src: 'media/gala-2025/conversation.webp', alt: 'President Vít Jedlička, in black tie, in conversation with a guest' },
+      { src: 'media/gala-2025/toast.webp', alt: 'Guests raising a toast in the hotel library' },
+      { src: 'media/gala-2025/band.webp', alt: 'A drummer playing live music in the library' },
+    ],
+    highlights: [
+      { title: 'The Constitution, read aloud', text: 'A conference led by President Vít Jedlička, at which the Constitution was read, discussed and signed.' },
+      { title: 'Remarkable guests', text: 'Special guest Hans-Hermann Hoppe, legal scholars Stephan Kinsella and Alessandro Fusillo, ministers and international guests.' },
+      { title: 'Honours & passports', text: 'Libor Vondráček, Member of the Czech Parliament, received the Star of Merit with other distinguished guests, and Liberland passports were presented.' },
+      { title: 'And then, the party', text: 'Photographs, dinner, live music in the library and a toast to a better future.' },
+    ],
+    credit: 'Film and stills: Free Republic of Liberland, Christmas 2025 at Le Palais.',
+  },
+
   /* ---- the Christmas evening ---- */
   evening: {
     lead: 'When the sessions close, Le Palais turns to Christmas. Old friends and new arrive in evening dress, the house glows with warm light, and the Liberland community gathers to celebrate the year together.',
