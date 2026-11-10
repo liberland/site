@@ -435,9 +435,19 @@ p { margin: 0; }
 }
 .tile-cap b { display: block; font: italic 400 26px/1.1 var(--f-display); color: var(--ivory); }
 .tile-cap span { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.45; color: var(--on-dark-soft); }
-.venue-await { display: grid; grid-template-columns: 300px 1fr; gap: 50px; align-items: center; margin-top: 70px; padding: 50px; border: 1px solid rgba(216, 179, 106, 0.35); background: rgba(0, 0, 0, 0.15); }
-.venue-await h3 { font: 400 36px/1.1 var(--f-display); color: var(--ivory); }
-.venue-await p { margin: 16px 0 26px; color: var(--on-dark-soft); max-width: 60ch; }
+.venue-tour {
+  position: relative; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 60px; align-items: center;
+  margin-top: 64px; padding: 56px 60px;
+  background: radial-gradient(70% 90% at 0% 0%, rgba(216, 179, 106, 0.14), transparent 70%), rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(216, 179, 106, 0.55); box-shadow: inset 0 0 0 7px rgba(36, 25, 18, 0.9), inset 0 0 0 8px rgba(216, 179, 106, 0.25);
+}
+.venue-tour h3 { margin-top: 14px; font: 400 clamp(36px, 3.6vw, 50px)/1.05 var(--f-display); color: var(--ivory); }
+.venue-tour-copy > p:not(.eyebrow) { margin-top: 16px; color: var(--on-dark-soft); max-width: 46ch; font-size: 18px; }
+.venue-tour-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.venue-tour small { display: block; margin-top: 16px; font: italic 13.5px/1.4 var(--f-body); color: var(--on-dark-faint); }
+.venue-tour-rooms { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(216, 179, 106, 0.35); }
+.venue-tour-rooms li { display: flex; align-items: baseline; gap: 14px; padding: 15px 0; border-bottom: 1px solid rgba(216, 179, 106, 0.2); font: italic 400 21px/1.3 var(--f-display); color: var(--on-dark); }
+.venue-tour-rooms .star { flex: none; width: 13px; height: 13px; --star-core: var(--walnut); }
 .venue-foot { margin-top: 70px; }
 .venue-flourish { margin: 0 auto 46px; }
 .venue-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; margin: 0; }
@@ -608,6 +618,7 @@ p { margin: 0; }
   .prac-grid { grid-template-columns: 1fr; }
   .reg-card { position: relative; top: 0; }
   .venue-head { grid-template-columns: 1fr; gap: 24px; }
+  .venue-tour { grid-template-columns: 1fr; gap: 36px; }
 }
 
 /* ---------- mobile ---------- */
@@ -681,8 +692,9 @@ p { margin: 0; }
   }
   .tile { flex: 0 0 84%; height: 420px; scroll-snap-align: center; }
   .tile--0 { flex-basis: 88%; }
-  .venue-await { grid-template-columns: 1fr; padding: 30px 22px; gap: 20px; }
-  .venue-await-wreath { width: 200px; margin: 0 auto; }
+  .venue-tour { grid-template-columns: 1fr; gap: 30px; padding: 34px 22px; margin-top: 44px; }
+  .venue-tour-links { flex-direction: column; }
+  .venue-tour-rooms li { font-size: 19px; }
   .venue-facts { grid-template-columns: 1fr; gap: 0; }
   .venue-facts div { padding: 16px 0; }
   .venue-links { flex-direction: column; }

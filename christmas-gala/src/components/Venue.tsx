@@ -3,7 +3,7 @@ import { event } from '../data/event';
 import { externalLinkProps, resolvePhoto } from '../lib/event-helpers';
 import { NewTab } from './Arrow';
 import { Photo, RefTag } from './Photo';
-import { Flourish, Wreath } from './Ornaments';
+import { Flourish, Star } from './Ornaments';
 
 /** Accessible lightbox on a native <dialog>: Esc closes, ←/→ browse. */
 function Lightbox({ index, onClose, onMove }: { index: number | null; onClose: () => void; onMove: (d: number) => void }) {
@@ -97,19 +97,31 @@ export function Venue() {
         </div>
       ) : (
         <div className="wrap">
-          <div className="venue-await reveal">
-            <Wreath className="venue-await-wreath" />
-            <div>
-              <h3>Photographs of Le Palais to follow</h3>
-              <p>
-                Our photographic tour of the hotel — its lobby, painted salons, library and Artista restaurant — will appear here once
-                the hotel has approved the use of its photography. Until then, the hotel’s own gallery shows the house beautifully.
-              </p>
-              <a className="btn btn-gold" href={v.galleryUrl} {...externalLinkProps}>
-                View the hotel’s gallery
-                <NewTab />
-              </a>
+          <div className="venue-tour reveal">
+            <div className="venue-tour-copy">
+              <p className="eyebrow">A walk through the house</p>
+              <h3>Step inside Le Palais</h3>
+              <p>Before you arrive, wander through the hotel in its own photographs and see where the evening will unfold.</p>
+              <div className="venue-tour-links">
+                <a className="btn btn-gold" href={v.galleryUrl} {...externalLinkProps}>
+                  Open the photo gallery
+                  <NewTab />
+                </a>
+                <a className="btn btn-ivory" href={v.artUrl} {...externalLinkProps}>
+                  Art at Le Palais
+                  <NewTab />
+                </a>
+              </div>
+              <small>On the hotel’s official website · photographs © Le Palais Art Hotel Prague</small>
             </div>
+            <ul className="venue-tour-rooms">
+              {v.rooms.map((r) => (
+                <li key={r}>
+                  <Star />
+                  {r}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
