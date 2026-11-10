@@ -34,8 +34,33 @@ export const dateConfirmed = event.date.status === 'confirmed';
 /** Where every registration call to action points, and what it says. */
 export function registrationCta() {
   const r = event.registration;
-  if (r.status === 'open' && r.url) return { href: r.url, external: true, label: r.openLabel };
-  return { href: '#register', external: false, label: 'Registration Details' };
+  if (r.status === 'open' && r.url && !r.email) return { href: r.url, external: true, label: r.openLabel, short: r.openLabel };
+  if (r.status === 'open') return { href: '#register', external: false, label: 'Tickets & RSVP', short: 'Tickets & RSVP' };
+  return { href: '#register', external: false, label: 'Registration Details', short: 'Registration' };
+}
+
+/** 'Free' or '50 USD'. */
+export function formatPrice(price: number) {
+  return price === 0 ? 'Free' : `${price} ${event.registration.currency}`;
+}
+
+/** A mailto: link with a ready-to-fill RSVP message. */
+export function rsvpMailto() {
+  const r = event.registration;
+  if (!r.email) return null;
+  const subject = `RSVP: ${event.name}, ${dateLong()}`;
+  const body = [
+    'Dear RSVP team,',
+    '',
+    `I would like to register for the ${event.name} on ${dateLong()} at ${event.venue.name}.`,
+    '',
+    'Full name:',
+    'I am a (please keep one): citizen of Liberland / e-resident / member of the public',
+    'Number of guests (including me):',
+    '',
+    'Kind regards,',
+  ].join('\n');
+  return `mailto:${r.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export const externalLinkProps = { target: '_blank', rel: 'noopener noreferrer' } as const;
