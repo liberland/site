@@ -102,7 +102,7 @@ export function Nav() {
           </ul>
         </nav>
         <a className="btn btn-outline btn-sm nav-cta" href={cta.href} {...ext}>
-          {cta.external ? cta.label : 'Registration'}
+          {cta.short}
         </a>
         <button
           ref={btnRef}

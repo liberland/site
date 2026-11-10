@@ -454,7 +454,7 @@ p { margin: 0; }
 .record dd { margin: 0; font-size: 17.5px; line-height: 1.6; }
 .record a { color: var(--burgundy); }
 .record-list { list-style: none; margin: 0; padding: 0; }
-.record-list b { display: inline-block; min-width: 72px; font: 600 17px/1.6 var(--f-display); font-size: 20px; color: var(--burgundy); }
+.record-list b { display: inline-block; min-width: 92px; font: 600 17px/1.6 var(--f-display); font-size: 20px; color: var(--burgundy); }
 .pending { display: flex; align-items: center; gap: 8px; margin-top: 6px; font: italic 15px/1.4 var(--f-body); color: var(--burgundy); }
 .pending::before { content: ''; flex: none; width: 6px; height: 6px; border: 1px solid currentColor; transform: rotate(45deg); }
 .reg-card {
@@ -470,6 +470,17 @@ p { margin: 0; }
 .reg-card .reg-fine { display: flex; gap: 10px; font-style: italic; color: var(--gold-hi); }
 .reg-card .reg-fine .star { flex: none; margin-top: 6px; width: 12px; height: 12px; --star-core: var(--burgundy); }
 .reg-card .btn { margin-top: 26px; }
+.tickets { list-style: none; margin: 26px 0 6px; padding: 0; border-top: 1px solid rgba(216, 179, 106, 0.4); }
+.tickets li { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(216, 179, 106, 0.22); }
+.ticket-group { font: 400 21px/1.2 var(--f-display); color: var(--ivory); }
+.ticket-dots { flex: 1; min-width: 16px; border-bottom: 1px dotted rgba(216, 179, 106, 0.55); transform: translateY(-5px); }
+.ticket-price { font: 500 26px/1 var(--f-display); color: var(--gold-hi); white-space: nowrap; }
+.ticket-price--free { font-style: italic; }
+.reg-card .reg-btn { width: 100%; gap: 12px; }
+.reg-btn svg { width: 20px; height: 20px; flex: none; }
+.reg-card .reg-address { margin-top: 12px; text-align: center; font-size: 15px; }
+.reg-address a { color: var(--gold-hi); text-underline-offset: 3px; }
+.reg-card .reg-fine { margin-top: 22px; font-size: 14.5px; }
 
 /* ---------- finale ---------- */
 .finale {

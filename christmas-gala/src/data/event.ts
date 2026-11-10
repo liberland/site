@@ -344,13 +344,25 @@ export const event = {
   /* ---- registration ---- */
   registration: {
     /**
-     * 'coming-soon' until an authorised registration system exists.
-     * To open registration: set `url` to the official registration page
-     * AND set `status` to 'open'. Both are required.
+     * 'coming-soon' | 'open' | 'closed'.
+     * Registration opens when status is 'open' AND either `email` (RSVP by e-mail)
+     * or `url` (an authorised online registration page) is set.
      */
-    status: 'coming-soon' as RegistrationStatus,
+    status: 'open' as RegistrationStatus,
+    /** RSVP address: the page offers a pre-filled e-mail to it. */
+    email: 'rsvp@liberland.org' as string | null,
+    /** Online registration page (https), if one is used instead of e-mail. */
     url: null as string | null,
-    openLabel: 'Register now',
+    openLabel: 'RSVP by email',
+    /** Admission prices. `price` 0 = free. Shown on the ticket card and in the information table. */
+    tickets: [
+      { group: 'Citizens of Liberland', price: 0 },
+      { group: 'E-residents', price: 50 },
+      { group: 'General public', price: 100 },
+    ] as { group: string; price: number }[],
+    currency: 'USD',
+    /** What people must say in their RSVP. */
+    instructions: 'Registration is required. Write to us and tell us whether you are a citizen of Liberland, an e‑resident or a member of the public.',
     updatesUrl: 'https://liberland.org/' as string | null,
     updatesLabel: 'News on liberland.org',
   },

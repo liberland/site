@@ -41,7 +41,7 @@ A mistyped value stops the build with a plain-English message.
   - `'confirmed'` must only be used after written confirmation.
 
   Each portrait needs a `credit`, which is shown in the footer.
-- **Registration.** There is deliberately no form. Set `registration.url` to an authorised registration
+- **Tickets & registration.** `registration.tickets` holds the prices (`0` shows as "Free") and `registration.email` the RSVP address (rsvp@liberland.org). The card's button opens a pre-filled e-mail asking for name, status (citizen / e-resident / public) and number of guests. There is deliberately no form. To use an online registration page instead, set `registration.url` and clear `email`; `status: 'closed'` ends registration.
   page and `registration.status` to `'open'`. Every call to action then points there.
 - **Launch.** Set `site.indexable: true`.
 

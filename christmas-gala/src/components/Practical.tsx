@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { event } from '../data/event';
-import { dateConfirmed, dateLong, externalLinkProps } from '../lib/event-helpers';
+import { dateConfirmed, dateLong, externalLinkProps, formatPrice, rsvpMailto } from '../lib/event-helpers';
 import { Registration } from './Registration';
 import { NewTab } from './Arrow';
 import { CornerSpray, Flourish } from './Ornaments';
@@ -13,7 +13,8 @@ export function Practical() {
   const v = event.venue;
   const pr = event.practical;
   const reg = event.registration;
-  const regOpen = reg.status === 'open' && !!reg.url;
+  const mailto = rsvpMailto();
+  const regOpen = reg.status === 'open' && (!!mailto || !!reg.url);
 
   return (
     <section className="practical" id="information" aria-labelledby="info-title">
@@ -57,16 +58,28 @@ export function Practical() {
               </dd>
             </div>
             <div>
-              <dt>Registration</dt>
+              <dt>Tickets</dt>
               <dd>
                 {regOpen ? (
                   <>
-                    Registration is open.{' '}
-                    <a href={reg.url!} {...externalLinkProps}>
-                      Register on the official registration page
-                      <NewTab />
-                    </a>
-                    .
+                    <ul className="record-list">
+                      {reg.tickets.map((t) => (
+                        <li key={t.group}>
+                          <b>{formatPrice(t.price)}</b> {t.group}
+                        </li>
+                      ))}
+                    </ul>
+                    {mailto ? (
+                      <>
+                        Registration is required, by e‑mail to <a href={mailto}>{reg.email}</a>: please say whether you are a citizen,
+                        an e‑resident or a member of the public.
+                      </>
+                    ) : (
+                      <a href={reg.url!} {...externalLinkProps}>
+                        Register on the official registration page
+                        <NewTab />
+                      </a>
+                    )}
                   </>
                 ) : reg.status === 'closed' ? (
                   'Registration has closed.'

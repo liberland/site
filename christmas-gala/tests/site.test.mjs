@@ -84,7 +84,12 @@ try {
   check((await page.locator('.face-status--confirmed').count()) === 0, 'no face is marked "Confirmed"');
   check(text.includes('not a confirmation of attendance'), 'faces carry the attendance disclaimer');
   check((await page.locator('input, textarea, select, form').count()) === 0, 'no form collects personal data');
-  check(text.includes('Registration details coming soon'), 'registration shows the coming-soon state');
+  const rsvp = await page.locator('#register a.reg-btn').getAttribute('href');
+  check(/^mailto:rsvp@liberland\.org\?subject=/.test(rsvp ?? ''), `RSVP button opens a pre-filled e-mail to rsvp@liberland.org (${(rsvp ?? '').slice(0, 40)}…)`);
+  check(/citizen of Liberland \/ e-resident \/ member of the public/.test(decodeURIComponent(rsvp ?? '')), 'RSVP e-mail asks citizen / e-resident / public');
+  const prices = await page.$$eval('.tickets li', (ls) => ls.map((l) => l.textContent.replace(/\s+/g, ' ').trim()));
+  check(prices.join('|') === 'Citizens of LiberlandFree|E-residents50 USD|General public100 USD', `ticket prices: ${prices.join(' | ')}`);
+  check(ev?.offers?.length === 3 && ev.offers.map((o) => o.price).join() === '0,50,100', 'Event structured data lists the three ticket prices');
   check(!text.includes('Reference image'), 'production build shows no reference-image tags');
 
   /* ---------- links, images, headings ---------- */

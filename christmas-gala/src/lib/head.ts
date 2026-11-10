@@ -61,7 +61,18 @@ export function headTags() {
         },
       },
       organizer: { '@type': 'Organization', name: s.organiser.name, url: s.organiser.url },
-      ...(r.status === 'open' && r.url ? { offers: { '@type': 'Offer', url: r.url } } : {}),
+      ...(r.status === 'open'
+        ? {
+            offers: r.tickets.map((t) => ({
+              '@type': 'Offer',
+              name: t.group,
+              price: String(t.price),
+              priceCurrency: r.currency,
+              url: r.url ?? `${s.url}#register`,
+              availability: 'https://schema.org/InStock',
+            })),
+          }
+        : {}),
     };
     tags.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
   }
@@ -77,7 +88,9 @@ export function validateEvent() {
     if (t !== null && !/^\d{2}:\d{2}$/.test(t)) errors.push('date.startTime / endTime must look like 19:00 or be null');
   const r = event.registration;
   if (!['coming-soon', 'open', 'closed'].includes(r.status)) errors.push("registration.status must be 'coming-soon', 'open' or 'closed'");
-  if (r.status === 'open' && !r.url) errors.push("registration.status is 'open' but registration.url is empty");
+  if (r.status === 'open' && !r.url && !r.email) errors.push("registration.status is 'open' but neither registration.email nor registration.url is set");
+  if (r.email && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(r.email)) errors.push('registration.email does not look like an e-mail address');
+  for (const t of r.tickets) if (!(t.price >= 0)) errors.push(`ticket "${t.group}": price must be 0 or more`);
   if (r.url && !/^https:\/\//.test(r.url)) errors.push('registration.url must start with https://');
   for (const p of event.faces.people) {
     if (!['featured', 'programme', 'anticipated', 'confirmed'].includes(p.attendance))
