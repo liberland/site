@@ -330,8 +330,8 @@ p { margin: 0; }
 }
 .faces .display em { color: var(--burgundy); }
 .faces .sec-note { color: var(--ink-soft); }
-.face-grid { list-style: none; margin: 76px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 32px; }
-.face { text-align: center; }
+.face-grid { list-style: none; margin: 76px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 48px 32px; }
+.face { text-align: center; flex: 0 1 calc((100% - 3 * 32px) / 4); }
 .medallion { position: relative; width: min(100%, 250px); margin: 0 auto; padding-top: 30px; }
 .medallion::before { /* gold thread from which the cameo hangs */
   content: ''; position: absolute; left: 50%; top: 0; height: 34px; width: 1px; background: var(--gold-2);
@@ -528,7 +528,8 @@ p { margin: 0; }
   .nav-primary ul { gap: 18px; }
   .nav-primary a { font-size: 11.5px; letter-spacing: 0.1em; }
   .venue-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .face-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 720px; margin-inline: auto; }
+  .face-grid { max-width: 720px; margin-inline: auto; }
+  .face { flex-basis: calc((100% - 32px) / 2); }
   .theme-list { grid-template-columns: 1fr; gap: 70px; max-width: 640px; margin-inline: auto; }
   .moments { grid-template-columns: 1fr; }
   .evening-shade { background: linear-gradient(90deg, rgba(62, 18, 27, 0.95) 0%, rgba(90, 31, 41, 0.8) 55%, rgba(90, 31, 41, 0.35) 100%), linear-gradient(0deg, rgba(40, 12, 18, 0.6), transparent 30%); }
@@ -592,6 +593,7 @@ p { margin: 0; }
   .theme { padding: 46px 22px 30px; }
 
   .face-grid { gap: 40px 14px; }
+  .face { flex-basis: calc((100% - 14px) / 2); }
   .medallion { width: min(100%, 160px); }
   .face h3 { font-size: 25px; margin-top: 18px; }
   .face-role { font-size: 11px; letter-spacing: 0.1em; }

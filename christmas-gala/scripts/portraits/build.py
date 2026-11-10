@@ -32,11 +32,6 @@ PORTRAITS = {
         "url": "https://cdn.liberland.org/files/raw/19a9d2728f32df479c61419c06169f82548ba3aa/17907051933440.8125678538108698-congress-all-2026.9..jpg",
         "box": (2034, 1582, 368),
     },
-    "roger-ver": {
-        "raw": "roger-ver.raw.jpg",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Roger_Ver.jpg/960px-Roger_Ver.jpg",
-        "box": (270, 20, 450),
-    },
 }
 
 

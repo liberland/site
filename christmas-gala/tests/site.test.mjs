@@ -79,10 +79,9 @@ try {
   check(/already EVM-compatible/.test(text) && /planned next generation/.test(text), 'V2 is planned; the existing chain is EVM-compatible');
   check(!/confirmed speaker/i.test(text), 'no "confirmed speaker" wording');
   const faces = await page.$$eval('.face h3', (hs) => hs.map((h) => h.textContent));
-  check(['Vít Jedlička', 'Balázs Magyar', 'Jan Schlüter', 'Roger Ver'].every((n) => faces.includes(n)), `faces: ${faces.join(', ')}`);
+  check(['Vít Jedlička', 'Balázs Magyar', 'Jan Schlüter'].every((n) => faces.includes(n)) && faces.length === 3, `faces: ${faces.join(', ')}`);
+  check(!/Roger Ver/.test(html), 'Roger Ver appears nowhere on the page');
   check((await page.locator('.face-status--confirmed').count()) === 0, 'no face is marked "Confirmed"');
-  const ver = await page.locator('.face', { hasText: 'Roger Ver' }).textContent();
-  check(/Anticipated guest — participation to be confirmed/.test(ver), 'Roger Ver is an anticipated guest');
   check(text.includes('not a confirmation of attendance'), 'faces carry the attendance disclaimer');
   check((await page.locator('input, textarea, select, form').count()) === 0, 'no form collects personal data');
   check(text.includes('Registration details coming soon'), 'registration shows the coming-soon state');
