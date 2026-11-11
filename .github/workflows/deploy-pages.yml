@@ -45,8 +45,21 @@ jobs:
           cp -r votula _site/votula
           cp -r build-what-was-removed _site/fund
           cp -r fasto _site/fasto
-          # Liberland Grand Christmas Gala 2026 (noindex test preview until launch; see christmas-gala/README.md).
-          cp -r christmas-gala/dist _site/christmas
+          # Liberland Grand Christmas Gala 2026. Its home is https://christmas.ll.land (mirrored from
+          # christmas-gala/ by michalptacnik/christmas). Until that domain answers, keep serving the full
+          # page here; once it does, /christmas becomes a redirect to it (same pattern as Fasto).
+          if curl -fsS --max-time 20 https://christmas.ll.land/version.txt >/dev/null 2>&1; then
+            mkdir -p _site/christmas
+            cat > _site/christmas/index.html <<'EOF'
+          <!doctype html><html lang="en"><head><meta charset="utf-8"><title>Liberland Grand Christmas Gala 2026</title>
+          <meta name="robots" content="noindex"><link rel="canonical" href="https://christmas.ll.land/">
+          <script>location.replace("https://christmas.ll.land/"+location.search+location.hash)</script>
+          <meta http-equiv="refresh" content="0; url=https://christmas.ll.land/"></head>
+          <body><a href="https://christmas.ll.land/">christmas.ll.land</a></body></html>
+          EOF
+          else
+            cp -r christmas-gala/dist _site/christmas
+          fi
           # Liberland 12th Anniversary 2027 — noindex test preview; production target is anniversary.ll.land (see anniversary-2027/DEPLOYMENT.md).
           cp -r anniversary-2027/dist _site/anniversary
           # Test preview of the reformy.cz /o-spolku/ page (noindex; production is reformy.cz).
