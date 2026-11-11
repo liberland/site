@@ -132,3 +132,14 @@ node scripts/og-image.mjs   # regenerate the 1200×630 social image (after a pro
 - A slow settle and parallax on the hero photograph.
 
 `prefers-reduced-motion` turns all of it off. There is no audio.
+
+## Deployment
+
+- **Home: https://christmas.ll.land/** — `michalptacnik/christmas` mirrors this folder there (like
+  Fasto): every 5 minutes it checks whether `christmas-gala/` changed on `master`, builds it with
+  `SITE_URL=https://christmas.ll.land/ BASE_PATH=/` and publishes it on GitHub Pages; the deployed commit
+  is in `/version.txt`.
+- **https://liberlandlimited.com/christmas/** — `.github/workflows/deploy-pages.yml` serves the full page
+  here until christmas.ll.land answers, then turns `/christmas` into a redirect to it.
+- Build variables: `BASE_PATH` (default `/christmas/`) and `SITE_URL` (default `site.url` in `event.ts`), used
+  for the canonical link, `og:url`/`og:image` and the Event structured data.

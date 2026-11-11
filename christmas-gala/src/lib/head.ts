@@ -1,6 +1,15 @@
 import { event } from '../data/event';
 import { dateConfirmed } from './event-helpers';
 
+/**
+ * The public address the page is built for. Defaults to `site.url` in event.ts;
+ * a deploy can override it at build time, e.g. SITE_URL=https://christmas.ll.land/.
+ */
+export function siteUrl() {
+  const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
+  return env?.SITE_URL || event.site.url;
+}
+
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -10,7 +19,7 @@ const esc = (s: string) =>
  * confirmed — a tentative date must not be published to search engines as fact.
  */
 export function headTags() {
-  const s = event.site;
+  const s = { ...event.site, url: siteUrl() };
   const title = `${event.name} · Christmas at Le Palais, ${event.city}`;
   const image = new URL(s.socialImage, s.url).href;
   const tags = [
@@ -102,6 +111,6 @@ export function validateEvent() {
     if (!ph.alt) errors.push(`photo ${ph.id}: alt text is required`);
     if (!ph.credit) errors.push(`photo ${ph.id}: credit is required`);
   }
-  if (!/^https:\/\/.+\/$/.test(event.site.url)) errors.push('site.url must be https://… and end with /');
+  if (!/^https:\/\/.+\/$/.test(siteUrl())) errors.push('site.url (or SITE_URL) must be https://… and end with /');
   if (errors.length) throw new Error('src/data/event.ts has problems:\n  - ' + errors.join('\n  - '));
 }
