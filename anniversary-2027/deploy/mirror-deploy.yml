@@ -1,0 +1,81 @@
+# COPY OF THE MIRROR WORKFLOW — this file is not run here. Put it in the mirror repository
+# (michalptacnik/anniversary) as .github/workflows/deploy.yml. See anniversary-2027/DEPLOYMENT.md.
+
+name: Deploy anniversary.ll.land
+
+# Takes the anniversary-2027/ folder from liberland/site, builds it (Vite + React,
+# prerendered) and publishes it at https://anniversary.ll.land (the page's canonical home).
+# Every 5 minutes it checks whether anniversary-2027/ changed since the last deploy
+# (the deployed commit is written to /version.txt) and only deploys when it did.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.src.outputs.sha }}
+      deploy: ${{ steps.src.outputs.deploy }}
+    steps:
+      - id: src
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          sha=$(gh api "repos/liberland/site/commits?sha=master&path=anniversary-2027&per_page=1" --jq '.[0].sha')
+          live=$(curl -fsS --max-time 20 https://anniversary.ll.land/version.txt 2>/dev/null | tr -d '[:space:]' || true)
+          echo "latest anniversary-2027/ commit: $sha, deployed: ${live:-none}"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT" != "schedule" ] || [ "$sha" != "$live" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.deploy == 'true'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: liberland/site
+          ref: ${{ needs.check.outputs.sha }}
+          sparse-checkout: anniversary-2027
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the 12th Anniversary 2027 page
+        working-directory: anniversary-2027
+        env:
+          BASE_PATH: /
+          SITE_URL: https://anniversary.ll.land/
+        run: npm install --no-audit --no-fund && npm run build
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r anniversary-2027/dist/. _site/
+          echo "${{ needs.check.outputs.sha }}" > _site/version.txt
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

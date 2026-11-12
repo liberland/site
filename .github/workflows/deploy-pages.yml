@@ -31,7 +31,7 @@ jobs:
       - name: Build the Christmas Gala page (Vite + React, prerendered)
         working-directory: christmas-gala
         run: npm install --no-audit --no-fund && npm run build
-      - name: Build the 12th Anniversary 2027 page (Vite + React, prerendered; test preview)
+      - name: Build the 12th Anniversary 2027 page (served at /anniversary until anniversary.ll.land is live)
         working-directory: anniversary-2027
         env:
           BASE_PATH: /anniversary/
@@ -60,8 +60,22 @@ jobs:
           else
             cp -r christmas-gala/dist _site/christmas
           fi
-          # Liberland 12th Anniversary 2027 — noindex test preview; production target is anniversary.ll.land (see anniversary-2027/DEPLOYMENT.md).
-          cp -r anniversary-2027/dist _site/anniversary
+          # Liberland 12th Anniversary 2027. Its home is https://anniversary.ll.land (mirrored from anniversary-2027/
+          # by michalptacnik/anniversary). Until that domain serves the new site — its /version.txt holds a commit
+          # hash, which the 2026 site there never does — keep serving the full page here; then /anniversary
+          # becomes a redirect to it (same pattern as Christmas and Fasto).
+          if curl -fsS --max-time 20 https://anniversary.ll.land/version.txt 2>/dev/null | grep -qE '^[0-9a-f]{40}$'; then
+            mkdir -p _site/anniversary
+            cat > _site/anniversary/index.html <<'EOF'
+          <!doctype html><html lang="en"><head><meta charset="utf-8"><title>Liberland 12th Anniversary 2027</title>
+          <meta name="robots" content="noindex"><link rel="canonical" href="https://anniversary.ll.land/">
+          <script>location.replace("https://anniversary.ll.land/"+location.search+location.hash)</script>
+          <meta http-equiv="refresh" content="0; url=https://anniversary.ll.land/"></head>
+          <body><a href="https://anniversary.ll.land/">anniversary.ll.land</a></body></html>
+          EOF
+          else
+            cp -r anniversary-2027/dist _site/anniversary
+          fi
           # Test preview of the reformy.cz /o-spolku/ page (noindex; production is reformy.cz).
           python3 reformy-cz/build_test_page.py _site/reformy
           # Fasto lives at https://fasto.ll.land (mirrored from fasto/ by michalptacnik/fasto).
