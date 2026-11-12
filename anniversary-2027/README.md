@@ -9,7 +9,7 @@ Mirni Dunav 3, 25260 Apatin, Serbia**. Intended address: **https://anniversary.l
   Archivo for reading. All styling is in `src/styles/anniversary.css` (breakpoints ≤1100px and ≤640px).
 - **Stack:** Vite + React 18 + TypeScript, prerendered to static HTML and hydrated. No forms, no analytics,
   no cookies, no third-party requests. Fonts are self-hosted.
-- **Not deployed.** See [DEPLOYMENT.md](DEPLOYMENT.md). Developer handoff for tickets and backend: [BACKEND.md](BACKEND.md).
+- **Home: https://anniversary.ll.land/.** It is mirrored from this folder by `michalptacnik/anniversary`, like Christmas and Fasto. Until that domain is switched over, the site is served at liberlandlimited.com/anniversary/, which then redirects. See [DEPLOYMENT.md](DEPLOYMENT.md). Developer handoff for tickets and backend: [BACKEND.md](BACKEND.md).
 
 ## Page sequence
 
