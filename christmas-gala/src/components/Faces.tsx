@@ -33,11 +33,13 @@ function Speaker({ p, i }: { p: Person; i: number }) {
         <p className="speaker-tag">{p.talk?.keynote ? t.faces.keynote : t.faces.speaker}</p>
         <h3>{p.name}</h3>
         <p className="face-role">{p.role}</p>
-        {p.talk && (
+        {p.talk ? (
           <>
             <p className="speaker-talk">{p.talk.keynote ? `“${p.talk.title}”` : p.talk.title}</p>
             <p className="speaker-text">{p.talk.text}</p>
           </>
+        ) : (
+          <p className="speaker-talk speaker-talk--tba">{t.faces.topicTba}</p>
         )}
       </div>
     </li>

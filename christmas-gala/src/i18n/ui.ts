@@ -61,6 +61,7 @@ const en = {
     keynote: 'Keynote',
     speaker: 'Confirmed speaker',
     others: 'Also from Liberland',
+    topicTba: 'Topic to be announced',
     status: {
       programme: 'In the planned programme',
       anticipated: 'Anticipated guest — participation to be confirmed',
@@ -212,6 +213,7 @@ const zh: typeof en = {
     keynote: '主旨演讲',
     speaker: '已确认演讲嘉宾',
     others: '利伯兰人物',
+    topicTba: '演讲主题待公布',
     status: {
       programme: '列入计划日程',
       anticipated: '预计出席——尚待确认',
