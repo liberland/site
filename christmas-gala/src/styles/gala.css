@@ -421,6 +421,7 @@ p { margin: 0; }
 .speaker h3 { margin-top: 8px; font: 400 34px/1.08 var(--f-display); color: var(--ink); }
 .speaker .face-role { margin-top: 6px; }
 .speaker-talk { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(184, 146, 79, 0.4); font: italic 400 24px/1.25 var(--f-display); color: var(--burgundy); }
+.speaker-talk--tba { color: var(--ink-soft); }
 .speaker-text { margin-top: 8px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
 .faces-others { margin-top: 90px; color: var(--gold-ink); }
 .faces-others::before, .faces-others::after { background: linear-gradient(90deg, transparent, rgba(184, 146, 79, 0.6)); }

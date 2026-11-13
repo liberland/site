@@ -78,14 +78,13 @@ try {
   check(text.includes('subject to final programme confirmation'), 'schedule is marked as planned');
   check(/already EVM-compatible/.test(text) && /planned next generation/.test(text), 'V2 is planned; the existing chain is EVM-compatible');
   const speakers = await page.$$eval('.speaker h3', (hs) => hs.map((h) => h.textContent));
-  check(speakers.join() === 'Daniel Vávra,Vojtěch Roček,Martin Groch,Jan Schlüter', `confirmed speakers: ${speakers.join(', ')}`);
+  check(speakers.join() === 'Vít Jedlička,Daniel Vávra,Vojtěch Roček,Martin Groch,Jan Schlüter,Balázs Magyar', `confirmed speakers: ${speakers.join(', ')}`);
   check(/Old Structures Rewritten by AI/.test(text) && /David nuclear reactor/.test(text) && /Gornja Siga digital archive/.test(text), 'speakers show their talks');
   check(!/Gorja Siga|Christmas\.ll\.land gathering/i.test(text), 'copy corrections hold (Gornja Siga; the event is the Grand Christmas Gala)');
   const faces = await page.$$eval('.face h3', (hs) => hs.map((h) => h.textContent));
-  check(faces.join() === 'Vít Jedlička,Balázs Magyar', `other personalities: ${faces.join(', ')}`);
+  check(faces.length === 0, `no unconfirmed personalities listed (${faces.join(', ')})`);
   check(!/Roger Ver/.test(html), 'Roger Ver appears nowhere on the page');
   check((await page.locator('.face-status--confirmed').count()) === 0, 'other personalities are not marked "Confirmed"');
-  check(text.includes('not necessarily attending or speaking'), 'other personalities carry the attendance disclaimer');
   check(/AI and the state/.test(text), 'programme has the AI theme');
   check((await page.locator('input, textarea, select, form').count()) === 0, 'no form collects personal data');
   const rsvp = await page.locator('#register a.reg-btn').getAttribute('href');

@@ -306,9 +306,22 @@ const base = {
   /* ---- faces ---- */
   faces: {
     intro:
-      'This year the programme makes room for people who are putting artificial intelligence to work on real institutions: public services, investment, energy and government itself.',
+      'The President of Liberland and members of its Congress are joined by people who are putting artificial intelligence to work on real institutions: public services, investment, energy and government itself.',
     /** Confirmed speakers (attendance 'confirmed'), shown first as large cards with their talk. */
     speakers: [
+      {
+        name: 'Vít Jedlička',
+        role: 'President of Liberland',
+        attendance: 'confirmed',
+        note: null,
+        portrait: 'images/faces/vit-jedlicka.webp',
+        initials: 'VJ',
+        credit: 'Vít Jedlička — photo by Gage Skidmore, CC BY-SA 3.0, via Wikimedia Commons (cropped, colour-graded)',
+        talk: {
+          title: 'Major announcements',
+          text: 'At the 17:00 press conference: developments relating to Liberland Merit (LLM) and Liberland Blockchain V2.',
+        },
+      },
       {
         name: 'Daniel Vávra',
         role: 'Liberland citizen · tech entrepreneur',
@@ -362,28 +375,19 @@ const base = {
           text: 'An AI-assisted archive of Gornja Siga that informs the work of the Liberland government. Its approach has since inspired an urban-planning system for municipalities.',
         },
       },
-    ] as Person[],
-    /** Further Liberland personalities. A portrait here says nothing about attendance unless `attendance` does. */
-    note: 'Personalities shown here are not necessarily attending or speaking. The final programme will confirm who takes part.',
-    people: [
-      {
-        name: 'Vít Jedlička',
-        role: 'President of Liberland',
-        attendance: 'programme',
-        note: 'In the planned 17:00 announcements',
-        portrait: 'images/faces/vit-jedlicka.webp',
-        initials: 'VJ',
-        credit: 'Vít Jedlička — photo by Gage Skidmore, CC BY-SA 3.0, via Wikimedia Commons (cropped, colour-graded)',
-      },
       {
         name: 'Balázs Magyar',
         role: 'Member of the Liberland Congress',
-        attendance: 'featured',
+        attendance: 'confirmed',
         note: null,
         portrait: 'images/faces/balazs-magyar.webp',
         initials: 'BM',
         credit: 'Balázs Magyar — official Liberland media, liberland.org (27 Sept 2026)',
       },
+    ] as Person[],
+    /** Further Liberland personalities (not speaking). A portrait here says nothing about attendance unless `attendance` does. */
+    note: 'Personalities shown here are not necessarily attending or speaking. The final programme will confirm who takes part.',
+    people: [
     ] as Person[],
   },
 
