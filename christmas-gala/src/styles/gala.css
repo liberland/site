@@ -138,6 +138,13 @@ p { margin: 0; }
 .nav-primary a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 3px; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.35s var(--ease); }
 .nav-primary a:hover, .nav-primary a.is-current { color: var(--on-dark); }
 .nav-primary a:hover::after, .nav-primary a.is-current::after { transform: scaleX(1); }
+.lang-switch { display: flex; align-items: center; gap: 2px; flex: none; font: 600 12px/1 var(--f-caps); letter-spacing: 0.12em; }
+.lang-switch span { display: flex; align-items: center; }
+.lang-switch i { font-style: normal; color: var(--gold); opacity: 0.7; padding: 0 3px; }
+.lang-switch a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 6px; text-decoration: none; color: var(--on-dark-soft); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); border-bottom: 1px solid transparent; }
+.lang-switch a[lang^='zh'] { font: 500 13.5px/1 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif; letter-spacing: 0.08em; }
+.lang-switch a:hover { color: var(--gold-hi); }
+.lang-switch a[aria-current='true'] { color: var(--gold-hi); border-bottom-color: var(--gold); }
 .menu-btn { display: none; margin-left: auto; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(250, 244, 232, 0.45); background: rgba(16, 39, 31, 0.35); color: var(--on-dark); cursor: pointer; align-items: center; justify-content: center; }
 .menu-btn svg { width: 20px; height: 20px; }
 .mobile-menu { display: none; }
@@ -592,9 +599,26 @@ p { margin: 0; }
 }
 
 /* ---------- tablet ---------- */
-@media (max-width: 1180px) {
-  .nav-primary ul { gap: 18px; }
+/* navigation: compact links (no nav CTA) up to 1400px; the menu takes over below 1180px */
+@media (max-width: 1400px) {
+  .nav-inner { gap: 20px; }
+  .nav-primary ul { gap: 16px; }
   .nav-primary a { font-size: 11.5px; letter-spacing: 0.1em; }
+  .nav .nav-cta { display: none; }
+}
+@media (max-width: 1180px) {
+  .nav-primary { display: none; }
+  .menu-btn { display: inline-flex; }
+  .lang-switch { margin-left: auto; }
+  .lang-switch ~ .menu-btn { margin-left: 4px; }
+  .mobile-menu {
+    display: flex; flex-direction: column; padding: 8px var(--gut) 30px; border-top: 1px solid rgba(216, 179, 106, 0.28);
+    max-height: calc(100svh - 76px); overflow-y: auto;
+  }
+  .mobile-menu a:not(.btn) { font: 400 30px/1 var(--f-display); color: var(--on-dark); text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(250, 244, 232, 0.12); }
+  .mobile-menu .btn { margin-top: 24px; align-self: flex-start; }
+}
+@media (max-width: 1180px) {
   .venue-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .face-grid { max-width: 720px; margin-inline: auto; }
   .face { flex-basis: calc((100% - 32px) / 2); }
@@ -605,14 +629,6 @@ p { margin: 0; }
   .evening-shade { background: linear-gradient(90deg, rgba(62, 18, 27, 0.95) 0%, rgba(90, 31, 41, 0.8) 55%, rgba(90, 31, 41, 0.35) 100%), linear-gradient(0deg, rgba(40, 12, 18, 0.6), transparent 30%); }
 }
 @media (max-width: 1040px) {
-  .nav-primary, .nav .nav-cta { display: none; }
-  .menu-btn { display: inline-flex; }
-  .mobile-menu {
-    display: flex; flex-direction: column; padding: 8px var(--gut) 30px; border-top: 1px solid rgba(216, 179, 106, 0.28);
-    max-height: calc(100svh - 76px); overflow-y: auto;
-  }
-  .mobile-menu a:not(.btn) { font: 400 30px/1 var(--f-display); color: var(--on-dark); text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(250, 244, 232, 0.12); }
-  .mobile-menu .btn { margin-top: 24px; align-self: flex-start; }
   .celebration-grid { grid-template-columns: 1fr; }
   .arch { width: min(100%, 420px); }
   .prac-grid { grid-template-columns: 1fr; }
@@ -725,3 +741,28 @@ p { margin: 0; }
   .finale-ctas { flex-direction: column; width: 100%; }
   .footer-inner { flex-direction: column; }
 }
+
+@media (max-width: 380px) {
+  .brand i { display: none; }
+  .lang-switch a { padding: 0 4px; }
+}
+
+/* ---------- Simplified Chinese (/zh/) ----------
+   Latin text keeps the house fonts; Chinese characters fall through to the reader's
+   system CJK fonts (nothing extra to download). Italics are never synthesised for CJK. */
+:root:lang(zh) {
+  --f-display: 'Cormorant Garamond', 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+  --f-caps: 'Cinzel Variable', 'Cinzel', 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  --f-body: 'Source Serif 4 Variable', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+}
+:lang(zh) body { line-height: 1.85; }
+:lang(zh) *, :lang(zh) *::before, :lang(zh) *::after { font-style: normal !important; }
+:lang(zh) .display { letter-spacing: 0.04em; line-height: 1.15; }
+:lang(zh) .hero-grand { letter-spacing: 0.08em; line-height: 1.05; font-weight: 400; }
+:lang(zh) .hero-liberland { letter-spacing: 0.5em; margin-right: -0.5em; }
+:lang(zh) .eyebrow { letter-spacing: 0.24em; }
+:lang(zh) .prose p:first-child::first-letter { float: none; font: inherit; color: inherit; padding: 0; }
+:lang(zh) .lede, :lang(zh) .hero-sub, :lang(zh) .memories-lead, :lang(zh) .finale-lead { letter-spacing: 0.04em; line-height: 1.7; }
+:lang(zh) .lede { font-size: clamp(19px, 1.75vw, 23px); }
+:lang(zh) .memories-lead { font-size: clamp(17px, 1.6vw, 20px); }
+:lang(zh) .tl-body h3, :lang(zh) .theme h4, :lang(zh) .face h3, :lang(zh) .moments h3, :lang(zh) .memories-list h3 { letter-spacing: 0.03em; }

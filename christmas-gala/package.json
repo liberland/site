@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc -b",
-    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "tsc -b && npm run build:en && npm run build:zh",
+    "build:en": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build:zh": "VITE_LANG=zh vite build --outDir dist/zh && VITE_LANG=zh vite build --ssr src/entry-server.tsx --outDir dist-ssr-zh && VITE_LANG=zh node scripts/prerender.mjs",
+    "dev:zh": "VITE_LANG=zh vite",
     "dev:reference": "VITE_REFERENCE_IMAGES=1 vite",
     "build:reference": "VITE_REFERENCE_IMAGES=1 npm run build",
     "preview": "vite preview",
@@ -17,6 +20,7 @@
     "@fontsource-variable/cinzel": "5.3.0",
     "@fontsource-variable/source-serif-4": "5.3.1",
     "@fontsource/cormorant-garamond": "5.2.8",
+    "@fontsource/noto-serif-sc": "5.3.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

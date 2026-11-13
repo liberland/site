@@ -11,4 +11,5 @@ import '@fontsource/cormorant-garamond/latin-600.css';
 import '@fontsource-variable/cinzel/wght.css';
 import '@fontsource-variable/source-serif-4/wght.css';
 import '@fontsource-variable/source-serif-4/wght-italic.css';
+import 'zh-display-font';
 import './gala.css';

@@ -1,4 +1,6 @@
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { dateLong, resolvePhoto } from '../lib/event-helpers';
 import { Photo } from './Photo';
 import { CornerSpray, Flourish, Garland, Star } from './Ornaments';
@@ -11,13 +13,11 @@ export function Celebration() {
       <Garland kind="rope" className="seam seam--top" twinkle={false} />
       <div className="wrap celebration-grid">
         <div className="celebration-copy reveal">
-          <p className="eyebrow eyebrow--ink">The Celebration</p>
+          <p className="eyebrow eyebrow--ink">{t.celebration.eyebrow}</p>
           <h2 id="celebration-title" className="display">
-            Christmas at
-            <br />
-            <em>Le Palais</em>
+            <Title parts={t.celebration.title} breakBefore={t.celebration.titleBreak} />
           </h2>
-          <p className="lede">an extraordinary evening with the Liberland community.</p>
+          <p className="lede">{t.celebration.lede}</p>
           <Flourish className="flourish--ink" />
           <div className="prose">
             {event.editorial.celebration.map((p, i) => (
@@ -35,7 +35,9 @@ export function Celebration() {
                 <div className="arch-fallback">
                   <img src={crestPng} width={64} height={89} alt="" />
                   <span>Le Palais</span>
-                  <small>U Zvonařky 1 · Prague</small>
+                  <small>
+                    {v.street} · {event.city}
+                  </small>
                 </div>
               }
             />
@@ -47,17 +49,17 @@ export function Celebration() {
       <div className="wrap">
         <dl className="invite-card reveal">
           <div>
-            <dt>When</dt>
+            <dt>{t.celebration.when}</dt>
             <dd>{dateLong()}</dd>
           </div>
           <Star />
           <div>
-            <dt>Programme</dt>
+            <dt>{t.celebration.programme}</dt>
             <dd>{event.programme.summary}</dd>
           </div>
           <Star />
           <div>
-            <dt>Where</dt>
+            <dt>{t.celebration.where}</dt>
             <dd>
               {v.name}, {v.district}
             </dd>

@@ -7,10 +7,12 @@ const { chromium } = createRequire(import.meta.url)('playwright');
 const server = await preview({ preview: { port: 4180, strictPort: true }, logLevel: 'silent' });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-await page.goto('http://localhost:4180/christmas/', { waitUntil: 'networkidle' });
+// `node scripts/og-image.mjs zh` makes the Chinese card (public/og-image-zh.jpg) from /zh/.
+const zh = process.argv[2] === 'zh';
+await page.goto(`http://localhost:4180/christmas/${zh ? 'zh/' : ''}`, { waitUntil: 'networkidle' });
 await page.addStyleTag({
   content: `*{animation:none!important;transition:none!important}
-  .nav,.hero-ctas,.hero-credit,.snowfall,.skip-link,.ref-tag,.hero-pending,.twinkles{display:none!important}
+  .nav,.hero-ctas,.lang-switch,.hero-credit,.snowfall,.skip-link,.ref-tag,.hero-pending,.twinkles{display:none!important}
   .hero{min-height:630px!important;height:630px}
   .hero .hero-garland{top:-8px!important}
   .hero-shade{opacity:.55}
@@ -26,7 +28,7 @@ await page.evaluate(async () => {
 });
 await page.waitForTimeout(300);
 if (process.env.DEBUG) console.log(await page.evaluate(() => ({ y: scrollY, hero: document.querySelector('.hero').getBoundingClientRect().toJSON(), g: document.querySelector('.hero-garland').getBoundingClientRect().toJSON() })));
-await page.screenshot({ path: 'public/og-image.jpg', type: 'jpeg', quality: 86, clip: { x: 0, y: 0, width: 1200, height: 630 } });
+await page.screenshot({ path: zh ? 'public/og-image-zh.jpg' : 'public/og-image.jpg', type: 'jpeg', quality: 86, clip: { x: 0, y: 0, width: 1200, height: 630 } });
 await browser.close();
 server.httpServer.close();
-console.log('wrote public/og-image.jpg');
+console.log(`wrote public/og-image${zh ? '-zh' : ''}.jpg`);

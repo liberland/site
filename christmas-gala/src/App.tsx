@@ -12,6 +12,7 @@ import { Finale } from './components/Finale';
 import { Footer } from './components/Footer';
 import { Snowfall } from './components/Snowfall';
 import { event } from './data/event';
+import { t } from './i18n/ui';
 
 /** Fade-and-rise reveals as sections enter the viewport (content is visible without JS). */
 function useReveals() {
@@ -41,7 +42,7 @@ export function App() {
   return (
     <div className="gala">
       <a className="skip-link" href="#main">
-        Skip to content
+        {t.skip}
       </a>
       <Nav />
       <main id="main" tabIndex={-1}>

@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { event } from '../data/event';
 import { registrationCta, externalLinkProps } from '../lib/event-helpers';
+import { t } from '../i18n/ui';
+import { LangSwitch } from './LangSwitch';
 import crestPng from '../assets/liberland-escutcheon-128.png';
 import crestWebp from '../assets/liberland-escutcheon-128.webp';
 
+const S = t.nav.sections;
 export const SECTIONS = [
-  { id: 'celebration', label: 'The Celebration' },
-  { id: 'programme', label: 'Programme' },
-  { id: 'faces', label: 'Faces' },
-  { id: 'venue', label: 'Le Palais' },
-  { id: 'evening', label: 'The Evening' },
-  { id: 'information', label: 'Information' },
+  { id: 'celebration', label: S.celebration },
+  { id: 'programme', label: S.programme },
+  { id: 'faces', label: S.faces },
+  { id: 'venue', label: S.venue },
+  { id: 'evening', label: S.evening },
+  { id: 'information', label: S.information },
 ] as const;
 
 /** Scroll-spy: the section crossing the middle of the viewport is "current". */
@@ -80,17 +83,17 @@ export function Nav() {
   return (
     <header className={`nav${scrolled || open ? ' is-solid' : ''}${open ? ' is-open' : ''}`}>
       <div className="wrap nav-inner">
-        <a className="brand" href="#top" aria-label={`${event.name} — back to top`}>
+        <a className="brand" href="#top" aria-label={t.nav.backToTop(event.name)}>
           <picture>
             <source srcSet={crestWebp} type="image/webp" />
             <img src={crestPng} width={24} height={33} alt="" />
           </picture>
           <span>
-            <b>Liberland</b>
+            <b>{t.hero.liberland}</b>
             <i>{event.shortName}</i>
           </span>
         </a>
-        <nav className="nav-primary" aria-label="Sections">
+        <nav className="nav-primary" aria-label={t.nav.sectionsLabel}>
           <ul>
             {SECTIONS.map((s) => (
               <li key={s.id}>
@@ -101,6 +104,7 @@ export function Nav() {
             ))}
           </ul>
         </nav>
+        <LangSwitch />
         <a className="btn btn-outline btn-sm nav-cta" href={cta.href} {...ext}>
           {cta.short}
         </a>
@@ -108,7 +112,7 @@ export function Nav() {
           ref={btnRef}
           className="menu-btn"
           type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
@@ -119,7 +123,7 @@ export function Nav() {
         </button>
       </div>
       {open && (
-        <nav className="mobile-menu" id="mobile-menu" aria-label="Sections">
+        <nav className="mobile-menu" id="mobile-menu" aria-label={t.nav.sectionsLabel}>
           {SECTIONS.map((s) => (
             <a key={s.id} href={`#${s.id}`} onClick={go}>
               {s.label}

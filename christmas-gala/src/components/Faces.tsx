@@ -1,14 +1,11 @@
 import { event, type Person } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { withBase } from '../lib/assets';
 import { Flourish } from './Ornaments';
 import bow from '../assets/ornaments/bauble-gold.webp';
 
-const STATUS: Record<Person['attendance'], string | null> = {
-  featured: null,
-  programme: 'In the planned programme',
-  anticipated: 'Anticipated guest — participation to be confirmed',
-  confirmed: 'Confirmed',
-};
+const STATUS: Record<Person['attendance'], string | null> = { featured: null, ...t.faces.status };
 
 function Face({ p, i }: { p: Person; i: number }) {
   const status = p.attendance === 'programme' && p.note ? p.note : STATUS[p.attendance];
@@ -18,9 +15,9 @@ function Face({ p, i }: { p: Person; i: number }) {
         <img className="medallion-bauble" src={bow} alt="" aria-hidden="true" width={34} height={38} loading="lazy" />
         <div className="medallion-ring">
           {p.portrait ? (
-            <img src={withBase(p.portrait)} alt={`Portrait of ${p.name}`} width={280} height={280} loading="lazy" decoding="async" />
+            <img src={withBase(p.portrait)} alt={t.faces.portrait(p.name)} width={280} height={280} loading="lazy" decoding="async" />
           ) : (
-            <span className="medallion-mono" role="img" aria-label={`Portrait of ${p.name} to follow`}>
+            <span className="medallion-mono" role="img" aria-label={t.faces.portraitToFollow(p.name)}>
               {p.initials}
             </span>
           )}
@@ -40,9 +37,9 @@ export function Faces() {
     <section className="faces" id="faces" aria-labelledby="faces-title">
       <div className="wrap">
         <header className="sec-head sec-head--center reveal">
-          <p className="eyebrow eyebrow--ink">The Faces of the Evening</p>
+          <p className="eyebrow eyebrow--ink">{t.faces.eyebrow}</p>
           <h2 id="faces-title" className="display">
-            Liberland <em>personalities</em>
+            <Title parts={t.faces.title} />
           </h2>
           <Flourish className="flourish--ink" />
           <p className="sec-note">{f.intro}</p>

@@ -1,4 +1,5 @@
 import { event } from '../data/event';
+import { t } from '../i18n/ui';
 import { dateDayMonthYear, registrationCta, externalLinkProps } from '../lib/event-helpers';
 import { Garland, Star, Wreath } from './Ornaments';
 import crestPng from '../assets/liberland-escutcheon-128.png';
@@ -27,13 +28,13 @@ export function Finale() {
           {cta.label}
         </a>
         <a className="btn btn-ivory" href="#programme">
-          View Programme
+          {t.finale.viewProgramme}
         </a>
       </div>
       <div className="finale-mark">
         <picture>
           <source srcSet={crestWebp} type="image/webp" />
-          <img src={crestPng} width={52} height={72} alt="Coat of arms of the Free Republic of Liberland" decoding="async" />
+          <img src={crestPng} width={52} height={72} alt={t.finale.crest} decoding="async" />
         </picture>
         <span className="motto">{f.motto}</span>
       </div>

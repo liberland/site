@@ -1,4 +1,6 @@
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { resolvePhoto } from '../lib/event-helpers';
 import { Photo } from './Photo';
 import { Flourish, Garland, HangingBaubles, Star, Wreath } from './Ornaments';
@@ -24,9 +26,9 @@ export function Evening() {
       />
       <div className="wrap evening-inner">
         <div className="evening-copy reveal">
-          <p className="eyebrow">The Christmas Evening</p>
+          <p className="eyebrow">{t.evening.eyebrow}</p>
           <h2 id="evening-title" className="display">
-            A Grand <em>Christmas</em> Gala
+            <Title parts={t.evening.title} />
           </h2>
           <Flourish />
           <p className="lede lede--light">{ev.lead}</p>

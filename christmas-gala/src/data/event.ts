@@ -30,6 +30,9 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
+import { LANG } from '../i18n/lang';
+import { zh } from './event.zh';
+
 /* ---------- types (describe the allowed values; no need to edit) ---------- */
 
 export type DateStatus = 'tentative' | 'confirmed';
@@ -91,7 +94,7 @@ export interface Theme {
 
 const HOTEL = '© Le Palais Art Hotel Prague';
 
-export const event = {
+const base = {
   name: 'Liberland Grand Christmas Gala 2026',
   shortName: 'Grand Christmas Gala',
   tagline: 'A Night for Freedom. A New Chapter for Liberland.',
@@ -436,5 +439,20 @@ export const event = {
   /** Gentle snowfall over the whole page. Off automatically for reduced-motion users. */
   atmosphere: { snow: true },
 };
+
+/** Lays the Chinese text (event.zh.ts) over the English base; lists are matched by position. */
+function overlay<T>(a: T, b: unknown): T {
+  if (b === undefined) return a;
+  if (Array.isArray(a) && Array.isArray(b)) return a.map((x, i) => overlay(x, b[i])) as T;
+  if (a && typeof a === 'object' && b && typeof b === 'object') {
+    const out = { ...(a as Record<string, unknown>) };
+    for (const [k, v] of Object.entries(b)) out[k] = overlay(out[k], v);
+    return out as T;
+  }
+  return b as T;
+}
+
+/** The event, in the language this page is built for. */
+export const event: typeof base = LANG === 'zh' ? overlay(base, zh) : base;
 
 export type EventConfig = typeof event;

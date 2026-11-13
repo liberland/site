@@ -1,5 +1,7 @@
 import { event, type Photo } from '../data/event';
 import { withBase } from './assets';
+import { LANG } from '../i18n/lang';
+import { t } from '../i18n/ui';
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -12,21 +14,26 @@ function parts(iso: string) {
   return { y, mo, d, weekday: new Date(Date.UTC(y, mo - 1, d)).getUTCDay() };
 }
 
-/** Friday, 18 December 2026 */
+const ZH_DAYS = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+
+/** Friday, 18 December 2026 · 2026年12月18日（星期五） */
 export function dateLong(iso = event.date.iso) {
   const { y, mo, d, weekday } = parts(iso);
+  if (LANG === 'zh') return `${y}年${mo}月${d}日（${ZH_DAYS[weekday]}）`;
   return `${DAYS[weekday]}, ${d} ${MONTHS[mo - 1]} ${y}`;
 }
 
-/** 18 December 2026 */
+/** 18 December 2026 · 2026年12月18日 */
 export function dateDayMonthYear(iso = event.date.iso) {
   const { y, mo, d } = parts(iso);
+  if (LANG === 'zh') return `${y}年${mo}月${d}日`;
   return `${d} ${MONTHS[mo - 1]} ${y}`;
 }
 
-/** Friday */
+/** Friday · 星期五 */
 export function weekday(iso = event.date.iso) {
-  return DAYS[parts(iso).weekday];
+  const w = parts(iso).weekday;
+  return LANG === 'zh' ? ZH_DAYS[w] : DAYS[w];
 }
 
 export const dateConfirmed = event.date.status === 'confirmed';
@@ -35,31 +42,21 @@ export const dateConfirmed = event.date.status === 'confirmed';
 export function registrationCta() {
   const r = event.registration;
   if (r.status === 'open' && r.url && !r.email) return { href: r.url, external: true, label: r.openLabel, short: r.openLabel };
-  if (r.status === 'open') return { href: '#register', external: false, label: 'Tickets & RSVP', short: 'Tickets & RSVP' };
-  return { href: '#register', external: false, label: 'Registration Details', short: 'Registration' };
+  if (r.status === 'open') return { href: '#register', external: false, label: t.cta.tickets, short: t.cta.tickets };
+  return { href: '#register', external: false, label: t.cta.details, short: t.cta.short };
 }
 
 /** 'Free' or '50 USD'. */
 export function formatPrice(price: number) {
-  return price === 0 ? 'Free' : `${price} ${event.registration.currency}`;
+  return price === 0 ? t.price.free : t.price.amount(price, event.registration.currency);
 }
 
 /** A mailto: link with a ready-to-fill RSVP message. */
 export function rsvpMailto() {
   const r = event.registration;
   if (!r.email) return null;
-  const subject = `RSVP: ${event.name}, ${dateLong()}`;
-  const body = [
-    'Dear RSVP team,',
-    '',
-    `I would like to register for the ${event.name} on ${dateLong()} at ${event.venue.name}.`,
-    '',
-    'Full name:',
-    'I am a (please keep one): citizen of Liberland / e-resident / member of the public',
-    'Number of guests (including me):',
-    '',
-    'Kind regards,',
-  ].join('\n');
+  const subject = t.rsvp.subject(event.name, dateLong());
+  const body = t.rsvp.body(event.name, dateLong(), event.venue.name);
   return `mailto:${r.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
