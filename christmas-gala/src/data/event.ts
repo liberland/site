@@ -59,6 +59,8 @@ export interface Person {
   initials: string;
   /** Required with a portrait: author / source / licence, shown in the page credits. */
   credit: string | null;
+  /** Speakers only: the talk. `keynote: true` marks a keynote. */
+  talk?: { title: string; keynote?: boolean; text: string };
 }
 
 export interface Photo {
@@ -255,7 +257,7 @@ const base = {
   programme: {
     note: 'A planned schedule, subject to final programme confirmation.',
     /** One line for the invitation card under the introduction. */
-    summary: 'From 15:00 · convention, announcements & Christmas gala',
+    summary: 'From 15:00 · convention, talks on AI, announcements & Christmas gala',
     schedule: [
       {
         time: '15:00',
@@ -292,14 +294,77 @@ const base = {
         text: 'Liberland’s existing blockchain is already EVM-compatible. V2 is its planned next generation, based on Ethereum technology; developments are expected to be presented at 17:00.',
         note: 'Planned · no release date announced',
       },
+      {
+        numeral: 'IV',
+        title: 'AI and the state',
+        text: 'Talks by Daniel Vávra, Vojtěch Roček, Martin Groch and Jan Schlüter on what artificial intelligence changes in public services, investment, energy and government.',
+        note: 'Speakers confirmed · times in the final programme',
+      },
     ] as Theme[],
   },
 
   /* ---- faces ---- */
   faces: {
     intro:
-      'Liberland personalities whose work shapes the year being celebrated. The final programme will name who takes part, and in what role.',
-    note: 'A portrait here is not a confirmation of attendance or of a speaking role.',
+      'This year the programme makes room for people who are putting artificial intelligence to work on real institutions: public services, investment, energy and government itself.',
+    /** Confirmed speakers (attendance 'confirmed'), shown first as large cards with their talk. */
+    speakers: [
+      {
+        name: 'Daniel Vávra',
+        role: 'Liberland citizen · tech entrepreneur',
+        attendance: 'confirmed',
+        note: null,
+        portrait: 'images/faces/daniel-vavra.webp',
+        initials: 'DV',
+        credit: 'Daniel Vávra — Show Jana Krause, FTV Prima, CC BY-SA 3.0, via Wikimedia Commons (cropped, colour-graded)',
+        talk: {
+          title: 'An AI-powered civic portal',
+          text: 'Presents his new initiative: a civic portal that uses AI to make public services and information easier to reach for Czech citizens.',
+        },
+      },
+      {
+        name: 'Vojtěch Roček',
+        role: 'Czech venture capitalist',
+        attendance: 'confirmed',
+        note: null,
+        portrait: null,
+        initials: 'VR',
+        credit: null,
+        talk: {
+          title: 'Old Structures Rewritten by AI',
+          keynote: true,
+          text: 'How artificial intelligence is taking apart, and rebuilding, the way organisations and economies are run.',
+        },
+      },
+      {
+        name: 'Martin Groch',
+        role: 'Deep-tech and energy innovator',
+        attendance: 'confirmed',
+        note: null,
+        portrait: null,
+        initials: 'MG',
+        credit: null,
+        talk: {
+          title: 'AI and the David nuclear reactor',
+          text: 'How AI is used in designing David, a nuclear reactor, and what that means for advanced hardware and clean energy.',
+        },
+      },
+      {
+        name: 'Jan Schlüter',
+        role: 'Member of the Liberland Congress',
+        attendance: 'confirmed',
+        note: null,
+        portrait: 'images/faces/jan-schluter.webp',
+        initials: 'JS',
+        credit: 'Jan Schlüter — official Liberland media, liberland.org (27 Sept 2026)',
+        talk: {
+          title: 'The Gornja Siga digital archive',
+          text: 'An AI-assisted archive of Gornja Siga that informs the work of the Liberland government. Its approach has since inspired an urban-planning system for municipalities.',
+        },
+      },
+    ] as Person[],
+    /** Further Liberland personalities. A portrait here says nothing about attendance unless `attendance` does. */
+    note: 'Personalities shown here are not necessarily attending or speaking. The final programme will confirm who takes part.',
     people: [
       {
         name: 'Vít Jedlička',
@@ -318,15 +383,6 @@ const base = {
         portrait: 'images/faces/balazs-magyar.webp',
         initials: 'BM',
         credit: 'Balázs Magyar — official Liberland media, liberland.org (27 Sept 2026)',
-      },
-      {
-        name: 'Jan Schlüter',
-        role: 'Member of the Liberland Congress',
-        attendance: 'featured',
-        note: null,
-        portrait: 'images/faces/jan-schluter.webp',
-        initials: 'JS',
-        credit: 'Jan Schlüter — official Liberland media, liberland.org (27 Sept 2026)',
       },
     ] as Person[],
   },
@@ -411,7 +467,7 @@ const base = {
   editorial: {
     celebration: [
       'On Friday, 18 December 2026, the Liberland community gathers at Le Palais Art Hotel in Prague for its Grand Christmas Gala — a day of serious conversation followed by a night of celebration.',
-      'The afternoon belongs to ideas: a Constitutional Convention, then a press conference with major announcements on Liberland Merit and Liberland Blockchain V2.',
+      'The afternoon belongs to ideas: a Constitutional Convention, talks on how artificial intelligence is changing public services, investment, energy and government, and a press conference with major announcements on Liberland Merit and Liberland Blockchain V2.',
       'And when the sessions close, the house turns to Christmas: ceremonial presentations, Liberland honours and awards, and an evening among friends from many countries, under chandeliers and painted ceilings in the heart of Prague.',
     ],
     finale: {
@@ -429,7 +485,7 @@ const base = {
     /** false = ask search engines not to index (test preview). Set true at launch. */
     indexable: false,
     description:
-      'Christmas at Le Palais: the Liberland Grand Christmas Gala on Friday, 18 December 2026 at Le Palais Art Hotel Prague — a Constitutional Convention, major announcements on Liberland Merit (LLM) and Liberland Blockchain V2, and a grand Christmas gala evening.',
+      'Christmas at Le Palais: the Liberland Grand Christmas Gala on Friday, 18 December 2026 at Le Palais Art Hotel Prague — a Constitutional Convention, talks on AI and the state with Daniel Vávra, Vojtěch Roček, Martin Groch and Jan Schlüter, announcements on Liberland Merit (LLM) and Liberland Blockchain V2, and a Christmas gala evening.',
     socialImage: 'og-image.jpg',
     socialImageAlt: 'Liberland Grand Christmas Gala — Prague, 18 December 2026',
     locale: 'en_GB',

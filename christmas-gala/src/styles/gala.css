@@ -355,7 +355,7 @@ p { margin: 0; }
 .themes-title { display: flex; align-items: center; gap: 22px; font: 500 14px/1.3 var(--f-caps); letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-hi); text-align: center; }
 .themes-title::before, .themes-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(216, 179, 106, 0.6)); }
 .themes-title::after { transform: scaleX(-1); }
-.theme-list { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.theme-list { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .theme {
   position: relative; text-align: center; padding: 48px 34px 38px;
   background: linear-gradient(180deg, rgba(250, 244, 232, 0.06), rgba(250, 244, 232, 0.02));
@@ -406,6 +406,25 @@ p { margin: 0; }
 .face-status { margin-top: 12px; display: inline-block; padding: 5px 12px; font: italic 15px/1.35 var(--f-body); color: var(--burgundy); border: 1px solid rgba(118, 43, 54, 0.35); border-radius: 99px; }
 .face-status--confirmed { color: #2f6b4f; border-color: rgba(47, 107, 79, 0.45); }
 .face-note { margin-top: 8px; font: italic 15px/1.4 var(--f-body); color: var(--ink-soft); }
+/* confirmed speakers: large cards, two per row */
+.speaker-grid { list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.speaker {
+  position: relative; display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 30px; align-items: start;
+  padding: 34px 34px 34px 30px; background: rgba(255, 252, 244, 0.7);
+  border: 1px solid rgba(184, 146, 79, 0.45); box-shadow: inset 0 0 0 6px rgba(250, 244, 232, 0.9), inset 0 0 0 7px rgba(184, 146, 79, 0.22), 0 24px 40px -30px rgba(54, 39, 31, 0.5);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+}
+.speaker:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 6px rgba(250, 244, 232, 0.9), inset 0 0 0 7px rgba(184, 146, 79, 0.4), 0 30px 46px -28px rgba(54, 39, 31, 0.6); }
+.speaker .medallion { width: 170px; margin: 0; }
+.speaker .medallion-mono { font-size: 54px; }
+.speaker-tag { font: 600 11.5px/1.3 var(--f-caps); letter-spacing: 0.2em; text-transform: uppercase; color: var(--burgundy); }
+.speaker h3 { margin-top: 8px; font: 400 34px/1.08 var(--f-display); color: var(--ink); }
+.speaker .face-role { margin-top: 6px; }
+.speaker-talk { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(184, 146, 79, 0.4); font: italic 400 24px/1.25 var(--f-display); color: var(--burgundy); }
+.speaker-text { margin-top: 8px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.faces-others { margin-top: 90px; color: var(--gold-ink); }
+.faces-others::before, .faces-others::after { background: linear-gradient(90deg, transparent, rgba(184, 146, 79, 0.6)); }
+.faces-others + .face-grid { margin-top: 56px; }
 .faces-note { margin: 56px auto 0; max-width: 640px; text-align: center; font: italic 16px/1.5 var(--f-body); color: var(--ink-soft); }
 
 /* ---------- venue ---------- */
@@ -622,8 +641,9 @@ p { margin: 0; }
   .venue-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .face-grid { max-width: 720px; margin-inline: auto; }
   .face { flex-basis: calc((100% - 32px) / 2); }
-  .theme-list { grid-template-columns: 1fr; gap: 70px; max-width: 640px; margin-inline: auto; }
+  .theme-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 70px 22px; max-width: 760px; margin-inline: auto; }
   .moments { grid-template-columns: 1fr; }
+  .speaker-grid { grid-template-columns: 1fr; max-width: 760px; margin-inline: auto; }
   .memories-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .evening-shade { background: linear-gradient(90deg, rgba(62, 18, 27, 0.95) 0%, rgba(90, 31, 41, 0.8) 55%, rgba(90, 31, 41, 0.35) 100%), linear-gradient(0deg, rgba(40, 12, 18, 0.6), transparent 30%); }
@@ -678,7 +698,12 @@ p { margin: 0; }
   .tl-time small { display: inline; margin-left: 10px; }
   .themes { margin-top: 80px; }
   .theme { padding: 46px 22px 30px; }
+  .theme-list { grid-template-columns: 1fr; gap: 70px; }
 
+  .speaker { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 18px; padding: 30px 20px; }
+  .speaker .medallion { width: 150px; }
+  .speaker-talk { font-size: 22px; }
+  .faces-others { margin-top: 70px; font-size: 12px; letter-spacing: 0.18em; }
   .face-grid { gap: 40px 14px; }
   .face { flex-basis: calc((100% - 14px) / 2); }
   .medallion { width: min(100%, 160px); }

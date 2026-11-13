@@ -7,7 +7,7 @@ export function Footer() {
   const org = event.site.organiser;
   const v = event.venue;
   const credits = [
-    ...event.faces.people.filter((p) => p.portrait && p.credit).map((p) => p.credit!),
+    ...[...event.faces.speakers, ...event.faces.people].filter((p) => p.portrait && p.credit).map((p) => p.credit!),
     ...[v.heroPhoto, v.portalPhoto, v.christmasPhoto, ...v.gallery].some((p) => p.cleared) ? [t.footer.venueCredit(v.name)] : [],
     t.footer.ornaments,
   ];

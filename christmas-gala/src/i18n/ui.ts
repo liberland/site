@@ -13,7 +13,7 @@ const en = {
     sections: {
       celebration: 'The Celebration',
       programme: 'Programme',
-      faces: 'Faces',
+      faces: 'Speakers',
       venue: 'Le Palais',
       evening: 'The Evening',
       information: 'Information',
@@ -53,11 +53,14 @@ const en = {
   programme: {
     title: ['The ', 'Programme', ''] as Title,
     planned: 'planned',
-    themes: 'Three themes of the day',
+    themes: 'Themes of the day',
   },
   faces: {
-    eyebrow: 'The Faces of the Evening',
-    title: ['Liberland ', 'personalities', ''] as Title,
+    eyebrow: 'Speakers & Guests',
+    title: ['When AI meets ', 'the state', ''] as Title,
+    keynote: 'Keynote',
+    speaker: 'Confirmed speaker',
+    others: 'Also from Liberland',
     status: {
       programme: 'In the planned programme',
       anticipated: 'Anticipated guest — participation to be confirmed',
@@ -161,7 +164,7 @@ const zh: typeof en = {
     sections: {
       celebration: '盛典',
       programme: '日程',
-      faces: '人物',
+      faces: '嘉宾',
       venue: 'Le Palais',
       evening: '圣诞之夜',
       information: '实用信息',
@@ -201,11 +204,14 @@ const zh: typeof en = {
   programme: {
     title: ['盛典', '日程', ''],
     planned: '计划',
-    themes: '当天的三大主题',
+    themes: '当天的主题',
   },
   faces: {
-    eyebrow: '当晚人物',
-    title: ['利伯兰', '人物', ''],
+    eyebrow: '演讲嘉宾',
+    title: ['当 AI 遇见', '国家', ''],
+    keynote: '主旨演讲',
+    speaker: '已确认演讲嘉宾',
+    others: '利伯兰人物',
     status: {
       programme: '列入计划日程',
       anticipated: '预计出席——尚待确认',

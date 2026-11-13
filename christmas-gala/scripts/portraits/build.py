@@ -22,6 +22,11 @@ PORTRAITS = {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Vit_Jedlicka_by_Gage_Skidmore.jpg/960px-Vit_Jedlicka_by_Gage_Skidmore.jpg",
         "box": (110, 30, 740),
     },
+    "daniel-vavra": {
+        "raw": "daniel-vavra.raw.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Daniel_V%C3%A1vra_SJK.png/960px-Daniel_V%C3%A1vra_SJK.png",
+        "box": (290, 160, 400),
+    },
     "balazs-magyar": {
         "raw": "congress-2026.raw.jpg",
         "url": "https://cdn.liberland.org/files/raw/19a9d2728f32df479c61419c06169f82548ba3aa/17907051933440.8125678538108698-congress-all-2026.9..jpg",
