@@ -11,7 +11,7 @@ import { preview } from 'vite';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
-const WIDTHS = [320, 375, 390, 768, 1024, 1280, 1440, 1920, 2560];
+const WIDTHS = [320, 375, 390, 768, 1024, 1200, 1280, 1366, 1440, 1920, 2560];
 const SHOTS = process.argv.includes('--shots');
 const failures = [];
 const check = (ok, msg) => {
@@ -153,7 +153,7 @@ try {
       bs.filter((b) => b.offsetParent && b.getBoundingClientRect().height < 24).map((b) => b.textContent.trim()),
     );
     check(small.length === 0, `${w}px: touch targets are at least 24px tall ${small.join(', ')}`);
-    if (w <= 1040) {
+    if (w <= 1180) {
       const btn = p.locator('.menu-btn');
       check(await btn.isVisible(), `${w}px: menu button visible`);
       await btn.click();
@@ -197,6 +197,81 @@ try {
     const reveal = await p.evaluate(() => getComputedStyle(document.querySelector('.reveal')).opacity);
     check(reveal === '1', 'reduced motion shows content without reveal animation');
     await p.close();
+  }
+
+  /* ---------- Simplified Chinese page (/zh/) ---------- */
+  {
+    const zhUrl = url + 'zh/';
+    const p = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+    const zhErrors = [];
+    const zhBad = [];
+    p.on('console', (m) => m.type() === 'error' && zhErrors.push(m.text()));
+    p.on('pageerror', (e) => zhErrors.push(e.message));
+    p.on('response', (r) => r.status() >= 400 && zhBad.push(`${r.status()} ${r.url()}`));
+    await p.goto(zhUrl, { waitUntil: 'networkidle' });
+    check((await p.getAttribute('html', 'lang')) === 'zh-CN', 'zh: <html lang="zh-CN">');
+    const h1 = (await p.locator('h1').textContent()) ?? '';
+    check(h1.includes('利伯兰') && h1.includes('圣诞盛典'), `zh: Chinese headline (${h1.trim()})`);
+    check(/^https:\/\/.+\/zh\/$/.test((await p.locator('link[rel=canonical]').getAttribute('href')) ?? ''), 'zh: canonical points to /zh/');
+    check((await p.locator('link[rel=alternate][hreflang="en"]').count()) === 1 && (await p.locator('link[rel=alternate][hreflang="zh-Hans"]').count()) === 1, 'zh: hreflang alternates for en and zh-Hans');
+    check(/og-image-zh\.jpg$/.test((await p.locator('meta[property="og:image"]').getAttribute('content')) ?? ''), 'zh: Chinese social image');
+    const zhText = (await p.locator('body').textContent()) ?? '';
+    check(zhText.includes('2026年12月18日（星期五）'), 'zh: date in Chinese format');
+    const zhPrices = await p.$$eval('.tickets li', (ls) => ls.map((l) => l.textContent.replace(/\s+/g, '')));
+    check(zhPrices.join('|') === '利伯兰公民免费|电子居民50美元|公众100美元', `zh: ticket prices (${zhPrices.join(' | ')})`);
+    const zhMail = decodeURIComponent((await p.locator('#register a.reg-btn').getAttribute('href')) ?? '');
+    check(zhMail.startsWith('mailto:rsvp@liberland.org?subject=RSVP：') && zhMail.includes('利伯兰公民 citizen'), 'zh: RSVP e-mail pre-filled in Chinese (with English labels)');
+    const leftovers = ['Discover the Gala', 'Reserve your place', 'Watch the film', 'The Faces of the Evening', 'Before you travel', 'Skip to content'].filter((x) => zhText.includes(x));
+    check(leftovers.length === 0, `zh: no English interface text left ${leftovers.join(', ')}`);
+    check((await p.locator('.lang-switch a[hreflang="en"]').getAttribute('href')) === new URL(url).pathname, 'zh: language switch links to the English page');
+    await scrollThrough(p);
+    const zhBroken = await p.$$eval('img', (is) => is.filter((i) => !i.complete || i.naturalWidth === 0).map((i) => i.src));
+    check(zhBroken.length === 0 && zhBad.length === 0, `zh: all images and files load ${[...zhBroken, ...zhBad].join(' ')}`);
+    const font = await p.evaluate(() => document.fonts.check('400 40px "Noto Serif SC"', '圣诞'));
+    check(font, 'zh: Noto Serif SC is available for the Chinese headings');
+    check(zhErrors.length === 0, `zh: no console errors ${zhErrors.join(' | ')}`);
+    await p.close();
+    for (const w of [320, 390, 1024, 1440]) {
+      const q = await browser.newPage({ viewport: { width: w, height: 900 } });
+      await q.goto(zhUrl, { waitUntil: 'networkidle' });
+      const over = await q.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      const cut = await q.$$eval('.nav a, .nav button, .hero-inner > *', (els) =>
+        els.filter((e) => e.offsetParent && (e.getBoundingClientRect().right > window.innerWidth + 0.5 || e.getBoundingClientRect().left < -0.5)).length,
+      );
+      check(over <= 0 && cut === 0, `zh ${w}px: no overflow, header and hero fit`);
+      await q.close();
+    }
+  }
+
+  /* ---------- visitors from China / Taiwan get the Chinese page ---------- */
+  {
+    const visit = async (opts, label, expectZh) => {
+      const ctx = await browser.newContext(opts);
+      const p = await ctx.newPage();
+      await p.goto(url, { waitUntil: 'networkidle' });
+      const landed = new URL(p.url()).pathname;
+      check(landed.endsWith('/zh/') === expectZh, `${label} → ${landed}`);
+      await ctx.close();
+    };
+    await visit({ timezoneId: 'Asia/Shanghai', locale: 'en-US' }, 'browser in mainland China (Asia/Shanghai)', true);
+    await visit({ timezoneId: 'Asia/Taipei', locale: 'en-US' }, 'browser in Taiwan (Asia/Taipei)', true);
+    await visit({ timezoneId: 'Asia/Hong_Kong', locale: 'en-GB' }, 'browser in Hong Kong', true);
+    await visit({ timezoneId: 'Europe/Prague', locale: 'zh-CN' }, 'Chinese-language browser in Prague', true);
+    await visit({ timezoneId: 'Europe/Prague', locale: 'en-GB' }, 'English browser in Prague stays on English', false);
+    await visit({ timezoneId: 'Asia/Tokyo', locale: 'ja-JP' }, 'Japanese browser in Tokyo stays on English', false);
+
+    // An explicit choice wins: someone in Shanghai who picks EN stays on English.
+    const ctx = await browser.newContext({ timezoneId: 'Asia/Shanghai', locale: 'zh-CN' });
+    const p = await ctx.newPage();
+    await p.goto(url, { waitUntil: 'networkidle' });
+    await p.locator('.lang-switch a[hreflang="en"]').click();
+    await p.waitForLoadState('networkidle');
+    await p.goto(url, { waitUntil: 'networkidle' });
+    check(!new URL(p.url()).pathname.endsWith('/zh/'), 'choosing EN is remembered (no redirect back to Chinese)');
+    await p.locator('.lang-switch a[hreflang="zh-CN"]').click();
+    await p.waitForURL(/\/zh\/$/);
+    check(new URL(p.url()).pathname.endsWith('/zh/'), '中文 switch opens the Chinese page');
+    await ctx.close();
   }
 
   check(errors.length === 0, `no console errors ${errors.join(' | ')}`);

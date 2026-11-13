@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { event } from '../data/event';
+import { t } from '../i18n/ui';
+import { Title } from './Title';
 import { dateConfirmed, dateLong, externalLinkProps, formatPrice, rsvpMailto } from '../lib/event-helpers';
 import { Registration } from './Registration';
 import { NewTab } from './Arrow';
@@ -21,23 +23,23 @@ export function Practical() {
       <CornerSpray side="left" className="practical-spray" />
       <div className="wrap">
         <header className="sec-head sec-head--center reveal">
-          <p className="eyebrow eyebrow--ink">Practical Information</p>
+          <p className="eyebrow eyebrow--ink">{t.practical.eyebrow}</p>
           <h2 id="info-title" className="display">
-            Before you <em>travel</em>
+            <Title parts={t.practical.title} />
           </h2>
           <Flourish className="flourish--ink" />
         </header>
         <div className="prac-grid">
           <dl className="record reveal">
             <div>
-              <dt>Date</dt>
+              <dt>{t.practical.date}</dt>
               <dd>
                 {dateLong()}
-                {!dateConfirmed && <Pending>Proposed — not yet confirmed</Pending>}
+                {!dateConfirmed && <Pending>{t.practical.proposed}</Pending>}
               </dd>
             </div>
             <div>
-              <dt>Programme</dt>
+              <dt>{t.practical.programme}</dt>
               <dd>
                 <ul className="record-list">
                   {event.programme.schedule.map((s) => (
@@ -46,11 +48,11 @@ export function Practical() {
                     </li>
                   ))}
                 </ul>
-                <Pending>Planned — subject to final programme confirmation</Pending>
+                <Pending>{t.practical.planned}</Pending>
               </dd>
             </div>
             <div>
-              <dt>Venue</dt>
+              <dt>{t.practical.venue}</dt>
               <dd>
                 {v.name}
                 <br />
@@ -58,64 +60,65 @@ export function Practical() {
               </dd>
             </div>
             <div>
-              <dt>Tickets</dt>
+              <dt>{t.practical.tickets}</dt>
               <dd>
                 {regOpen ? (
                   <>
                     <ul className="record-list">
-                      {reg.tickets.map((t) => (
-                        <li key={t.group}>
-                          <b>{formatPrice(t.price)}</b> {t.group}
+                      {reg.tickets.map((tk) => (
+                        <li key={tk.group}>
+                          <b>{formatPrice(tk.price)}</b> {tk.group}
                         </li>
                       ))}
                     </ul>
                     {mailto ? (
                       <>
-                        Registration is required, by e‑mail to <a href={mailto}>{reg.email}</a>: please say whether you are a citizen,
-                        an e‑resident or a member of the public.
+                        {t.practical.byEmail[0]}
+                        <a href={mailto}>{reg.email}</a>
+                        {t.practical.byEmail[1]}
                       </>
                     ) : (
                       <a href={reg.url!} {...externalLinkProps}>
-                        Register on the official registration page
+                        {t.practical.officialPage}
                         <NewTab />
                       </a>
                     )}
                   </>
                 ) : reg.status === 'closed' ? (
-                  'Registration has closed.'
+                  t.practical.closed
                 ) : (
                   <>
-                    Registration has not opened yet. Details will be published on this page.
-                    <Pending>Admission and ticketing details to follow</Pending>
+                    {t.practical.notOpen}
+                    <Pending>{t.practical.admissionPending}</Pending>
                   </>
                 )}
               </dd>
             </div>
             <div>
-              <dt>Getting there</dt>
+              <dt>{t.practical.gettingThere}</dt>
               <dd>
-                {pr.travel} For local directions, see the{' '}
+                {pr.travel} {t.practical.directions[0]}
                 <a href={v.url} {...externalLinkProps}>
-                  hotel’s website
+                  {t.practical.directions[1]}
                   <NewTab />
                 </a>
-                .
+                {t.practical.directions[2]}
               </dd>
             </div>
             <div>
-              <dt>Staying</dt>
+              <dt>{t.practical.staying}</dt>
               <dd>
                 {pr.accommodation}
                 {pr.accommodationPending && <Pending>{pr.accommodationPending}</Pending>}
               </dd>
             </div>
             <div>
-              <dt>Dress code</dt>
-              <dd>{pr.dressCode ?? <Pending>To be announced</Pending>}</dd>
+              <dt>{t.practical.dressCode}</dt>
+              <dd>{pr.dressCode ?? <Pending>{t.practical.tba}</Pending>}</dd>
             </div>
             <div>
-              <dt>Contact</dt>
-              <dd>{pr.contact ? <a href={pr.contact.href}>{pr.contact.label}</a> : <Pending>Event contact to be published</Pending>}</dd>
+              <dt>{t.practical.contact}</dt>
+              <dd>{pr.contact ? <a href={pr.contact.href}>{pr.contact.label}</a> : <Pending>{t.practical.contactPending}</Pending>}</dd>
             </div>
           </dl>
           <Registration />

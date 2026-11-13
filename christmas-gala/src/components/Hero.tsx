@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { dateConfirmed, dateDayMonthYear, dateLong, resolvePhoto } from '../lib/event-helpers';
 import { Photo } from './Photo';
 import { Flourish, Garland, Star, Wreath } from './Ornaments';
@@ -47,12 +49,12 @@ export function Hero() {
 
       <div className="wrap hero-inner">
         <p className="eyebrow hero-eyebrow">
-          {event.city} <Star /> {dateConfirmed ? dateDayMonthYear() : `${dateDayMonthYear()} · proposed`}
+          {event.city} <Star /> {dateConfirmed ? dateDayMonthYear() : `${dateDayMonthYear()} · ${t.hero.proposed}`}
         </p>
         <h1 id="hero-title" className="hero-title">
-          <span className="hero-liberland">Liberland</span>
+          <span className="hero-liberland">{t.hero.liberland}</span>
           <span className="hero-grand">
-            Grand <em>Christmas</em> Gala
+            <Title parts={t.hero.grand} />
           </span>
           <span className="sr-only"> 2026</span>
         </h1>
@@ -63,13 +65,13 @@ export function Hero() {
           <Star />
           <span>{v.name}</span>
         </p>
-        {!dateConfirmed && <p className="hero-pending">Proposed date · not yet confirmed</p>}
+        {!dateConfirmed && <p className="hero-pending">{t.hero.pendingLine}</p>}
         <div className="hero-ctas">
           <a className="btn btn-gold" href="#celebration">
-            Discover the Gala
+            {t.hero.discover}
           </a>
           <a className="btn btn-ivory" href="#programme">
-            View Programme
+            {t.hero.viewProgramme}
           </a>
         </div>
       </div>

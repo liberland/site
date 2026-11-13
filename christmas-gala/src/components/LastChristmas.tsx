@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { withBase } from '../lib/assets';
 import { registrationCta } from '../lib/event-helpers';
 import { Flourish, Star } from './Ornaments';
@@ -21,7 +23,7 @@ export function LastChristmas() {
         <header className="sec-head sec-head--center reveal">
           <p className="eyebrow">{ly.eyebrow}</p>
           <h2 id="memories-title" className="display">
-            Last Christmas <em>at Le Palais</em>
+            <Title parts={t.lastYear.title} />
           </h2>
           <Flourish />
           <p className="memories-lead">{ly.lead}</p>
@@ -39,10 +41,10 @@ export function LastChristmas() {
                 autoPlay
                 playsInline
                 preload="auto"
-                aria-label={`${ly.film.title} — film, ${ly.film.duration}`}
+                aria-label={t.lastYear.film(ly.film.title, ly.film.duration)}
               />
             ) : (
-              <button type="button" className="cinema-play" onClick={() => setPlaying(true)} aria-label={`Play the film “${ly.film.title}” (${ly.film.duration}, ${ly.film.note.toLowerCase()})`}>
+              <button type="button" className="cinema-play" onClick={() => setPlaying(true)} aria-label={t.lastYear.play(ly.film.title, ly.film.duration, ly.film.note)}>
                 <img src={withBase(ly.film.poster)} alt="" width={695} height={392} loading="lazy" decoding="async" />
                 <span className="cinema-shade" aria-hidden="true" />
                 <span className="cinema-cta" aria-hidden="true">
@@ -52,7 +54,7 @@ export function LastChristmas() {
                     </svg>
                   </span>
                   <span className="cinema-label">
-                    <b>Watch the film</b>
+                    <b>{t.lastYear.watch}</b>
                     <i>
                       {ly.film.title} · {ly.film.duration}
                     </i>
@@ -62,11 +64,11 @@ export function LastChristmas() {
             )}
           </div>
           <figcaption>
-            {ly.film.note}. {ly.credit}
+            {ly.film.note}{t.footer.end} {ly.credit}
           </figcaption>
         </figure>
 
-        <ul className="stills" aria-label="Moments from Christmas 2025">
+        <ul className="stills" aria-label={t.lastYear.stills}>
           {ly.stills.map((s, i) => (
             <li key={s.src} className="still reveal" style={{ transitionDelay: `${i * 70}ms` }}>
               <img src={withBase(s.src)} alt={s.alt} width={582} height={388} loading="lazy" decoding="async" />
@@ -87,7 +89,7 @@ export function LastChristmas() {
         </ul>
 
         <p className="memories-cta reveal">
-          <span>This year it will be even better.</span>
+          <span>{t.lastYear.better}</span>
           <a className="btn btn-gold" href={cta.href}>
             {cta.label}
           </a>

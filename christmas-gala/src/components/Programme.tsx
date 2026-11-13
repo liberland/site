@@ -1,4 +1,6 @@
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { dateLong } from '../lib/event-helpers';
 import { Flourish, Star } from './Ornaments';
 
@@ -10,7 +12,7 @@ export function Programme() {
         <header className="sec-head sec-head--center reveal">
           <p className="eyebrow">{dateLong()}</p>
           <h2 id="programme-title" className="display">
-            The <em>Programme</em>
+            <Title parts={t.programme.title} />
           </h2>
           <Flourish />
           <p className="sec-note">{pr.note}</p>
@@ -21,7 +23,7 @@ export function Programme() {
             <li className="tl-item reveal" key={item.time}>
               <p className="tl-time">
                 <time>{item.time}</time>
-                <small>planned</small>
+                <small>{t.programme.planned}</small>
               </p>
               <span className="tl-node">
                 <Star />
@@ -36,17 +38,17 @@ export function Programme() {
 
         <div className="themes">
           <h3 className="themes-title reveal">
-            <span>Three themes of the day</span>
+            <span>{t.programme.themes}</span>
           </h3>
           <ul className="theme-list">
-            {pr.themes.map((t) => (
-              <li className="theme reveal" key={t.numeral}>
+            {pr.themes.map((th) => (
+              <li className="theme reveal" key={th.numeral}>
                 <span className="theme-medal" aria-hidden="true">
-                  {t.numeral}
+                  {th.numeral}
                 </span>
-                <h4>{t.title}</h4>
-                <p>{t.text}</p>
-                <p className="theme-note">{t.note}</p>
+                <h4>{th.title}</h4>
+                <p>{th.text}</p>
+                <p className="theme-note">{th.note}</p>
               </li>
             ))}
           </ul>

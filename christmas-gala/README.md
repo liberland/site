@@ -133,6 +133,26 @@ node scripts/og-image.mjs   # regenerate the 1200×630 social image (after a pro
 
 `prefers-reduced-motion` turns all of it off. There is no audio.
 
+## Languages: English and Simplified Chinese
+
+- **English** is the site root; **Simplified Chinese (简体中文)** is `/zh/`. `npm run build` builds both
+  (`build:en`, `build:zh`). The Chinese page shares the root's photos, film and icons, so nothing is copied twice.
+- **Editing Chinese text:** `src/data/event.zh.ts` holds the Chinese for the event text (facts — dates,
+  prices, photos, links — stay in `event.ts`). Lists are matched by position. Interface text (buttons,
+  section titles) is in `src/i18n/ui.ts`, English and Chinese side by side. A field missing from the
+  Chinese file shows in English.
+- **Selector:** `EN · 中文` in the header (also on phones). A choice is remembered (`localStorage`
+  `gala-lang`) and always wins.
+- **Automatic Chinese:** on the English page, browsers whose time zone is mainland China, Taiwan, Hong
+  Kong or Macau, or whose first language is Chinese, are sent to `/zh/` before anything is drawn. The
+  site is static (GitHub Pages), so there is no IP geolocation; the time zone is the location signal,
+  which needs no third-party service (such services are often blocked in China).
+- **SEO / sharing:** each page has its own canonical link, `hreflang` alternates (`en`, `zh-Hans`,
+  `x-default`), `og:locale` and social card (`og-image-zh.jpg`, made with `node scripts/og-image.mjs zh`).
+- **Chinese type:** headings use Noto Serif SC (SIL OFL, `@fontsource/noto-serif-sc`, sliced so only the
+  characters on the page are downloaded; Chinese build only, see `scripts/zh-font-css.py`); body text uses
+  the reader's system font (PingFang, Microsoft YaHei, Noto Sans).
+
 ## Deployment
 
 - **Home: https://christmas.ll.land/** — `michalptacnik/christmas` mirrors this folder there (like

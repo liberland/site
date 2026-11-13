@@ -1,5 +1,6 @@
 import { event } from '../data/event';
 import { dateConfirmed } from './event-helpers';
+import { LANG, LANG_STORAGE_KEY } from '../i18n/lang';
 
 /**
  * The public address the page is built for. Defaults to `site.url` in event.ts;
@@ -8,6 +9,39 @@ import { dateConfirmed } from './event-helpers';
 export function siteUrl() {
   const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
   return env?.SITE_URL || event.site.url;
+}
+
+/** The address of this language's page: the site root for English, <root>zh/ for Chinese. */
+export function pageUrl(lang = LANG) {
+  return lang === 'zh' ? `${siteUrl()}zh/` : siteUrl();
+}
+
+/**
+ * English page only: visitors from mainland China, Taiwan, Hong Kong or Macau (by the
+ * browser's time zone), or whose browser's first language is Chinese, are sent to the
+ * Chinese page before anything is drawn. A choice made with the EN · 中文 switch wins.
+ * Static hosting has no IP geolocation, and third-party geo services are often blocked
+ * in China, so the time zone is the location signal.
+ */
+function langRedirectScript() {
+  const zhPath = new URL(pageUrl('zh')).pathname;
+  const base = new URL(siteUrl()).pathname;
+  const zones = [
+    'Asia/Shanghai', 'Asia/Chongqing', 'Asia/Chungking', 'Asia/Harbin', 'Asia/Urumqi', 'Asia/Kashgar', 'PRC',
+    'Asia/Taipei', 'ROC',
+    'Asia/Hong_Kong', 'Hongkong', 'Asia/Macau', 'Asia/Macao',
+  ];
+  return [
+    '<script>(function(){try{',
+    `var s=null;try{s=localStorage.getItem(${JSON.stringify(LANG_STORAGE_KEY)})}catch(e){}`,
+    "if(s==='en')return;var go=s==='zh';",
+    "if(!go){var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}",
+    "var l=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();",
+    `go=${JSON.stringify(zones)}.indexOf(tz)>=0||l.indexOf('zh')===0}`,
+    `var p=location.pathname,b=${JSON.stringify(base)};`,
+    `if(go&&(p===b||p===b+'index.html'))location.replace(${JSON.stringify(zhPath)}+location.search+location.hash)`,
+    '}catch(e){}})()</script>',
+  ].join('');
 }
 
 const esc = (s: string) =>
@@ -19,17 +53,21 @@ const esc = (s: string) =>
  * confirmed — a tentative date must not be published to search engines as fact.
  */
 export function headTags() {
-  const s = { ...event.site, url: siteUrl() };
-  const title = `${event.name} · Christmas at Le Palais, ${event.city}`;
-  const image = new URL(s.socialImage, s.url).href;
+  const s = { ...event.site, url: pageUrl() };
+  const title = LANG === 'zh' ? `${event.name} · Le Palais 的圣诞，${event.city}` : `${event.name} · Christmas at Le Palais, ${event.city}`;
+  const image = new URL(s.socialImage, siteUrl()).href;
   const tags = [
     `<title>${esc(title)}</title>`,
     `<meta name="description" content="${esc(s.description)}">`,
     `<meta name="robots" content="${s.indexable ? 'index, follow' : 'noindex, nofollow'}">`,
     `<link rel="canonical" href="${esc(s.url)}">`,
+    `<link rel="alternate" hreflang="en" href="${esc(pageUrl('en'))}">`,
+    `<link rel="alternate" hreflang="zh-Hans" href="${esc(pageUrl('zh'))}">`,
+    `<link rel="alternate" hreflang="x-default" href="${esc(pageUrl('en'))}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="Free Republic of Liberland">`,
     `<meta property="og:locale" content="${esc(s.locale)}">`,
+    `<meta property="og:locale:alternate" content="${LANG === 'zh' ? 'en_GB' : 'zh_CN'}">`,
     `<meta property="og:title" content="${esc(event.name)}">`,
     `<meta property="og:description" content="${esc(event.tagline + ' ' + s.description)}">`,
     `<meta property="og:url" content="${esc(s.url)}">`,
@@ -52,6 +90,7 @@ export function headTags() {
       '@type': 'Event',
       name: event.name,
       description: s.description,
+      inLanguage: LANG === 'zh' ? 'zh-CN' : 'en',
       startDate: start,
       ...(event.date.endTime ? { endDate: `${event.date.iso}T${event.date.endTime}:00+01:00` } : {}),
       eventStatus: 'https://schema.org/EventScheduled',
@@ -85,6 +124,7 @@ export function headTags() {
     };
     tags.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
   }
+  if (LANG === 'en') tags.unshift(langRedirectScript());
   return tags.join('\n    ');
 }
 

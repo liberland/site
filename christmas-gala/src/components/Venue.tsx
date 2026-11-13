@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { event } from '../data/event';
+import { Title } from './Title';
+import { t } from '../i18n/ui';
 import { externalLinkProps, resolvePhoto } from '../lib/event-helpers';
 import { NewTab } from './Arrow';
 import { Photo, RefTag } from './Photo';
@@ -27,7 +29,7 @@ function Lightbox({ index, onClose, onMove }: { index: number | null; onClose: (
   const p = index === null ? null : photos[index];
   const r = p ? resolvePhoto(p) : null;
   return (
-    <dialog ref={ref} className="lightbox" aria-label="Le Palais photographs" onClose={onClose} onClick={(e) => e.target === ref.current && onClose()}>
+    <dialog ref={ref} className="lightbox" aria-label={t.venue.photos} onClose={onClose} onClick={(e) => e.target === ref.current && onClose()}>
       {p && r && (
         <figure>
           <img src={r.src} alt={p.alt} />
@@ -37,13 +39,13 @@ function Lightbox({ index, onClose, onMove }: { index: number | null; onClose: (
           {r.reference && <RefTag />}
         </figure>
       )}
-      <button className="lb-btn lb-prev" type="button" onClick={() => onMove(-1)} aria-label="Previous photograph">
+      <button className="lb-btn lb-prev" type="button" onClick={() => onMove(-1)} aria-label={t.venue.previous}>
         ‹
       </button>
-      <button className="lb-btn lb-next" type="button" onClick={() => onMove(1)} aria-label="Next photograph">
+      <button className="lb-btn lb-next" type="button" onClick={() => onMove(1)} aria-label={t.venue.next}>
         ›
       </button>
-      <button className="lb-btn lb-close" type="button" onClick={onClose} aria-label="Close">
+      <button className="lb-btn lb-close" type="button" onClick={onClose} aria-label={t.venue.close}>
         ×
       </button>
     </dialog>
@@ -61,9 +63,9 @@ export function Venue() {
       <div className="wrap">
         <header className="venue-head reveal">
           <div>
-            <p className="eyebrow">The Venue</p>
+            <p className="eyebrow">{t.venue.eyebrow}</p>
             <h2 id="venue-title" className="display">
-              Le Palais <em>Art Hotel</em> Prague
+              <Title parts={t.venue.title} />
             </h2>
           </div>
           <p className="venue-intro">{v.intro}</p>
@@ -77,11 +79,11 @@ export function Venue() {
 
       {shown.length > 0 ? (
         <div className="wrap wrap--wide">
-          <ul className="mosaic" aria-label="Photographs of Le Palais Art Hotel Prague">
+          <ul className="mosaic" aria-label={t.venue.photos}>
             {v.gallery.map((p, i) =>
               resolvePhoto(p) ? (
                 <li key={p.id} className={`tile tile--${i}`}>
-                  <button type="button" className="tile-btn" onClick={() => setOpen(i)} aria-label={`Enlarge: ${p.title}`}>
+                  <button type="button" className="tile-btn" onClick={() => setOpen(i)} aria-label={t.venue.enlarge(p.title)}>
                     <Photo photo={p} sizes="(max-width: 760px) 84vw, (max-width: 1180px) 50vw, 900px" className="tile-img" showTag={false} />
                   </button>
                   <div className="tile-cap">
@@ -99,20 +101,20 @@ export function Venue() {
         <div className="wrap">
           <div className="venue-tour reveal">
             <div className="venue-tour-copy">
-              <p className="eyebrow">A walk through the house</p>
-              <h3>Step inside Le Palais</h3>
-              <p>Before you arrive, wander through the hotel in its own photographs and see where the evening will unfold.</p>
+              <p className="eyebrow">{t.venue.tourEyebrow}</p>
+              <h3>{t.venue.tourTitle}</h3>
+              <p>{t.venue.tourText}</p>
               <div className="venue-tour-links">
                 <a className="btn btn-gold" href={v.galleryUrl} {...externalLinkProps}>
-                  Open the photo gallery
+                  {t.venue.openGallery}
                   <NewTab />
                 </a>
                 <a className="btn btn-ivory" href={v.artUrl} {...externalLinkProps}>
-                  Art at Le Palais
+                  {t.venue.art}
                   <NewTab />
                 </a>
               </div>
-              <small>On the hotel’s official website · photographs © Le Palais Art Hotel Prague</small>
+              <small>{t.venue.tourNote}</small>
             </div>
             <ul className="venue-tour-rooms">
               {v.rooms.map((r) => (
@@ -136,7 +138,7 @@ export function Venue() {
             </div>
           ))}
           <div>
-            <dt>Address</dt>
+            <dt>{t.venue.address}</dt>
             <dd>
               {v.street}, {v.postcode} {v.district}, {v.country}
             </dd>
@@ -144,11 +146,11 @@ export function Venue() {
         </dl>
         <div className="venue-links reveal">
           <a className="btn btn-gold" href={v.url} {...externalLinkProps}>
-            The hotel’s website
+            {t.venue.website}
             <NewTab />
           </a>
           <a className="btn btn-ivory" href={v.mapsUrl} {...externalLinkProps}>
-            Open in maps
+            {t.venue.maps}
             <NewTab />
           </a>
         </div>

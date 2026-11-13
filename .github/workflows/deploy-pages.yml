@@ -49,14 +49,18 @@ jobs:
           # christmas-gala/ by michalptacnik/christmas). Until that domain answers, keep serving the full
           # page here; once it does, /christmas becomes a redirect to it (same pattern as Fasto).
           if curl -fsS --max-time 20 https://christmas.ll.land/version.txt >/dev/null 2>&1; then
-            mkdir -p _site/christmas
-            cat > _site/christmas/index.html <<'EOF'
-          <!doctype html><html lang="en"><head><meta charset="utf-8"><title>Liberland Grand Christmas Gala 2026</title>
-          <meta name="robots" content="noindex"><link rel="canonical" href="https://christmas.ll.land/">
-          <script>location.replace("https://christmas.ll.land/"+location.search+location.hash)</script>
-          <meta http-equiv="refresh" content="0; url=https://christmas.ll.land/"></head>
-          <body><a href="https://christmas.ll.land/">christmas.ll.land</a></body></html>
+            # English at /christmas/, Simplified Chinese at /christmas/zh/ -> the same pages there.
+            for p in "" zh/; do
+              url="https://christmas.ll.land/$p"
+              mkdir -p "_site/christmas/$p"
+              cat > "_site/christmas/${p}index.html" <<EOF
+          <!doctype html><html><head><meta charset="utf-8"><title>Liberland Grand Christmas Gala 2026</title>
+          <meta name="robots" content="noindex"><link rel="canonical" href="$url">
+          <script>location.replace("$url"+location.search+location.hash)</script>
+          <meta http-equiv="refresh" content="0; url=$url"></head>
+          <body><a href="$url">christmas.ll.land</a></body></html>
           EOF
+            done
           else
             cp -r christmas-gala/dist _site/christmas
           fi

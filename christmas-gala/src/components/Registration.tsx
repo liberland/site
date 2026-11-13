@@ -1,4 +1,5 @@
 import { event } from '../data/event';
+import { t } from '../i18n/ui';
 import { externalLinkProps, formatPrice, rsvpMailto } from '../lib/event-helpers';
 import { NewTab } from './Arrow';
 import { Star } from './Ornaments';
@@ -14,11 +15,11 @@ export function Registration() {
   const open = r.status === 'open' && (!!mailto || !!r.url);
   return (
     <aside className="reg-card reveal" id="register" aria-labelledby="reg-title">
-      <p className="eyebrow">Tickets &amp; Registration</p>
+      <p className="eyebrow">{t.registration.eyebrow}</p>
       {open ? (
         <>
-          <h3 id="reg-title">Reserve your place</h3>
-          <ul className="tickets" aria-label="Admission prices">
+          <h3 id="reg-title">{t.registration.reserve}</h3>
+          <ul className="tickets" aria-label={t.registration.prices}>
             {r.tickets.map((t) => (
               <li key={t.group}>
                 <span className="ticket-group">{t.group}</span>
@@ -38,7 +39,7 @@ export function Registration() {
                 {r.openLabel}
               </a>
               <p className="reg-address">
-                or write to <a href={`mailto:${r.email}`}>{r.email}</a>
+                {t.registration.orWrite} <a href={`mailto:${r.email}`}>{r.email}</a>
               </p>
             </>
           ) : (
@@ -48,20 +49,20 @@ export function Registration() {
             </a>
           )}
           <p className="reg-fine">
-            <Star /> Your RSVP goes directly to Liberland by e‑mail. This page does not collect any personal details.
+            <Star /> {t.registration.fine}
           </p>
         </>
       ) : r.status === 'closed' ? (
         <>
-          <h3 id="reg-title">Registration has closed</h3>
-          <p>Thank you for your interest in the {event.name}.</p>
+          <h3 id="reg-title">{t.registration.closedTitle}</h3>
+          <p>{t.registration.closedText(event.name)}</p>
         </>
       ) : (
         <>
-          <h3 id="reg-title">Registration details coming soon</h3>
-          <p>Admission and registration details will be published on this page.</p>
+          <h3 id="reg-title">{t.registration.soonTitle}</h3>
+          <p>{t.registration.soonText}</p>
           <p className="reg-fine" role="status">
-            <Star /> No tickets are on sale yet, and this page does not collect any personal details.
+            <Star /> {t.registration.soonFine}
           </p>
           {r.updatesUrl && (
             <a className="btn btn-ivory btn-sm" href={r.updatesUrl} {...externalLinkProps}>
