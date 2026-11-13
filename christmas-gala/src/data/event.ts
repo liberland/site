@@ -412,8 +412,8 @@ const base = {
     ],
     highlights: [
       { title: 'The Constitution, read aloud', text: 'A conference led by President Vít Jedlička, at which the Constitution was read, discussed and signed.' },
-      { title: 'Remarkable guests', text: 'Special guest Hans-Hermann Hoppe, legal scholars Stephan Kinsella and Alessandro Fusillo, ministers and international guests.' },
-      { title: 'Honours & passports', text: 'Libor Vondráček, Member of the Czech Parliament, received the Star of Merit with other distinguished guests, and Liberland passports were presented.' },
+      { title: 'Guests from many countries', text: 'Legal scholars, ministers and international guests joined the Liberland community for the evening.' },
+      { title: 'Honours & passports', text: 'Distinguished guests received the Star of Merit, and Liberland passports were presented.' },
       { title: 'And then, the party', text: 'Photographs, dinner, live music in the library and a toast to a better future.' },
     ],
     credit: 'Film and stills: Free Republic of Liberland, Christmas 2025 at Le Palais.',

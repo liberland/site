@@ -133,7 +133,8 @@ try {
   await page.waitForTimeout(2500);
   const playback = await page.$eval('#last-christmas video', (v) => ({ t: v.currentTime, paused: v.paused, controls: v.controls }));
   check(playback.t > 0.5 && !playback.paused && playback.controls, `pressing play starts the film with controls (t=${playback.t.toFixed(1)}s)`);
-  check(/Hans-Hermann Hoppe/.test(text) && /19 December 2025/.test(text), 'last year’s highlights are shown');
+  check(/Honours & passports/.test(text) && /19 December 2025/.test(text), 'last year’s highlights are shown');
+  check(!/Hoppe|Kinsella|Fusillo|Vondráček/.test(html), 'no named guests from last year');
 
   /* ---------- responsive ---------- */
   for (const w of WIDTHS) {
