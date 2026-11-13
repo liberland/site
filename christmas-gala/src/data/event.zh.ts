@@ -147,12 +147,12 @@ export const zh = {
     highlights: [
       { title: '宪法，郑重诵读', text: '由维特·耶德利奇卡总统主持的会议上，宪法被诵读、讨论并签署。' },
       {
-        title: '重量级嘉宾',
-        text: '特邀嘉宾 Hans-Hermann Hoppe、法学家 Stephan Kinsella 与 Alessandro Fusillo，以及多位部长和国际宾客。',
+        title: '来自世界各地的宾客',
+        text: '法学家、多位部长与国际宾客，与利伯兰社群共度了这个夜晚。',
       },
       {
         title: '荣誉与护照',
-        text: '捷克议会议员 Libor Vondráček 与其他贵宾一同获颁功绩之星勋章，现场还颁发了利伯兰护照。',
+        text: '多位贵宾获颁功绩之星勋章，现场还颁发了利伯兰护照。',
       },
       { title: '然后，派对开始', text: '合影、晚宴、图书馆里的现场音乐，以及为更美好的未来举杯。' },
     ],
