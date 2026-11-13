@@ -141,7 +141,7 @@ export function validateEvent() {
   if (r.email && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(r.email)) errors.push('registration.email does not look like an e-mail address');
   for (const t of r.tickets) if (!(t.price >= 0)) errors.push(`ticket "${t.group}": price must be 0 or more`);
   if (r.url && !/^https:\/\//.test(r.url)) errors.push('registration.url must start with https://');
-  for (const p of event.faces.people) {
+  for (const p of [...event.faces.speakers, ...event.faces.people]) {
     if (!['featured', 'programme', 'anticipated', 'confirmed'].includes(p.attendance))
       errors.push(`${p.name}: attendance must be 'featured', 'programme', 'anticipated' or 'confirmed'`);
     if (p.portrait && !p.credit) errors.push(`${p.name}: credit is required when a portrait is set`);
