@@ -1,6 +1,41 @@
 {
  "items": [
   {
+   "id": "issue-80",
+   "date": "2026-11-25",
+   "category": "renovace",
+   "location": "",
+   "title": {
+    "cs": "Z našich realizací: kamenné podlahy a schodiště",
+    "en": "From our projects: stone floors and stairs",
+    "hr": "Iz naših realizacija: kameni podovi i stubište"
+   },
+   "text": {
+    "cs": "Fotky z rozpracované realizace: kamenné podlahy, schody a podesty v nové budově.",
+    "en": "Photos from a project in progress: stone floors, stairs and landings in a new building.",
+    "hr": "Fotografije s realizacije u tijeku: kameni podovi, stube i podesti u novoj zgradi."
+   },
+   "images": [
+    {
+     "src": "news/issue-80/1.jpg",
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "src": "news/issue-80/2.jpg",
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "src": "news/issue-80/3.jpg",
+     "w": 1197,
+     "h": 1600
+    }
+   ],
+   "issue": 80,
+   "updated_at": "2026-11-25T15:30:34Z"
+  },
+  {
    "id": "issue-45",
    "date": "2026-10-15",
    "category": "prodejna",
