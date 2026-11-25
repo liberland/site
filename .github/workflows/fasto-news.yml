@@ -55,6 +55,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy-pages.yml --ref master --repo "$GITHUB_REPOSITORY"
+      - name: Update fasto.ll.land
+        # fasto.ll.land is built by michalptacnik/fasto. Ping it so the news goes out now
+        # instead of on its slow schedule. Needs a FASTO_DISPATCH_TOKEN secret (fine-grained
+        # token for michalptacnik/fasto with Contents: read and write); skipped without it.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.FASTO_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "::notice::FASTO_DISPATCH_TOKEN not set; fasto.ll.land updates on its schedule."; exit 0; fi
+          gh api repos/michalptacnik/fasto/dispatches -f event_type=fasto-updated
       - name: Reply on the issue
         if: github.event_name == 'issues' && contains(fromJSON('["opened","reopened","closed"]'), github.event.action)
         env:
