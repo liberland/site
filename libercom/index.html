@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LiberCom — Global eSIM Connectivity | In partnership with Atli</title>
+<meta name="description" content="LiberCom, in partnership with Atli: global eSIM mobile data for an international community, with exclusive benefits for Liberland citizens.">
+<!-- Preview phase: kept out of search results and without a canonical URL until
+     libercom.ll.land serves this page. See README.md → "Launch checklist". -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#081226">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiberCom">
+<meta property="og:title" content="LiberCom — Stay connected. Wherever freedom takes you.">
+<meta property="og:description" content="Global eSIM mobile data, in partnership with Atli, with exclusive benefits for Liberland citizens.">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/playfair-display-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://embed.heyatli.com">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.className = 'js';</script>
+<script src="config.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="LiberCom — back to top">
+      <img class="brand-shield" src="assets/shield-64.webp" srcset="assets/shield-64.webp 1x, assets/shield-160.webp 2.5x" width="26" height="36" alt="">
+      <span class="brand-name" data-bind="brand.name">LiberCom</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#offers">Offers</a>
+      <a href="#plans">Find a plan</a>
+      <a href="#how">How it works</a>
+    </nav>
+    <a class="btn btn-outline btn-sm header-cta" href="#offers">Get connected</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- A — Hero -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="partner-line">
+          <span class="partner-brand" data-bind="brand.name">LiberCom</span>
+          <span class="partner-sep" aria-hidden="true"></span>
+          <span class="partner-with">In partnership with</span>
+          <img class="partner-logo" src="assets/atli-logo-on-dark.svg" width="76" height="27" alt="Atli">
+        </p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="line">Stay connected.</span>
+          <span class="line accent">Wherever freedom takes&nbsp;you.</span>
+        </h1>
+        <p class="hero-lede">Global mobile data for an international community. Discover convenient eSIM connectivity across borders, with exclusive benefits for Liberland citizens.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-gold btn-lg" href="#offers">
+            <span>Explore Global Connectivity</span>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M10 4v12m0 0-5-5m5 5 5-5"/></svg>
+          </a>
+          <!-- Live only when config.citizenData is 'available' with a verified URL; app.js decides. -->
+          <a class="btn btn-ghost btn-lg" href="#citizen-benefit" data-citizen-cta data-variant="hero">
+            <span data-citizen-label>Claim Your Free 1&nbsp;GB</span>
+            <span class="pill pill-soon" data-citizen-soon>Coming soon</span>
+          </a>
+        </div>
+
+        <ul class="hero-facts" role="list">
+          <li>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2.5"/><path d="M10 7h4v4h-4z"/></svg>
+            eSIM — no physical SIM card
+          </li>
+          <li class="needs-js">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+            <span><span data-bind="globalPlus.destinations"></span> countries &amp; territories on Global&nbsp;Plus</span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 9.5 4-1.2 7-5.1 7-9.5V6l-7-3Z"/></svg>
+            Benefits for Liberland citizens
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="globe" viewBox="0 0 560 560" focusable="false">
+          <defs>
+            <radialGradient id="g-sphere" cx="38%" cy="32%" r="75%">
+              <stop offset="0" stop-color="#1a3463"/>
+              <stop offset=".55" stop-color="#0d1d3c"/>
+              <stop offset="1" stop-color="#060e20"/>
+            </radialGradient>
+            <radialGradient id="g-halo" cx="50%" cy="50%" r="50%">
+              <stop offset=".62" stop-color="#e2c26b" stop-opacity="0"/>
+              <stop offset=".72" stop-color="#e2c26b" stop-opacity=".10"/>
+              <stop offset="1" stop-color="#e2c26b" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="g-arc" x1="0" x2="1">
+              <stop offset="0" stop-color="#f1d77e" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#f1d77e"/>
+              <stop offset="1" stop-color="#f1d77e" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="c-sphere"><circle cx="280" cy="280" r="200"/></clipPath>
+          </defs>
+
+          <circle cx="280" cy="280" r="276" fill="url(#g-halo)"/>
+          <g class="orbit">
+            <ellipse cx="280" cy="280" rx="258" ry="84" transform="rotate(-18 280 280)"/>
+            <circle class="satellite" cx="38" cy="340" r="3.5"/>
+          </g>
+
+          <circle cx="280" cy="280" r="200" fill="url(#g-sphere)"/>
+          <g class="grid" clip-path="url(#c-sphere)">
+            <!-- meridians -->
+            <ellipse cx="280" cy="280" rx="200" ry="200"/>
+            <ellipse cx="280" cy="280" rx="173" ry="200"/>
+            <ellipse cx="280" cy="280" rx="141" ry="200"/>
+            <ellipse cx="280" cy="280" rx="100" ry="200"/>
+            <ellipse cx="280" cy="280" rx="52" ry="200"/>
+            <line x1="280" y1="80" x2="280" y2="480"/>
+            <!-- parallels -->
+            <ellipse cx="280" cy="280" rx="200" ry="30"/>
+            <ellipse cx="280" cy="180" rx="173" ry="26"/>
+            <ellipse cx="280" cy="380" rx="173" ry="26"/>
+            <ellipse cx="280" cy="107" rx="100" ry="15"/>
+            <ellipse cx="280" cy="453" rx="100" ry="15"/>
+          </g>
+          <circle class="rim" cx="280" cy="280" r="200"/>
+
+          <!-- Routes out of a gold node on the Danube, the rest of the world in blue-white. -->
+          <g class="routes" fill="none">
+            <path d="M300 205 Q 230 110 150 190"/>
+            <path d="M300 205 Q 410 120 420 250"/>
+            <path d="M300 205 Q 360 300 330 380"/>
+            <path d="M300 205 Q 200 260 190 345"/>
+            <path d="M300 205 Q 290 120 250 128"/>
+          </g>
+          <g class="routes routes-flow" fill="none" stroke="url(#g-arc)">
+            <path d="M300 205 Q 230 110 150 190"/>
+            <path d="M300 205 Q 410 120 420 250"/>
+            <path d="M300 205 Q 360 300 330 380"/>
+            <path d="M300 205 Q 200 260 190 345"/>
+            <path d="M300 205 Q 290 120 250 128"/>
+          </g>
+          <g class="nodes">
+            <circle cx="150" cy="190" r="4"/>
+            <circle cx="420" cy="250" r="4"/>
+            <circle cx="330" cy="380" r="4"/>
+            <circle cx="190" cy="345" r="4"/>
+            <circle cx="250" cy="128" r="3.5"/>
+            <circle cx="372" cy="160" r="2.5"/>
+            <circle cx="228" cy="232" r="2.5"/>
+            <circle cx="398" cy="330" r="2.5"/>
+            <circle cx="264" cy="420" r="2.5"/>
+          </g>
+          <circle class="home-pulse" cx="300" cy="205" r="7"/>
+          <circle class="home" cx="300" cy="205" r="6"/>
+        </svg>
+
+        <div class="esim-card needs-js">
+          <div class="esim-chip">
+            <svg viewBox="0 0 32 24"><rect x=".5" y=".5" width="31" height="23" rx="4"/><path d="M11 .5v23M21 .5v23M.5 8H11M21 8h10.5M.5 16H11M21 16h10.5"/></svg>
+          </div>
+          <div>
+            <p class="esim-label">Global Plus eSIM</p>
+            <p class="esim-value"><span data-bind="globalPlus.dataGb"></span>&nbsp;GB · <span data-bind="globalPlus.validityDays"></span>&nbsp;days</p>
+            <p class="esim-meta"><span data-bind="globalPlus.destinations"></span> countries &amp; territories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B — The two offers -->
+  <section class="section offers" id="offers" aria-labelledby="offers-title">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Exclusive offers</p>
+        <h2 id="offers-title" class="section-title">Two ways to stay connected</h2>
+        <p class="section-lede">A discounted global plan for every traveller, and complimentary data for Liberland citizens.</p>
+      </header>
+
+      <noscript>
+        <p class="noscript-note">Turn on JavaScript to see the current Liberland codes, or visit
+          <a href="https://heyatli.com/" rel="noopener noreferrer">heyatli.com</a> directly.</p>
+      </noscript>
+
+      <div class="offer-grid">
+        <!-- Card 1 — Global Plus -->
+        <article class="offer-card offer-global needs-js" id="global-plus" aria-labelledby="gp-title">
+          <div class="offer-top">
+            <p class="offer-label">Global connectivity</p>
+            <p class="offer-highlight"><span class="num"><span data-bind="globalPlus.discountPercent"></span>%</span><span class="unit">off</span></p>
+          </div>
+          <h3 id="gp-title" class="offer-title">One eSIM. A world of possibilities.</h3>
+          <p class="offer-product">Global Plus by Atli</p>
+
+          <ul class="feature-list" role="list">
+            <li><span data-bind="globalPlus.dataGb"></span>&nbsp;GB mobile data</li>
+            <li>Valid for <span data-bind="globalPlus.validityDays"></span> days from purchase</li>
+            <li>Coverage across <span data-bind="globalPlus.destinations"></span> countries and territories</li>
+            <li>Single reusable eSIM</li>
+            <li><span data-bind="globalPlus.discountPercent"></span>% discount with the Liberland referral offer</li>
+          </ul>
+
+          <div class="code-box">
+            <div>
+              <p class="code-label" id="gp-code-label">Discount code</p>
+              <p class="code-value" data-bind="globalPlus.code" aria-describedby="gp-code-label"></p>
+            </div>
+            <button type="button" class="btn-copy" data-copy-code>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/></svg>
+              <span data-copy-label>Copy code</span>
+            </button>
+          </div>
+          <p class="sr-only" role="status" aria-live="polite" data-copy-status></p>
+
+          <div class="offer-action">
+            <a class="btn btn-gold btn-block" data-href="globalPlus" target="_blank" rel="sponsored noopener">
+              <span>Get Global Plus — <span data-bind="globalPlus.discountPercent"></span>% Off</span>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M7 13 13 7m0 0H8m5 0v5"/></svg>
+            </a>
+            <p class="fine-print">Opens Atli’s Global Plus page with the code attached. Choose the
+              <span data-bind="globalPlus.dataGb"></span>&nbsp;GB · <span data-bind="globalPlus.validityDays"></span>-day plan,
+              and check that the discount appears at checkout before you pay.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 — Free citizen data -->
+        <article class="offer-card offer-citizen" id="citizen-benefit" aria-labelledby="cb-title" data-citizen-card data-state="coming-soon">
+          <div class="offer-top">
+            <p class="offer-label">Exclusive citizen benefit</p>
+            <p class="offer-highlight"><span class="num">1&nbsp;GB</span><span class="unit">free</span></p>
+          </div>
+          <h3 id="cb-title" class="offer-title">Your first 1&nbsp;GB. On&nbsp;us.</h3>
+          <p class="offer-product">For Liberland citizens</p>
+
+          <p class="offer-text">Liberland citizens are eligible to claim 1&nbsp;GB of complimentary travel data through our partnership with Atli.</p>
+          <p class="offer-note">A separate benefit from the Global Plus discount.</p>
+
+          <div class="offer-action">
+            <!-- Available state: shown only when a verified redemption URL is configured. -->
+            <a class="btn btn-gold btn-block" data-citizen-cta data-variant="card" hidden>
+              <span>Claim Your Free Data</span>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M7 13 13 7m0 0H8m5 0v5"/></svg>
+            </a>
+            <p class="fine-print" data-citizen-available-note hidden>Redemption is handled by Atli, under Atli’s terms.</p>
+
+            <!-- Coming-soon state (default). No form, no data collected. -->
+            <div class="soon-panel" data-citizen-soon-panel>
+              <p class="soon-head"><span class="pill pill-soon">Coming soon</span></p>
+              <p class="soon-text">Atli is preparing a dedicated redemption link for Liberland citizens. Activation details will follow here.</p>
+              <a class="text-link" href="#plans">Meanwhile, explore plans for your next trip</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- C — Atli's eSIM widget -->
+  <section class="section plans" id="plans" aria-labelledby="plans-title">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Plans by destination</p>
+        <h2 id="plans-title" class="section-title">Find your next connection</h2>
+        <p class="section-lede">Explore available eSIM plans for your next destination.</p>
+      </header>
+
+      <div class="widget-frame" data-widget-frame data-state="loading">
+        <div id="atli-esim-widget" class="widget-mount"></div>
+
+        <div class="widget-skeleton" aria-hidden="true">
+          <span class="sk sk-search"></span>
+          <span class="sk sk-tabs"></span>
+          <span class="sk sk-row"></span>
+          <span class="sk sk-row"></span>
+          <span class="sk sk-row short"></span>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" data-widget-status>Loading eSIM plans from Atli…</p>
+
+        <div class="widget-fallback" data-widget-fallback hidden>
+          <p class="fallback-title">The plan finder could not be loaded here.</p>
+          <p class="fallback-text">You can browse the same eSIM plans directly on Atli’s website.</p>
+          <a class="btn btn-navy" data-href="widgetFallback" target="_blank" rel="sponsored noopener">
+            <span>Browse plans on heyatli.com</span>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M7 13 13 7m0 0H8m5 0v5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <p class="widget-note">Plans, prices and checkout are provided by Atli.
+        <a class="text-link needs-js" data-href="widgetFallback" target="_blank" rel="sponsored noopener">Open heyatli.com in a new tab</a></p>
+    </div>
+  </section>
+
+  <!-- D — How it works -->
+  <section class="section how" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title" class="section-title">Online in three steps</h2>
+      </header>
+
+      <ol class="steps" role="list">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3 class="step-title">Choose your plan</h3>
+          <p>Select the destination or Global Plus plan that suits your travel.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3 class="step-title">Install your eSIM</h3>
+          <p>Receive the installation instructions from Atli and activate your eSIM on a compatible device.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3 class="step-title">Stay connected</h3>
+          <p>Use mobile data through Atli’s partner networks in supported destinations.</p>
+        </li>
+      </ol>
+
+      <p class="device-note">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6.2v.1"/></svg>
+        An eSIM-compatible, carrier-unlocked device is required. Coverage and plan conditions vary.
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- E — Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="LiberCom — back to top">
+          <img class="brand-shield" src="assets/shield-64.webp" srcset="assets/shield-64.webp 1x, assets/shield-160.webp 2.5x" width="26" height="36" alt="">
+          <span class="brand-name" data-bind="brand.name">LiberCom</span>
+        </a>
+        <p class="powered">Powered by
+          <a href="https://heyatli.com/" data-href="brand.partnerUrl" target="_blank" rel="noopener noreferrer" class="powered-logo">
+            <img src="assets/atli-logo-on-dark.svg" width="62" height="22" alt="Atli">
+          </a>
+        </p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://liberland.org/" data-href="brand.liberlandUrl" target="_blank" rel="noopener noreferrer">Liberland.org</a>
+        <a href="https://heyatli.com/" data-href="brand.partnerUrl" target="_blank" rel="noopener noreferrer"><span data-bind="brand.partnerName">Atli</span></a>
+        <a href="https://heyatli.com/terms" data-href="brand.partnerTermsUrl" target="_blank" rel="noopener noreferrer"><span data-bind="brand.partnerName">Atli</span> terms</a>
+        <a href="https://heyatli.com/privacy" data-href="brand.partnerPrivacyUrl" target="_blank" rel="noopener noreferrer"><span data-bind="brand.partnerName">Atli</span> privacy policy</a>
+      </nav>
+    </div>
+    <p class="footer-notice">Connectivity services and eSIM plans are provided by Atli and its network partners. Availability, coverage, pricing and redemption conditions are subject to the provider’s terms.</p>
+    <p class="footer-copy">© <span data-year>2026</span> Liberland. LiberCom is a Liberland initiative in partnership with Atli.</p>
+  </div>
+</footer>
+</body>
+</html>
