@@ -7,17 +7,18 @@
 <meta name="description" content="Sign PDF documents with your Liberland identity. The Liberland App holds your key, the Liberland certificate authority vouches for it after KYC, and xNotary embeds a standard PDF signature anyone can verify. Working demonstration.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://liberlandlimited.com/form/">
-<link rel="icon" href="assets/liberland-limited-logo.png">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Liberland Limited">
 <meta property="og:title" content="Liberland eSignature for xNotary">
 <meta property="og:description" content="Verified Liberland identity, a key in your phone, a standard PDF signature anyone can check.">
 <meta property="og:image" content="https://liberlandlimited.com/assets/liberland-limited-logo.png">
-<meta name="theme-color" content="#f3eee5">
-<link rel="preload" href="assets/fonts/Newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#f1c823">
+<link rel="preload" href="assets/fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="styles.css">
-<script>try { if (localStorage.getItem("ll-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
 <script src="demo-ca.js" defer></script>
 <script src="vendor/sign-lib.js" defer></script>
 <script src="app.js" defer></script>
@@ -25,19 +26,19 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
+<div class="topbar"><strong>Liberland eSignature</strong> with xNotary.digital<span class="sep" aria-hidden="true"></span><span class="opt">Proposal · working demonstration</span></div>
 <header class="site-head">
   <div class="container">
-    <a class="brand" href="../" aria-label="Liberland Limited home page">
-      <img src="assets/liberland-limited-logo.png" alt="" width="34" height="34">
-      <span><span class="name">Liberland eSignature</span><span class="sub">for xNotary.digital</span></span>
+    <a class="brand" href="https://liberland.org/" aria-label="Free Republic of Liberland">
+      <img src="assets/shield-160.webp" alt="" width="52" height="58">
+      <span class="wordmark"><span class="a">Free Republic of</span><span class="b">LIBERLAND</span></span>
+      <span class="brand-sub">eSignature<br>for xNotary</span>
     </a>
     <nav class="head-nav" aria-label="Page">
       <a href="#how">How it works</a>
       <a href="#demo" class="keep">Try it</a>
       <a href="#verify" class="keep">Verify</a>
-      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch dark or light theme">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <a class="btn btn--solid" href="#demo">Sign a PDF</a>
     </nav>
   </div>
 </header>
@@ -47,11 +48,11 @@
     <div class="container hero-grid">
       <div>
         <span class="badge-demo"><span class="dot" aria-hidden="true"></span>Proposal · working demonstration</span>
-        <h1 class="display h1">Sign with your <em>Liberland</em> identity.</h1>
+        <h1 class="h1">Sign documents with your <span class="accent">Liberland identity</span></h1>
         <p class="lede">You have already passed KYC in the Liberland App. Your phone holds a key that never leaves it, Liberland certifies that the key is yours, and xNotary turns your approval into a standard PDF signature that anyone can verify.</p>
         <div class="hero-cta">
           <a class="btn btn--solid" href="#demo">Try the signing flow <span aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost" href="#verify">Verify a signed PDF</a>
+          <a class="btn btn--light" href="#verify">Verify a signed PDF</a>
         </div>
       </div>
       <dl class="hero-aside">
@@ -63,12 +64,12 @@
     </div>
   </section>
 
-  <section class="section" id="how" aria-labelledby="how-title">
+  <section class="section hex-bg" id="how" aria-labelledby="how-title">
     <div class="container">
       <div class="section-head">
         <p class="label label--teal">How it works</p>
-        <h2 class="h2" id="how-title">Six steps from a verified person to a signature anyone can check.</h2>
-        <p class="body">Only the public half of the key and a fingerprint of the document ever travel. The private key stays in the phone, and the document itself never has to reach Liberland.</p>
+        <h2 class="h2" id="how-title">How it <span class="accent">works</span></h2>
+        <p class="body"><strong>Six steps from a verified person to a signature anyone can check.</strong> Only the public half of the key and a fingerprint of the document ever travel. The private key stays in the phone, and the document itself never has to reach Liberland.</p>
       </div>
       <ol class="flow">
         <li><span class="n">1</span><span class="label who">Liberland App</span><h3 class="h3">Identity</h3><p class="body">The user has already completed KYC in the Liberland App.</p></li>
@@ -85,7 +86,7 @@
     <div class="container">
       <div class="section-head">
         <p class="label label--teal">Try it — everything runs in this browser</p>
-        <h2 class="h2" id="demo-title">Sign a real PDF, end to end.</h2>
+        <h2 class="h2" id="demo-title">Sign a real <span class="accent">PDF</span></h2>
         <p class="body">The phone plays the Liberland App, and the rest of this page plays xNotary and the Liberland CA. The cryptography is real: the result is a genuine PAdES signature that Adobe Acrobat, pyHanko or the verifier below can check. Your document is never uploaded.</p>
       </div>
 
@@ -146,7 +147,7 @@
             <div class="screen">
               <div class="statusbar" aria-hidden="true"><span id="phone-clock">9:41</span><span>●●● 5G</span></div>
               <div class="app-bar">
-                <img src="assets/liberland-limited-logo.png" alt="" width="26" height="26">
+                <img src="assets/shield-64.webp" alt="" width="28" height="31">
                 <div><div class="t">Liberland</div><div class="s" id="phone-sub">Identity</div></div>
               </div>
               <div class="app-body" id="phone-body"></div>
@@ -162,8 +163,8 @@
   <section class="section" id="verify" aria-labelledby="verify-title">
     <div class="container">
       <div class="section-head">
-        <p class="label label--teal">Anyone can verify</p>
-        <h2 class="h2" id="verify-title">Who signed, that nothing changed, and when.</h2>
+        <p class="label label--teal">Who signed, that nothing changed, and when</p>
+        <h2 class="h2" id="verify-title">Anyone can <span class="accent">verify</span></h2>
         <p class="body">Drop any signed PDF. This checker reads the embedded signature locally and reports the signer verified by Liberland KYC, whether the document changed after signing, the certificate's status and the timestamp. Any PDF reader that supports digital signatures shows the same facts.</p>
       </div>
       <div class="verify-grid">
@@ -186,8 +187,9 @@
   <section class="section" id="benefits" aria-labelledby="benefits-title">
     <div class="container">
       <div class="section-head">
-        <p class="label label--teal">What Liberland gains</p>
-        <h2 class="h2" id="benefits-title">Reliable notary services, built on identity Liberland already verifies.</h2>
+        <p class="label label--teal">Benefits</p>
+        <h2 class="h2" id="benefits-title">What Liberland <span class="accent">gains</span></h2>
+        <p class="body">Reliable notary services, built on the identity Liberland already verifies.</p>
       </div>
       <div class="benefits">
         <div><p class="label">Notary services</p><h3 class="h3">Effectively, a Liberland notary</h3><p class="body">Every signature names a person Liberland has verified, bound to one exact document and, with a timestamp, to one moment. That is what a notary attests, available from any phone.</p></div>
@@ -200,8 +202,9 @@
   <section class="section" id="scope" aria-labelledby="scope-title">
     <div class="container">
       <div class="section-head">
-        <p class="label label--teal">This demo, honestly</p>
-        <h2 class="h2" id="scope-title">What is real here, and what production adds.</h2>
+        <p class="label label--teal">Scope</p>
+        <h2 class="h2" id="scope-title">This demo, <span class="accent">honestly</span></h2>
+        <p class="body">What is real here, and what a production launch adds.</p>
       </div>
       <div class="two-col">
         <div class="panel">
@@ -232,13 +235,18 @@
 
 <footer class="site-foot">
   <div class="container">
-    <p class="small" style="margin:0">© 2026 Liberland Limited · Hong Kong · BRN 64816138. xNotary.digital is developed with Jan Purkrabek and LongRiver Lab.</p>
+    <a class="brand" href="https://liberland.org/" aria-label="Free Republic of Liberland">
+      <img src="assets/shield-160.webp" alt="" width="44" height="49">
+      <span class="wordmark"><span class="a">Free Republic of</span><span class="b">LIBERLAND</span></span>
+    </a>
     <nav aria-label="Footer">
+      <a href="https://liberland.org/">Liberland.org</a>
+      <a href="https://xnotary.digital" rel="noopener">xNotary.digital</a>
       <a href="../">Liberland Limited</a>
       <a href="../privacy/">Privacy</a>
       <a href="../terms/">Terms</a>
-      <a href="https://xnotary.digital" rel="noopener">xNotary.digital</a>
     </nav>
+    <p class="small">Liberland eSignature for xNotary — proposal and working demonstration, published by Liberland Limited (Hong Kong, BRN 64816138). xNotary.digital is developed with Jan Purkrabek and LongRiver Lab.</p>
   </div>
 </footer>
 

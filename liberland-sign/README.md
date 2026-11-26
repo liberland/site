@@ -1,6 +1,6 @@
 # Liberland eSignature for xNotary — `/form`
 
-A proposal page with a **working demonstration** of how a Liberland identity can sign PDFs through xNotary.digital
+A proposal page, styled after liberland.org (yellow top bar, shield + wordmark, dark-blue hero, Playfair Display + Open Sans), with a **working demonstration** of how a Liberland identity can sign PDFs through xNotary.digital
 (launched with Jan Purkrabek and LongRiver Lab). Served at `https://liberlandlimited.com/form/` (`noindex`).
 
 ## The flow (all real cryptography, all in the browser)

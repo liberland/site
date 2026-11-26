@@ -610,12 +610,6 @@
   $("#reset-phone").addEventListener("click", resetPhone);
   wireDrop($("#verify-drop"), function (f) { readFile(f, verifyBytes); });
 
-  $("#theme-toggle").addEventListener("click", function () {
-    var dark = document.documentElement.dataset.theme !== "dark";
-    if (dark) document.documentElement.dataset.theme = "dark"; else delete document.documentElement.dataset.theme;
-    try { localStorage.setItem("ll-theme", dark ? "dark" : "light"); } catch (err) {}
-  });
-
   function tick() {
     var d = new Date();
     $("#phone-clock").textContent = d.getHours() + ":" + String(d.getMinutes()).padStart(2, "0");

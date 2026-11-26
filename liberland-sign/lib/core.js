@@ -308,9 +308,9 @@ export async function preparePdf(input, { fullName, liberlandId, signedAt = new 
 
   // Visible stamp, bottom-right of the last page.
   const w = 236, h = 66, x = Math.max(12, width - w - 28), y = 24;
-  const teal = rgb(0.082, 0.337, 0.388);
-  page.drawRectangle({ x, y, width: w, height: h, color: rgb(0.98, 0.965, 0.933), borderColor: teal, borderWidth: 0.8, opacity: 0.96 });
-  page.drawRectangle({ x, y, width: 4, height: h, color: teal });
+  const teal = rgb(0.184, 0.353, 0.427); // Liberland blue #2f5a6d
+  page.drawRectangle({ x, y, width: w, height: h, color: rgb(1, 1, 1), borderColor: teal, borderWidth: 0.8, opacity: 0.97 });
+  page.drawRectangle({ x, y, width: 5, height: h, color: rgb(0.945, 0.784, 0.137) }); // Liberland yellow #f1c823
   page.drawText("DIGITALLY SIGNED · LIBERLAND IDENTITY", { x: x + 12, y: y + h - 15, size: 6.4, font: bold, color: teal });
   page.drawText(stampText(fullName).slice(0, 40), { x: x + 12, y: y + h - 30, size: 10.5, font: bold, color: rgb(0.08, 0.09, 0.1) });
   page.drawText(`Liberland ID ${stampText(liberlandId)}`.slice(0, 54), { x: x + 12, y: y + h - 42, size: 7, font, color: rgb(0.25, 0.27, 0.28) });
@@ -622,7 +622,7 @@ export async function createSamplePdf({ title = "Service Agreement", parties = [
   const serifBold = await pdf.embedFont(StandardFonts.TimesRomanBold);
   const sans = await pdf.embedFont(StandardFonts.Helvetica);
   const ink = rgb(0.08, 0.09, 0.1);
-  const teal = rgb(0.082, 0.337, 0.388);
+  const teal = rgb(0.184, 0.353, 0.427);
   let y = 770;
   page.drawText("SAMPLE DOCUMENT · FOR THE LIBERLAND eSIGNATURE DEMO", { x: 60, y, size: 8, font: sans, color: teal });
   y -= 36;
