@@ -47,6 +47,9 @@ jobs:
           cp -r fasto _site/fasto
           # LiberCom (Liberland × Atli eSIM). Static, no build step; preview at /mobile until libercom.ll.land.
           cp -r libercom _site/mobile
+          # Liberland eSignature for xNotary (static, no build step; vendor/sign-lib.js is committed).
+          cp -r liberland-sign _site/form
+          rm -rf _site/form/tests _site/form/tools _site/form/lib _site/form/package.json _site/form/playwright.config.js
           # Liberland Grand Christmas Gala 2026. Its home is https://christmas.ll.land (mirrored from
           # christmas-gala/ by michalptacnik/christmas). Until that domain answers, keep serving the full
           # page here; once it does, /christmas becomes a redirect to it (same pattern as Fasto).

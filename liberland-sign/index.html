@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liberland eSignature for xNotary | Liberland Limited</title>
+<meta name="description" content="Sign PDF documents with your Liberland identity. The Liberland App holds your key, the Liberland certificate authority vouches for it after KYC, and xNotary embeds a standard PDF signature anyone can verify. Working demonstration.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://liberlandlimited.com/form/">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liberland Limited">
+<meta property="og:title" content="Liberland eSignature for xNotary">
+<meta property="og:description" content="Verified Liberland identity, a key in your phone, a standard PDF signature anyone can check.">
+<meta property="og:image" content="https://liberlandlimited.com/assets/liberland-limited-logo.png">
+<meta name="theme-color" content="#f1c823">
+<link rel="preload" href="assets/fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<script src="demo-ca.js" defer></script>
+<script src="vendor/sign-lib.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar"><strong>Liberland eSignature</strong> with xNotary.digital<span class="sep" aria-hidden="true"></span><span class="opt">Proposal · working demonstration</span></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="https://liberland.org/" aria-label="Free Republic of Liberland">
+      <img src="assets/shield-160.webp" alt="" width="52" height="58">
+      <span class="wordmark"><span class="a">Free Republic of</span><span class="b">LIBERLAND</span></span>
+      <span class="brand-sub">eSignature<br>for xNotary</span>
+    </a>
+    <nav class="head-nav" aria-label="Page">
+      <a href="#how">How it works</a>
+      <a href="#demo" class="keep">Try it</a>
+      <a href="#verify" class="keep">Verify</a>
+      <a class="btn btn--solid" href="#demo">Sign a PDF</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge-demo"><span class="dot" aria-hidden="true"></span>Proposal · working demonstration</span>
+        <h1 class="h1">Sign documents with your <span class="accent">Liberland identity</span></h1>
+        <p class="lede">You have already passed KYC in the Liberland App. Your phone holds a key that never leaves it, Liberland certifies that the key is yours, and xNotary turns your approval into a standard PDF signature that anyone can verify.</p>
+        <div class="hero-cta">
+          <a class="btn btn--solid" href="#demo">Try the signing flow <span aria-hidden="true">→</span></a>
+          <a class="btn btn--light" href="#verify">Verify a signed PDF</a>
+        </div>
+      </div>
+      <dl class="hero-aside">
+        <div><dt>Who signed</dt><dd>A person verified by Liberland KYC</dd></div>
+        <div><dt>What was signed</dt><dd>This exact document, unchanged since</dd></div>
+        <div><dt>When</dt><dd>Certified by an independent timestamp</dd></div>
+        <div><dt>Built with</dt><dd>xNotary.digital — Jan Purkrabek &amp; LongRiver Lab</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section hex-bg" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label label--teal">How it works</p>
+        <h2 class="h2" id="how-title">How it <span class="accent">works</span></h2>
+        <p class="body"><strong>Six steps from a verified person to a signature anyone can check.</strong> Only the public half of the key and a fingerprint of the document ever travel. The private key stays in the phone, and the document itself never has to reach Liberland.</p>
+      </div>
+      <ol class="flow">
+        <li><span class="n">1</span><span class="label who">Liberland App</span><h3 class="h3">Identity</h3><p class="body">The user has already completed KYC in the Liberland App.</p></li>
+        <li><span class="n">2</span><span class="label who">Phone</span><h3 class="h3">A key inside the phone</h3><p class="body">The app creates a private signing key in the phone's protected hardware. It can sign, but it can never be copied out.</p></li>
+        <li><span class="n">3</span><span class="label who">Liberland CA</span><h3 class="h3">Liberland issues a certificate</h3><p class="body">The app sends only the public key. Liberland's certificate authority confirms "this key belongs to [verified name, ID]" and can revoke it at any time, for example if KYC lapses or the phone is lost.</p></li>
+        <li><span class="n">4</span><span class="label who">xNotary</span><h3 class="h3">Open the document</h3><p class="body">In xNotary or a dedicated Liberland signing page, the document gets a unique fingerprint (a SHA-256 hash), shown as a QR code or link.</p></li>
+        <li><span class="n">5</span><span class="label who">Phone</span><h3 class="h3">Confirm on the phone</h3><p class="body">The app shows what is being signed. The user approves with fingerprint or face, and the phone signs the fingerprint with the protected key.</p></li>
+        <li><span class="n">6</span><span class="label who">xNotary</span><h3 class="h3">A standard PDF signature</h3><p class="body">xNotary embeds the signature and certificate into the PDF as a standard PDF signature (PAdES), optionally with a timestamp proving when it was signed.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section demo-wrap" id="demo" aria-labelledby="demo-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label label--teal">Try it — everything runs in this browser</p>
+        <h2 class="h2" id="demo-title">Sign a real <span class="accent">PDF</span></h2>
+        <p class="body">The phone plays the Liberland App, and the rest of this page plays xNotary and the Liberland CA. The cryptography is real: the result is a genuine PAdES signature that Adobe Acrobat, pyHanko or the verifier below can check. Your document is never uploaded.</p>
+      </div>
+
+      <div class="demo">
+        <ol class="steps" id="steps">
+          <li class="step" id="step-1" data-state="active">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">1</span>
+              <div class="step-title"><p class="label">Liberland App</p><h3 class="h3">Identity (KYC)</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+          <li class="step" id="step-2" data-state="locked">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">2</span>
+              <div class="step-title"><p class="label">Phone</p><h3 class="h3">Private signing key</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+          <li class="step" id="step-3" data-state="locked">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">3</span>
+              <div class="step-title"><p class="label">Liberland certificate authority</p><h3 class="h3">Certificate</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+          <li class="step" id="step-4" data-state="locked">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">4</span>
+              <div class="step-title"><p class="label">xNotary.digital</p><h3 class="h3">Document &amp; fingerprint</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+          <li class="step" id="step-5" data-state="locked">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">5</span>
+              <div class="step-title"><p class="label">Phone</p><h3 class="h3">Confirm on the phone</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+          <li class="step" id="step-6" data-state="locked">
+            <div class="step-head">
+              <span class="step-num" aria-hidden="true">6</span>
+              <div class="step-title"><p class="label">xNotary.digital</p><h3 class="h3">Signed PDF</h3></div>
+              <span class="step-status" data-status></span>
+            </div>
+            <div class="step-body" data-body></div>
+          </li>
+        </ol>
+
+        <div class="phone-col">
+          <div class="phone" role="region" aria-label="Liberland App (simulated phone)" aria-live="polite">
+            <div class="screen">
+              <div class="statusbar" aria-hidden="true"><span id="phone-clock">9:41</span><span>●●● 5G</span></div>
+              <div class="app-bar">
+                <img src="assets/shield-64.webp" alt="" width="28" height="31">
+                <div><div class="t">Liberland</div><div class="s" id="phone-sub">Identity</div></div>
+              </div>
+              <div class="app-body" id="phone-body"></div>
+            </div>
+          </div>
+          <p class="small phone-caption">Simulated Liberland App. In production the key lives in the phone's Secure Enclave or StrongBox; here it lives in this browser as a non-extractable WebCrypto key.</p>
+          <div class="phone-nav"><button class="link small" type="button" id="reset-phone">Reset the demo phone</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="verify" aria-labelledby="verify-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label label--teal">Who signed, that nothing changed, and when</p>
+        <h2 class="h2" id="verify-title">Anyone can <span class="accent">verify</span></h2>
+        <p class="body">Drop any signed PDF. This checker reads the embedded signature locally and reports the signer verified by Liberland KYC, whether the document changed after signing, the certificate's status and the timestamp. Any PDF reader that supports digital signatures shows the same facts.</p>
+      </div>
+      <div class="verify-grid">
+        <div>
+          <label class="drop" id="verify-drop">
+            <input type="file" id="verify-file" accept="application/pdf,.pdf" aria-describedby="verify-hint">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3z"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></svg>
+            <strong>Drop a signed PDF here, or choose a file</strong>
+            <span class="small" id="verify-hint">Checked in your browser. Nothing is uploaded.</span>
+          </label>
+          <p class="small note">Signatures from this demo chain to the <strong>demo</strong> Liberland CA, whose private key is public. They prove the mechanism, not a real identity. A production CA keeps its key in a hardware security module and publishes revocation status online.</p>
+        </div>
+        <div class="report" id="verify-report" aria-live="polite">
+          <div class="report-card"><p class="small" style="margin:0">No document checked yet. Sign one above, then press <em>Verify it</em>, or drop any PDF here.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="benefits" aria-labelledby="benefits-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label label--teal">Benefits</p>
+        <h2 class="h2" id="benefits-title">What Liberland <span class="accent">gains</span></h2>
+        <p class="body">Reliable notary services, built on the identity Liberland already verifies.</p>
+      </div>
+      <div class="benefits">
+        <div><p class="label">Notary services</p><h3 class="h3">Effectively, a Liberland notary</h3><p class="body">Every signature names a person Liberland has verified, bound to one exact document and, with a timestamp, to one moment. That is what a notary attests, available from any phone.</p></div>
+        <div><p class="label">Open verification</p><h3 class="h3">Anyone can check it</h3><p class="body">It is a standard PDF signature (PAdES, CMS, X.509, RFC 3161). Counterparties need no Liberland account and no special software: their PDF reader shows who signed, that the document is unchanged, and when.</p></div>
+        <div><p class="label">Control</p><h3 class="h3">Revocable, private by design</h3><p class="body">The private key never leaves the phone and the document never leaves xNotary; Liberland sees only a public key and a fingerprint. The CA can revoke a certificate at once if KYC lapses or a phone is lost.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scope" aria-labelledby="scope-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="label label--teal">Scope</p>
+        <h2 class="h2" id="scope-title">This demo, <span class="accent">honestly</span></h2>
+        <p class="body">What is real here, and what a production launch adds.</p>
+      </div>
+      <div class="two-col">
+        <div class="panel">
+          <h3 class="h3">Real in this demo</h3>
+          <ul class="plain-list body">
+            <li>P-256 signing key generated as non-extractable, kept in this browser between visits.</li>
+            <li>X.509 certificate with the verified name and Liberland ID, signed by a Liberland CA.</li>
+            <li>Document fingerprint (SHA-256 over the PDF's signed byte range) and a signing-request QR code.</li>
+            <li>PAdES baseline signature (ETSI.CAdES.detached) embedded in the PDF.</li>
+            <li>Optional RFC 3161 timestamp from a public timestamp authority (only the signature's hash is sent).</li>
+            <li>Verifier that checks integrity, signature, certificate chain, revocation and timestamp.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 class="h3">Production adds</h3>
+          <ul class="plain-list body">
+            <li><strong>Liberland App:</strong> key in Secure Enclave / StrongBox, biometric-gated, KYC status from Liberland's identity service.</li>
+            <li><strong>Liberland CA:</strong> root and issuing keys in an HSM, certificate policy, OCSP and CRL for revocation.</li>
+            <li><strong>xNotary:</strong> a signing-request API; the QR opens the app, the app returns the signature to xNotary, xNotary embeds it.</li>
+            <li><strong>Long-term validation:</strong> PAdES-LTA with revocation data embedded, so signatures stay verifiable for decades.</li>
+            <li><strong>Trust:</strong> optional listing of the Liberland root in Adobe's trust list so readers show a green tick by default.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <a class="brand" href="https://liberland.org/" aria-label="Free Republic of Liberland">
+      <img src="assets/shield-160.webp" alt="" width="44" height="49">
+      <span class="wordmark"><span class="a">Free Republic of</span><span class="b">LIBERLAND</span></span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="https://liberland.org/">Liberland.org</a>
+      <a href="https://xnotary.digital" rel="noopener">xNotary.digital</a>
+      <a href="../">Liberland Limited</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="../terms/">Terms</a>
+    </nav>
+    <p class="small">Liberland eSignature for xNotary — proposal and working demonstration, published by Liberland Limited (Hong Kong, BRN 64816138). xNotary.digital is developed with Jan Purkrabek and LongRiver Lab.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="container small">This page needs JavaScript to create keys and signatures in your browser.</p></noscript>
+</body>
+</html>
