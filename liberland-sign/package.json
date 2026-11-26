@@ -1,0 +1,18 @@
+{
+  "name": "liberland-sign",
+  "private": true,
+  "description": "Liberland eSignature for xNotary — demo signing and verification page served at /form",
+  "scripts": {
+    "build:lib": "esbuild lib/entry.js --bundle --minify --format=iife --global-name=LLSignLib --target=es2020 --outfile=vendor/sign-lib.js --legal-comments=eof",
+    "start": "node tests/server.js 3748",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "asn1js": "^3.0.5",
+    "esbuild": "^0.24.0",
+    "pdf-lib": "^1.17.1",
+    "pkijs": "^3.2.4",
+    "qrcode-generator": "^1.4.4"
+  }
+}
